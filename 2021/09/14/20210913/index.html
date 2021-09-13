@@ -20,28 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"kyllsccs.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="Find it, know it, then solved it.發現問題, 了解問題, 解決問題   那天夜黑風高的晚上~~~ (喂~~">
+<meta name="description" content="Do it, find it, know it, and solved it, finally record it.   SQL 基礎篇">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2019 Sep. 1st -2021 Sep. 12th 回顧">
-<meta property="og:url" content="https://kyllsccs.github.io/2021/09/12/2019-2021/index.html">
+<meta property="og:title" content="SQL基礎篇_MSSQL [一]">
+<meta property="og:url" content="https://kyllsccs.github.io/2021/09/14/20210913/index.html">
 <meta property="og:site_name" content="Kylls KB NOTEs">
-<meta property="og:description" content="Find it, know it, then solved it.發現問題, 了解問題, 解決問題   那天夜黑風高的晚上~~~ (喂~~">
+<meta property="og:description" content="Do it, find it, know it, and solved it, finally record it.   SQL 基礎篇">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-09-12T05:39:24.000Z">
-<meta property="article:modified_time" content="2021-09-13T23:08:20.963Z">
+<meta property="article:published_time" content="2021-09-13T23:18:16.000Z">
+<meta property="article:modified_time" content="2021-09-13T23:26:56.862Z">
 <meta property="article:author" content="Kylls Bellies">
-<meta property="article:tag" content="MurMur">
+<meta property="article:tag" content="SQL_MSSQL">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://kyllsccs.github.io/2021/09/12/2019-2021/">
+<link rel="canonical" href="https://kyllsccs.github.io/2021/09/14/20210913/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://kyllsccs.github.io/2021/09/12/2019-2021/","path":"2021/09/12/2019-2021/","title":"2019 Sep. 1st -2021 Sep. 12th 回顧"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://kyllsccs.github.io/2021/09/14/20210913/","path":"2021/09/14/20210913/","title":"SQL基礎篇_MSSQL [一]"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>2019 Sep. 1st -2021 Sep. 12th 回顧 | Kylls KB NOTEs</title>
+<title>SQL基礎篇_MSSQL [一] | Kylls KB NOTEs</title>
   
 
 
@@ -135,7 +135,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -148,6 +148,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A4%8E-SQL-%E6%9F%A5%E8%A9%A2%E8%B5%B7%E6%89%8B%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">基礎 SQL 查詢起手式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B-SQL-%E6%8C%87%E4%BB%A4%E6%88%91%E5%8F%AF%E4%BB%A5%E7%94%A8%E5%B0%8F%E5%AF%AB%E5%97%8E%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">下 SQL 指令我可以用小寫嗎？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%8F%92%E5%85%A5%E8%B3%87%E6%96%99%E6%8C%87%E4%BB%A4-INSERT-INTO"><span class="nav-number">3.</span> <span class="nav-text">基本插入資料指令 INSERT INTO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%9B%B4%E6%96%B0%E6%8C%87%E4%BB%A4-UPDATE-%E2%80%A6-SET-%E2%80%A6"><span class="nav-number">4.</span> <span class="nav-text">基本更新指令 UPDATE … SET …</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E6%8C%87%E4%BB%A4-DELETE-FROM"><span class="nav-number">5.</span> <span class="nav-text">刪除指令 DELETE FROM</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -220,7 +221,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://kyllsccs.github.io/2021/09/12/2019-2021/">
+    <link itemprop="mainEntityOfPage" href="https://kyllsccs.github.io/2021/09/14/20210913/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -233,7 +234,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          2019 Sep. 1st -2021 Sep. 12th 回顧
+          SQL基礎篇_MSSQL [一]
         </h1>
 
         <div class="post-meta-container">
@@ -243,23 +244,17 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-09-12 13:39:24" itemprop="dateCreated datePublished" datetime="2021-09-12T13:39:24+08:00">2021-09-12</time>
+      <time title="Created: 2021-09-14 07:18:16 / Modified: 07:26:56" itemprop="dateCreated datePublished" datetime="2021-09-14T07:18:16+08:00">2021-09-14</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-14 07:08:20" itemprop="dateModified" datetime="2021-09-14T07:08:20+08:00">2021-09-14</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Kylls-MurMur/" itemprop="url" rel="index"><span itemprop="name">Kylls MurMur</span></a>
+          <a href="/categories/SQL/" itemprop="url" rel="index"><span itemprop="name">SQL</span></a>
         </span>
     </span>
 
@@ -277,7 +272,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>484</span>
+      <span>945</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -296,60 +291,46 @@
     
     <div class="post-body" itemprop="articleBody">
         <blockquote>
-<p>Find it, know it, then solved it.<br>發現問題, 了解問題, 解決問題</p>
+<p>Do it, find it, know it, and solved it, finally record it.</p>
 </blockquote>
 <hr>
-<p>那天夜黑風高的晚上~~~</p>
-<p>(喂~~</p>
+<p>SQL 基礎篇</p>
 <span id="more"></span>
 
-<p>這不是什麼恐怖故事齁, 只是要來寫寫我是怎開始踏入這<code>自學</code>的不歸路?!</p>
-<p><code>2019 Sep 1st</code> 這輩子讓我難忘的日子?</p>
-<p>在網路上查著哪一款語言最適合初學者… <del>我敢發誓我真的完全 0 經驗</del></p>
+<h3 id="基礎-SQL-查詢起手式"><a href="#基礎-SQL-查詢起手式" class="headerlink" title="基礎 SQL 查詢起手式"></a>基礎 SQL 查詢起手式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION_1 IS NULL</span><br><span class="line">AND</span><br><span class="line">CONDITION_2 &gt; 0</span><br><span class="line">AND</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p><code>SELECT</code> 是 SQL 查詢的起手式，<br><code>*</code> 代表是把所有的欄位名稱資料都撈出來<br><code>FROM</code> 從哪個 Table<br><code>TABLE_NAME</code> 是從哪個資料表<br><code>WHERE</code> 後面接的是判斷式的條件 AND / OR 等…</p>
+<hr>
+<h3 id="下-SQL-指令我可以用小寫嗎？"><a href="#下-SQL-指令我可以用小寫嗎？" class="headerlink" title="下 SQL 指令我可以用小寫嗎？"></a>下 SQL 指令我可以用小寫嗎？</h3><p>答案是<code>可以</code>的</p>
+<p>我還特別的去查詢了一下一定要用大寫嗎？</p>
+<p>答案是 有些資料庫為了避免大小寫的轉換影響效率 還是統一使用大寫好</p>
+<hr>
+<p>剛到做 ERP 的系統公司，說真的也是慢慢的從基本的語法開始練習…</p>
+<p>剛開始哪知道什麼查詢不查詢的 <del>憑著熱愛打字的熱誠？</del></p>
+<p>就開始了我的<code>奇幻ERP系統之旅</code> ?</p>
 <blockquote>
-<p><code>Python是適合新手的最佳語言</code> ???????</p>
+<p>以前看著能夠在黑黑的螢幕不斷的鍵入指令很<code>帥</code>？！</p>
 </blockquote>
-<p>說真的 : 我差點沒有崩潰…..</p>
+<p><del>就這麼簡單的原因讓我欲罷不能…</del></p>
+<h3 id="基本插入資料指令-INSERT-INTO"><a href="#基本插入資料指令-INSERT-INTO" class="headerlink" title="基本插入資料指令 INSERT INTO"></a>基本插入資料指令 INSERT INTO</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO TABLE_NAME (COLUNM_1) VALUES (VALUE_1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>INSERT INTO</code> 插入…直接英文字義比較好記憶.<br><code>TABLE_NMAE</code> 插入總有個目標吧，這個就是你的目標表格.<br><code>(COLUNM_1)</code> 這個就是裡面的欄位名稱，可以想成<code>excel</code>.<br><code>VALUES (VALUE_1)</code> 裡面就是對應的值</p>
+<p>這邊要注意的是…欄位名稱跟值的順序位置是有對應的…<br>如果插入的順序錯了，or 插入的指定型態不一樣<br>資料庫就會吐紅紅地<code>error</code>給你看？！？！？！</p>
+<hr>
+<h3 id="基本更新指令-UPDATE-…-SET-…"><a href="#基本更新指令-UPDATE-…-SET-…" class="headerlink" title="基本更新指令 UPDATE … SET …"></a>基本更新指令 UPDATE … SET …</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">UPDATE TABLE_NAME SET COLUMN_1=VALUE_2</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE_1</span><br><span class="line">AND</span><br><span class="line">....</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>UPDATE</code> 按照字面上的意思就是 更新啦…很好記吧.<br><code>SET</code> 就是設定的意思啦.</p>
+<p>換個簡單的方式來記憶。</p>
 <blockquote>
-<p><del>表面上看似越簡單的, 其實才是真正的難</del></p>
+<p>就是把資料表裡面的某個欄位資料設定成你想要多資料。</p>
 </blockquote>
-<br>
-<br>
-<br>
+<p>484 很好記</p>
+<hr>
+<h3 id="刪除指令-DELETE-FROM"><a href="#刪除指令-DELETE-FROM" class="headerlink" title="刪除指令 DELETE FROM"></a>刪除指令 DELETE FROM</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>型態? 是什麼?<br>宣告? 是什麼?<br>判斷? 是什麼?<br>迴圈? 是什麼?</p>
-<br>  
-<br>
-
-<p>這些基礎中的基礎, 都不懂… 那更別談到什麼 <code>物件導向OOP</code></p>
-<br>  
-<br>  
-其實當初賭的就是一口氣? 我就不信我看不懂!!!  
-<br>
-<br>  
-<br>  
-<br>  
-~~但我看了一個月....我還是真的看不懂啊~~  
-<br>
-<br>
-<br>
-
-<blockquote>
-<p>自從我吃了<del>撒尿牛 X</del>後, 我開始考試考 100 分?<br>抱歉, 中毒太深…</p>
-</blockquote>
-<p>就這樣像個小迷糊一樣的, 一邊工作一邊開始這跳坑之路?</p>
-<br>  
-<br>  
-其實在我真正懂了這些...已經是隔 5 個月之後的事情了...
-<br>
-
-<p>真正讓我開竅的竟然是…….<code>Javascript</code> ??????????</p>
-<br>  
-<br>  
-這又是另外一段故事了, 簡單的帶一下...
-
-<p>算是幫新弄好的筆記紀錄做個處女秀?<br><br><br><br></p>
-<p><code>下次有機會再來認真地分享一下我的自學之路????</code> 認真樣(握拳)</p>
+<p><code>DELETE</code> 字面上就是刪除的意思<br><code>FROM</code> 從….哪裡的意思<br><code>WHERE</code> 放條件的地方，如果沒有放條件…~~~那就是全部刪除啦~~~</p>
+<hr>
+<p>簡單的紀錄一下。</p>
 
     </div>
 
@@ -359,18 +340,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/MurMur/" rel="tag"># MurMur</a>
+              <a href="/tags/SQL-MSSQL/" rel="tag"># SQL_MSSQL</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2021/09/12/2019-2021/" rel="prev" title="2019 Sep. 1st -2021 Sep. 12th 回顧">
+                  <i class="fa fa-chevron-left"></i> 2019 Sep. 1st -2021 Sep. 12th 回顧
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/09/14/20210913/" rel="next" title="SQL基礎篇_MSSQL [一]">
-                  SQL基礎篇_MSSQL [一] <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
