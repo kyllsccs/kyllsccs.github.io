@@ -28,7 +28,7 @@
 <meta property="og:description" content="Do it, find it, know it, and solved it, finally record it.   SQL 基礎篇">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-09-13T23:18:16.000Z">
-<meta property="article:modified_time" content="2021-09-13T23:26:56.862Z">
+<meta property="article:modified_time" content="2021-09-13T23:29:43.776Z">
 <meta property="article:author" content="Kylls Bellies">
 <meta property="article:tag" content="SQL_MSSQL">
 <meta name="twitter:card" content="summary">
@@ -246,7 +246,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-09-14 07:18:16 / Modified: 07:26:56" itemprop="dateCreated datePublished" datetime="2021-09-14T07:18:16+08:00">2021-09-14</time>
+      <time title="Created: 2021-09-14 07:18:16 / Modified: 07:29:43" itemprop="dateCreated datePublished" datetime="2021-09-14T07:18:16+08:00">2021-09-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -314,7 +314,7 @@
 <p><del>就這麼簡單的原因讓我欲罷不能…</del></p>
 <h3 id="基本插入資料指令-INSERT-INTO"><a href="#基本插入資料指令-INSERT-INTO" class="headerlink" title="基本插入資料指令 INSERT INTO"></a>基本插入資料指令 INSERT INTO</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO TABLE_NAME (COLUNM_1) VALUES (VALUE_1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><code>INSERT INTO</code> 插入…直接英文字義比較好記憶.<br><code>TABLE_NMAE</code> 插入總有個目標吧，這個就是你的目標表格.<br><code>(COLUNM_1)</code> 這個就是裡面的欄位名稱，可以想成<code>excel</code>.<br><code>VALUES (VALUE_1)</code> 裡面就是對應的值</p>
+<p><code>INSERT INTO</code> 插入…直接英文字義比較好記憶.<br><code>TABLE_NAME</code> 插入總有個目標吧，這個就是你的目標表格.<br><code>(COLUNM_1)</code> 這個就是裡面的欄位名稱，可以想成<code>excel</code>.<br><code>VALUES (VALUE_1)</code> 裡面就是對應的值</p>
 <p>這邊要注意的是…欄位名稱跟值的順序位置是有對應的…<br>如果插入的順序錯了，or 插入的指定型態不一樣<br>資料庫就會吐紅紅地<code>error</code>給你看？！？！？！</p>
 <hr>
 <h3 id="基本更新指令-UPDATE-…-SET-…"><a href="#基本更新指令-UPDATE-…-SET-…" class="headerlink" title="基本更新指令 UPDATE … SET …"></a>基本更新指令 UPDATE … SET …</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">UPDATE TABLE_NAME SET COLUMN_1=VALUE_2</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE_1</span><br><span class="line">AND</span><br><span class="line">....</span><br><span class="line"></span><br></pre></td></tr></table></figure>
