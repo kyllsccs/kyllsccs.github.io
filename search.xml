@@ -1,55 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>SQL 基礎篇[一]</title>
-    <url>/2021/09/13/20210913/</url>
-    <content><![CDATA[<blockquote>
-<p>Do it, find it, know it, and solved it, finally record it.</p>
-</blockquote>
-<hr>
-<p>SQL 基礎篇</p>
-<span id="more"></span>
-
-<h3 id="基礎-SQL-查詢起手式"><a href="#基礎-SQL-查詢起手式" class="headerlink" title="基礎 SQL 查詢起手式"></a>基礎 SQL 查詢起手式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT * FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION_1 IS NULL</span><br><span class="line">AND</span><br><span class="line">CONDITION_2 &gt; 0</span><br><span class="line">AND</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p><code>SELECT</code> 是 SQL 查詢的起手式，<br><code>*</code> 代表是把所有的欄位名稱資料都撈出來<br><code>FROM</code> 從哪個 Table<br><code>TABLE_NAME</code> 是從哪個資料表<br><code>WHERE</code> 後面接的是判斷式的條件 AND / OR 等…</p>
-<hr>
-<h3 id="下-SQL-指令我可以用小寫嗎？"><a href="#下-SQL-指令我可以用小寫嗎？" class="headerlink" title="下 SQL 指令我可以用小寫嗎？"></a>下 SQL 指令我可以用小寫嗎？</h3><p>答案是<code>可以</code>的</p>
-<p>我還特別的去查詢了一下一定要用大寫嗎？</p>
-<p>答案是 有些資料庫為了避免大小寫的轉換影響效率 還是統一使用大寫好</p>
-<hr>
-<p>剛到做 ERP 的系統公司，說真的也是慢慢的從基本的語法開始練習…</p>
-<p>剛開始哪知道什麼查詢不查詢的 <del>憑著熱愛打字的熱誠？</del></p>
-<p>就開始了我的<code>奇幻ERP系統之旅</code> ?</p>
-<blockquote>
-<p>以前看著能夠在黑黑的螢幕不斷的鍵入指令很<code>帥</code>？！</p>
-</blockquote>
-<p><del>就這麼簡單的原因讓我欲罷不能…</del></p>
-<h3 id="基本插入資料指令-INSERT-INTO"><a href="#基本插入資料指令-INSERT-INTO" class="headerlink" title="基本插入資料指令 INSERT INTO"></a>基本插入資料指令 INSERT INTO</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">INSERT INTO TABLE_NAME (COLUNM_1) VALUES (VALUE_1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>INSERT INTO</code> 插入…直接英文字義比較好記憶.<br><code>TABLE_NMAE</code> 插入總有個目標吧，這個就是你的目標表格.<br><code>(COLUNM_1)</code> 這個就是裡面的欄位名稱，可以想成<code>excel</code>.<br><code>VALUES (VALUE_1)</code> 裡面就是對應的值</p>
-<p>這邊要注意的是…欄位名稱跟值的順序位置是有對應的…<br>如果插入的順序錯了，or 插入的指定型態不一樣<br>資料庫就會吐紅紅地<code>error</code>給你看？！？！？！</p>
-<hr>
-<h3 id="基本更新指令-UPDATE-…-SET-…"><a href="#基本更新指令-UPDATE-…-SET-…" class="headerlink" title="基本更新指令 UPDATE … SET …"></a>基本更新指令 UPDATE … SET …</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">UPDATE TABLE_NAME SET COLUMN_1=VALUE_2</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE_1</span><br><span class="line">AND</span><br><span class="line">....</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>UPDATE</code> 按照字面上的意思就是 更新啦…很好記吧.<br><code>SET</code> 就是設定的意思啦.</p>
-<p>換個簡單的方式來記憶。</p>
-<blockquote>
-<p>就是把資料表裡面的某個欄位資料設定成你想要多資料。</p>
-</blockquote>
-<p>484 很好記</p>
-<hr>
-<h3 id="刪除指令-DELETE-FROM"><a href="#刪除指令-DELETE-FROM" class="headerlink" title="刪除指令 DELETE FROM"></a>刪除指令 DELETE FROM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>DELETE</code> 字面上就是刪除的意思<br><code>FROM</code> 從….哪裡的意思<br><code>WHERE</code> 放條件的地方，如果沒有放條件…~~~那就是全部刪除啦~~~</p>
-<hr>
-<p>簡單的紀錄一下。</p>
-]]></content>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2021/09/10/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -68,71 +19,5 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>2019 Sep. 1st -2021 Sep. 12th 回顧</title>
-    <url>/2021/09/12/2019-2021/</url>
-    <content><![CDATA[<blockquote>
-<p>Find it, know it, then solved it.<br>發現問題, 了解問題, 解決問題</p>
-</blockquote>
-<hr>
-<p>那天夜黑風高的晚上~~~</p>
-<p>(喂~~</p>
-<span id="more"></span>
-
-<p>這不是什麼恐怖故事齁, 只是要來寫寫我是怎開始踏入這<code>自學</code>的不歸路?!</p>
-<p><code>2019 Sep 1st</code> 這輩子讓我難忘的日子?</p>
-<p>在網路上查著哪一款語言最適合初學者… <del>我敢發誓我真的完全 0 經驗</del></p>
-<blockquote>
-<p><code>Python是適合新手的最佳語言</code> ???????</p>
-</blockquote>
-<p>說真的 : 我差點沒有崩潰…..</p>
-<blockquote>
-<p><del>表面上看似越簡單的, 其實才是真正的難</del></p>
-</blockquote>
-<br>
-<br>
-<br>
-
-<p>型態? 是什麼?<br>宣告? 是什麼?<br>判斷? 是什麼?<br>迴圈? 是什麼?</p>
-<br>  
-<br>
-
-<p>這些基礎中的基礎, 都不懂… 那更別談到什麼 <code>物件導向OOP</code></p>
-<br>  
-<br>  
-其實當初賭的就是一口氣? 我就不信我看不懂!!!  
-<br>
-<br>  
-<br>  
-<br>  
-~~但我看了一個月....我還是真的看不懂啊~~  
-<br>
-<br>
-<br>
-
-<blockquote>
-<p>自從我吃了<del>撒尿牛 X</del>後, 我開始考試考 100 分?<br>抱歉, 中毒太深…</p>
-</blockquote>
-<p>就這樣像個小迷糊一樣的, 一邊工作一邊開始這跳坑之路?</p>
-<br>  
-<br>  
-其實在我真正懂了這些...已經是隔 5 個月之後的事情了...
-<br>
-
-<p>真正讓我開竅的竟然是…….<code>Javascript</code> ??????????</p>
-<br>  
-<br>  
-這又是另外一段故事了, 簡單的帶一下...
-
-<p>算是幫新弄好的筆記紀錄做個處女秀?<br><br><br><br></p>
-<p><code>下次有機會再來認真地分享一下我的自學之路????</code> 認真樣(握拳)</p>
-]]></content>
-      <categories>
-        <category>Kylls MurMur</category>
-      </categories>
-      <tags>
-        <tag>MurMur</tag>
-      </tags>
   </entry>
 </search>
