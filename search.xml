@@ -67,6 +67,43 @@
       </tags>
   </entry>
   <entry>
+    <title>Rust Note(1)_Data Type</title>
+    <url>/2021/10/16/20211016/</url>
+    <content><![CDATA[<h2 id="Rust-Note-1-Data-Types-in-Rust"><a href="#Rust-Note-1-Data-Types-in-Rust" class="headerlink" title="Rust Note(1) Data Types in Rust"></a>Rust Note(1) Data Types in Rust</h2><blockquote>
+<p>Rust is a statically type language.<br>Rust 為一靜態型語言.</p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h3 id="靜態型"><a href="#靜態型" class="headerlink" title="靜態型"></a>靜態型</h3><blockquote>
+<p>靜態型語言 :<br>靜態類型是一種編程語言特性，其中顯式聲明變量類型並因此在編譯時確定。<br>這讓編譯器可以決定給定的變量是否可以執行它所請求的操作。</p>
+</blockquote>
+</br>
+
+<p>在進入編譯之前, 預先指定好資料的型別 (Example : 整數)<br></br><br>如果有需換類型: 則必須要做另外的轉換<br></br></p>
+<h3 id="Rust-Date-Types"><a href="#Rust-Date-Types" class="headerlink" title="Rust Date Types"></a>Rust Date Types</h3><p><strong>Rust 基本 4 大型別</strong></p>
+<ul>
+<li>  int : 整數型</li>
+<li>  float : 浮點型</li>
+<li>  bool : 布林值 true / false</li>
+<li>  string : 字串型</li>
+</ul>
+<h3 id="Rust-Variable-定義型別"><a href="#Rust-Variable-定義型別" class="headerlink" title="Rust Variable 定義型別"></a>Rust Variable 定義型別</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> x: <span class="built_in">String</span> = <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>&lt;Variable_name&gt;:&lt;DataType&gt;</code><br>冒號後面接的是資料型別</p>
+</blockquote>
+</br>
+Rust Note 20211016
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rsut</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SQL基礎篇_MSSQL [一]</title>
     <url>/2021/09/14/20210913/</url>
     <content><![CDATA[<blockquote>
