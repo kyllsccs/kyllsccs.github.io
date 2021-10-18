@@ -30,15 +30,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"kyllsccs.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="SQL 双迴圈 宣告變數   DECLARE @_EX INT   設定變數值   SET @_EX &#x3D; 10   迴圈   WHILE (condition)   起始&amp;結束   BEGIN &lt;作用域&gt; END   設定指標   宣告指標 DECLARE BBB CURSOR FOR SELECT * FROM TABLE   取得資料轉成變數 FETCH NEXT INTO">
+<meta name="description" content="SQL 双迴圈">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL進階篇_MSSQL [双迴圈]">
 <meta property="og:url" content="https://kyllsccs.github.io/2021/10/18/20211018/index.html">
 <meta property="og:site_name" content="Kylls KB NOTEs">
-<meta property="og:description" content="SQL 双迴圈 宣告變數   DECLARE @_EX INT   設定變數值   SET @_EX &#x3D; 10   迴圈   WHILE (condition)   起始&amp;結束   BEGIN &lt;作用域&gt; END   設定指標   宣告指標 DECLARE BBB CURSOR FOR SELECT * FROM TABLE   取得資料轉成變數 FETCH NEXT INTO">
+<meta property="og:description" content="SQL 双迴圈">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-18T10:53:36.000Z">
-<meta property="article:modified_time" content="2021-10-18T11:02:35.121Z">
+<meta property="article:modified_time" content="2021-10-18T11:03:26.813Z">
 <meta property="article:author" content="Kylls Bellies_KB">
 <meta property="article:tag" content="SQL_MSSQL">
 <meta name="twitter:card" content="summary">
@@ -256,7 +256,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-10-18 18:53:36 / Modified: 19:02:35" itemprop="dateCreated datePublished" datetime="2021-10-18T18:53:36+08:00">2021-10-18</time>
+      <time title="Created: 2021-10-18 18:53:36 / Modified: 19:03:26" itemprop="dateCreated datePublished" datetime="2021-10-18T18:53:36+08:00">2021-10-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -300,7 +300,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="SQL-双迴圈"><a href="#SQL-双迴圈" class="headerlink" title="SQL 双迴圈"></a>SQL 双迴圈</h2><ul>
+        <h2 id="SQL-双迴圈"><a href="#SQL-双迴圈" class="headerlink" title="SQL 双迴圈"></a>SQL 双迴圈</h2><span id="more"></span>
+
+<ul>
 <li>宣告變數<ul>
 <li>  DECLARE @_EX INT</li>
 </ul>
