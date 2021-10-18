@@ -1,6 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SQL基礎篇_MSSQL [一]</title>
+    <url>/2021/09/14/20210913/</url>
+    <content><![CDATA[<blockquote>
+<p>Do it, find it, know it, and solved it, finally record it.</p>
+</blockquote>
+<hr>
+<p>SQL 基礎篇</p>
+<span id="more"></span>
+
+<h3 id="基礎-SQL-查詢起手式"><a href="#基礎-SQL-查詢起手式" class="headerlink" title="基礎 SQL 查詢起手式"></a>基礎 SQL 查詢起手式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT * FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION_1 IS NULL</span><br><span class="line">AND</span><br><span class="line">CONDITION_2 &gt; 0</span><br><span class="line">AND</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p><code>SELECT</code> 是 SQL 查詢的起手式，<br><code>*</code> 代表是把所有的欄位名稱資料都撈出來<br><code>FROM</code> 從哪個 Table<br><code>TABLE_NAME</code> 是從哪個資料表<br><code>WHERE</code> 後面接的是判斷式的條件 AND / OR 等…</p>
+<hr>
+<h3 id="下-SQL-指令我可以用小寫嗎？"><a href="#下-SQL-指令我可以用小寫嗎？" class="headerlink" title="下 SQL 指令我可以用小寫嗎？"></a>下 SQL 指令我可以用小寫嗎？</h3><p>答案是<code>可以</code>的</p>
+<p>我還特別的去查詢了一下一定要用大寫嗎？</p>
+<p>答案是 有些資料庫為了避免大小寫的轉換影響效率 還是統一使用大寫好</p>
+<hr>
+<p>剛到做 ERP 的系統公司，說真的也是慢慢的從基本的語法開始練習…</p>
+<p>剛開始哪知道什麼查詢不查詢的 <del>憑著熱愛打字的熱誠？</del></p>
+<p>就開始了我的<code>奇幻ERP系統之旅</code> ?</p>
+<blockquote>
+<p>以前看著能夠在黑黑的螢幕不斷的鍵入指令很<code>帥</code>？！</p>
+</blockquote>
+<p><del>就這麼簡單的原因讓我欲罷不能…</del></p>
+<h3 id="基本插入資料指令-INSERT-INTO"><a href="#基本插入資料指令-INSERT-INTO" class="headerlink" title="基本插入資料指令 INSERT INTO"></a>基本插入資料指令 INSERT INTO</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">INSERT INTO TABLE_NAME (COLUNM_1) VALUES (VALUE_1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>INSERT INTO</code> 插入…直接英文字義比較好記憶.<br><code>TABLE_NAME</code> 插入總有個目標吧，這個就是你的目標表格.<br><code>(COLUNM_1)</code> 這個就是裡面的欄位名稱，可以想成<code>excel</code>.<br><code>VALUES (VALUE_1)</code> 裡面就是對應的值</p>
+<p>這邊要注意的是…欄位名稱跟值的順序位置是有對應的…<br>如果插入的順序錯了，or 插入的指定型態不一樣<br>資料庫就會吐紅紅地<code>error</code>給你看？！？！？！</p>
+<hr>
+<h3 id="基本更新指令-UPDATE-…-SET-…"><a href="#基本更新指令-UPDATE-…-SET-…" class="headerlink" title="基本更新指令 UPDATE … SET …"></a>基本更新指令 UPDATE … SET …</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">UPDATE TABLE_NAME SET COLUMN_1=VALUE_2</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE_1</span><br><span class="line">AND</span><br><span class="line">....</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>UPDATE</code> 按照字面上的意思就是 更新啦…很好記吧.<br><code>SET</code> 就是設定的意思啦.</p>
+<p>換個簡單的方式來記憶。</p>
+<blockquote>
+<p>就是把資料表裡面的某個欄位資料設定成你想要多資料。</p>
+</blockquote>
+<p>484 很好記</p>
+<hr>
+<h3 id="刪除指令-DELETE-FROM"><a href="#刪除指令-DELETE-FROM" class="headerlink" title="刪除指令 DELETE FROM"></a>刪除指令 DELETE FROM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>DELETE</code> 字面上就是刪除的意思<br><code>FROM</code> 從….哪裡的意思<br><code>WHERE</code> 放條件的地方，如果沒有放條件…~~~那就是全部刪除啦~~~</p>
+<hr>
+<p>簡單的紀錄一下。</p>
+]]></content>
+      <categories>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL_MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL進階篇_MSSQL [双迴圈]</title>
+    <url>/2021/10/18/20211018/</url>
+    <content><![CDATA[<h2 id="SQL-双迴圈"><a href="#SQL-双迴圈" class="headerlink" title="SQL 双迴圈"></a>SQL 双迴圈</h2><ul>
+<li>宣告變數<ul>
+<li>  DECLARE @_EX INT</li>
+</ul>
+</li>
+<li>設定變數值<ul>
+<li>  SET @_EX = 10</li>
+</ul>
+</li>
+<li>迴圈<ul>
+<li>  WHILE (condition)</li>
+</ul>
+</li>
+<li>起始&amp;結束<ul>
+<li>  BEGIN &lt;作用域&gt; END</li>
+</ul>
+</li>
+<li>設定指標<ul>
+<li>  宣告指標 DECLARE BBB CURSOR FOR SELECT * FROM TABLE</li>
+<li>  取得資料轉成變數 FETCH NEXT INTO @_VAR1</li>
+</ul>
+</li>
+<li>指標關閉<ul>
+<li>  關閉 CLOSE &lt;指標&gt;</li>
+<li>  釋放記憶體 DEALLOCATE &lt;指標&gt;</li>
+</ul>
+</li>
+<li>双迴圈 用巢狀方式撰寫<ul>
+<li>  BEGIN BEGIN &lt;作用域&gt; END END</li>
+</ul>
+</li>
+</ul>
+<h2 id="範例程式碼"><a href="#範例程式碼" class="headerlink" title="範例程式碼"></a>範例程式碼</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">--宣告變數型態</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BMIN <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BMAX <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_CMIN <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_CMAX <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BCNUM <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"><span class="keyword">DECLARE</span> @_BSNUM <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)宣告指標變數</span></span><br><span class="line"><span class="keyword">DECLARE</span> BCUS_BCNUM <span class="keyword">CURSOR</span> <span class="keyword">FOR</span> <span class="keyword">SELECT</span> BCNUM <span class="keyword">FROM</span> dbo.BCUS <span class="keyword">WHERE</span> BCTYP<span class="operator">=</span><span class="string">&#x27;C&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)設定變數值</span></span><br><span class="line"><span class="keyword">SET</span> @_CMIN <span class="operator">=</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">SET</span> @_CMAX <span class="operator">=</span> (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(BCNUM) <span class="keyword">FROM</span> BCUS <span class="keyword">WHERE</span> BCTYP<span class="operator">=</span><span class="string">&#x27;C&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">OPEN</span> BCUS_BCNUM <span class="comment">--(LEVEL 1)開啟指標, 請求資料</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)WHILE迴圈起始結束值</span></span><br><span class="line">WHILE (@_CMIN <span class="operator">&lt;</span> @_CMAX)</span><br><span class="line"><span class="comment">--(LEVEL 1)BEGIN &lt;作用域&gt; END</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">FETCH</span> NEXT <span class="keyword">FROM</span> BCUS_BCNUM <span class="keyword">INTO</span>	@_BCNUM <span class="comment">--(LEVEL 1) FETCH請求資料</span></span><br><span class="line">	<span class="comment">--(LEVEL 2)宣告指標變數</span></span><br><span class="line">	<span class="keyword">DECLARE</span> BSTO_BSNUM <span class="keyword">CURSOR</span> <span class="keyword">FOR</span> <span class="keyword">SELECT</span> BSNUM <span class="keyword">FROM</span> dbo.BSTO</span><br><span class="line">	<span class="comment">--(LEVEL 2)設定變數值</span></span><br><span class="line">	<span class="keyword">SET</span> @_BMIN <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">	<span class="keyword">SET</span> @_BMAX <span class="operator">=</span> (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(BSNUM) <span class="keyword">FROM</span> BSTO)</span><br><span class="line">	<span class="keyword">OPEN</span> BSTO_BSNUM <span class="comment">--(LEVEL 2)開啟指標, 請求資料</span></span><br><span class="line"></span><br><span class="line">	WHILE (@_BMIN <span class="operator">&lt;</span> @_BMAX) <span class="comment">--(LEVEL 2) WHILE迴圈起始結束值</span></span><br><span class="line">	<span class="keyword">BEGIN</span></span><br><span class="line">		<span class="keyword">FETCH</span> NEXT <span class="keyword">FROM</span> BSTO_BSNUM <span class="keyword">INTO</span>	@_BSNUM <span class="comment">--(LEVEL 2) FETCH 請求資料, 把資料變設定成變數</span></span><br><span class="line">		<span class="comment">--編寫指令, 裡面的VALUES數值用變數迭代</span></span><br><span class="line">		<span class="keyword">INSERT</span> <span class="keyword">INTO</span> dbo.BDZS (TRDAT,BSCLS,BSNUM,BSCTM,BSNUC,BSAVX)</span><br><span class="line">		<span class="keyword">VALUES</span> (<span class="string">&#x27;2021-10-18&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,@_BSNUM,@_BCNUM,@_BSNUM,<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">SET</span> @_BMIN <span class="operator">=</span> @_BMIN <span class="operator">+</span> <span class="number">1</span></span><br><span class="line">	<span class="keyword">END</span></span><br><span class="line">	<span class="keyword">CLOSE</span> BSTO_BSNUM　<span class="comment">--(LEVEL 2) 關閉指標</span></span><br><span class="line">	<span class="keyword">DEALLOCATE</span> BSTO_BSNUM <span class="comment">--(LEVEL 2) 釋放指標記憶體</span></span><br><span class="line">	<span class="keyword">SET</span> @_CMIN <span class="operator">=</span> @_CMIN <span class="operator">+</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">END</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CLOSE</span> BCUS_BCNUM <span class="comment">--(LEVEL 1) 關閉指標</span></span><br><span class="line"><span class="keyword">DEALLOCATE</span> BCUS_BCNUM <span class="comment">--(LEVEL 1) 釋放指標記憶體</span></span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+<p>SQL_NOTE : 20211018_1.1</p>
+]]></content>
+      <categories>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL_MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Rust Note(1)_Data Type I</title>
     <url>/2021/10/16/20211016/</url>
     <content><![CDATA[<h2 id="Rust-Note-1-Data-Types-I"><a href="#Rust-Note-1-Data-Types-I" class="headerlink" title="Rust Note(1) Data Types I"></a>Rust Note(1) Data Types I</h2><blockquote>
@@ -101,58 +199,6 @@ Rust Note 20211016
       </categories>
       <tags>
         <tag>MurMur</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL基礎篇_MSSQL [一]</title>
-    <url>/2021/09/14/20210913/</url>
-    <content><![CDATA[<blockquote>
-<p>Do it, find it, know it, and solved it, finally record it.</p>
-</blockquote>
-<hr>
-<p>SQL 基礎篇</p>
-<span id="more"></span>
-
-<h3 id="基礎-SQL-查詢起手式"><a href="#基礎-SQL-查詢起手式" class="headerlink" title="基礎 SQL 查詢起手式"></a>基礎 SQL 查詢起手式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT * FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION_1 IS NULL</span><br><span class="line">AND</span><br><span class="line">CONDITION_2 &gt; 0</span><br><span class="line">AND</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p><code>SELECT</code> 是 SQL 查詢的起手式，<br><code>*</code> 代表是把所有的欄位名稱資料都撈出來<br><code>FROM</code> 從哪個 Table<br><code>TABLE_NAME</code> 是從哪個資料表<br><code>WHERE</code> 後面接的是判斷式的條件 AND / OR 等…</p>
-<hr>
-<h3 id="下-SQL-指令我可以用小寫嗎？"><a href="#下-SQL-指令我可以用小寫嗎？" class="headerlink" title="下 SQL 指令我可以用小寫嗎？"></a>下 SQL 指令我可以用小寫嗎？</h3><p>答案是<code>可以</code>的</p>
-<p>我還特別的去查詢了一下一定要用大寫嗎？</p>
-<p>答案是 有些資料庫為了避免大小寫的轉換影響效率 還是統一使用大寫好</p>
-<hr>
-<p>剛到做 ERP 的系統公司，說真的也是慢慢的從基本的語法開始練習…</p>
-<p>剛開始哪知道什麼查詢不查詢的 <del>憑著熱愛打字的熱誠？</del></p>
-<p>就開始了我的<code>奇幻ERP系統之旅</code> ?</p>
-<blockquote>
-<p>以前看著能夠在黑黑的螢幕不斷的鍵入指令很<code>帥</code>？！</p>
-</blockquote>
-<p><del>就這麼簡單的原因讓我欲罷不能…</del></p>
-<h3 id="基本插入資料指令-INSERT-INTO"><a href="#基本插入資料指令-INSERT-INTO" class="headerlink" title="基本插入資料指令 INSERT INTO"></a>基本插入資料指令 INSERT INTO</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">INSERT INTO TABLE_NAME (COLUNM_1) VALUES (VALUE_1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>INSERT INTO</code> 插入…直接英文字義比較好記憶.<br><code>TABLE_NAME</code> 插入總有個目標吧，這個就是你的目標表格.<br><code>(COLUNM_1)</code> 這個就是裡面的欄位名稱，可以想成<code>excel</code>.<br><code>VALUES (VALUE_1)</code> 裡面就是對應的值</p>
-<p>這邊要注意的是…欄位名稱跟值的順序位置是有對應的…<br>如果插入的順序錯了，or 插入的指定型態不一樣<br>資料庫就會吐紅紅地<code>error</code>給你看？！？！？！</p>
-<hr>
-<h3 id="基本更新指令-UPDATE-…-SET-…"><a href="#基本更新指令-UPDATE-…-SET-…" class="headerlink" title="基本更新指令 UPDATE … SET …"></a>基本更新指令 UPDATE … SET …</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">UPDATE TABLE_NAME SET COLUMN_1=VALUE_2</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE_1</span><br><span class="line">AND</span><br><span class="line">....</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>UPDATE</code> 按照字面上的意思就是 更新啦…很好記吧.<br><code>SET</code> 就是設定的意思啦.</p>
-<p>換個簡單的方式來記憶。</p>
-<blockquote>
-<p>就是把資料表裡面的某個欄位資料設定成你想要多資料。</p>
-</blockquote>
-<p>484 很好記</p>
-<hr>
-<h3 id="刪除指令-DELETE-FROM"><a href="#刪除指令-DELETE-FROM" class="headerlink" title="刪除指令 DELETE FROM"></a>刪除指令 DELETE FROM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>DELETE</code> 字面上就是刪除的意思<br><code>FROM</code> 從….哪裡的意思<br><code>WHERE</code> 放條件的地方，如果沒有放條件…~~~那就是全部刪除啦~~~</p>
-<hr>
-<p>簡單的紀錄一下。</p>
-]]></content>
-      <categories>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL_MSSQL</tag>
       </tags>
   </entry>
   <entry>
