@@ -1,162 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2019 Sep. 1st -2021 Sep. 12th 回顧</title>
-    <url>/2021/09/12/2019-2021/</url>
-    <content><![CDATA[<blockquote>
-<p>Find it, know it, then solved it.<br>發現問題, 了解問題, 解決問題</p>
-</blockquote>
-<hr>
-<p>那天夜黑風高的晚上~~~</p>
-<p>(喂~~</p>
-<span id="more"></span>
-
-<p>這不是什麼恐怖故事齁, 只是要來寫寫我是怎開始踏入這<code>自學</code>的不歸路?!</p>
-<p><code>2019 Sep 1st</code> 這輩子讓我難忘的日子?</p>
-<p>在網路上查著哪一款語言最適合初學者… <del>我敢發誓我真的完全 0 經驗</del></p>
-<blockquote>
-<p><code>Python是適合新手的最佳語言</code> ???????</p>
-</blockquote>
-<p>說真的 : 我差點沒有崩潰…..</p>
-<blockquote>
-<p><del>表面上看似越簡單的, 其實才是真正的難</del></p>
-</blockquote>
-<br>
-<br>
-<br>
-
-<p>型態? 是什麼?<br>宣告? 是什麼?<br>判斷? 是什麼?<br>迴圈? 是什麼?</p>
-<br>  
-<br>
-
-<p>這些基礎中的基礎, 都不懂… 那更別談到什麼 <code>物件導向OOP</code></p>
-<br>  
-<br>  
-其實當初賭的就是一口氣? 我就不信我看不懂!!!  
-<br>
-<br>  
-<br>  
-<br>  
-~~但我看了一個月....我還是真的看不懂啊~~  
-<br>
-<br>
-<br>
-
-<blockquote>
-<p>自從我吃了<del>撒尿牛 X</del>後, 我開始考試考 100 分?<br>抱歉, 中毒太深…</p>
-</blockquote>
-<p>就這樣像個小迷糊一樣的, 一邊工作一邊開始這跳坑之路?</p>
-<br>  
-<br>  
-其實在我真正懂了這些...已經是隔 5 個月之後的事情了...
-<br>
-
-<p>真正讓我開竅的竟然是…….<code>Javascript</code> ??????????</p>
-<br>  
-<br>  
-這又是另外一段故事了, 簡單的帶一下...
-
-<p>算是幫新弄好的筆記紀錄做個處女秀?<br><br><br><br></p>
-<p><code>下次有機會再來認真地分享一下我的自學之路????</code> 認真樣(握拳)</p>
-]]></content>
-      <categories>
-        <category>Kylls MurMur</category>
-      </categories>
-      <tags>
-        <tag>MurMur</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust Note(2)_Data Type II</title>
-    <url>/2021/10/17/20211017/</url>
-    <content><![CDATA[<h2 id="Rsut-Note-2-Data-Types-II-Integer-Float"><a href="#Rsut-Note-2-Data-Types-II-Integer-Float" class="headerlink" title="Rsut Note(2) Data Types II Integer / Float"></a>Rsut Note(2) Data Types II Integer / Float</h2><p>依照 Data Type 的型別不同, 兩種方法:</p>
-<ol>
-<li>默認型別 : 直接使用系統默認</li>
-<li>指定型別 : 透過 <code>:&lt;type&gt;</code> 指定型別</li>
-</ol>
-<span id="more"></span>
-
-<h2 id="整數型-Integer"><a href="#整數型-Integer" class="headerlink" title="整數型 Integer"></a>整數型 Integer</h2></br>
-
-<blockquote>
-<p>Rust 默認為 i64</p>
-</blockquote>
-<p>Example_1: <strong>i8</strong> &gt;&gt; $2^7$-1 = 127, n=8, (n-1)=7, -1 就是扣掉 0<br>也就是如果型別指定為 i8, 可以接受的最大整數為 -128<del>0</del>127,<br>如超過 127 就會發生溢位</p>
-<p>Example_2: <strong>u8</strong> &gt;&gt; $2^8$-1 = 255, n=8, -1 就是扣掉 0<br>也就是如果型別指定為 u8, 可以接受的最大整數為 0~255,<br>如超過 255 就會發生溢位</p>
-<p>以下範例, 編譯器直接提醒:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">error: literal out of range <span class="keyword">for</span> `i8`</span><br><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: i8 = 256;</span><br><span class="line">  |                 ^^^</span><br><span class="line">  |</span><br><span class="line">  = note: `<span class="comment">#[deny(overflowing_literals)]` on by default</span></span><br><span class="line">  = note: the literal `256` does not fit into the <span class="built_in">type</span> `i8` whose range is `-128..=127`</span><br><span class="line">  = <span class="built_in">help</span>: consider using the <span class="built_in">type</span> `i16` instead</span><br><span class="line"></span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
-
-<h3 id="Rust-中的整型"><a href="#Rust-中的整型" class="headerlink" title="Rust 中的整型"></a>Rust 中的整型</h3><table>
-<thead>
-<tr>
-<th>長度</th>
-<th align="left">有符號</th>
-<th align="left">無符號</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>8 bits</td>
-<td align="left">i8</td>
-<td align="left">u8</td>
-</tr>
-<tr>
-<td>16bits</td>
-<td align="left">i16</td>
-<td align="left">u16</td>
-</tr>
-<tr>
-<td>32bits</td>
-<td align="left">i32</td>
-<td align="left">u32</td>
-</tr>
-<tr>
-<td>64bits</td>
-<td align="left">i64</td>
-<td align="left">u64</td>
-</tr>
-<tr>
-<td>128bits</td>
-<td align="left">i128</td>
-<td align="left">u128</td>
-</tr>
-<tr>
-<td>arch</td>
-<td align="left">isize</td>
-<td align="left">usize</td>
-</tr>
-</tbody></table>
-<p><code>i 代表有符號整數型: 可接受負數</code><br><code>u 代表無符號整數型: 不可接受負數</code> <strong>!</strong></p>
-<blockquote>
-<p>arch : 可以依照系統架構類型(x86 / x64), 直接判褖套用<code>默認型</code></p>
-</blockquote>
-</br>
-
-<p>以下範例, 編譯器報錯:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: u8 = -126;</span><br><span class="line">  |                 ^^^^ cannot apply unary operator `-`</span><br><span class="line">  |</span><br><span class="line">  = note: unsigned values cannot be negated</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0600`.</span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
-
-</br>
-
-<h2 id="浮點型-小數-Float"><a href="#浮點型-小數-Float" class="headerlink" title="浮點型 (小數) Float"></a>浮點型 (小數) Float</h2><blockquote>
-<p>Rust 浮點型默認值為 : <code>f64</code></p>
-</blockquote>
-</br>
-
-<p>浮點型只有兩種型態</p>
-<ul>
-<li>  <code>f32 : 單精度</code></li>
-<li>  <code>f64 : 雙精度</code></li>
-</ul>
-<p>可以參考這邊 : <a href="https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8">單精度雙精度</a></p>
-<p>Note : 20211017_v1.0</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SQL基礎篇_MSSQL [一]</title>
     <url>/2021/09/14/20210913/</url>
     <content><![CDATA[<blockquote>
@@ -294,6 +138,72 @@ Rust Note 20211016
       </tags>
   </entry>
   <entry>
+    <title>2019 Sep. 1st -2021 Sep. 12th 回顧</title>
+    <url>/2021/09/12/2019-2021/</url>
+    <content><![CDATA[<blockquote>
+<p>Find it, know it, then solved it.<br>發現問題, 了解問題, 解決問題</p>
+</blockquote>
+<hr>
+<p>那天夜黑風高的晚上~~~</p>
+<p>(喂~~</p>
+<span id="more"></span>
+
+<p>這不是什麼恐怖故事齁, 只是要來寫寫我是怎開始踏入這<code>自學</code>的不歸路?!</p>
+<p><code>2019 Sep 1st</code> 這輩子讓我難忘的日子?</p>
+<p>在網路上查著哪一款語言最適合初學者… <del>我敢發誓我真的完全 0 經驗</del></p>
+<blockquote>
+<p><code>Python是適合新手的最佳語言</code> ???????</p>
+</blockquote>
+<p>說真的 : 我差點沒有崩潰…..</p>
+<blockquote>
+<p><del>表面上看似越簡單的, 其實才是真正的難</del></p>
+</blockquote>
+<br>
+<br>
+<br>
+
+<p>型態? 是什麼?<br>宣告? 是什麼?<br>判斷? 是什麼?<br>迴圈? 是什麼?</p>
+<br>  
+<br>
+
+<p>這些基礎中的基礎, 都不懂… 那更別談到什麼 <code>物件導向OOP</code></p>
+<br>  
+<br>  
+其實當初賭的就是一口氣? 我就不信我看不懂!!!  
+<br>
+<br>  
+<br>  
+<br>  
+~~但我看了一個月....我還是真的看不懂啊~~  
+<br>
+<br>
+<br>
+
+<blockquote>
+<p>自從我吃了<del>撒尿牛 X</del>後, 我開始考試考 100 分?<br>抱歉, 中毒太深…</p>
+</blockquote>
+<p>就這樣像個小迷糊一樣的, 一邊工作一邊開始這跳坑之路?</p>
+<br>  
+<br>  
+其實在我真正懂了這些...已經是隔 5 個月之後的事情了...
+<br>
+
+<p>真正讓我開竅的竟然是…….<code>Javascript</code> ??????????</p>
+<br>  
+<br>  
+這又是另外一段故事了, 簡單的帶一下...
+
+<p>算是幫新弄好的筆記紀錄做個處女秀?<br><br><br><br></p>
+<p><code>下次有機會再來認真地分享一下我的自學之路????</code> 認真樣(握拳)</p>
+]]></content>
+      <categories>
+        <category>Kylls MurMur</category>
+      </categories>
+      <tags>
+        <tag>MurMur</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Rust Note(3)_Variables I</title>
     <url>/2021/10/20/20211020/</url>
     <content><![CDATA[<blockquote>
@@ -398,6 +308,96 @@ Rust Note 20211016
 </li>
 </ul>
 <p>Rust Note_20211020</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(2)_Data Type II</title>
+    <url>/2021/10/17/20211017/</url>
+    <content><![CDATA[<h2 id="Rsut-Note-2-Data-Types-II-Integer-Float"><a href="#Rsut-Note-2-Data-Types-II-Integer-Float" class="headerlink" title="Rsut Note(2) Data Types II Integer / Float"></a>Rsut Note(2) Data Types II Integer / Float</h2><p>依照 Data Type 的型別不同, 兩種方法:</p>
+<ol>
+<li>默認型別 : 直接使用系統默認</li>
+<li>指定型別 : 透過 <code>:&lt;type&gt;</code> 指定型別</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="整數型-Integer"><a href="#整數型-Integer" class="headerlink" title="整數型 Integer"></a>整數型 Integer</h2></br>
+
+<blockquote>
+<p>Rust 默認為 i64</p>
+</blockquote>
+<p>Example_1: <strong>i8</strong> &gt;&gt; $2^7$-1 = 127, n=8, (n-1)=7, -1 就是扣掉 0<br>也就是如果型別指定為 i8, 可以接受的最大整數為 -128<del>0</del>127,<br>如超過 127 就會發生溢位</p>
+<p>Example_2: <strong>u8</strong> &gt;&gt; $2^8$-1 = 255, n=8, -1 就是扣掉 0<br>也就是如果型別指定為 u8, 可以接受的最大整數為 0~255,<br>如超過 255 就會發生溢位</p>
+<p>以下範例, 編譯器直接提醒:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">error: literal out of range <span class="keyword">for</span> `i8`</span><br><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: i8 = 256;</span><br><span class="line">  |                 ^^^</span><br><span class="line">  |</span><br><span class="line">  = note: `<span class="comment">#[deny(overflowing_literals)]` on by default</span></span><br><span class="line">  = note: the literal `256` does not fit into the <span class="built_in">type</span> `i8` whose range is `-128..=127`</span><br><span class="line">  = <span class="built_in">help</span>: consider using the <span class="built_in">type</span> `i16` instead</span><br><span class="line"></span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
+
+<h3 id="Rust-中的整型"><a href="#Rust-中的整型" class="headerlink" title="Rust 中的整型"></a>Rust 中的整型</h3><table>
+<thead>
+<tr>
+<th>長度</th>
+<th align="left">有符號</th>
+<th align="left">無符號</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>8 bits</td>
+<td align="left">i8</td>
+<td align="left">u8</td>
+</tr>
+<tr>
+<td>16bits</td>
+<td align="left">i16</td>
+<td align="left">u16</td>
+</tr>
+<tr>
+<td>32bits</td>
+<td align="left">i32</td>
+<td align="left">u32</td>
+</tr>
+<tr>
+<td>64bits</td>
+<td align="left">i64</td>
+<td align="left">u64</td>
+</tr>
+<tr>
+<td>128bits</td>
+<td align="left">i128</td>
+<td align="left">u128</td>
+</tr>
+<tr>
+<td>arch</td>
+<td align="left">isize</td>
+<td align="left">usize</td>
+</tr>
+</tbody></table>
+<p><code>i 代表有符號整數型: 可接受負數</code><br><code>u 代表無符號整數型: 不可接受負數</code> <strong>!</strong></p>
+<blockquote>
+<p>arch : 可以依照系統架構類型(x86 / x64), 直接判褖套用<code>默認型</code></p>
+</blockquote>
+</br>
+
+<p>以下範例, 編譯器報錯:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: u8 = -126;</span><br><span class="line">  |                 ^^^^ cannot apply unary operator `-`</span><br><span class="line">  |</span><br><span class="line">  = note: unsigned values cannot be negated</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0600`.</span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
+
+</br>
+
+<h2 id="浮點型-小數-Float"><a href="#浮點型-小數-Float" class="headerlink" title="浮點型 (小數) Float"></a>浮點型 (小數) Float</h2><blockquote>
+<p>Rust 浮點型默認值為 : <code>f64</code></p>
+</blockquote>
+</br>
+
+<p>浮點型只有兩種型態</p>
+<ul>
+<li>  <code>f32 : 單精度</code></li>
+<li>  <code>f64 : 雙精度</code></li>
+</ul>
+<p>可以參考這邊 : <a href="https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8">單精度雙精度</a></p>
+<p>Note : 20211017_v1.0</p>
 ]]></content>
       <categories>
         <category>Rust</category>
