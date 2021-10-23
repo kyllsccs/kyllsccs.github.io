@@ -30,28 +30,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"kyllsccs.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="Rsut Note(2) Data Types II Integer &#x2F; Float依照 Data Type 的型別不同, 兩種方法:  默認型別 : 直接使用系統默認 指定型別 : 透過 :&lt;type&gt; 指定型別">
+<meta name="description" content="Rust 字符串類型 在 Rust 裡面, 字符串類型分以下兩種:    &amp;str : 字符串字面量   String : 公開的 struct">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rust Note(2)_Data Type II">
-<meta property="og:url" content="https://kyllsccs.github.io/2021/10/17/20211017/index.html">
+<meta property="og:title" content="Rust Note(3)_Data Type III [String]">
+<meta property="og:url" content="https://kyllsccs.github.io/2021/10/23/20211023_1/index.html">
 <meta property="og:site_name" content="Kylls KB NOTEs">
-<meta property="og:description" content="Rsut Note(2) Data Types II Integer &#x2F; Float依照 Data Type 的型別不同, 兩種方法:  默認型別 : 直接使用系統默認 指定型別 : 透過 :&lt;type&gt; 指定型別">
+<meta property="og:description" content="Rust 字符串類型 在 Rust 裡面, 字符串類型分以下兩種:    &amp;str : 字符串字面量   String : 公開的 struct">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-17T02:22:20.000Z">
-<meta property="article:modified_time" content="2021-10-20T03:10:17.121Z">
+<meta property="article:published_time" content="2021-10-23T03:02:41.000Z">
+<meta property="article:modified_time" content="2021-10-23T10:08:01.609Z">
 <meta property="article:author" content="Kylls Bellies_KB">
 <meta property="article:tag" content="Rust">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://kyllsccs.github.io/2021/10/17/20211017/">
+<link rel="canonical" href="https://kyllsccs.github.io/2021/10/23/20211023_1/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://kyllsccs.github.io/2021/10/17/20211017/","path":"2021/10/17/20211017/","title":"Rust Note(2)_Data Type II"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://kyllsccs.github.io/2021/10/23/20211023_1/","path":"2021/10/23/20211023_1/","title":"Rust Note(3)_Data Type III [String]"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Rust Note(2)_Data Type II | Kylls KB NOTEs</title>
+<title>Rust Note(3)_Data Type III [String] | Kylls KB NOTEs</title>
   
 
 
@@ -158,7 +158,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rsut-Note-2-Data-Types-II-Integer-Float"><span class="nav-number">1.</span> <span class="nav-text">Rsut Note(2) Data Types II Integer &#x2F; Float</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B8%E5%9E%8B-Integer"><span class="nav-number">2.</span> <span class="nav-text">整數型 Integer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Rust-%E4%B8%AD%E7%9A%84%E6%95%B4%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">Rust 中的整型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E9%BB%9E%E5%9E%8B-%E5%B0%8F%E6%95%B8-Float"><span class="nav-number">3.</span> <span class="nav-text">浮點型 (小數) Float</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rust-%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%A1%9E%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">Rust 字符串類型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%9F%E7%94%A8-borrow"><span class="nav-number">1.1.</span> <span class="nav-text">借用 borrow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#amp-str-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">&amp;str 字符串字面量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B0%8D%E8%B1%A1"><span class="nav-number">3.</span> <span class="nav-text">String 字符串對象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E4%B8%B2%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">字串操作</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -231,7 +231,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://kyllsccs.github.io/2021/10/17/20211017/">
+    <link itemprop="mainEntityOfPage" href="https://kyllsccs.github.io/2021/10/23/20211023_1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -244,7 +244,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Rust Note(2)_Data Type II
+          Rust Note(3)_Data Type III [String]
         </h1>
 
         <div class="post-meta-container">
@@ -254,16 +254,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-10-17 10:22:20" itemprop="dateCreated datePublished" datetime="2021-10-17T10:22:20+08:00">2021-10-17</time>
+      <time title="Created: 2021-10-23 11:02:41 / Modified: 18:08:01" itemprop="dateCreated datePublished" datetime="2021-10-23T11:02:41+08:00">2021-10-23</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-10-20 11:10:17" itemprop="dateModified" datetime="2021-10-20T11:10:17+08:00">2021-10-20</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -288,14 +282,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>1.1k</span>
+      <span>2k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>2 mins.</span>
     </span>
 </div>
 
@@ -306,85 +300,95 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="Rsut-Note-2-Data-Types-II-Integer-Float"><a href="#Rsut-Note-2-Data-Types-II-Integer-Float" class="headerlink" title="Rsut Note(2) Data Types II Integer / Float"></a>Rsut Note(2) Data Types II Integer / Float</h2><p>依照 Data Type 的型別不同, 兩種方法:</p>
-<ol>
-<li>默認型別 : 直接使用系統默認</li>
-<li>指定型別 : 透過 <code>:&lt;type&gt;</code> 指定型別</li>
-</ol>
+        <h2 id="Rust-字符串類型"><a href="#Rust-字符串類型" class="headerlink" title="Rust 字符串類型"></a>Rust 字符串類型</h2><hr>
+<p>在 Rust 裡面, 字符串類型分以下兩種:</p>
+<ul>
+<li>  <code>&amp;str</code> : 字符串字面量</li>
+<li>  <code>String</code> : 公開的 struct</li>
+</ul>
 <span id="more"></span>
 
-<h2 id="整數型-Integer"><a href="#整數型-Integer" class="headerlink" title="整數型 Integer"></a>整數型 Integer</h2></br>
-
+<p>在這之前, 先來理解一個概念 <code>指針</code></p>
 <blockquote>
-<p>Rust 默認為 i64</p>
+<p>指針 : 在 C++裡面有一樣的概念<br>想成把方向指到一個記憶體位址, 也就是 Rust 裡面常常會看到有人說 <code>borrow</code> 借用的概念</p>
 </blockquote>
-<p>Example_1: <strong>i8</strong> &gt;&gt; $2^7$-1 = 127, n=8, (n-1)=7, -1 就是扣掉 0<br>也就是如果型別指定為 i8, 可以接受的最大整數為 -128<del>0</del>127,<br>如超過 127 就會發生溢位</p>
-<p>Example_2: <strong>u8</strong> &gt;&gt; $2^8$-1 = 255, n=8, -1 就是扣掉 0<br>也就是如果型別指定為 u8, 可以接受的最大整數為 0~255,<br>如超過 255 就會發生溢位</p>
-<p>以下範例, 編譯器直接提醒:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">error: literal out of range <span class="keyword">for</span> `i8`</span><br><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: i8 = 256;</span><br><span class="line">  |                 ^^^</span><br><span class="line">  |</span><br><span class="line">  = note: `<span class="comment">#[deny(overflowing_literals)]` on by default</span></span><br><span class="line">  = note: the literal `256` does not fit into the <span class="built_in">type</span> `i8` whose range is `-128..=127`</span><br><span class="line">  = <span class="built_in">help</span>: consider using the <span class="built_in">type</span> `i16` instead</span><br><span class="line"></span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
-
-<h3 id="Rust-中的整型"><a href="#Rust-中的整型" class="headerlink" title="Rust 中的整型"></a>Rust 中的整型</h3><table>
-<thead>
-<tr>
-<th>長度</th>
-<th align="left">有符號</th>
-<th align="left">無符號</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>8 bits</td>
-<td align="left">i8</td>
-<td align="left">u8</td>
-</tr>
-<tr>
-<td>16bits</td>
-<td align="left">i16</td>
-<td align="left">u16</td>
-</tr>
-<tr>
-<td>32bits</td>
-<td align="left">i32</td>
-<td align="left">u32</td>
-</tr>
-<tr>
-<td>64bits</td>
-<td align="left">i64</td>
-<td align="left">u64</td>
-</tr>
-<tr>
-<td>128bits</td>
-<td align="left">i128</td>
-<td align="left">u128</td>
-</tr>
-<tr>
-<td>arch</td>
-<td align="left">isize</td>
-<td align="left">usize</td>
-</tr>
-</tbody></table>
-<p><code>i 代表有符號整數型: 可接受負數</code><br><code>u 代表無符號整數型: 不可接受負數</code> <strong>!</strong></p>
+<h3 id="借用-borrow"><a href="#借用-borrow" class="headerlink" title="借用 borrow"></a>借用 <code>borrow</code></h3><hr>
 <blockquote>
-<p>arch : 可以依照系統架構類型(x86 / x64), 直接判褖套用<code>默認型</code></p>
-</blockquote>
-</br>
-
-<p>以下範例, 編譯器報錯:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: u8 = -126;</span><br><span class="line">  |                 ^^^^ cannot apply unary operator `-`</span><br><span class="line">  |</span><br><span class="line">  = note: unsigned values cannot be negated</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0600`.</span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
-
-</br>
-
-<h2 id="浮點型-小數-Float"><a href="#浮點型-小數-Float" class="headerlink" title="浮點型 (小數) Float"></a>浮點型 (小數) Float</h2><blockquote>
-<p>Rust 浮點型默認值為 : <code>f64</code></p>
-</blockquote>
-</br>
-
-<p>浮點型只有兩種型態</p>
+<p>當一個變量被賦值成立, 也就代表被分配一個內存位址<br>當變數成立, 代表在記憶體中這個值是唯一, 不能去改變(除非設定為可變 mut), 不然只能<code>唯讀</code>.<br>那我們就是利用 <code>&amp;</code> 符號來借用<br>可借用的有 :</p>
 <ul>
-<li>  <code>f32 : 單精度</code></li>
-<li>  <code>f64 : 雙精度</code></li>
+<li>  Type : 型態</li>
+<li>  Value : 值 (可為字串/整數/福點數)</li>
 </ul>
-<p>可以參考這邊 : <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8">單精度雙精度</a></p>
-<p>Note : 20211017_v1.0</p>
+</blockquote>
+<h2 id="amp-str-字符串字面量"><a href="#amp-str-字符串字面量" class="headerlink" title="&amp;str 字符串字面量"></a><code>&amp;str</code> 字符串字面量</h2><hr>
+<blockquote>
+<p><code>str</code> : 大小未知, 只能在指針後使用</p>
+</blockquote>
+<pre><code>也就是一個位址, 要把指針指到str的地方, 套用str的型態
+</code></pre>
+<blockquote>
+<p>所以 str 都必須要與 <code>&amp;</code> 一起使用.</p>
+</blockquote>
+<p>範例 :</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : Hello world</span></span><br></pre></td></tr></table></figure>
+
+<p>如果沒有與 <code>&amp;</code> 連用</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">str</span> = <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>輸出報錯:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">error[E0277]: the size <span class="keyword">for</span> values of <span class="built_in">type</span> `str` cannot be known at compilation time</span><br><span class="line">   --&gt; src\main.rs:3:5</span><br><span class="line">    |</span><br><span class="line">3   |     println!(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">    |     ^^^^^^^^^^^^^^^^^ doesn<span class="string">&#x27;t have a size known at compile-time</span></span><br><span class="line"><span class="string">    |</span></span><br><span class="line"><span class="string">   ::: C:\Users\kylls\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\core\src\fmt\mod.rs:294:20</span></span><br><span class="line"><span class="string">    |</span></span><br><span class="line"><span class="string">294 |     pub fn new&lt;&#x27;</span>b, T&gt;(x: &amp;<span class="string">&#x27;b T, f: fn(&amp;T, &amp;mut Formatter&lt;&#x27;</span>_&gt;) -&gt; Result) -&gt; ArgumentV1&lt;<span class="string">&#x27;b&gt; &#123;</span></span><br><span class="line"><span class="string">    |                    - required by this bound in `ArgumentV1::&lt;&#x27;</span>a&gt;::new`</span><br><span class="line">    |</span><br><span class="line">    = <span class="built_in">help</span>: the trait `Sized` is not implemented <span class="keyword">for</span> `str`</span><br><span class="line">    = note: this error originates <span class="keyword">in</span> the macro `<span class="variable">$crate</span>::format_args_nl` (<span class="keyword">in</span> Nightly builds, run with -Z macro-backtrace <span class="keyword">for</span> more info)</span><br></pre></td></tr></table></figure>
+
+<p>看看 compiler 跟我們說的</p>
+<blockquote>
+<p>size 未知, 導致無法編譯</p>
+</blockquote>
+<p>也就是說, <code>沒有指針指到一個明確的記憶體位址</code></p>
+</br>
+
+<h2 id="String-字符串對象"><a href="#String-字符串對象" class="headerlink" title="String 字符串對象"></a><code>String</code> 字符串對象</h2><hr>
+<p><code>OOP</code> 物件導向編程<br><code>String</code> 就是一個對象, 型態為<code>字符串</code></p>
+<p>透過以下方法建立</p>
+<ul>
+<li>  <code>new</code></li>
+<li>  <code>from</code></li>
+</ul>
+<p>先看 <code>new</code>的部分:</p>
+<ol>
+<li>直接 new 出一個記憶體空間(堆 heap) 來儲存</li>
+<li>用 push_str 的方式, 從後段把字符添加上去</li>
+</ol>
+<p>Example:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> a = <span class="built_in">String</span>::new();</span><br><span class="line">    a.push_str(<span class="string">&quot;Hello world, you!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello world, you!</span></span><br></pre></td></tr></table></figure>
+
+<p>再來看<code>from</code>的部分</p>
+<ol>
+<li>直接將字符串寫進去</li>
+<li>同時間 compiler 會同步把字符串 new 出一個新的堆來儲存.</li>
+</ol>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="built_in">String</span>::from(<span class="string">&quot;Hello you, world!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : Hello you, world!</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>new 單純是一個字符字面上的量, 而 from 出來的是一個字符串的對象</p>
+</blockquote>
+</br>
+
+<h2 id="字串操作"><a href="#字串操作" class="headerlink" title="字串操作"></a>字串操作</h2><hr>
+<blockquote>
+<p>如果要操作字串就必須要轉成<code>字符串對象</code></p>
+</blockquote>
+<ul>
+<li>  to_string() : 轉換為字符串對象</li>
+<li>  replace(a, b) : a 為要取代的字符, b 為取代的字符 a 替換成 b</li>
+<li>  as_str() : 把字符對象轉為字符量 (from to new)</li>
+<li>  push() : 原字符串後面追加</li>
+<li>  push_str() : 功能同 push</li>
+<li>  len() : 獲得字符串長度</li>
+<li>  trim() : 去除字首字尾空白符號</li>
+<li>  spilit_whitespace() : 以空白符作為分開依據</li>
+<li>  split(“.”) : 以 <code>.</code> 為節點分開</li>
+<li>  char() : 將字串打散為單一字符</li>
+</ul>
+<p>Rust_Note 20211023_1.1</p>
 
     </div>
 
@@ -401,14 +405,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/09/14/20210913/" rel="prev" title="SQL基礎篇_MSSQL [一]">
-                  <i class="fa fa-chevron-left"></i> SQL基礎篇_MSSQL [一]
+                <a href="/2021/10/20/20211016/" rel="prev" title="Rust Note(1)_Data Type I">
+                  <i class="fa fa-chevron-left"></i> Rust Note(1)_Data Type I
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/10/18/20211018/" rel="next" title="SQL進階篇_MSSQL [双迴圈]">
-                  SQL進階篇_MSSQL [双迴圈] <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

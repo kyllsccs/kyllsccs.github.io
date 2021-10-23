@@ -67,45 +67,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Rust Note(1)_Data Type I</title>
-    <url>/2021/10/20/20211016/</url>
-    <content><![CDATA[<h2 id="Rust-Note-1-Data-Types-I"><a href="#Rust-Note-1-Data-Types-I" class="headerlink" title="Rust Note(1) Data Types I"></a>Rust Note(1) Data Types I</h2><blockquote>
-<p>Rust is a statically type language.<br>Rust 為一靜態型語言.</p>
-</blockquote>
-<span id="more"></span>
-
-<hr>
-<h3 id="靜態型"><a href="#靜態型" class="headerlink" title="靜態型"></a>靜態型</h3><blockquote>
-<p>靜態型語言 :<br>靜態類型是一種編程語言特性，其中顯式聲明變量類型並因此在編譯時確定。<br>這讓編譯器可以決定給定的變量是否可以執行它所請求的操作。</p>
-</blockquote>
-</br>
-
-<p>在進入編譯之前, 預先指定好資料的型別 (Example : 整數)<br></br><br>如果有需換類型: 則必須要做另外的轉換<br></br></p>
-<h3 id="Rust-Date-Types"><a href="#Rust-Date-Types" class="headerlink" title="Rust Date Types"></a>Rust Date Types</h3><p><strong>Rust 基本 4 大型別</strong></p>
-<ul>
-<li>  int : 整數型</li>
-<li>  float : 浮點型</li>
-<li>  bool : 布林值 true / false</li>
-<li>  string : 字串型</li>
-</ul>
-<h3 id="Rust-Variable-定義型別"><a href="#Rust-Variable-定義型別" class="headerlink" title="Rust Variable 定義型別"></a>Rust Variable 定義型別</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> x: <span class="built_in">String</span> = <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>&lt;Variable_name&gt;:&lt;DataType&gt;</code><br>冒號後面接的是資料型別</p>
-</blockquote>
-</br>
-
-<hr>
-<p>Rust Note 20211016</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SQL基礎篇_MSSQL [一]</title>
     <url>/2021/09/14/20210913/</url>
     <content><![CDATA[<blockquote>
@@ -239,6 +200,45 @@
 </ul>
 <p>可以參考這邊 : <a href="https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8">單精度雙精度</a></p>
 <p>Note : 20211017_v1.0</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(1)_Data Type I</title>
+    <url>/2021/10/20/20211016/</url>
+    <content><![CDATA[<h2 id="Rust-Note-1-Data-Types-I"><a href="#Rust-Note-1-Data-Types-I" class="headerlink" title="Rust Note(1) Data Types I"></a>Rust Note(1) Data Types I</h2><blockquote>
+<p>Rust is a statically type language.<br>Rust 為一靜態型語言.</p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h3 id="靜態型"><a href="#靜態型" class="headerlink" title="靜態型"></a>靜態型</h3><blockquote>
+<p>靜態型語言 :<br>靜態類型是一種編程語言特性，其中顯式聲明變量類型並因此在編譯時確定。<br>這讓編譯器可以決定給定的變量是否可以執行它所請求的操作。</p>
+</blockquote>
+</br>
+
+<p>在進入編譯之前, 預先指定好資料的型別 (Example : 整數)<br></br><br>如果有需換類型: 則必須要做另外的轉換<br></br></p>
+<h3 id="Rust-Date-Types"><a href="#Rust-Date-Types" class="headerlink" title="Rust Date Types"></a>Rust Date Types</h3><p><strong>Rust 基本 4 大型別</strong></p>
+<ul>
+<li>  int : 整數型</li>
+<li>  float : 浮點型</li>
+<li>  bool : 布林值 true / false</li>
+<li>  string : 字串型</li>
+</ul>
+<h3 id="Rust-Variable-定義型別"><a href="#Rust-Variable-定義型別" class="headerlink" title="Rust Variable 定義型別"></a>Rust Variable 定義型別</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> x: <span class="built_in">String</span> = <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>&lt;Variable_name&gt;:&lt;DataType&gt;</code><br>冒號後面接的是資料型別</p>
+</blockquote>
+</br>
+
+<hr>
+<p>Rust Note 20211016</p>
 ]]></content>
       <categories>
         <category>Rust</category>
@@ -400,6 +400,106 @@
 </li>
 </ul>
 <p>Rust Note_20211020</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(3)_Data Type III [String]</title>
+    <url>/2021/10/23/20211023_1/</url>
+    <content><![CDATA[<h2 id="Rust-字符串類型"><a href="#Rust-字符串類型" class="headerlink" title="Rust 字符串類型"></a>Rust 字符串類型</h2><hr>
+<p>在 Rust 裡面, 字符串類型分以下兩種:</p>
+<ul>
+<li>  <code>&amp;str</code> : 字符串字面量</li>
+<li>  <code>String</code> : 公開的 struct</li>
+</ul>
+<span id="more"></span>
+
+<p>在這之前, 先來理解一個概念 <code>指針</code></p>
+<blockquote>
+<p>指針 : 在 C++裡面有一樣的概念<br>想成把方向指到一個記憶體位址, 也就是 Rust 裡面常常會看到有人說 <code>borrow</code> 借用的概念</p>
+</blockquote>
+<h3 id="借用-borrow"><a href="#借用-borrow" class="headerlink" title="借用 borrow"></a>借用 <code>borrow</code></h3><hr>
+<blockquote>
+<p>當一個變量被賦值成立, 也就代表被分配一個內存位址<br>當變數成立, 代表在記憶體中這個值是唯一, 不能去改變(除非設定為可變 mut), 不然只能<code>唯讀</code>.<br>那我們就是利用 <code>&amp;</code> 符號來借用<br>可借用的有 :</p>
+<ul>
+<li>  Type : 型態</li>
+<li>  Value : 值 (可為字串/整數/福點數)</li>
+</ul>
+</blockquote>
+<h2 id="amp-str-字符串字面量"><a href="#amp-str-字符串字面量" class="headerlink" title="&amp;str 字符串字面量"></a><code>&amp;str</code> 字符串字面量</h2><hr>
+<blockquote>
+<p><code>str</code> : 大小未知, 只能在指針後使用</p>
+</blockquote>
+<pre><code>也就是一個位址, 要把指針指到str的地方, 套用str的型態
+</code></pre>
+<blockquote>
+<p>所以 str 都必須要與 <code>&amp;</code> 一起使用.</p>
+</blockquote>
+<p>範例 :</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : Hello world</span></span><br></pre></td></tr></table></figure>
+
+<p>如果沒有與 <code>&amp;</code> 連用</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">str</span> = <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>輸出報錯:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error[E0277]: the size <span class="keyword">for</span> values of <span class="built_in">type</span> `str` cannot be known at compilation time</span><br><span class="line">   --&gt; src\main.rs:3:5</span><br><span class="line">    |</span><br><span class="line">3   |     println!(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">    |     ^^^^^^^^^^^^^^^^^ doesn<span class="string">&#x27;t have a size known at compile-time</span></span><br><span class="line"><span class="string">    |</span></span><br><span class="line"><span class="string">   ::: C:\Users\kylls\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\core\src\fmt\mod.rs:294:20</span></span><br><span class="line"><span class="string">    |</span></span><br><span class="line"><span class="string">294 |     pub fn new&lt;&#x27;</span>b, T&gt;(x: &amp;<span class="string">&#x27;b T, f: fn(&amp;T, &amp;mut Formatter&lt;&#x27;</span>_&gt;) -&gt; Result) -&gt; ArgumentV1&lt;<span class="string">&#x27;b&gt; &#123;</span></span><br><span class="line"><span class="string">    |                    - required by this bound in `ArgumentV1::&lt;&#x27;</span>a&gt;::new`</span><br><span class="line">    |</span><br><span class="line">    = <span class="built_in">help</span>: the trait `Sized` is not implemented <span class="keyword">for</span> `str`</span><br><span class="line">    = note: this error originates <span class="keyword">in</span> the macro `<span class="variable">$crate</span>::format_args_nl` (<span class="keyword">in</span> Nightly builds, run with -Z macro-backtrace <span class="keyword">for</span> more info)</span><br></pre></td></tr></table></figure>
+
+<p>看看 compiler 跟我們說的</p>
+<blockquote>
+<p>size 未知, 導致無法編譯</p>
+</blockquote>
+<p>也就是說, <code>沒有指針指到一個明確的記憶體位址</code></p>
+</br>
+
+<h2 id="String-字符串對象"><a href="#String-字符串對象" class="headerlink" title="String 字符串對象"></a><code>String</code> 字符串對象</h2><hr>
+<p><code>OOP</code> 物件導向編程<br><code>String</code> 就是一個對象, 型態為<code>字符串</code></p>
+<p>透過以下方法建立</p>
+<ul>
+<li>  <code>new</code></li>
+<li>  <code>from</code></li>
+</ul>
+<p>先看 <code>new</code>的部分:</p>
+<ol>
+<li>直接 new 出一個記憶體空間(堆 heap) 來儲存</li>
+<li>用 push_str 的方式, 從後段把字符添加上去</li>
+</ol>
+<p>Example:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> a = <span class="built_in">String</span>::new();</span><br><span class="line">    a.push_str(<span class="string">&quot;Hello world, you!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello world, you!</span></span><br></pre></td></tr></table></figure>
+
+<p>再來看<code>from</code>的部分</p>
+<ol>
+<li>直接將字符串寫進去</li>
+<li>同時間 compiler 會同步把字符串 new 出一個新的堆來儲存.</li>
+</ol>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="built_in">String</span>::from(<span class="string">&quot;Hello you, world!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : Hello you, world!</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>new 單純是一個字符字面上的量, 而 from 出來的是一個字符串的對象</p>
+</blockquote>
+</br>
+
+<h2 id="字串操作"><a href="#字串操作" class="headerlink" title="字串操作"></a>字串操作</h2><hr>
+<blockquote>
+<p>如果要操作字串就必須要轉成<code>字符串對象</code></p>
+</blockquote>
+<ul>
+<li>  to_string() : 轉換為字符串對象</li>
+<li>  replace(a, b) : a 為要取代的字符, b 為取代的字符 a 替換成 b</li>
+<li>  as_str() : 把字符對象轉為字符量 (from to new)</li>
+<li>  push() : 原字符串後面追加</li>
+<li>  push_str() : 功能同 push</li>
+<li>  len() : 獲得字符串長度</li>
+<li>  trim() : 去除字首字尾空白符號</li>
+<li>  spilit_whitespace() : 以空白符作為分開依據</li>
+<li>  split(“.”) : 以 <code>.</code> 為節點分開</li>
+<li>  char() : 將字串打散為單一字符</li>
+</ul>
+<p>Rust_Note 20211023_1.1</p>
 ]]></content>
       <categories>
         <category>Rust</category>
