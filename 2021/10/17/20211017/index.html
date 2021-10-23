@@ -30,15 +30,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"kyllsccs.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="依照 Data Type 的型別不同, 兩種方法:  默認型別 : 直接使用系統默認 指定型別 : 透過 :&lt;type&gt; 指定型別">
+<meta name="description" content="Rsut Note(2) Data Types II Integer &#x2F; Float依照 Data Type 的型別不同, 兩種方法:  默認型別 : 直接使用系統默認 指定型別 : 透過 :&lt;type&gt; 指定型別">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rust Note(2)_Data Type II Integer &#x2F; Float">
+<meta property="og:title" content="Rust Note(2)_Data Type II">
 <meta property="og:url" content="https://kyllsccs.github.io/2021/10/17/20211017/index.html">
 <meta property="og:site_name" content="Kylls KB NOTEs">
-<meta property="og:description" content="依照 Data Type 的型別不同, 兩種方法:  默認型別 : 直接使用系統默認 指定型別 : 透過 :&lt;type&gt; 指定型別">
+<meta property="og:description" content="Rsut Note(2) Data Types II Integer &#x2F; Float依照 Data Type 的型別不同, 兩種方法:  默認型別 : 直接使用系統默認 指定型別 : 透過 :&lt;type&gt; 指定型別">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-17T02:22:20.000Z">
-<meta property="article:modified_time" content="2021-10-20T02:31:36.642Z">
+<meta property="article:modified_time" content="2021-10-20T03:10:17.121Z">
 <meta property="article:author" content="Kylls Bellies_KB">
 <meta property="article:tag" content="Rust">
 <meta name="twitter:card" content="summary">
@@ -48,10 +48,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://kyllsccs.github.io/2021/10/17/20211017/","path":"2021/10/17/20211017/","title":"Rust Note(2)_Data Type II Integer / Float"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://kyllsccs.github.io/2021/10/17/20211017/","path":"2021/10/17/20211017/","title":"Rust Note(2)_Data Type II"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Rust Note(2)_Data Type II Integer / Float | Kylls KB NOTEs</title>
+<title>Rust Note(2)_Data Type II | Kylls KB NOTEs</title>
   
 
 
@@ -158,7 +158,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B8%E5%9E%8B-Integer"><span class="nav-number">1.</span> <span class="nav-text">整數型 Integer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Rust-%E4%B8%AD%E7%9A%84%E6%95%B4%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">Rust 中的整型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E9%BB%9E%E5%9E%8B-%E5%B0%8F%E6%95%B8-Float"><span class="nav-number">2.</span> <span class="nav-text">浮點型 (小數) Float</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rsut-Note-2-Data-Types-II-Integer-Float"><span class="nav-number">1.</span> <span class="nav-text">Rsut Note(2) Data Types II Integer &#x2F; Float</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B8%E5%9E%8B-Integer"><span class="nav-number">2.</span> <span class="nav-text">整數型 Integer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Rust-%E4%B8%AD%E7%9A%84%E6%95%B4%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">Rust 中的整型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E9%BB%9E%E5%9E%8B-%E5%B0%8F%E6%95%B8-Float"><span class="nav-number">3.</span> <span class="nav-text">浮點型 (小數) Float</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -244,7 +244,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Rust Note(2)_Data Type II Integer / Float
+          Rust Note(2)_Data Type II
         </h1>
 
         <div class="post-meta-container">
@@ -262,7 +262,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-10-20 10:31:36" itemprop="dateModified" datetime="2021-10-20T10:31:36+08:00">2021-10-20</time>
+        <time title="Modified: 2021-10-20 11:10:17" itemprop="dateModified" datetime="2021-10-20T11:10:17+08:00">2021-10-20</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -288,7 +288,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>1k</span>
+      <span>1.1k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -306,7 +306,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>依照 Data Type 的型別不同, 兩種方法:</p>
+        <h2 id="Rsut-Note-2-Data-Types-II-Integer-Float"><a href="#Rsut-Note-2-Data-Types-II-Integer-Float" class="headerlink" title="Rsut Note(2) Data Types II Integer / Float"></a>Rsut Note(2) Data Types II Integer / Float</h2><p>依照 Data Type 的型別不同, 兩種方法:</p>
 <ol>
 <li>默認型別 : 直接使用系統默認</li>
 <li>指定型別 : 透過 <code>:&lt;type&gt;</code> 指定型別</li>
@@ -401,8 +401,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/10/16/20211016/" rel="prev" title="Rust Note(1)_Data Type I Basic">
-                  <i class="fa fa-chevron-left"></i> Rust Note(1)_Data Type I Basic
+                <a href="/2021/09/14/20210913/" rel="prev" title="SQL基礎篇_MSSQL [一]">
+                  <i class="fa fa-chevron-left"></i> SQL基礎篇_MSSQL [一]
                 </a>
             </div>
             <div class="post-nav-item">

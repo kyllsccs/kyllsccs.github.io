@@ -1,6 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2019 Sep. 1st -2021 Sep. 12th 回顧</title>
+    <url>/2021/09/12/2019-2021/</url>
+    <content><![CDATA[<blockquote>
+<p>Find it, know it, then solved it.<br>發現問題, 了解問題, 解決問題</p>
+</blockquote>
+<hr>
+<p>那天夜黑風高的晚上~~~</p>
+<p>(喂~~</p>
+<span id="more"></span>
+
+<p>這不是什麼恐怖故事齁, 只是要來寫寫我是怎開始踏入這<code>自學</code>的不歸路?!</p>
+<p><code>2019 Sep 1st</code> 這輩子讓我難忘的日子?</p>
+<p>在網路上查著哪一款語言最適合初學者… <del>我敢發誓我真的完全 0 經驗</del></p>
+<blockquote>
+<p><code>Python是適合新手的最佳語言</code> ???????</p>
+</blockquote>
+<p>說真的 : 我差點沒有崩潰…..</p>
+<blockquote>
+<p><del>表面上看似越簡單的, 其實才是真正的難</del></p>
+</blockquote>
+<br>
+<br>
+<br>
+
+<p>型態? 是什麼?<br>宣告? 是什麼?<br>判斷? 是什麼?<br>迴圈? 是什麼?</p>
+<br>  
+<br>
+
+<p>這些基礎中的基礎, 都不懂… 那更別談到什麼 <code>物件導向OOP</code></p>
+<br>  
+<br>  
+其實當初賭的就是一口氣? 我就不信我看不懂!!!  
+<br>
+<br>  
+<br>  
+<br>  
+~~但我看了一個月....我還是真的看不懂啊~~  
+<br>
+<br>
+<br>
+
+<blockquote>
+<p>自從我吃了<del>撒尿牛 X</del>後, 我開始考試考 100 分?<br>抱歉, 中毒太深…</p>
+</blockquote>
+<p>就這樣像個小迷糊一樣的, 一邊工作一邊開始這跳坑之路?</p>
+<br>  
+<br>  
+其實在我真正懂了這些...已經是隔 5 個月之後的事情了...
+<br>
+
+<p>真正讓我開竅的竟然是…….<code>Javascript</code> ??????????</p>
+<br>  
+<br>  
+這又是另外一段故事了, 簡單的帶一下...
+
+<p>算是幫新弄好的筆記紀錄做個處女秀?<br><br><br><br></p>
+<p><code>下次有機會再來認真地分享一下我的自學之路????</code> 認真樣(握拳)</p>
+]]></content>
+      <categories>
+        <category>Kylls MurMur</category>
+      </categories>
+      <tags>
+        <tag>MurMur</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SQL基礎篇_MSSQL [一]</title>
     <url>/2021/09/14/20210913/</url>
     <content><![CDATA[<blockquote>
@@ -53,9 +119,48 @@
       </tags>
   </entry>
   <entry>
-    <title>Rust Note(2)_Data Type II Integer / Float</title>
+    <title>Rust Note(1)_Data Type I</title>
+    <url>/2021/10/20/20211016/</url>
+    <content><![CDATA[<h2 id="Rust-Note-1-Data-Types-I"><a href="#Rust-Note-1-Data-Types-I" class="headerlink" title="Rust Note(1) Data Types I"></a>Rust Note(1) Data Types I</h2><blockquote>
+<p>Rust is a statically type language.<br>Rust 為一靜態型語言.</p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h3 id="靜態型"><a href="#靜態型" class="headerlink" title="靜態型"></a>靜態型</h3><blockquote>
+<p>靜態型語言 :<br>靜態類型是一種編程語言特性，其中顯式聲明變量類型並因此在編譯時確定。<br>這讓編譯器可以決定給定的變量是否可以執行它所請求的操作。</p>
+</blockquote>
+</br>
+
+<p>在進入編譯之前, 預先指定好資料的型別 (Example : 整數)<br></br><br>如果有需換類型: 則必須要做另外的轉換<br></br></p>
+<h3 id="Rust-Date-Types"><a href="#Rust-Date-Types" class="headerlink" title="Rust Date Types"></a>Rust Date Types</h3><p><strong>Rust 基本 4 大型別</strong></p>
+<ul>
+<li>  int : 整數型</li>
+<li>  float : 浮點型</li>
+<li>  bool : 布林值 true / false</li>
+<li>  string : 字串型</li>
+</ul>
+<h3 id="Rust-Variable-定義型別"><a href="#Rust-Variable-定義型別" class="headerlink" title="Rust Variable 定義型別"></a>Rust Variable 定義型別</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> x: <span class="built_in">String</span> = <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>&lt;Variable_name&gt;:&lt;DataType&gt;</code><br>冒號後面接的是資料型別</p>
+</blockquote>
+</br>
+
+<hr>
+<p>Rust Note 20211016</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(2)_Data Type II</title>
     <url>/2021/10/17/20211017/</url>
-    <content><![CDATA[<p>依照 Data Type 的型別不同, 兩種方法:</p>
+    <content><![CDATA[<h2 id="Rsut-Note-2-Data-Types-II-Integer-Float"><a href="#Rsut-Note-2-Data-Types-II-Integer-Float" class="headerlink" title="Rsut Note(2) Data Types II Integer / Float"></a>Rsut Note(2) Data Types II Integer / Float</h2><p>依照 Data Type 的型別不同, 兩種方法:</p>
 <ol>
 <li>默認型別 : 直接使用系統默認</li>
 <li>指定型別 : 透過 <code>:&lt;type&gt;</code> 指定型別</li>
@@ -143,72 +248,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2019 Sep. 1st -2021 Sep. 12th 回顧</title>
-    <url>/2021/09/12/2019-2021/</url>
-    <content><![CDATA[<blockquote>
-<p>Find it, know it, then solved it.<br>發現問題, 了解問題, 解決問題</p>
-</blockquote>
-<hr>
-<p>那天夜黑風高的晚上~~~</p>
-<p>(喂~~</p>
-<span id="more"></span>
-
-<p>這不是什麼恐怖故事齁, 只是要來寫寫我是怎開始踏入這<code>自學</code>的不歸路?!</p>
-<p><code>2019 Sep 1st</code> 這輩子讓我難忘的日子?</p>
-<p>在網路上查著哪一款語言最適合初學者… <del>我敢發誓我真的完全 0 經驗</del></p>
-<blockquote>
-<p><code>Python是適合新手的最佳語言</code> ???????</p>
-</blockquote>
-<p>說真的 : 我差點沒有崩潰…..</p>
-<blockquote>
-<p><del>表面上看似越簡單的, 其實才是真正的難</del></p>
-</blockquote>
-<br>
-<br>
-<br>
-
-<p>型態? 是什麼?<br>宣告? 是什麼?<br>判斷? 是什麼?<br>迴圈? 是什麼?</p>
-<br>  
-<br>
-
-<p>這些基礎中的基礎, 都不懂… 那更別談到什麼 <code>物件導向OOP</code></p>
-<br>  
-<br>  
-其實當初賭的就是一口氣? 我就不信我看不懂!!!  
-<br>
-<br>  
-<br>  
-<br>  
-~~但我看了一個月....我還是真的看不懂啊~~  
-<br>
-<br>
-<br>
-
-<blockquote>
-<p>自從我吃了<del>撒尿牛 X</del>後, 我開始考試考 100 分?<br>抱歉, 中毒太深…</p>
-</blockquote>
-<p>就這樣像個小迷糊一樣的, 一邊工作一邊開始這跳坑之路?</p>
-<br>  
-<br>  
-其實在我真正懂了這些...已經是隔 5 個月之後的事情了...
-<br>
-
-<p>真正讓我開竅的竟然是…….<code>Javascript</code> ??????????</p>
-<br>  
-<br>  
-這又是另外一段故事了, 簡單的帶一下...
-
-<p>算是幫新弄好的筆記紀錄做個處女秀?<br><br><br><br></p>
-<p><code>下次有機會再來認真地分享一下我的自學之路????</code> 認真樣(握拳)</p>
-]]></content>
-      <categories>
-        <category>Kylls MurMur</category>
-      </categories>
-      <tags>
-        <tag>MurMur</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SQL進階篇_MSSQL [双迴圈]</title>
     <url>/2021/10/18/20211018/</url>
     <content><![CDATA[<h2 id="SQL-双迴圈"><a href="#SQL-双迴圈" class="headerlink" title="SQL 双迴圈"></a>SQL 双迴圈</h2><span id="more"></span>
@@ -254,43 +293,6 @@
       </categories>
       <tags>
         <tag>SQL_MSSQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust Note(1)_Data Type I Basic</title>
-    <url>/2021/10/16/20211016/</url>
-    <content><![CDATA[<blockquote>
-<p>Rust is a statically type language.<br>Rust 為一靜態型語言.</p>
-</blockquote>
-<span id="more"></span>
-
-<hr>
-<h3 id="靜態型"><a href="#靜態型" class="headerlink" title="靜態型"></a>靜態型</h3><blockquote>
-<p>靜態型語言 :<br>靜態類型是一種編程語言特性，其中顯式聲明變量類型並因此在編譯時確定。<br>這讓編譯器可以決定給定的變量是否可以執行它所請求的操作。</p>
-</blockquote>
-</br>
-
-<p>在進入編譯之前, 預先指定好資料的型別 (Example : 整數)<br></br><br>如果有需換類型: 則必須要做另外的轉換<br></br></p>
-<h3 id="Rust-Date-Types"><a href="#Rust-Date-Types" class="headerlink" title="Rust Date Types"></a>Rust Date Types</h3><p><strong>Rust 基本 4 大型別</strong></p>
-<ul>
-<li>  int : 整數型</li>
-<li>  float : 浮點型</li>
-<li>  bool : 布林值 true / false</li>
-<li>  string : 字串型</li>
-</ul>
-<h3 id="Rust-Variable-定義型別"><a href="#Rust-Variable-定義型別" class="headerlink" title="Rust Variable 定義型別"></a>Rust Variable 定義型別</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> x: <span class="built_in">String</span> = <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>&lt;Variable_name&gt;:&lt;DataType&gt;</code><br>冒號後面接的是資料型別</p>
-</blockquote>
-</br>
-Rust Note 20211016
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
       </tags>
   </entry>
   <entry>
