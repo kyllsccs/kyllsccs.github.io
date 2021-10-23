@@ -119,6 +119,45 @@
       </tags>
   </entry>
   <entry>
+    <title>Rust Note(1)_Data Type I</title>
+    <url>/2021/10/20/20211016/</url>
+    <content><![CDATA[<h2 id="Rust-Note-1-Data-Types-I"><a href="#Rust-Note-1-Data-Types-I" class="headerlink" title="Rust Note(1) Data Types I"></a>Rust Note(1) Data Types I</h2><blockquote>
+<p>Rust is a statically type language.<br>Rust 為一靜態型語言.</p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h3 id="靜態型"><a href="#靜態型" class="headerlink" title="靜態型"></a>靜態型</h3><blockquote>
+<p>靜態型語言 :<br>靜態類型是一種編程語言特性，其中顯式聲明變量類型並因此在編譯時確定。<br>這讓編譯器可以決定給定的變量是否可以執行它所請求的操作。</p>
+</blockquote>
+</br>
+
+<p>在進入編譯之前, 預先指定好資料的型別 (Example : 整數)<br></br><br>如果有需換類型: 則必須要做另外的轉換<br></br></p>
+<h3 id="Rust-Date-Types"><a href="#Rust-Date-Types" class="headerlink" title="Rust Date Types"></a>Rust Date Types</h3><p><strong>Rust 基本 4 大型別</strong></p>
+<ul>
+<li>  int : 整數型</li>
+<li>  float : 浮點型</li>
+<li>  bool : 布林值 true / false</li>
+<li>  string : 字串型</li>
+</ul>
+<h3 id="Rust-Variable-定義型別"><a href="#Rust-Variable-定義型別" class="headerlink" title="Rust Variable 定義型別"></a>Rust Variable 定義型別</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> x: <span class="built_in">String</span> = <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>&lt;Variable_name&gt;:&lt;DataType&gt;</code><br>冒號後面接的是資料型別</p>
+</blockquote>
+</br>
+
+<hr>
+<p>Rust Note 20211016</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Rust Note(2)_Data Type II</title>
     <url>/2021/10/17/20211017/</url>
     <content><![CDATA[<h2 id="Rsut-Note-2-Data-Types-II-Integer-Float"><a href="#Rsut-Note-2-Data-Types-II-Integer-Float" class="headerlink" title="Rsut Note(2) Data Types II Integer / Float"></a>Rsut Note(2) Data Types II Integer / Float</h2><p>依照 Data Type 的型別不同, 兩種方法:</p>
@@ -209,45 +248,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Rust Note(1)_Data Type I</title>
-    <url>/2021/10/20/20211016/</url>
-    <content><![CDATA[<h2 id="Rust-Note-1-Data-Types-I"><a href="#Rust-Note-1-Data-Types-I" class="headerlink" title="Rust Note(1) Data Types I"></a>Rust Note(1) Data Types I</h2><blockquote>
-<p>Rust is a statically type language.<br>Rust 為一靜態型語言.</p>
-</blockquote>
-<span id="more"></span>
-
-<hr>
-<h3 id="靜態型"><a href="#靜態型" class="headerlink" title="靜態型"></a>靜態型</h3><blockquote>
-<p>靜態型語言 :<br>靜態類型是一種編程語言特性，其中顯式聲明變量類型並因此在編譯時確定。<br>這讓編譯器可以決定給定的變量是否可以執行它所請求的操作。</p>
-</blockquote>
-</br>
-
-<p>在進入編譯之前, 預先指定好資料的型別 (Example : 整數)<br></br><br>如果有需換類型: 則必須要做另外的轉換<br></br></p>
-<h3 id="Rust-Date-Types"><a href="#Rust-Date-Types" class="headerlink" title="Rust Date Types"></a>Rust Date Types</h3><p><strong>Rust 基本 4 大型別</strong></p>
-<ul>
-<li>  int : 整數型</li>
-<li>  float : 浮點型</li>
-<li>  bool : 布林值 true / false</li>
-<li>  string : 字串型</li>
-</ul>
-<h3 id="Rust-Variable-定義型別"><a href="#Rust-Variable-定義型別" class="headerlink" title="Rust Variable 定義型別"></a>Rust Variable 定義型別</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> x: <span class="built_in">String</span> = <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>&lt;Variable_name&gt;:&lt;DataType&gt;</code><br>冒號後面接的是資料型別</p>
-</blockquote>
-</br>
-
-<hr>
-<p>Rust Note 20211016</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SQL進階篇_MSSQL [双迴圈]</title>
     <url>/2021/10/18/20211018/</url>
     <content><![CDATA[<h2 id="SQL-双迴圈"><a href="#SQL-双迴圈" class="headerlink" title="SQL 双迴圈"></a>SQL 双迴圈</h2><span id="more"></span>
@@ -293,6 +293,78 @@
       </categories>
       <tags>
         <tag>SQL_MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(5)_if_else_match</title>
+    <url>/2021/10/23/20211023-2/</url>
+    <content><![CDATA[<h2 id="if-else-if-else-if-條件判斷"><a href="#if-else-if-else-if-條件判斷" class="headerlink" title="if else, if else if 條件判斷"></a>if else, if else if 條件判斷</h2><blockquote>
+<p>如同其他語言一樣, Rust 也是有流程控制 <code>Control Condition Flow</code><br>使用的原則是, 只要有一個符合使用者所設定的條件, 那下方的判斷就不再執行.</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="if-else-若…則…"><a href="#if-else-若…則…" class="headerlink" title="if, else 若…則…"></a>if, else 若…則…</h2><blockquote>
+<p>這是最簡單的, 若非 A 則 B.</p>
+</blockquote>
+<p>範例如下 :</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a != b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is not equal to b!&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is equal with b!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : a is not equal to b!</span></span><br></pre></td></tr></table></figure>
+
+<p>Flow 如下:</p>
+<ol>
+<li>先宣告兩個變數 a and b, 且指定其形態</li>
+<li>做兩個對比比較</li>
+<li><code>!=</code> 運算符 : 不等於</li>
+<li><code>if &lt;condition 1&gt;</code> condition 1 條件滿足成立 <true> , 執行後面的運算</li>
+<li>後面的 else 就不會再被執行</li>
+</ol>
+<p>修改一下上面的範例 :</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a == b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is not equal to b!&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is equal with b!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : a is equal with b!</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>把 <code>!=</code> 換成 <code>==</code><br>那結果就變成 if &lt;condition 1&gt; 不成立 <false>, 就繼續往下執行 else 語句</p>
+</blockquote>
+<p>當然, 世界如果有這麼美好就好了, 絕對不可能只有單純兩個判斷………..</p>
+<p>那如果狀況很多呢? <code>How can I do?????????</code></p>
+</br>
+
+<h2 id="if-else-if-…-else-else-if-派上用場了"><a href="#if-else-if-…-else-else-if-派上用場了" class="headerlink" title="if, else if, …, else; else if 派上用場了!!!"></a>if, else if, …, else; <code>else if</code> 派上用場了!!!</h2><p>不囉嗦, 直接上範例</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a == b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 1&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 2&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> a &gt;= b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 3&quot;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 4&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : result 4</span></span><br></pre></td></tr></table></figure>
+
+<p>啾竟發生何事?</p>
+<ol>
+<li>宣告變數</li>
+<li>開始條件判斷<br>2-1. &lt;condition 1&gt; : a 不等於 b <false><br>2-2. &lt;condition 2&gt; : a 大於 b <false><br>2-3. &lt;conditoin 3&gt; : a 大於等於 b <false></li>
+<li>condition 1, 2, 3 都為 <code>false</code> 都不成立……..</li>
+<li>所以最後輸出結果為 else 裡面的運算語句.</li>
+</ol>
+<blockquote>
+<p>如果多了這麼多的條件判斷, 是不是可變化性變更多了?</p>
+</blockquote>
+<h2 id="Match-語句-Like-C-switch-語句"><a href="#Match-語句-Like-C-switch-語句" class="headerlink" title="Match 語句 (Like C switch 語句)"></a>Match 語句 (Like C switch 語句)</h2><blockquote>
+<p>如果條件很多, 寫一大堆 if else…….是不是會更亂?????????</p>
+</blockquote>
+<p>那我們用 match 看看~</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> s_name: &amp;<span class="built_in">str</span> = <span class="string">&quot;KB&quot;</span>; <span class="comment">// Using &amp;str</span></span><br><span class="line">    <span class="keyword">let</span> f_name = <span class="keyword">match</span> s_name &#123;</span><br><span class="line">        <span class="string">&quot;KJ&quot;</span> =&gt; <span class="string">&quot;Kylls Jellies&quot;</span>,</span><br><span class="line">        <span class="string">&quot;KD&quot;</span> =&gt; <span class="string">&quot;Kylls Dellies&quot;</span>,</span><br><span class="line">        <span class="string">&quot;KB&quot;</span> =&gt; <span class="string">&quot;Kylls Bellies&quot;</span>,</span><br><span class="line">        _ =&gt; <span class="string">&quot;Unknown&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Hi &#123;&#125;, Your name is &#123;&#125;.&quot;</span>, s_name, f_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hi KB, Your name is Kylls Bellies.</span></span><br></pre></td></tr></table></figure>
+
+<p>來看一下作用的 flow:</p>
+<ol>
+<li>f_name 有多個條件, “KJ”, “KD”, “KB”</li>
+<li>使用 <code>match</code> 這關鍵字, 啟動媒合功能?????</li>
+<li>只要裡面有對應到的, 就會<code>=&gt; 值</code>返回給 f_name</li>
+<li><code>_ =&gt; value</code> 代表都比對不到, 那就返回 Unknown.</li>
+</ol>
+</br>
+
+<p>有沒有發現 match 跟 C, Java 其他語言的 switch 很像呢?</p>
+</br>
+
+<p>Rust Note_20211023_1.2</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
       </tags>
   </entry>
   <entry>
@@ -409,7 +481,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Rust Note(3)_Data Type III [String]</title>
+    <title>Rust Note(4)_Data Type III [String]</title>
     <url>/2021/10/23/20211023_1/</url>
     <content><![CDATA[<h2 id="Rust-字符串類型"><a href="#Rust-字符串類型" class="headerlink" title="Rust 字符串類型"></a>Rust 字符串類型</h2><hr>
 <p>在 Rust 裡面, 字符串類型分以下兩種:</p>
