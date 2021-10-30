@@ -30,28 +30,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"kyllsccs.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="Rsut Note(2) Data Types II Integer &#x2F; Float依照 Data Type 的型別不同, 兩種方法:  默認型別 : 直接使用系統默認 指定型別 : 透過 :&lt;type&gt; 指定型別">
+<meta name="description" content="Stack &amp; Heap棧 和 堆 的區別。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rust Note(2)_Data Type II">
-<meta property="og:url" content="https://kyllsccs.github.io/2021/10/17/20211017/index.html">
+<meta property="og:title" content="Rust Note(7)_Stack &amp; Heap">
+<meta property="og:url" content="https://kyllsccs.github.io/2021/10/30/20211030-1/index.html">
 <meta property="og:site_name" content="Kylls KB NOTEs">
-<meta property="og:description" content="Rsut Note(2) Data Types II Integer &#x2F; Float依照 Data Type 的型別不同, 兩種方法:  默認型別 : 直接使用系統默認 指定型別 : 透過 :&lt;type&gt; 指定型別">
+<meta property="og:description" content="Stack &amp; Heap棧 和 堆 的區別。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-17T02:22:20.000Z">
-<meta property="article:modified_time" content="2021-10-20T03:10:17.121Z">
+<meta property="article:published_time" content="2021-10-30T14:56:02.000Z">
+<meta property="article:modified_time" content="2021-10-30T15:48:22.505Z">
 <meta property="article:author" content="Kylls Bellies_KB">
 <meta property="article:tag" content="Rust">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://kyllsccs.github.io/2021/10/17/20211017/">
+<link rel="canonical" href="https://kyllsccs.github.io/2021/10/30/20211030-1/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://kyllsccs.github.io/2021/10/17/20211017/","path":"2021/10/17/20211017/","title":"Rust Note(2)_Data Type II"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://kyllsccs.github.io/2021/10/30/20211030-1/","path":"2021/10/30/20211030-1/","title":"Rust Note(7)_Stack & Heap"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Rust Note(2)_Data Type II | Kylls KB NOTEs</title>
+<title>Rust Note(7)_Stack & Heap | Kylls KB NOTEs</title>
   
 
 
@@ -158,7 +158,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rsut-Note-2-Data-Types-II-Integer-Float"><span class="nav-number">1.</span> <span class="nav-text">Rsut Note(2) Data Types II Integer &#x2F; Float</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B8%E5%9E%8B-Integer"><span class="nav-number">2.</span> <span class="nav-text">整數型 Integer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Rust-%E4%B8%AD%E7%9A%84%E6%95%B4%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">Rust 中的整型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E9%BB%9E%E5%9E%8B-%E5%B0%8F%E6%95%B8-Float"><span class="nav-number">3.</span> <span class="nav-text">浮點型 (小數) Float</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Stack-amp-Heap"><span class="nav-number">1.</span> <span class="nav-text">Stack &amp; Heap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Stack-%E6%A3%A7"><span class="nav-number">1.1.</span> <span class="nav-text">Stack 棧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heap-%E5%A0%86"><span class="nav-number">1.2.</span> <span class="nav-text">Heap 堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pointer-%E6%8C%87%E9%87%9D"><span class="nav-number">1.3.</span> <span class="nav-text">Pointer 指針</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E9%9A%9B%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">實際操作</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -231,7 +231,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://kyllsccs.github.io/2021/10/17/20211017/">
+    <link itemprop="mainEntityOfPage" href="https://kyllsccs.github.io/2021/10/30/20211030-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -244,7 +244,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Rust Note(2)_Data Type II
+          Rust Note(7)_Stack & Heap
         </h1>
 
         <div class="post-meta-container">
@@ -254,16 +254,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-10-17 10:22:20" itemprop="dateCreated datePublished" datetime="2021-10-17T10:22:20+08:00">2021-10-17</time>
+      <time title="Created: 2021-10-30 22:56:02 / Modified: 23:48:22" itemprop="dateCreated datePublished" datetime="2021-10-30T22:56:02+08:00">2021-10-30</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-10-20 11:10:17" itemprop="dateModified" datetime="2021-10-20T11:10:17+08:00">2021-10-20</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -306,85 +300,61 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="Rsut-Note-2-Data-Types-II-Integer-Float"><a href="#Rsut-Note-2-Data-Types-II-Integer-Float" class="headerlink" title="Rsut Note(2) Data Types II Integer / Float"></a>Rsut Note(2) Data Types II Integer / Float</h2><p>依照 Data Type 的型別不同, 兩種方法:</p>
-<ol>
-<li>默認型別 : 直接使用系統默認</li>
-<li>指定型別 : 透過 <code>:&lt;type&gt;</code> 指定型別</li>
-</ol>
+        <h2 id="Stack-amp-Heap"><a href="#Stack-amp-Heap" class="headerlink" title="Stack &amp; Heap"></a>Stack &amp; Heap</h2><p>棧 和 堆 的區別。</p>
 <span id="more"></span>
 
-<h2 id="整數型-Integer"><a href="#整數型-Integer" class="headerlink" title="整數型 Integer"></a>整數型 Integer</h2></br>
-
+<h3 id="Stack-棧"><a href="#Stack-棧" class="headerlink" title="Stack 棧"></a>Stack 棧</h3><hr>
 <blockquote>
-<p>Rust 默認為 i64</p>
+<p>有序的： <code>已被佔用</code> 且 <code>固定大小</code>。</p>
 </blockquote>
-<p>Example_1: <strong>i8</strong> &gt;&gt; $2^7$-1 = 127, n=8, (n-1)=7, -1 就是扣掉 0<br>也就是如果型別指定為 i8, 可以接受的最大整數為 -128<del>0</del>127,<br>如超過 127 就會發生溢位</p>
-<p>Example_2: <strong>u8</strong> &gt;&gt; $2^8$-1 = 255, n=8, -1 就是扣掉 0<br>也就是如果型別指定為 u8, 可以接受的最大整數為 0~255,<br>如超過 255 就會發生溢位</p>
-<p>以下範例, 編譯器直接提醒:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">error: literal out of range <span class="keyword">for</span> `i8`</span><br><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: i8 = 256;</span><br><span class="line">  |                 ^^^</span><br><span class="line">  |</span><br><span class="line">  = note: `<span class="comment">#[deny(overflowing_literals)]` on by default</span></span><br><span class="line">  = note: the literal `256` does not fit into the <span class="built_in">type</span> `i8` whose range is `-128..=127`</span><br><span class="line">  = <span class="built_in">help</span>: consider using the <span class="built_in">type</span> `i16` instead</span><br><span class="line"></span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
-
-<h3 id="Rust-中的整型"><a href="#Rust-中的整型" class="headerlink" title="Rust 中的整型"></a>Rust 中的整型</h3><table>
-<thead>
-<tr>
-<th>長度</th>
-<th align="left">有符號</th>
-<th align="left">無符號</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>8 bits</td>
-<td align="left">i8</td>
-<td align="left">u8</td>
-</tr>
-<tr>
-<td>16bits</td>
-<td align="left">i16</td>
-<td align="left">u16</td>
-</tr>
-<tr>
-<td>32bits</td>
-<td align="left">i32</td>
-<td align="left">u32</td>
-</tr>
-<tr>
-<td>64bits</td>
-<td align="left">i64</td>
-<td align="left">u64</td>
-</tr>
-<tr>
-<td>128bits</td>
-<td align="left">i128</td>
-<td align="left">u128</td>
-</tr>
-<tr>
-<td>arch</td>
-<td align="left">isize</td>
-<td align="left">usize</td>
-</tr>
-</tbody></table>
-<p><code>i 代表有符號整數型: 可接受負數</code><br><code>u 代表無符號整數型: 不可接受負數</code> <strong>!</strong></p>
+<p>棧是透過堆疊而成，採<code>Last in， first out</code> 概念(後進先出)。<br>意即在最剛開始就被賦予固定大小的值，且同時建立指針。<br>EX: <code>&amp;str</code>;</p>
 <blockquote>
-<p>arch : 可以依照系統架構類型(x86 / x64), 直接判褖套用<code>默認型</code></p>
+<p>應用在基本標量類型 ex <code>整數型</code>，<code>浮點數</code>…等</p>
 </blockquote>
-</br>
-
-<p>以下範例, 編譯器報錯:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: u8 = -126;</span><br><span class="line">  |                 ^^^^ cannot apply unary operator `-`</span><br><span class="line">  |</span><br><span class="line">  = note: unsigned values cannot be negated</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0600`.</span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
-
-</br>
-
-<h2 id="浮點型-小數-Float"><a href="#浮點型-小數-Float" class="headerlink" title="浮點型 (小數) Float"></a>浮點型 (小數) Float</h2><blockquote>
-<p>Rust 浮點型默認值為 : <code>f64</code></p>
+<h3 id="Heap-堆"><a href="#Heap-堆" class="headerlink" title="Heap 堆"></a>Heap 堆</h3><hr>
+<blockquote>
+<p>無序的：編譯時，<code>未知大小</code> 且 <code>可能大小變更</code>。</p>
 </blockquote>
-</br>
+<p>亦即在程式碼撰寫過程中，因應需要而賦予的值。<br>只能透過<code>ptr (指針)</code> 來進行訪問。<br>EX: <code>String</code></p>
+<blockquote>
+<p>應用在複合類型 ex <code>String</code>, <code>tuple</code>…等</p>
+</blockquote>
+<h3 id="Pointer-指針"><a href="#Pointer-指針" class="headerlink" title="Pointer 指針"></a>Pointer 指針</h3><hr>
+<blockquote>
+<p>要訪問 <code>heap (無序的)</code> , 必須得透過 <code>Pointer (ptr: 指針)</code> 來進行訪問。</p>
+</blockquote>
+<h2 id="實際操作"><a href="#實際操作" class="headerlink" title="實際操作"></a>實際操作</h2><hr>
+<blockquote>
+<p>基本數據類型 : 參考前面的筆記.</p>
+</blockquote>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line">    a.to_string().push_str(<span class="string">&quot; KB Note!!!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello wolrd!</span></span><br></pre></td></tr></table></figure>
 
-<p>浮點型只有兩種型態</p>
+<p>咦? 竟然沒有作用???</p>
+<p>仔細的來看一下:</p>
+<ol>
+<li>a 宣告為 <code>&amp;str</code> 類型, 在 rust 裡面, 這屬於基本數據類型, 一旦成立, 直接被壓入 stack</li>
+<li>那既然是基本數據類型, 在成立的時候, 直接存入 stack, 若要去更動, 就要換成 String 類型.</li>
+<li>使用方法 to_string() : <code>&amp;str</code> – &gt; <code>String</code></li>
+<li>接著使用 push_str() 在後面加上字串.</li>
+<li>行不通?</li>
+</ol>
+<p>What the hell??????</p>
+<p>正確的順序應該是這樣:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> b = a.to_string();</span><br><span class="line">    b.push_str(<span class="string">&quot; KB Note!!!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello world! KB Note!!!</span></span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>  <code>f32 : 單精度</code></li>
-<li>  <code>f64 : 雙精度</code></li>
+<li>  宣告 a 基本變量為 “Hello world!”</li>
+<li>  把 a 轉為 String, 並且賦予給 b , 模式設定為 <code>mut</code> 可變.</li>
+<li>  再利用 .push_str() 方式, 把 <code> KB Note!!!</code> 加在字符串後端</li>
+<li>  在打印出 b 得到我們想要的結果.</li>
+<li>  此時的 a 仍是 “Hello world!”</li>
 </ul>
-<p>可以參考這邊 : <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8">單精度雙精度</a></p>
-<p>Note : 20211017_v1.0</p>
+<p>在基本型態底下, 會比較令人迷惑的是 <code>&amp;str</code> 跟 <code>String</code> 這兩種的轉換.</p>
+<blockquote>
+<p>迷之聲 : <code>為什麼要搞得這麼麻煩?????</code></p>
+</blockquote>
+<p>基於 RUST 的最大賣點就是 <code>安全級系統語言</code>, 這還會跟後面的 <code>Ownership 所有權</code> 跟 <code>barrow 借用</code> 有著相對應重要的關係.</p>
+<p>Rust Note 20211030_1.1</p>
 
     </div>
 
@@ -401,14 +371,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/09/14/20210913/" rel="prev" title="SQL基礎篇_MSSQL [一]">
-                  <i class="fa fa-chevron-left"></i> SQL基礎篇_MSSQL [一]
+                <a href="/2021/10/25/20211025/" rel="prev" title="Rust Note(6)_loop for while">
+                  <i class="fa fa-chevron-left"></i> Rust Note(6)_loop for while
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/10/18/20211018/" rel="next" title="SQL進階篇_MSSQL [双迴圈]">
-                  SQL進階篇_MSSQL [双迴圈] <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

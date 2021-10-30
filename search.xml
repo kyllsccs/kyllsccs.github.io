@@ -119,267 +119,6 @@
       </tags>
   </entry>
   <entry>
-    <title>SQL進階篇_MSSQL [双迴圈]</title>
-    <url>/2021/10/18/20211018/</url>
-    <content><![CDATA[<h2 id="SQL-双迴圈"><a href="#SQL-双迴圈" class="headerlink" title="SQL 双迴圈"></a>SQL 双迴圈</h2><span id="more"></span>
-
-<ul>
-<li>宣告變數<ul>
-<li>  DECLARE @_EX INT</li>
-</ul>
-</li>
-<li>設定變數值<ul>
-<li>  SET @_EX = 10</li>
-</ul>
-</li>
-<li>迴圈<ul>
-<li>  WHILE (condition)</li>
-</ul>
-</li>
-<li>起始&amp;結束<ul>
-<li>  BEGIN &lt;作用域&gt; END</li>
-</ul>
-</li>
-<li>設定指標<ul>
-<li>  宣告指標 DECLARE BBB CURSOR FOR SELECT * FROM TABLE</li>
-<li>  取得資料轉成變數 FETCH NEXT INTO @_VAR1</li>
-</ul>
-</li>
-<li>指標關閉<ul>
-<li>  關閉 CLOSE &lt;指標&gt;</li>
-<li>  釋放記憶體 DEALLOCATE &lt;指標&gt;</li>
-</ul>
-</li>
-<li>双迴圈 用巢狀方式撰寫<ul>
-<li>  BEGIN BEGIN &lt;作用域&gt; END END</li>
-</ul>
-</li>
-</ul>
-<h2 id="範例程式碼"><a href="#範例程式碼" class="headerlink" title="範例程式碼"></a>範例程式碼</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">--宣告變數型態</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BMIN <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BMAX <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_CMIN <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_CMAX <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BCNUM <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"><span class="keyword">DECLARE</span> @_BSNUM <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)宣告指標變數</span></span><br><span class="line"><span class="keyword">DECLARE</span> BCUS_BCNUM <span class="keyword">CURSOR</span> <span class="keyword">FOR</span> <span class="keyword">SELECT</span> BCNUM <span class="keyword">FROM</span> dbo.BCUS <span class="keyword">WHERE</span> BCTYP<span class="operator">=</span><span class="string">&#x27;C&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)設定變數值</span></span><br><span class="line"><span class="keyword">SET</span> @_CMIN <span class="operator">=</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">SET</span> @_CMAX <span class="operator">=</span> (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(BCNUM) <span class="keyword">FROM</span> BCUS <span class="keyword">WHERE</span> BCTYP<span class="operator">=</span><span class="string">&#x27;C&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">OPEN</span> BCUS_BCNUM <span class="comment">--(LEVEL 1)開啟指標, 請求資料</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)WHILE迴圈起始結束值</span></span><br><span class="line">WHILE (@_CMIN <span class="operator">&lt;</span> @_CMAX)</span><br><span class="line"><span class="comment">--(LEVEL 1)BEGIN &lt;作用域&gt; END</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">FETCH</span> NEXT <span class="keyword">FROM</span> BCUS_BCNUM <span class="keyword">INTO</span>	@_BCNUM <span class="comment">--(LEVEL 1) FETCH請求資料</span></span><br><span class="line">	<span class="comment">--(LEVEL 2)宣告指標變數</span></span><br><span class="line">	<span class="keyword">DECLARE</span> BSTO_BSNUM <span class="keyword">CURSOR</span> <span class="keyword">FOR</span> <span class="keyword">SELECT</span> BSNUM <span class="keyword">FROM</span> dbo.BSTO</span><br><span class="line">	<span class="comment">--(LEVEL 2)設定變數值</span></span><br><span class="line">	<span class="keyword">SET</span> @_BMIN <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">	<span class="keyword">SET</span> @_BMAX <span class="operator">=</span> (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(BSNUM) <span class="keyword">FROM</span> BSTO)</span><br><span class="line">	<span class="keyword">OPEN</span> BSTO_BSNUM <span class="comment">--(LEVEL 2)開啟指標, 請求資料</span></span><br><span class="line"></span><br><span class="line">	WHILE (@_BMIN <span class="operator">&lt;</span> @_BMAX) <span class="comment">--(LEVEL 2) WHILE迴圈起始結束值</span></span><br><span class="line">	<span class="keyword">BEGIN</span></span><br><span class="line">		<span class="keyword">FETCH</span> NEXT <span class="keyword">FROM</span> BSTO_BSNUM <span class="keyword">INTO</span>	@_BSNUM <span class="comment">--(LEVEL 2) FETCH 請求資料, 把資料變設定成變數</span></span><br><span class="line">		<span class="comment">--編寫指令, 裡面的VALUES數值用變數迭代</span></span><br><span class="line">		<span class="keyword">INSERT</span> <span class="keyword">INTO</span> dbo.BDZS (TRDAT,BSCLS,BSNUM,BSCTM,BSNUC,BSAVX)</span><br><span class="line">		<span class="keyword">VALUES</span> (<span class="string">&#x27;2021-10-18&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,@_BSNUM,@_BCNUM,@_BSNUM,<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">SET</span> @_BMIN <span class="operator">=</span> @_BMIN <span class="operator">+</span> <span class="number">1</span></span><br><span class="line">	<span class="keyword">END</span></span><br><span class="line">	<span class="keyword">CLOSE</span> BSTO_BSNUM　<span class="comment">--(LEVEL 2) 關閉指標</span></span><br><span class="line">	<span class="keyword">DEALLOCATE</span> BSTO_BSNUM <span class="comment">--(LEVEL 2) 釋放指標記憶體</span></span><br><span class="line">	<span class="keyword">SET</span> @_CMIN <span class="operator">=</span> @_CMIN <span class="operator">+</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">END</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CLOSE</span> BCUS_BCNUM <span class="comment">--(LEVEL 1) 關閉指標</span></span><br><span class="line"><span class="keyword">DEALLOCATE</span> BCUS_BCNUM <span class="comment">--(LEVEL 1) 釋放指標記憶體</span></span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
-
-<p>SQL_NOTE : 20211018_1.1</p>
-]]></content>
-      <categories>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL_MSSQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust Note(4)_Data Type III [String]</title>
-    <url>/2021/10/23/20211023_1/</url>
-    <content><![CDATA[<h2 id="Rust-字符串類型"><a href="#Rust-字符串類型" class="headerlink" title="Rust 字符串類型"></a>Rust 字符串類型</h2><hr>
-<p>在 Rust 裡面, 字符串類型分以下兩種:</p>
-<ul>
-<li>  <code>&amp;str</code> : 字符串字面量</li>
-<li>  <code>String</code> : 公開的 struct</li>
-</ul>
-<span id="more"></span>
-
-<p>在這之前, 先來理解一個概念 <code>指針</code></p>
-<blockquote>
-<p>指針 : 在 C++裡面有一樣的概念<br>想成把方向指到一個記憶體位址, 也就是 Rust 裡面常常會看到有人說 <code>borrow</code> 借用的概念</p>
-</blockquote>
-<h3 id="借用-borrow"><a href="#借用-borrow" class="headerlink" title="借用 borrow"></a>借用 <code>borrow</code></h3><hr>
-<blockquote>
-<p>當一個變量被賦值成立, 也就代表被分配一個內存位址<br>當變數成立, 代表在記憶體中這個值是唯一, 不能去改變(除非設定為可變 mut), 不然只能<code>唯讀</code>.<br>那我們就是利用 <code>&amp;</code> 符號來借用<br>可借用的有 :</p>
-<ul>
-<li>  Type : 型態</li>
-<li>  Value : 值 (可為字串/整數/福點數)</li>
-</ul>
-</blockquote>
-<h2 id="amp-str-字符串字面量"><a href="#amp-str-字符串字面量" class="headerlink" title="&amp;str 字符串字面量"></a><code>&amp;str</code> 字符串字面量</h2><hr>
-<blockquote>
-<p><code>str</code> : 大小未知, 只能在指針後使用</p>
-</blockquote>
-<pre><code>也就是一個位址, 要把指針指到str的地方, 套用str的型態
-</code></pre>
-<blockquote>
-<p>所以 str 都必須要與 <code>&amp;</code> 一起使用.</p>
-</blockquote>
-<p>範例 :</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : Hello world</span></span><br></pre></td></tr></table></figure>
-
-<p>如果沒有與 <code>&amp;</code> 連用</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">str</span> = <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>輸出報錯:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error[E0277]: the size <span class="keyword">for</span> values of <span class="built_in">type</span> `str` cannot be known at compilation time</span><br><span class="line">   --&gt; src\main.rs:3:5</span><br><span class="line">    |</span><br><span class="line">3   |     println!(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">    |     ^^^^^^^^^^^^^^^^^ doesn<span class="string">&#x27;t have a size known at compile-time</span></span><br><span class="line"><span class="string">    |</span></span><br><span class="line"><span class="string">   ::: C:\Users\kylls\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\core\src\fmt\mod.rs:294:20</span></span><br><span class="line"><span class="string">    |</span></span><br><span class="line"><span class="string">294 |     pub fn new&lt;&#x27;</span>b, T&gt;(x: &amp;<span class="string">&#x27;b T, f: fn(&amp;T, &amp;mut Formatter&lt;&#x27;</span>_&gt;) -&gt; Result) -&gt; ArgumentV1&lt;<span class="string">&#x27;b&gt; &#123;</span></span><br><span class="line"><span class="string">    |                    - required by this bound in `ArgumentV1::&lt;&#x27;</span>a&gt;::new`</span><br><span class="line">    |</span><br><span class="line">    = <span class="built_in">help</span>: the trait `Sized` is not implemented <span class="keyword">for</span> `str`</span><br><span class="line">    = note: this error originates <span class="keyword">in</span> the macro `<span class="variable">$crate</span>::format_args_nl` (<span class="keyword">in</span> Nightly builds, run with -Z macro-backtrace <span class="keyword">for</span> more info)</span><br></pre></td></tr></table></figure>
-
-<p>看看 compiler 跟我們說的</p>
-<blockquote>
-<p>size 未知, 導致無法編譯</p>
-</blockquote>
-<p>也就是說, <code>沒有指針指到一個明確的記憶體位址</code></p>
-</br>
-
-<h2 id="String-字符串對象"><a href="#String-字符串對象" class="headerlink" title="String 字符串對象"></a><code>String</code> 字符串對象</h2><hr>
-<p><code>OOP</code> 物件導向編程<br><code>String</code> 就是一個對象, 型態為<code>字符串</code></p>
-<p>透過以下方法建立</p>
-<ul>
-<li>  <code>new</code></li>
-<li>  <code>from</code></li>
-</ul>
-<p>先看 <code>new</code>的部分:</p>
-<ol>
-<li>直接 new 出一個記憶體空間(堆 heap) 來儲存</li>
-<li>用 push_str 的方式, 從後段把字符添加上去</li>
-</ol>
-<p>Example:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> a = <span class="built_in">String</span>::new();</span><br><span class="line">    a.push_str(<span class="string">&quot;Hello world, you!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello world, you!</span></span><br></pre></td></tr></table></figure>
-
-<p>再來看<code>from</code>的部分</p>
-<ol>
-<li>直接將字符串寫進去</li>
-<li>同時間 compiler 會同步把字符串 new 出一個新的堆來儲存.</li>
-</ol>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="built_in">String</span>::from(<span class="string">&quot;Hello you, world!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : Hello you, world!</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>new 單純是一個字符字面上的量, 而 from 出來的是一個字符串的對象</p>
-</blockquote>
-</br>
-
-<h2 id="字串操作"><a href="#字串操作" class="headerlink" title="字串操作"></a>字串操作</h2><hr>
-<blockquote>
-<p>如果要操作字串就必須要轉成<code>字符串對象</code></p>
-</blockquote>
-<ul>
-<li>  to_string() : 轉換為字符串對象</li>
-<li>  replace(a, b) : a 為要取代的字符, b 為取代的字符 a 替換成 b</li>
-<li>  as_str() : 把字符對象轉為字符量 (from to new)</li>
-<li>  push() : 原字符串後面追加</li>
-<li>  push_str() : 功能同 push</li>
-<li>  len() : 獲得字符串長度</li>
-<li>  trim() : 去除字首字尾空白符號</li>
-<li>  spilit_whitespace() : 以空白符作為分開依據</li>
-<li>  split(“.”) : 以 <code>.</code> 為節點分開</li>
-<li>  char() : 將字串打散為單一字符</li>
-</ul>
-<p>Rust_Note 20211023_1.1</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust Note(3)_Variables I</title>
-    <url>/2021/10/20/20211020/</url>
-    <content><![CDATA[<blockquote>
-<p>Rust 靜態語言, 透過自身的 Ownership System 去管理記憶體,<br>有別於其他語言有 GC (Garbage Collector) 的方式.</p>
-</blockquote>
-<span id="more"></span>
-
-<hr>
-<h2 id="1-Setting-variables-變數賦值"><a href="#1-Setting-variables-變數賦值" class="headerlink" title="1. Setting variables 變數賦值"></a>1. Setting variables 變數賦值</h2><hr>
-<p>使用<code>let</code>關鍵字, 如下:</p>
-<p><code>Sample Code 1-1 變數賦值 let</code></p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> y : <span class="built_in">i64</span> = <span class="number">10</span>; <span class="comment">// 設定變數y型別為整數型64位元, 值為10</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, y) <span class="comment">// 印出y</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>Output:</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">   Compiling rust_project v0.1.0 (D:\000_git_repo_projects\rust_project)</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) <span class="keyword">in</span> 0.50s</span><br><span class="line">     Running `target\debug\rust_project.exe`</span><br><span class="line">The value of y is 10</span><br></pre></td></tr></table></figure>
-
-</span>
-
-<h2 id="2-變數重複賦值"><a href="#2-變數重複賦值" class="headerlink" title="2. 變數重複賦值"></a>2. 變數重複賦值</h2><hr>
-<blockquote>
-<p>Compiler 直接拋出錯誤, <code>不可重複</code>對<code>不可變(不可改變值的變數)的變數</code>賦值<br>範例 1-2</p>
-</blockquote>
-<p><code>Sample Code 2-1 重複賦值, compiler報錯</code></p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> y : <span class="built_in">i64</span> = <span class="number">10</span>; <span class="comment">// 設定變數y型別為整數型64位元, 值為10</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, y) <span class="comment">// 印出y</span></span><br><span class="line">    y = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The new value of y is &#123;&#125;&quot;</span>, y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>Output</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error[E0384]: cannot assign twice to immutable variable `y`</span><br><span class="line"> --&gt; src\main.rs:4:5</span><br><span class="line">  |</span><br><span class="line">2 |     <span class="built_in">let</span> y : i64 = 10; // 設定變數y型別為整數型64位元, 值為10</span><br><span class="line">  |         -</span><br><span class="line">  |         |</span><br><span class="line">  |         first assignment to `y`</span><br><span class="line">  |         <span class="built_in">help</span>: consider making this binding mutable: `mut y`</span><br><span class="line">3 |     println!(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, y); // 印出y</span><br><span class="line">4 |     y = 20;</span><br><span class="line">  |     ^^^^^^ cannot assign twice to immutable variable</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0384`.</span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>看 terminal 輸出的訊息, 可把變數 y 的型態設定為 <code>mut (mutable)</code> 可變</p>
-</blockquote>
-<p><code>Sample Code 2-2 指定為可變變數 mut</code></p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> y : <span class="built_in">i64</span> = <span class="number">10</span>; <span class="comment">// 設定變數y型別為整數型64位元, 值為10</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, y); <span class="comment">// 印出y</span></span><br><span class="line">    y = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The new value of y is &#123;&#125;&quot;</span>, y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>Output</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">   Compiling rust_project v0.1.0 (D:\000_git_repo_projects\rust_project)</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) <span class="keyword">in</span> 0.37s</span><br><span class="line">     Running `target\debug\rust_project.exe`</span><br><span class="line">The value of y is 10</span><br><span class="line">The new value of y is 20</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>告訴 compiler y 這是一個<code>可改變</code>的變數, 這樣就沒問題了.</p>
-</blockquote>
-<h2 id="3-變數重新賦值"><a href="#3-變數重新賦值" class="headerlink" title="3. 變數重新賦值"></a>3. 變數重新賦值</h2><p><code>重新賦值</code> 跟 <code>重複賦值</code> 不一樣定義</p>
-<blockquote>
-<p>第一次變數賦值 : 把變數值存到 <code>heap 堆</code> 裡面<br>第二次重新賦值 : 重新覆蓋在 <code>heap 堆</code> 裡面的值</p>
-</blockquote>
-<p><code>Sample Code 3-1 重新賦值, 比對上段 重複復職</code></p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> y : <span class="built_in">i64</span> = <span class="number">10</span>; <span class="comment">// 設定變數y型別為整數型64位元, 值為10</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, y); <span class="comment">// 印出y = 10</span></span><br><span class="line">    <span class="keyword">let</span> y : <span class="built_in">i64</span> = <span class="number">20</span>; <span class="comment">// 重新賦值, 覆蓋過heap堆上的值, 重新取代</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The new value of y is &#123;&#125;&quot;</span>, y); <span class="comment">// 印出y = 20</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>Output</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) <span class="keyword">in</span> 0.00s</span><br><span class="line">     Running `target\debug\rust_project.exe`</span><br><span class="line">The value of y is 10</span><br><span class="line">The new value of y is 20</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>compiler 沒有報錯, 因為 y <code>重新</code> 被賦值</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>此時如果指定 y 為 <code>mut</code> 型態, compiler 就會出現<code>善意提醒</code></p>
-</blockquote>
-<p><code>Sample Code 3-2 提醒mut為非必要</code></p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> y : <span class="built_in">i64</span> = <span class="number">10</span>; <span class="comment">// 設定變數y型別為可變整數型64位元, 值為10</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, y); <span class="comment">// 印出y = 10</span></span><br><span class="line">    <span class="keyword">let</span> y : <span class="built_in">i64</span> = <span class="number">20</span>; <span class="comment">// 重新賦值, 覆蓋過heap堆上的值, 重新取代</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The new value of y is &#123;&#125;&quot;</span>, y); <span class="comment">// 印出y = 20</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>Output</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">warning: variable does not need to be mutable</span><br><span class="line"> --&gt; src\main.rs:2:9</span><br><span class="line">  |</span><br><span class="line">2 |     <span class="built_in">let</span> mut y : i64 = 10; // 設定變數y型別為可變整數型64位元, 值為10</span><br><span class="line">  |         ----^</span><br><span class="line">  |         |</span><br><span class="line">  |         <span class="built_in">help</span>: remove this `mut`</span><br><span class="line">  |</span><br><span class="line">  = note: `<span class="comment">#[warn(unused_mut)]` on by default</span></span><br><span class="line"></span><br><span class="line">warning: `rust_project` (bin <span class="string">&quot;rust_project&quot;</span>) generated 1 warning</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) <span class="keyword">in</span> 0.39s</span><br><span class="line">     Running `target\debug\rust_project.exe`</span><br><span class="line">The value of y is 10</span><br><span class="line">The new value of y is 20</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Compiler 一樣打印出值, 但是會提醒, <code>mut</code> 是不必要的.</p>
-</blockquote>
-<h2 id="4-常數-不可變-const"><a href="#4-常數-不可變-const" class="headerlink" title="4. 常數 (不可變) const"></a>4. 常數 (不可變) const</h2><hr>
-<blockquote>
-<p>常數 : 意味著 不可變的, 賦值後, 不可做任何修改<br>宣告常數使用關鍵字 : <code>const &lt;CONST_NAME&gt;</code> : <CONST_NAME> 必須要大寫</p>
-</blockquote>
-<p><code>Sample Code 4-1 : 提醒大寫</code></p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">const</span> y : <span class="built_in">i64</span> = <span class="number">10</span>; <span class="comment">// 設定常數y型別為整數型64位元, 值為10</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, y); <span class="comment">// 印出y = 10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>Output</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">   Compiling rust_project v0.1.0 (D:\000_git_repo_projects\rust_project)</span><br><span class="line">warning: constant `y` should have an upper <span class="keyword">case</span> name</span><br><span class="line"> --&gt; src\main.rs:2:11</span><br><span class="line">  |</span><br><span class="line">2 |     const y : i64 = 10; // 設定變數y型別為可變整數型64位元, 值為10</span><br><span class="line">  |           ^ <span class="built_in">help</span>: convert the identifier to upper <span class="keyword">case</span> (notice the capitalization): `Y`</span><br><span class="line">  |</span><br><span class="line">  = note: `<span class="comment">#[warn(non_upper_case_globals)]` on by default</span></span><br><span class="line"></span><br><span class="line">warning: `rust_project` (bin <span class="string">&quot;rust_project&quot;</span>) generated 1 warning</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) <span class="keyword">in</span> 0.39s</span><br><span class="line">     Running `target\debug\rust_project.exe`</span><br><span class="line">The value of y is 10</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Compiler 提醒需要大寫, 但仍正常編譯</p>
-</blockquote>
-<p>對常數重新賦值, compiler 報錯</p>
-<p><code>Sample Code 對常數重新賦值, 報錯</code></p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">const</span> Y : <span class="built_in">i64</span> = <span class="number">10</span>; <span class="comment">// 設定常數y型別為整數型64位元, 值為10</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, Y); <span class="comment">// 印出y = 10</span></span><br><span class="line">    <span class="keyword">let</span> Y : <span class="built_in">i64</span> = <span class="number">20</span>; <span class="comment">// 重新賦值 報錯</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, Y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>Output</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error[E0005]: refutable pattern <span class="keyword">in</span> <span class="built_in">local</span> binding: `i64::MIN..=9_i64` and `11_i64..=i64::MAX` not covered</span><br><span class="line"> --&gt; src\main.rs:4:9</span><br><span class="line">  |</span><br><span class="line">2 |     const Y : i64 = 10; // 設定常數y型別為整數型64位元, 值為10</span><br><span class="line">  |     ------------------- constant defined here</span><br><span class="line">3 |     println!(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, Y); // 印出y = 10</span><br><span class="line">4 |     <span class="built_in">let</span> Y : i64 = 20;</span><br><span class="line">  |         ^</span><br><span class="line">  |         |</span><br><span class="line">  |         interpreted as a constant pattern, not a new variable</span><br><span class="line">  |         <span class="built_in">help</span>: introduce a variable instead: `y_var`</span><br><span class="line">  |</span><br><span class="line">  = note: the matched value is of <span class="built_in">type</span> `i64`</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0005`.</span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>const 常數</strong> 為不可變動的值</p>
-</blockquote>
-</br>
-
-<h2 id="5-重點整理"><a href="#5-重點整理" class="headerlink" title="5. 重點整理"></a>5. 重點整理</h2><hr>
-<ul>
-<li>宣告設定變數<ul>
-<li>  let : 一般變數</li>
-<li>  const : 常數</li>
-</ul>
-</li>
-<li>變數可變<ul>
-<li>  mut : 可變, 不套用常數(const)</li>
-</ul>
-</li>
-</ul>
-<p>Rust Note_20211020</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Rust Note(2)_Data Type II</title>
     <url>/2021/10/17/20211017/</url>
     <content><![CDATA[<h2 id="Rsut-Note-2-Data-Types-II-Integer-Float"><a href="#Rsut-Note-2-Data-Types-II-Integer-Float" class="headerlink" title="Rsut Note(2) Data Types II Integer / Float"></a>Rsut Note(2) Data Types II Integer / Float</h2><p>依照 Data Type 的型別不同, 兩種方法:</p>
@@ -509,69 +248,258 @@
       </tags>
   </entry>
   <entry>
-    <title>Rust Note(5)_if_else_match</title>
-    <url>/2021/10/23/20211023-2/</url>
-    <content><![CDATA[<h2 id="if-else-if-else-if-條件判斷"><a href="#if-else-if-else-if-條件判斷" class="headerlink" title="if else, if else if 條件判斷"></a>if else, if else if 條件判斷</h2><blockquote>
-<p>如同其他語言一樣, Rust 也是有流程控制 <code>Control Condition Flow</code><br>使用的原則是, 只要有一個符合使用者所設定的條件, 那下方的判斷就不再執行.</p>
+    <title>SQL進階篇_MSSQL [双迴圈]</title>
+    <url>/2021/10/18/20211018/</url>
+    <content><![CDATA[<h2 id="SQL-双迴圈"><a href="#SQL-双迴圈" class="headerlink" title="SQL 双迴圈"></a>SQL 双迴圈</h2><span id="more"></span>
+
+<ul>
+<li>宣告變數<ul>
+<li>  DECLARE @_EX INT</li>
+</ul>
+</li>
+<li>設定變數值<ul>
+<li>  SET @_EX = 10</li>
+</ul>
+</li>
+<li>迴圈<ul>
+<li>  WHILE (condition)</li>
+</ul>
+</li>
+<li>起始&amp;結束<ul>
+<li>  BEGIN &lt;作用域&gt; END</li>
+</ul>
+</li>
+<li>設定指標<ul>
+<li>  宣告指標 DECLARE BBB CURSOR FOR SELECT * FROM TABLE</li>
+<li>  取得資料轉成變數 FETCH NEXT INTO @_VAR1</li>
+</ul>
+</li>
+<li>指標關閉<ul>
+<li>  關閉 CLOSE &lt;指標&gt;</li>
+<li>  釋放記憶體 DEALLOCATE &lt;指標&gt;</li>
+</ul>
+</li>
+<li>双迴圈 用巢狀方式撰寫<ul>
+<li>  BEGIN BEGIN &lt;作用域&gt; END END</li>
+</ul>
+</li>
+</ul>
+<h2 id="範例程式碼"><a href="#範例程式碼" class="headerlink" title="範例程式碼"></a>範例程式碼</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">--宣告變數型態</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BMIN <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BMAX <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_CMIN <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_CMAX <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BCNUM <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"><span class="keyword">DECLARE</span> @_BSNUM <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)宣告指標變數</span></span><br><span class="line"><span class="keyword">DECLARE</span> BCUS_BCNUM <span class="keyword">CURSOR</span> <span class="keyword">FOR</span> <span class="keyword">SELECT</span> BCNUM <span class="keyword">FROM</span> dbo.BCUS <span class="keyword">WHERE</span> BCTYP<span class="operator">=</span><span class="string">&#x27;C&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)設定變數值</span></span><br><span class="line"><span class="keyword">SET</span> @_CMIN <span class="operator">=</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">SET</span> @_CMAX <span class="operator">=</span> (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(BCNUM) <span class="keyword">FROM</span> BCUS <span class="keyword">WHERE</span> BCTYP<span class="operator">=</span><span class="string">&#x27;C&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">OPEN</span> BCUS_BCNUM <span class="comment">--(LEVEL 1)開啟指標, 請求資料</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)WHILE迴圈起始結束值</span></span><br><span class="line">WHILE (@_CMIN <span class="operator">&lt;</span> @_CMAX)</span><br><span class="line"><span class="comment">--(LEVEL 1)BEGIN &lt;作用域&gt; END</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">FETCH</span> NEXT <span class="keyword">FROM</span> BCUS_BCNUM <span class="keyword">INTO</span>	@_BCNUM <span class="comment">--(LEVEL 1) FETCH請求資料</span></span><br><span class="line">	<span class="comment">--(LEVEL 2)宣告指標變數</span></span><br><span class="line">	<span class="keyword">DECLARE</span> BSTO_BSNUM <span class="keyword">CURSOR</span> <span class="keyword">FOR</span> <span class="keyword">SELECT</span> BSNUM <span class="keyword">FROM</span> dbo.BSTO</span><br><span class="line">	<span class="comment">--(LEVEL 2)設定變數值</span></span><br><span class="line">	<span class="keyword">SET</span> @_BMIN <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">	<span class="keyword">SET</span> @_BMAX <span class="operator">=</span> (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(BSNUM) <span class="keyword">FROM</span> BSTO)</span><br><span class="line">	<span class="keyword">OPEN</span> BSTO_BSNUM <span class="comment">--(LEVEL 2)開啟指標, 請求資料</span></span><br><span class="line"></span><br><span class="line">	WHILE (@_BMIN <span class="operator">&lt;</span> @_BMAX) <span class="comment">--(LEVEL 2) WHILE迴圈起始結束值</span></span><br><span class="line">	<span class="keyword">BEGIN</span></span><br><span class="line">		<span class="keyword">FETCH</span> NEXT <span class="keyword">FROM</span> BSTO_BSNUM <span class="keyword">INTO</span>	@_BSNUM <span class="comment">--(LEVEL 2) FETCH 請求資料, 把資料變設定成變數</span></span><br><span class="line">		<span class="comment">--編寫指令, 裡面的VALUES數值用變數迭代</span></span><br><span class="line">		<span class="keyword">INSERT</span> <span class="keyword">INTO</span> dbo.BDZS (TRDAT,BSCLS,BSNUM,BSCTM,BSNUC,BSAVX)</span><br><span class="line">		<span class="keyword">VALUES</span> (<span class="string">&#x27;2021-10-18&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,@_BSNUM,@_BCNUM,@_BSNUM,<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">SET</span> @_BMIN <span class="operator">=</span> @_BMIN <span class="operator">+</span> <span class="number">1</span></span><br><span class="line">	<span class="keyword">END</span></span><br><span class="line">	<span class="keyword">CLOSE</span> BSTO_BSNUM　<span class="comment">--(LEVEL 2) 關閉指標</span></span><br><span class="line">	<span class="keyword">DEALLOCATE</span> BSTO_BSNUM <span class="comment">--(LEVEL 2) 釋放指標記憶體</span></span><br><span class="line">	<span class="keyword">SET</span> @_CMIN <span class="operator">=</span> @_CMIN <span class="operator">+</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">END</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CLOSE</span> BCUS_BCNUM <span class="comment">--(LEVEL 1) 關閉指標</span></span><br><span class="line"><span class="keyword">DEALLOCATE</span> BCUS_BCNUM <span class="comment">--(LEVEL 1) 釋放指標記憶體</span></span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+<p>SQL_NOTE : 20211018_1.1</p>
+]]></content>
+      <categories>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL_MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(3)_Variables I</title>
+    <url>/2021/10/20/20211020/</url>
+    <content><![CDATA[<blockquote>
+<p>Rust 靜態語言, 透過自身的 Ownership System 去管理記憶體,<br>有別於其他語言有 GC (Garbage Collector) 的方式.</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="if-else-若…則…"><a href="#if-else-若…則…" class="headerlink" title="if, else 若…則…"></a>if, else 若…則…</h2><blockquote>
-<p>這是最簡單的, 若非 A 則 B.</p>
-</blockquote>
-<p>範例如下 :</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a != b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is not equal to b!&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is equal with b!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : a is not equal to b!</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="1-Setting-variables-變數賦值"><a href="#1-Setting-variables-變數賦值" class="headerlink" title="1. Setting variables 變數賦值"></a>1. Setting variables 變數賦值</h2><hr>
+<p>使用<code>let</code>關鍵字, 如下:</p>
+<p><code>Sample Code 1-1 變數賦值 let</code></p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> y : <span class="built_in">i64</span> = <span class="number">10</span>; <span class="comment">// 設定變數y型別為整數型64位元, 值為10</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, y) <span class="comment">// 印出y</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>Flow 如下:</p>
-<ol>
-<li>先宣告兩個變數 a and b, 且指定其形態</li>
-<li>做兩個對比比較</li>
-<li><code>!=</code> 運算符 : 不等於</li>
-<li><code>if &lt;condition 1&gt;</code> condition 1 條件滿足成立 <true> , 執行後面的運算</li>
-<li>後面的 else 就不會再被執行</li>
-</ol>
-<p>修改一下上面的範例 :</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a == b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is not equal to b!&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is equal with b!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : a is equal with b!</span></span><br></pre></td></tr></table></figure>
+<p><code>Output:</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">   Compiling rust_project v0.1.0 (D:\000_git_repo_projects\rust_project)</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) <span class="keyword">in</span> 0.50s</span><br><span class="line">     Running `target\debug\rust_project.exe`</span><br><span class="line">The value of y is 10</span><br></pre></td></tr></table></figure>
+
+</span>
+
+<h2 id="2-變數重複賦值"><a href="#2-變數重複賦值" class="headerlink" title="2. 變數重複賦值"></a>2. 變數重複賦值</h2><hr>
+<blockquote>
+<p>Compiler 直接拋出錯誤, <code>不可重複</code>對<code>不可變(不可改變值的變數)的變數</code>賦值<br>範例 1-2</p>
+</blockquote>
+<p><code>Sample Code 2-1 重複賦值, compiler報錯</code></p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> y : <span class="built_in">i64</span> = <span class="number">10</span>; <span class="comment">// 設定變數y型別為整數型64位元, 值為10</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, y) <span class="comment">// 印出y</span></span><br><span class="line">    y = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The new value of y is &#123;&#125;&quot;</span>, y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Output</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error[E0384]: cannot assign twice to immutable variable `y`</span><br><span class="line"> --&gt; src\main.rs:4:5</span><br><span class="line">  |</span><br><span class="line">2 |     <span class="built_in">let</span> y : i64 = 10; // 設定變數y型別為整數型64位元, 值為10</span><br><span class="line">  |         -</span><br><span class="line">  |         |</span><br><span class="line">  |         first assignment to `y`</span><br><span class="line">  |         <span class="built_in">help</span>: consider making this binding mutable: `mut y`</span><br><span class="line">3 |     println!(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, y); // 印出y</span><br><span class="line">4 |     y = 20;</span><br><span class="line">  |     ^^^^^^ cannot assign twice to immutable variable</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0384`.</span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>把 <code>!=</code> 換成 <code>==</code><br>那結果就變成 if &lt;condition 1&gt; 不成立 <false>, 就繼續往下執行 else 語句</p>
+<p>看 terminal 輸出的訊息, 可把變數 y 的型態設定為 <code>mut (mutable)</code> 可變</p>
 </blockquote>
-<p>當然, 世界如果有這麼美好就好了, 絕對不可能只有單純兩個判斷………..</p>
-<p>那如果狀況很多呢? <code>How can I do?????????</code></p>
-</br>
+<p><code>Sample Code 2-2 指定為可變變數 mut</code></p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> y : <span class="built_in">i64</span> = <span class="number">10</span>; <span class="comment">// 設定變數y型別為整數型64位元, 值為10</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, y); <span class="comment">// 印出y</span></span><br><span class="line">    y = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The new value of y is &#123;&#125;&quot;</span>, y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="if-else-if-…-else-else-if-派上用場了"><a href="#if-else-if-…-else-else-if-派上用場了" class="headerlink" title="if, else if, …, else; else if 派上用場了!!!"></a>if, else if, …, else; <code>else if</code> 派上用場了!!!</h2><p>不囉嗦, 直接上範例</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a == b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 1&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 2&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> a &gt;= b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 3&quot;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 4&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : result 4</span></span><br></pre></td></tr></table></figure>
+<p><code>Output</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">   Compiling rust_project v0.1.0 (D:\000_git_repo_projects\rust_project)</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) <span class="keyword">in</span> 0.37s</span><br><span class="line">     Running `target\debug\rust_project.exe`</span><br><span class="line">The value of y is 10</span><br><span class="line">The new value of y is 20</span><br></pre></td></tr></table></figure>
 
-<p>啾竟發生何事?</p>
-<ol>
-<li>宣告變數</li>
-<li>開始條件判斷<br>2-1. &lt;condition 1&gt; : a 不等於 b <false><br>2-2. &lt;condition 2&gt; : a 大於 b <false><br>2-3. &lt;conditoin 3&gt; : a 大於等於 b <false></li>
-<li>condition 1, 2, 3 都為 <code>false</code> 都不成立……..</li>
-<li>所以最後輸出結果為 else 裡面的運算語句.</li>
-</ol>
 <blockquote>
-<p>如果多了這麼多的條件判斷, 是不是可變化性變更多了?</p>
+<p>告訴 compiler y 這是一個<code>可改變</code>的變數, 這樣就沒問題了.</p>
 </blockquote>
-<h2 id="Match-語句-Like-C-switch-語句"><a href="#Match-語句-Like-C-switch-語句" class="headerlink" title="Match 語句 (Like C switch 語句)"></a>Match 語句 (Like C switch 語句)</h2><blockquote>
-<p>如果條件很多, 寫一大堆 if else…….是不是會更亂?????????</p>
+<h2 id="3-變數重新賦值"><a href="#3-變數重新賦值" class="headerlink" title="3. 變數重新賦值"></a>3. 變數重新賦值</h2><p><code>重新賦值</code> 跟 <code>重複賦值</code> 不一樣定義</p>
+<blockquote>
+<p>第一次變數賦值 : 把變數值存到 <code>heap 堆</code> 裡面<br>第二次重新賦值 : 重新覆蓋在 <code>heap 堆</code> 裡面的值</p>
 </blockquote>
-<p>那我們用 match 看看~</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> s_name: &amp;<span class="built_in">str</span> = <span class="string">&quot;KB&quot;</span>; <span class="comment">// Using &amp;str</span></span><br><span class="line">    <span class="keyword">let</span> f_name = <span class="keyword">match</span> s_name &#123;</span><br><span class="line">        <span class="string">&quot;KJ&quot;</span> =&gt; <span class="string">&quot;Kylls Jellies&quot;</span>,</span><br><span class="line">        <span class="string">&quot;KD&quot;</span> =&gt; <span class="string">&quot;Kylls Dellies&quot;</span>,</span><br><span class="line">        <span class="string">&quot;KB&quot;</span> =&gt; <span class="string">&quot;Kylls Bellies&quot;</span>,</span><br><span class="line">        _ =&gt; <span class="string">&quot;Unknown&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Hi &#123;&#125;, Your name is &#123;&#125;.&quot;</span>, s_name, f_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hi KB, Your name is Kylls Bellies.</span></span><br></pre></td></tr></table></figure>
+<p><code>Sample Code 3-1 重新賦值, 比對上段 重複復職</code></p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> y : <span class="built_in">i64</span> = <span class="number">10</span>; <span class="comment">// 設定變數y型別為整數型64位元, 值為10</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, y); <span class="comment">// 印出y = 10</span></span><br><span class="line">    <span class="keyword">let</span> y : <span class="built_in">i64</span> = <span class="number">20</span>; <span class="comment">// 重新賦值, 覆蓋過heap堆上的值, 重新取代</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The new value of y is &#123;&#125;&quot;</span>, y); <span class="comment">// 印出y = 20</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>來看一下作用的 flow:</p>
+<p><code>Output</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) <span class="keyword">in</span> 0.00s</span><br><span class="line">     Running `target\debug\rust_project.exe`</span><br><span class="line">The value of y is 10</span><br><span class="line">The new value of y is 20</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>compiler 沒有報錯, 因為 y <code>重新</code> 被賦值</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>此時如果指定 y 為 <code>mut</code> 型態, compiler 就會出現<code>善意提醒</code></p>
+</blockquote>
+<p><code>Sample Code 3-2 提醒mut為非必要</code></p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> y : <span class="built_in">i64</span> = <span class="number">10</span>; <span class="comment">// 設定變數y型別為可變整數型64位元, 值為10</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, y); <span class="comment">// 印出y = 10</span></span><br><span class="line">    <span class="keyword">let</span> y : <span class="built_in">i64</span> = <span class="number">20</span>; <span class="comment">// 重新賦值, 覆蓋過heap堆上的值, 重新取代</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The new value of y is &#123;&#125;&quot;</span>, y); <span class="comment">// 印出y = 20</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Output</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">warning: variable does not need to be mutable</span><br><span class="line"> --&gt; src\main.rs:2:9</span><br><span class="line">  |</span><br><span class="line">2 |     <span class="built_in">let</span> mut y : i64 = 10; // 設定變數y型別為可變整數型64位元, 值為10</span><br><span class="line">  |         ----^</span><br><span class="line">  |         |</span><br><span class="line">  |         <span class="built_in">help</span>: remove this `mut`</span><br><span class="line">  |</span><br><span class="line">  = note: `<span class="comment">#[warn(unused_mut)]` on by default</span></span><br><span class="line"></span><br><span class="line">warning: `rust_project` (bin <span class="string">&quot;rust_project&quot;</span>) generated 1 warning</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) <span class="keyword">in</span> 0.39s</span><br><span class="line">     Running `target\debug\rust_project.exe`</span><br><span class="line">The value of y is 10</span><br><span class="line">The new value of y is 20</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Compiler 一樣打印出值, 但是會提醒, <code>mut</code> 是不必要的.</p>
+</blockquote>
+<h2 id="4-常數-不可變-const"><a href="#4-常數-不可變-const" class="headerlink" title="4. 常數 (不可變) const"></a>4. 常數 (不可變) const</h2><hr>
+<blockquote>
+<p>常數 : 意味著 不可變的, 賦值後, 不可做任何修改<br>宣告常數使用關鍵字 : <code>const &lt;CONST_NAME&gt;</code> : <CONST_NAME> 必須要大寫</p>
+</blockquote>
+<p><code>Sample Code 4-1 : 提醒大寫</code></p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">const</span> y : <span class="built_in">i64</span> = <span class="number">10</span>; <span class="comment">// 設定常數y型別為整數型64位元, 值為10</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, y); <span class="comment">// 印出y = 10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Output</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">   Compiling rust_project v0.1.0 (D:\000_git_repo_projects\rust_project)</span><br><span class="line">warning: constant `y` should have an upper <span class="keyword">case</span> name</span><br><span class="line"> --&gt; src\main.rs:2:11</span><br><span class="line">  |</span><br><span class="line">2 |     const y : i64 = 10; // 設定變數y型別為可變整數型64位元, 值為10</span><br><span class="line">  |           ^ <span class="built_in">help</span>: convert the identifier to upper <span class="keyword">case</span> (notice the capitalization): `Y`</span><br><span class="line">  |</span><br><span class="line">  = note: `<span class="comment">#[warn(non_upper_case_globals)]` on by default</span></span><br><span class="line"></span><br><span class="line">warning: `rust_project` (bin <span class="string">&quot;rust_project&quot;</span>) generated 1 warning</span><br><span class="line">    Finished dev [unoptimized + debuginfo] target(s) <span class="keyword">in</span> 0.39s</span><br><span class="line">     Running `target\debug\rust_project.exe`</span><br><span class="line">The value of y is 10</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Compiler 提醒需要大寫, 但仍正常編譯</p>
+</blockquote>
+<p>對常數重新賦值, compiler 報錯</p>
+<p><code>Sample Code 對常數重新賦值, 報錯</code></p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">const</span> Y : <span class="built_in">i64</span> = <span class="number">10</span>; <span class="comment">// 設定常數y型別為整數型64位元, 值為10</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, Y); <span class="comment">// 印出y = 10</span></span><br><span class="line">    <span class="keyword">let</span> Y : <span class="built_in">i64</span> = <span class="number">20</span>; <span class="comment">// 重新賦值 報錯</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, Y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Output</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error[E0005]: refutable pattern <span class="keyword">in</span> <span class="built_in">local</span> binding: `i64::MIN..=9_i64` and `11_i64..=i64::MAX` not covered</span><br><span class="line"> --&gt; src\main.rs:4:9</span><br><span class="line">  |</span><br><span class="line">2 |     const Y : i64 = 10; // 設定常數y型別為整數型64位元, 值為10</span><br><span class="line">  |     ------------------- constant defined here</span><br><span class="line">3 |     println!(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>, Y); // 印出y = 10</span><br><span class="line">4 |     <span class="built_in">let</span> Y : i64 = 20;</span><br><span class="line">  |         ^</span><br><span class="line">  |         |</span><br><span class="line">  |         interpreted as a constant pattern, not a new variable</span><br><span class="line">  |         <span class="built_in">help</span>: introduce a variable instead: `y_var`</span><br><span class="line">  |</span><br><span class="line">  = note: the matched value is of <span class="built_in">type</span> `i64`</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0005`.</span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>const 常數</strong> 為不可變動的值</p>
+</blockquote>
+</br>
+
+<h2 id="5-重點整理"><a href="#5-重點整理" class="headerlink" title="5. 重點整理"></a>5. 重點整理</h2><hr>
+<ul>
+<li>宣告設定變數<ul>
+<li>  let : 一般變數</li>
+<li>  const : 常數</li>
+</ul>
+</li>
+<li>變數可變<ul>
+<li>  mut : 可變, 不套用常數(const)</li>
+</ul>
+</li>
+</ul>
+<p>Rust Note_20211020</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(4)_Data Type III [String]</title>
+    <url>/2021/10/23/20211023_1/</url>
+    <content><![CDATA[<h2 id="Rust-字符串類型"><a href="#Rust-字符串類型" class="headerlink" title="Rust 字符串類型"></a>Rust 字符串類型</h2><hr>
+<p>在 Rust 裡面, 字符串類型分以下兩種:</p>
+<ul>
+<li>  <code>&amp;str</code> : 字符串字面量</li>
+<li>  <code>String</code> : 公開的 struct</li>
+</ul>
+<span id="more"></span>
+
+<p>在這之前, 先來理解一個概念 <code>指針</code></p>
+<blockquote>
+<p>指針 : 在 C++裡面有一樣的概念<br>想成把方向指到一個記憶體位址, 也就是 Rust 裡面常常會看到有人說 <code>borrow</code> 借用的概念</p>
+</blockquote>
+<h3 id="借用-borrow"><a href="#借用-borrow" class="headerlink" title="借用 borrow"></a>借用 <code>borrow</code></h3><hr>
+<blockquote>
+<p>當一個變量被賦值成立, 也就代表被分配一個內存位址<br>當變數成立, 代表在記憶體中這個值是唯一, 不能去改變(除非設定為可變 mut), 不然只能<code>唯讀</code>.<br>那我們就是利用 <code>&amp;</code> 符號來借用<br>可借用的有 :</p>
+<ul>
+<li>  Type : 型態</li>
+<li>  Value : 值 (可為字串/整數/福點數)</li>
+</ul>
+</blockquote>
+<h2 id="amp-str-字符串字面量"><a href="#amp-str-字符串字面量" class="headerlink" title="&amp;str 字符串字面量"></a><code>&amp;str</code> 字符串字面量</h2><hr>
+<blockquote>
+<p><code>str</code> : 大小未知, 只能在指針後使用</p>
+</blockquote>
+<pre><code>也就是一個位址, 要把指針指到str的地方, 套用str的型態
+</code></pre>
+<blockquote>
+<p>所以 str 都必須要與 <code>&amp;</code> 一起使用.</p>
+</blockquote>
+<p>範例 :</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : Hello world</span></span><br></pre></td></tr></table></figure>
+
+<p>如果沒有與 <code>&amp;</code> 連用</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">str</span> = <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>輸出報錯:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error[E0277]: the size <span class="keyword">for</span> values of <span class="built_in">type</span> `str` cannot be known at compilation time</span><br><span class="line">   --&gt; src\main.rs:3:5</span><br><span class="line">    |</span><br><span class="line">3   |     println!(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">    |     ^^^^^^^^^^^^^^^^^ doesn<span class="string">&#x27;t have a size known at compile-time</span></span><br><span class="line"><span class="string">    |</span></span><br><span class="line"><span class="string">   ::: C:\Users\kylls\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\core\src\fmt\mod.rs:294:20</span></span><br><span class="line"><span class="string">    |</span></span><br><span class="line"><span class="string">294 |     pub fn new&lt;&#x27;</span>b, T&gt;(x: &amp;<span class="string">&#x27;b T, f: fn(&amp;T, &amp;mut Formatter&lt;&#x27;</span>_&gt;) -&gt; Result) -&gt; ArgumentV1&lt;<span class="string">&#x27;b&gt; &#123;</span></span><br><span class="line"><span class="string">    |                    - required by this bound in `ArgumentV1::&lt;&#x27;</span>a&gt;::new`</span><br><span class="line">    |</span><br><span class="line">    = <span class="built_in">help</span>: the trait `Sized` is not implemented <span class="keyword">for</span> `str`</span><br><span class="line">    = note: this error originates <span class="keyword">in</span> the macro `<span class="variable">$crate</span>::format_args_nl` (<span class="keyword">in</span> Nightly builds, run with -Z macro-backtrace <span class="keyword">for</span> more info)</span><br></pre></td></tr></table></figure>
+
+<p>看看 compiler 跟我們說的</p>
+<blockquote>
+<p>size 未知, 導致無法編譯</p>
+</blockquote>
+<p>也就是說, <code>沒有指針指到一個明確的記憶體位址</code></p>
+</br>
+
+<h2 id="String-字符串對象"><a href="#String-字符串對象" class="headerlink" title="String 字符串對象"></a><code>String</code> 字符串對象</h2><hr>
+<p><code>OOP</code> 物件導向編程<br><code>String</code> 就是一個對象, 型態為<code>字符串</code></p>
+<p>透過以下方法建立</p>
+<ul>
+<li>  <code>new</code></li>
+<li>  <code>from</code></li>
+</ul>
+<p>先看 <code>new</code>的部分:</p>
 <ol>
-<li>f_name 有多個條件, “KJ”, “KD”, “KB”</li>
-<li>使用 <code>match</code> 這關鍵字, 啟動媒合功能?????</li>
-<li>只要裡面有對應到的, 就會<code>=&gt; 值</code>返回給 f_name</li>
-<li><code>_ =&gt; value</code> 代表都比對不到, 那就返回 Unknown.</li>
+<li>直接 new 出一個記憶體空間(堆 heap) 來儲存</li>
+<li>用 push_str 的方式, 從後段把字符添加上去</li>
 </ol>
+<p>Example:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> a = <span class="built_in">String</span>::new();</span><br><span class="line">    a.push_str(<span class="string">&quot;Hello world, you!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello world, you!</span></span><br></pre></td></tr></table></figure>
+
+<p>再來看<code>from</code>的部分</p>
+<ol>
+<li>直接將字符串寫進去</li>
+<li>同時間 compiler 會同步把字符串 new 出一個新的堆來儲存.</li>
+</ol>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="built_in">String</span>::from(<span class="string">&quot;Hello you, world!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : Hello you, world!</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>new 單純是一個字符字面上的量, 而 from 出來的是一個字符串的對象</p>
+</blockquote>
 </br>
 
-<p>有沒有發現 match 跟 C, Java 其他語言的 switch 很像呢?</p>
-</br>
-
-<p>Rust Note_20211023_1.2</p>
+<h2 id="字串操作"><a href="#字串操作" class="headerlink" title="字串操作"></a>字串操作</h2><hr>
+<blockquote>
+<p>如果要操作字串就必須要轉成<code>字符串對象</code></p>
+</blockquote>
+<ul>
+<li>  to_string() : 轉換為字符串對象</li>
+<li>  replace(a, b) : a 為要取代的字符, b 為取代的字符 a 替換成 b</li>
+<li>  as_str() : 把字符對象轉為字符量 (from to new)</li>
+<li>  push() : 原字符串後面追加</li>
+<li>  push_str() : 功能同 push</li>
+<li>  len() : 獲得字符串長度</li>
+<li>  trim() : 去除字首字尾空白符號</li>
+<li>  spilit_whitespace() : 以空白符作為分開依據</li>
+<li>  split(“.”) : 以 <code>.</code> 為節點分開</li>
+<li>  char() : 將字串打散為單一字符</li>
+</ul>
+<p>Rust_Note 20211023_1.1</p>
 ]]></content>
       <categories>
         <category>Rust</category>
@@ -659,6 +587,144 @@
 </br>
 
 <p>Rust_Note_20211025_1.1</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(7)_Stack &amp; Heap</title>
+    <url>/2021/10/30/20211030-1/</url>
+    <content><![CDATA[<h2 id="Stack-amp-Heap"><a href="#Stack-amp-Heap" class="headerlink" title="Stack &amp; Heap"></a>Stack &amp; Heap</h2><p>棧 和 堆 的區別。</p>
+<span id="more"></span>
+
+<h3 id="Stack-棧"><a href="#Stack-棧" class="headerlink" title="Stack 棧"></a>Stack 棧</h3><hr>
+<blockquote>
+<p>有序的： <code>已被佔用</code> 且 <code>固定大小</code>。</p>
+</blockquote>
+<p>棧是透過堆疊而成，採<code>Last in， first out</code> 概念(後進先出)。<br>意即在最剛開始就被賦予固定大小的值，且同時建立指針。<br>EX: <code>&amp;str</code>;</p>
+<blockquote>
+<p>應用在基本標量類型 ex <code>整數型</code>，<code>浮點數</code>…等</p>
+</blockquote>
+<h3 id="Heap-堆"><a href="#Heap-堆" class="headerlink" title="Heap 堆"></a>Heap 堆</h3><hr>
+<blockquote>
+<p>無序的：編譯時，<code>未知大小</code> 且 <code>可能大小變更</code>。</p>
+</blockquote>
+<p>亦即在程式碼撰寫過程中，因應需要而賦予的值。<br>只能透過<code>ptr (指針)</code> 來進行訪問。<br>EX: <code>String</code></p>
+<blockquote>
+<p>應用在複合類型 ex <code>String</code>, <code>tuple</code>…等</p>
+</blockquote>
+<h3 id="Pointer-指針"><a href="#Pointer-指針" class="headerlink" title="Pointer 指針"></a>Pointer 指針</h3><hr>
+<blockquote>
+<p>要訪問 <code>heap (無序的)</code> , 必須得透過 <code>Pointer (ptr: 指針)</code> 來進行訪問。</p>
+</blockquote>
+<h2 id="實際操作"><a href="#實際操作" class="headerlink" title="實際操作"></a>實際操作</h2><hr>
+<blockquote>
+<p>基本數據類型 : 參考前面的筆記.</p>
+</blockquote>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line">    a.to_string().push_str(<span class="string">&quot; KB Note!!!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello wolrd!</span></span><br></pre></td></tr></table></figure>
+
+<p>咦? 竟然沒有作用???</p>
+<p>仔細的來看一下:</p>
+<ol>
+<li>a 宣告為 <code>&amp;str</code> 類型, 在 rust 裡面, 這屬於基本數據類型, 一旦成立, 直接被壓入 stack</li>
+<li>那既然是基本數據類型, 在成立的時候, 直接存入 stack, 若要去更動, 就要換成 String 類型.</li>
+<li>使用方法 to_string() : <code>&amp;str</code> – &gt; <code>String</code></li>
+<li>接著使用 push_str() 在後面加上字串.</li>
+<li>行不通?</li>
+</ol>
+<p>What the hell??????</p>
+<p>正確的順序應該是這樣:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> b = a.to_string();</span><br><span class="line">    b.push_str(<span class="string">&quot; KB Note!!!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello world! KB Note!!!</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  宣告 a 基本變量為 “Hello world!”</li>
+<li>  把 a 轉為 String, 並且賦予給 b , 模式設定為 <code>mut</code> 可變.</li>
+<li>  再利用 .push_str() 方式, 把 <code> KB Note!!!</code> 加在字符串後端</li>
+<li>  在打印出 b 得到我們想要的結果.</li>
+<li>  此時的 a 仍是 “Hello world!”</li>
+</ul>
+<p>在基本型態底下, 會比較令人迷惑的是 <code>&amp;str</code> 跟 <code>String</code> 這兩種的轉換.</p>
+<blockquote>
+<p>迷之聲 : <code>為什麼要搞得這麼麻煩?????</code></p>
+</blockquote>
+<p>基於 RUST 的最大賣點就是 <code>安全級系統語言</code>, 這還會跟後面的 <code>Ownership 所有權</code> 跟 <code>barrow 借用</code> 有著相對應重要的關係.</p>
+<p>Rust Note 20211030_1.1</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(5)_if_else_match</title>
+    <url>/2021/10/23/20211023-2/</url>
+    <content><![CDATA[<h2 id="if-else-if-else-if-條件判斷"><a href="#if-else-if-else-if-條件判斷" class="headerlink" title="if else, if else if 條件判斷"></a>if else, if else if 條件判斷</h2><blockquote>
+<p>如同其他語言一樣, Rust 也是有流程控制 <code>Control Condition Flow</code><br>使用的原則是, 只要有一個符合使用者所設定的條件, 那下方的判斷就不再執行.</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="if-else-若…則…"><a href="#if-else-若…則…" class="headerlink" title="if, else 若…則…"></a>if, else 若…則…</h2><blockquote>
+<p>這是最簡單的, 若非 A 則 B.</p>
+</blockquote>
+<p>範例如下 :</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a != b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is not equal to b!&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is equal with b!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : a is not equal to b!</span></span><br></pre></td></tr></table></figure>
+
+<p>Flow 如下:</p>
+<ol>
+<li>先宣告兩個變數 a and b, 且指定其形態</li>
+<li>做兩個對比比較</li>
+<li><code>!=</code> 運算符 : 不等於</li>
+<li><code>if &lt;condition 1&gt;</code> condition 1 條件滿足成立 <true> , 執行後面的運算</li>
+<li>後面的 else 就不會再被執行</li>
+</ol>
+<p>修改一下上面的範例 :</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a == b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is not equal to b!&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is equal with b!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : a is equal with b!</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>把 <code>!=</code> 換成 <code>==</code><br>那結果就變成 if &lt;condition 1&gt; 不成立 <false>, 就繼續往下執行 else 語句</p>
+</blockquote>
+<p>當然, 世界如果有這麼美好就好了, 絕對不可能只有單純兩個判斷………..</p>
+<p>那如果狀況很多呢? <code>How can I do?????????</code></p>
+</br>
+
+<h2 id="if-else-if-…-else-else-if-派上用場了"><a href="#if-else-if-…-else-else-if-派上用場了" class="headerlink" title="if, else if, …, else; else if 派上用場了!!!"></a>if, else if, …, else; <code>else if</code> 派上用場了!!!</h2><p>不囉嗦, 直接上範例</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a == b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 1&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 2&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> a &gt;= b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 3&quot;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 4&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : result 4</span></span><br></pre></td></tr></table></figure>
+
+<p>啾竟發生何事?</p>
+<ol>
+<li>宣告變數</li>
+<li>開始條件判斷<br>2-1. &lt;condition 1&gt; : a 不等於 b <false><br>2-2. &lt;condition 2&gt; : a 大於 b <false><br>2-3. &lt;conditoin 3&gt; : a 大於等於 b <false></li>
+<li>condition 1, 2, 3 都為 <code>false</code> 都不成立……..</li>
+<li>所以最後輸出結果為 else 裡面的運算語句.</li>
+</ol>
+<blockquote>
+<p>如果多了這麼多的條件判斷, 是不是可變化性變更多了?</p>
+</blockquote>
+<h2 id="Match-語句-Like-C-switch-語句"><a href="#Match-語句-Like-C-switch-語句" class="headerlink" title="Match 語句 (Like C switch 語句)"></a>Match 語句 (Like C switch 語句)</h2><blockquote>
+<p>如果條件很多, 寫一大堆 if else…….是不是會更亂?????????</p>
+</blockquote>
+<p>那我們用 match 看看~</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> s_name: &amp;<span class="built_in">str</span> = <span class="string">&quot;KB&quot;</span>; <span class="comment">// Using &amp;str</span></span><br><span class="line">    <span class="keyword">let</span> f_name = <span class="keyword">match</span> s_name &#123;</span><br><span class="line">        <span class="string">&quot;KJ&quot;</span> =&gt; <span class="string">&quot;Kylls Jellies&quot;</span>,</span><br><span class="line">        <span class="string">&quot;KD&quot;</span> =&gt; <span class="string">&quot;Kylls Dellies&quot;</span>,</span><br><span class="line">        <span class="string">&quot;KB&quot;</span> =&gt; <span class="string">&quot;Kylls Bellies&quot;</span>,</span><br><span class="line">        _ =&gt; <span class="string">&quot;Unknown&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Hi &#123;&#125;, Your name is &#123;&#125;.&quot;</span>, s_name, f_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hi KB, Your name is Kylls Bellies.</span></span><br></pre></td></tr></table></figure>
+
+<p>來看一下作用的 flow:</p>
+<ol>
+<li>f_name 有多個條件, “KJ”, “KD”, “KB”</li>
+<li>使用 <code>match</code> 這關鍵字, 啟動媒合功能?????</li>
+<li>只要裡面有對應到的, 就會<code>=&gt; 值</code>返回給 f_name</li>
+<li><code>_ =&gt; value</code> 代表都比對不到, 那就返回 Unknown.</li>
+</ol>
+</br>
+
+<p>有沒有發現 match 跟 C, Java 其他語言的 switch 很像呢?</p>
+</br>
+
+<p>Rust Note_20211023_1.2</p>
 ]]></content>
       <categories>
         <category>Rust</category>
