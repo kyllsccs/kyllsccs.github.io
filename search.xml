@@ -409,6 +409,78 @@
       </tags>
   </entry>
   <entry>
+    <title>Rust Note(5)_if_else_match</title>
+    <url>/2021/10/23/20211023-2/</url>
+    <content><![CDATA[<h2 id="if-else-if-else-if-條件判斷"><a href="#if-else-if-else-if-條件判斷" class="headerlink" title="if else, if else if 條件判斷"></a>if else, if else if 條件判斷</h2><blockquote>
+<p>如同其他語言一樣, Rust 也是有流程控制 <code>Control Condition Flow</code><br>使用的原則是, 只要有一個符合使用者所設定的條件, 那下方的判斷就不再執行.</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="if-else-若…則…"><a href="#if-else-若…則…" class="headerlink" title="if, else 若…則…"></a>if, else 若…則…</h2><blockquote>
+<p>這是最簡單的, 若非 A 則 B.</p>
+</blockquote>
+<p>範例如下 :</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a != b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is not equal to b!&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is equal with b!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : a is not equal to b!</span></span><br></pre></td></tr></table></figure>
+
+<p>Flow 如下:</p>
+<ol>
+<li>先宣告兩個變數 a and b, 且指定其形態</li>
+<li>做兩個對比比較</li>
+<li><code>!=</code> 運算符 : 不等於</li>
+<li><code>if &lt;condition 1&gt;</code> condition 1 條件滿足成立 <true> , 執行後面的運算</li>
+<li>後面的 else 就不會再被執行</li>
+</ol>
+<p>修改一下上面的範例 :</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a == b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is not equal to b!&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is equal with b!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : a is equal with b!</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>把 <code>!=</code> 換成 <code>==</code><br>那結果就變成 if &lt;condition 1&gt; 不成立 <false>, 就繼續往下執行 else 語句</p>
+</blockquote>
+<p>當然, 世界如果有這麼美好就好了, 絕對不可能只有單純兩個判斷………..</p>
+<p>那如果狀況很多呢? <code>How can I do?????????</code></p>
+</br>
+
+<h2 id="if-else-if-…-else-else-if-派上用場了"><a href="#if-else-if-…-else-else-if-派上用場了" class="headerlink" title="if, else if, …, else; else if 派上用場了!!!"></a>if, else if, …, else; <code>else if</code> 派上用場了!!!</h2><p>不囉嗦, 直接上範例</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a == b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 1&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 2&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> a &gt;= b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 3&quot;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 4&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : result 4</span></span><br></pre></td></tr></table></figure>
+
+<p>啾竟發生何事?</p>
+<ol>
+<li>宣告變數</li>
+<li>開始條件判斷<br>2-1. &lt;condition 1&gt; : a 不等於 b <false><br>2-2. &lt;condition 2&gt; : a 大於 b <false><br>2-3. &lt;conditoin 3&gt; : a 大於等於 b <false></li>
+<li>condition 1, 2, 3 都為 <code>false</code> 都不成立……..</li>
+<li>所以最後輸出結果為 else 裡面的運算語句.</li>
+</ol>
+<blockquote>
+<p>如果多了這麼多的條件判斷, 是不是可變化性變更多了?</p>
+</blockquote>
+<h2 id="Match-語句-Like-C-switch-語句"><a href="#Match-語句-Like-C-switch-語句" class="headerlink" title="Match 語句 (Like C switch 語句)"></a>Match 語句 (Like C switch 語句)</h2><blockquote>
+<p>如果條件很多, 寫一大堆 if else…….是不是會更亂?????????</p>
+</blockquote>
+<p>那我們用 match 看看~</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> s_name: &amp;<span class="built_in">str</span> = <span class="string">&quot;KB&quot;</span>; <span class="comment">// Using &amp;str</span></span><br><span class="line">    <span class="keyword">let</span> f_name = <span class="keyword">match</span> s_name &#123;</span><br><span class="line">        <span class="string">&quot;KJ&quot;</span> =&gt; <span class="string">&quot;Kylls Jellies&quot;</span>,</span><br><span class="line">        <span class="string">&quot;KD&quot;</span> =&gt; <span class="string">&quot;Kylls Dellies&quot;</span>,</span><br><span class="line">        <span class="string">&quot;KB&quot;</span> =&gt; <span class="string">&quot;Kylls Bellies&quot;</span>,</span><br><span class="line">        _ =&gt; <span class="string">&quot;Unknown&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Hi &#123;&#125;, Your name is &#123;&#125;.&quot;</span>, s_name, f_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hi KB, Your name is Kylls Bellies.</span></span><br></pre></td></tr></table></figure>
+
+<p>來看一下作用的 flow:</p>
+<ol>
+<li>f_name 有多個條件, “KJ”, “KD”, “KB”</li>
+<li>使用 <code>match</code> 這關鍵字, 啟動媒合功能?????</li>
+<li>只要裡面有對應到的, 就會<code>=&gt; 值</code>返回給 f_name</li>
+<li><code>_ =&gt; value</code> 代表都比對不到, 那就返回 Unknown.</li>
+</ol>
+</br>
+
+<p>有沒有發現 match 跟 C, Java 其他語言的 switch 很像呢?</p>
+</br>
+
+<p>Rust Note_20211023_1.2</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Rust Note(4)_Data Type III [String]</title>
     <url>/2021/10/23/20211023_1/</url>
     <content><![CDATA[<h2 id="Rust-字符串類型"><a href="#Rust-字符串類型" class="headerlink" title="Rust 字符串類型"></a>Rust 字符串類型</h2><hr>
@@ -605,7 +677,7 @@
 <blockquote>
 <p>有序的： <code>已被佔用</code> 且 <code>固定大小</code>。</p>
 </blockquote>
-<p>棧是透過堆疊而成，採<code>Last in， first out</code> 概念(後進先出)。<br>意即在最剛開始就被賦予固定大小的值，且同時建立指針。<br>EX: <code>&amp;str</code>;</p>
+<p>棧是透過堆疊而成，採<code>Last in， first out</code> 概念(後進先出)。<br>意即在最剛開始就被賦予固定大小的值。<br>EX: <code>&amp;str</code>;</p>
 <blockquote>
 <p>應用在基本標量類型 ex <code>整數型</code>，<code>浮點數</code>…等</p>
 </blockquote>
@@ -653,78 +725,6 @@
 </blockquote>
 <p>基於 RUST 的最大賣點就是 <code>安全級系統語言</code>, 這還會跟後面的 <code>Ownership 所有權</code> 跟 <code>barrow 借用</code> 有著相對應重要的關係.</p>
 <p>Rust Note 20211030_1.1</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust Note(5)_if_else_match</title>
-    <url>/2021/10/23/20211023-2/</url>
-    <content><![CDATA[<h2 id="if-else-if-else-if-條件判斷"><a href="#if-else-if-else-if-條件判斷" class="headerlink" title="if else, if else if 條件判斷"></a>if else, if else if 條件判斷</h2><blockquote>
-<p>如同其他語言一樣, Rust 也是有流程控制 <code>Control Condition Flow</code><br>使用的原則是, 只要有一個符合使用者所設定的條件, 那下方的判斷就不再執行.</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="if-else-若…則…"><a href="#if-else-若…則…" class="headerlink" title="if, else 若…則…"></a>if, else 若…則…</h2><blockquote>
-<p>這是最簡單的, 若非 A 則 B.</p>
-</blockquote>
-<p>範例如下 :</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a != b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is not equal to b!&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is equal with b!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : a is not equal to b!</span></span><br></pre></td></tr></table></figure>
-
-<p>Flow 如下:</p>
-<ol>
-<li>先宣告兩個變數 a and b, 且指定其形態</li>
-<li>做兩個對比比較</li>
-<li><code>!=</code> 運算符 : 不等於</li>
-<li><code>if &lt;condition 1&gt;</code> condition 1 條件滿足成立 <true> , 執行後面的運算</li>
-<li>後面的 else 就不會再被執行</li>
-</ol>
-<p>修改一下上面的範例 :</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a == b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is not equal to b!&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is equal with b!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : a is equal with b!</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>把 <code>!=</code> 換成 <code>==</code><br>那結果就變成 if &lt;condition 1&gt; 不成立 <false>, 就繼續往下執行 else 語句</p>
-</blockquote>
-<p>當然, 世界如果有這麼美好就好了, 絕對不可能只有單純兩個判斷………..</p>
-<p>那如果狀況很多呢? <code>How can I do?????????</code></p>
-</br>
-
-<h2 id="if-else-if-…-else-else-if-派上用場了"><a href="#if-else-if-…-else-else-if-派上用場了" class="headerlink" title="if, else if, …, else; else if 派上用場了!!!"></a>if, else if, …, else; <code>else if</code> 派上用場了!!!</h2><p>不囉嗦, 直接上範例</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a == b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 1&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 2&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> a &gt;= b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 3&quot;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 4&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : result 4</span></span><br></pre></td></tr></table></figure>
-
-<p>啾竟發生何事?</p>
-<ol>
-<li>宣告變數</li>
-<li>開始條件判斷<br>2-1. &lt;condition 1&gt; : a 不等於 b <false><br>2-2. &lt;condition 2&gt; : a 大於 b <false><br>2-3. &lt;conditoin 3&gt; : a 大於等於 b <false></li>
-<li>condition 1, 2, 3 都為 <code>false</code> 都不成立……..</li>
-<li>所以最後輸出結果為 else 裡面的運算語句.</li>
-</ol>
-<blockquote>
-<p>如果多了這麼多的條件判斷, 是不是可變化性變更多了?</p>
-</blockquote>
-<h2 id="Match-語句-Like-C-switch-語句"><a href="#Match-語句-Like-C-switch-語句" class="headerlink" title="Match 語句 (Like C switch 語句)"></a>Match 語句 (Like C switch 語句)</h2><blockquote>
-<p>如果條件很多, 寫一大堆 if else…….是不是會更亂?????????</p>
-</blockquote>
-<p>那我們用 match 看看~</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> s_name: &amp;<span class="built_in">str</span> = <span class="string">&quot;KB&quot;</span>; <span class="comment">// Using &amp;str</span></span><br><span class="line">    <span class="keyword">let</span> f_name = <span class="keyword">match</span> s_name &#123;</span><br><span class="line">        <span class="string">&quot;KJ&quot;</span> =&gt; <span class="string">&quot;Kylls Jellies&quot;</span>,</span><br><span class="line">        <span class="string">&quot;KD&quot;</span> =&gt; <span class="string">&quot;Kylls Dellies&quot;</span>,</span><br><span class="line">        <span class="string">&quot;KB&quot;</span> =&gt; <span class="string">&quot;Kylls Bellies&quot;</span>,</span><br><span class="line">        _ =&gt; <span class="string">&quot;Unknown&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Hi &#123;&#125;, Your name is &#123;&#125;.&quot;</span>, s_name, f_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hi KB, Your name is Kylls Bellies.</span></span><br></pre></td></tr></table></figure>
-
-<p>來看一下作用的 flow:</p>
-<ol>
-<li>f_name 有多個條件, “KJ”, “KD”, “KB”</li>
-<li>使用 <code>match</code> 這關鍵字, 啟動媒合功能?????</li>
-<li>只要裡面有對應到的, 就會<code>=&gt; 值</code>返回給 f_name</li>
-<li><code>_ =&gt; value</code> 代表都比對不到, 那就返回 Unknown.</li>
-</ol>
-</br>
-
-<p>有沒有發現 match 跟 C, Java 其他語言的 switch 很像呢?</p>
-</br>
-
-<p>Rust Note_20211023_1.2</p>
 ]]></content>
       <categories>
         <category>Rust</category>
