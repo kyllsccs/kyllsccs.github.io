@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kyllsccs.github.io/2021/11/01/20211011-1/</loc>
+    
+    <lastmod>2021-11-01</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://kyllsccs.github.io/2021/10/30/20211030-1/</loc>
     
     <lastmod>2021-11-01</lastmod>
@@ -102,13 +109,6 @@
 
   
   <url>
-    <loc>https://kyllsccs.github.io/tags/MurMur/</loc>
-    <lastmod>2021-11-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://kyllsccs.github.io/tags/SQL-MSSQL/</loc>
     <lastmod>2021-11-01</lastmod>
     <changefreq>daily</changefreq>
@@ -122,14 +122,14 @@
     <priority>0.6</priority>
   </url>
   
-
-  
   <url>
-    <loc>https://kyllsccs.github.io/categories/Kylls-MurMur/</loc>
+    <loc>https://kyllsccs.github.io/tags/MurMur/</loc>
     <lastmod>2021-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
+  
+
   
   <url>
     <loc>https://kyllsccs.github.io/categories/SQL/</loc>
@@ -140,6 +140,13 @@
   
   <url>
     <loc>https://kyllsccs.github.io/categories/Rust/</loc>
+    <lastmod>2021-11-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kyllsccs.github.io/categories/Kylls-MurMur/</loc>
     <lastmod>2021-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
