@@ -1,148 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>SQL基礎篇_MSSQL [一]</title>
-    <url>/2021/09/14/20210913/</url>
-    <content><![CDATA[<blockquote>
-<p>Do it, find it, know it, and solved it, finally record it.</p>
-</blockquote>
-<hr>
-<p>SQL 基礎篇</p>
-<span id="more"></span>
-
-<h3 id="基礎-SQL-查詢起手式"><a href="#基礎-SQL-查詢起手式" class="headerlink" title="基礎 SQL 查詢起手式"></a>基礎 SQL 查詢起手式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT * FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION_1 IS NULL</span><br><span class="line">AND</span><br><span class="line">CONDITION_2 &gt; 0</span><br><span class="line">AND</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p><code>SELECT</code> 是 SQL 查詢的起手式，<br><code>*</code> 代表是把所有的欄位名稱資料都撈出來<br><code>FROM</code> 從哪個 Table<br><code>TABLE_NAME</code> 是從哪個資料表<br><code>WHERE</code> 後面接的是判斷式的條件 AND / OR 等…</p>
-<hr>
-<h3 id="下-SQL-指令我可以用小寫嗎？"><a href="#下-SQL-指令我可以用小寫嗎？" class="headerlink" title="下 SQL 指令我可以用小寫嗎？"></a>下 SQL 指令我可以用小寫嗎？</h3><p>答案是<code>可以</code>的</p>
-<p>我還特別的去查詢了一下一定要用大寫嗎？</p>
-<p>答案是 有些資料庫為了避免大小寫的轉換影響效率 還是統一使用大寫好</p>
-<hr>
-<p>剛到做 ERP 的系統公司，說真的也是慢慢的從基本的語法開始練習…</p>
-<p>剛開始哪知道什麼查詢不查詢的 <del>憑著熱愛打字的熱誠？</del></p>
-<p>就開始了我的<code>奇幻ERP系統之旅</code> ?</p>
-<blockquote>
-<p>以前看著能夠在黑黑的螢幕不斷的鍵入指令很<code>帥</code>？！</p>
-</blockquote>
-<p><del>就這麼簡單的原因讓我欲罷不能…</del></p>
-<h3 id="基本插入資料指令-INSERT-INTO"><a href="#基本插入資料指令-INSERT-INTO" class="headerlink" title="基本插入資料指令 INSERT INTO"></a>基本插入資料指令 INSERT INTO</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">INSERT INTO TABLE_NAME (COLUNM_1) VALUES (VALUE_1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>INSERT INTO</code> 插入…直接英文字義比較好記憶.<br><code>TABLE_NAME</code> 插入總有個目標吧，這個就是你的目標表格.<br><code>(COLUNM_1)</code> 這個就是裡面的欄位名稱，可以想成<code>excel</code>.<br><code>VALUES (VALUE_1)</code> 裡面就是對應的值</p>
-<p>這邊要注意的是…欄位名稱跟值的順序位置是有對應的…<br>如果插入的順序錯了，or 插入的指定型態不一樣<br>資料庫就會吐紅紅地<code>error</code>給你看？！？！？！</p>
-<hr>
-<h3 id="基本更新指令-UPDATE-…-SET-…"><a href="#基本更新指令-UPDATE-…-SET-…" class="headerlink" title="基本更新指令 UPDATE … SET …"></a>基本更新指令 UPDATE … SET …</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">UPDATE TABLE_NAME SET COLUMN_1=VALUE_2</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE_1</span><br><span class="line">AND</span><br><span class="line">....</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>UPDATE</code> 按照字面上的意思就是 更新啦…很好記吧.<br><code>SET</code> 就是設定的意思啦.</p>
-<p>換個簡單的方式來記憶。</p>
-<blockquote>
-<p>就是把資料表裡面的某個欄位資料設定成你想要多資料。</p>
-</blockquote>
-<p>484 很好記</p>
-<hr>
-<h3 id="刪除指令-DELETE-FROM"><a href="#刪除指令-DELETE-FROM" class="headerlink" title="刪除指令 DELETE FROM"></a>刪除指令 DELETE FROM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>DELETE</code> 字面上就是刪除的意思<br><code>FROM</code> 從….哪裡的意思<br><code>WHERE</code> 放條件的地方，如果沒有放條件…~~~那就是全部刪除啦~~~</p>
-<hr>
-<p>簡單的紀錄一下。</p>
-]]></content>
-      <categories>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL_MSSQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust Note(2)_Data Type II</title>
-    <url>/2021/10/17/20211017/</url>
-    <content><![CDATA[<h2 id="Rsut-Note-2-Data-Types-II-Integer-Float"><a href="#Rsut-Note-2-Data-Types-II-Integer-Float" class="headerlink" title="Rsut Note(2) Data Types II Integer / Float"></a>Rsut Note(2) Data Types II Integer / Float</h2><p>依照 Data Type 的型別不同, 兩種方法:</p>
-<ol>
-<li>默認型別 : 直接使用系統默認</li>
-<li>指定型別 : 透過 <code>:&lt;type&gt;</code> 指定型別</li>
-</ol>
-<span id="more"></span>
-
-<h2 id="整數型-Integer"><a href="#整數型-Integer" class="headerlink" title="整數型 Integer"></a>整數型 Integer</h2></br>
-
-<blockquote>
-<p>Rust 默認為 i64</p>
-</blockquote>
-<p>Example_1: <strong>i8</strong> &gt;&gt; $2^7$-1 = 127, n=8, (n-1)=7, -1 就是扣掉 0<br>也就是如果型別指定為 i8, 可以接受的最大整數為 -128<del>0</del>127,<br>如超過 127 就會發生溢位</p>
-<p>Example_2: <strong>u8</strong> &gt;&gt; $2^8$-1 = 255, n=8, -1 就是扣掉 0<br>也就是如果型別指定為 u8, 可以接受的最大整數為 0~255,<br>如超過 255 就會發生溢位</p>
-<p>以下範例, 編譯器直接提醒:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">error: literal out of range <span class="keyword">for</span> `i8`</span><br><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: i8 = 256;</span><br><span class="line">  |                 ^^^</span><br><span class="line">  |</span><br><span class="line">  = note: `<span class="comment">#[deny(overflowing_literals)]` on by default</span></span><br><span class="line">  = note: the literal `256` does not fit into the <span class="built_in">type</span> `i8` whose range is `-128..=127`</span><br><span class="line">  = <span class="built_in">help</span>: consider using the <span class="built_in">type</span> `i16` instead</span><br><span class="line"></span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
-
-<h3 id="Rust-中的整型"><a href="#Rust-中的整型" class="headerlink" title="Rust 中的整型"></a>Rust 中的整型</h3><table>
-<thead>
-<tr>
-<th>長度</th>
-<th align="left">有符號</th>
-<th align="left">無符號</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>8 bits</td>
-<td align="left">i8</td>
-<td align="left">u8</td>
-</tr>
-<tr>
-<td>16bits</td>
-<td align="left">i16</td>
-<td align="left">u16</td>
-</tr>
-<tr>
-<td>32bits</td>
-<td align="left">i32</td>
-<td align="left">u32</td>
-</tr>
-<tr>
-<td>64bits</td>
-<td align="left">i64</td>
-<td align="left">u64</td>
-</tr>
-<tr>
-<td>128bits</td>
-<td align="left">i128</td>
-<td align="left">u128</td>
-</tr>
-<tr>
-<td>arch</td>
-<td align="left">isize</td>
-<td align="left">usize</td>
-</tr>
-</tbody></table>
-<p><code>i 代表有符號整數型: 可接受負數</code><br><code>u 代表無符號整數型: 不可接受負數</code> <strong>!</strong></p>
-<blockquote>
-<p>arch : 可以依照系統架構類型(x86 / x64), 直接判褖套用<code>默認型</code></p>
-</blockquote>
-</br>
-
-<p>以下範例, 編譯器報錯:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: u8 = -126;</span><br><span class="line">  |                 ^^^^ cannot apply unary operator `-`</span><br><span class="line">  |</span><br><span class="line">  = note: unsigned values cannot be negated</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0600`.</span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
-
-</br>
-
-<h2 id="浮點型-小數-Float"><a href="#浮點型-小數-Float" class="headerlink" title="浮點型 (小數) Float"></a>浮點型 (小數) Float</h2><blockquote>
-<p>Rust 浮點型默認值為 : <code>f64</code></p>
-</blockquote>
-</br>
-
-<p>浮點型只有兩種型態</p>
-<ul>
-<li>  <code>f32 : 單精度</code></li>
-<li>  <code>f64 : 雙精度</code></li>
-</ul>
-<p>可以參考這邊 : <a href="https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8">單精度雙精度</a></p>
-<p>Note : 20211017_v1.0</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Rust Note(8)_Tuple Array Vector</title>
     <url>/2021/11/01/20211011-1/</url>
     <content><![CDATA[<h2 id="數據集合類型"><a href="#數據集合類型" class="headerlink" title="數據集合類型"></a>數據集合類型</h2><hr>
@@ -217,217 +75,55 @@
       </tags>
   </entry>
   <entry>
-    <title>2019 Sep. 1st -2021 Sep. 12th 回顧</title>
-    <url>/2021/09/12/2019-2021/</url>
+    <title>SQL基礎篇_MSSQL [一]</title>
+    <url>/2021/09/14/20210913/</url>
     <content><![CDATA[<blockquote>
-<p>Find it, know it, then solved it.<br>發現問題, 了解問題, 解決問題</p>
+<p>Do it, find it, know it, and solved it, finally record it.</p>
 </blockquote>
 <hr>
-<p>那天夜黑風高的晚上~~~</p>
-<p>(喂~~</p>
+<p>SQL 基礎篇</p>
 <span id="more"></span>
 
-<p>這不是什麼恐怖故事齁, 只是要來寫寫我是怎開始踏入這<code>自學</code>的不歸路?!</p>
-<p><code>2019 Sep 1st</code> 這輩子讓我難忘的日子?</p>
-<p>在網路上查著哪一款語言最適合初學者… <del>我敢發誓我真的完全 0 經驗</del></p>
+<h3 id="基礎-SQL-查詢起手式"><a href="#基礎-SQL-查詢起手式" class="headerlink" title="基礎 SQL 查詢起手式"></a>基礎 SQL 查詢起手式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT * FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION_1 IS NULL</span><br><span class="line">AND</span><br><span class="line">CONDITION_2 &gt; 0</span><br><span class="line">AND</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p><code>SELECT</code> 是 SQL 查詢的起手式，<br><code>*</code> 代表是把所有的欄位名稱資料都撈出來<br><code>FROM</code> 從哪個 Table<br><code>TABLE_NAME</code> 是從哪個資料表<br><code>WHERE</code> 後面接的是判斷式的條件 AND / OR 等…</p>
+<hr>
+<h3 id="下-SQL-指令我可以用小寫嗎？"><a href="#下-SQL-指令我可以用小寫嗎？" class="headerlink" title="下 SQL 指令我可以用小寫嗎？"></a>下 SQL 指令我可以用小寫嗎？</h3><p>答案是<code>可以</code>的</p>
+<p>我還特別的去查詢了一下一定要用大寫嗎？</p>
+<p>答案是 有些資料庫為了避免大小寫的轉換影響效率 還是統一使用大寫好</p>
+<hr>
+<p>剛到做 ERP 的系統公司，說真的也是慢慢的從基本的語法開始練習…</p>
+<p>剛開始哪知道什麼查詢不查詢的 <del>憑著熱愛打字的熱誠？</del></p>
+<p>就開始了我的<code>奇幻ERP系統之旅</code> ?</p>
 <blockquote>
-<p><code>Python是適合新手的最佳語言</code> ???????</p>
+<p>以前看著能夠在黑黑的螢幕不斷的鍵入指令很<code>帥</code>？！</p>
 </blockquote>
-<p>說真的 : 我差點沒有崩潰…..</p>
+<p><del>就這麼簡單的原因讓我欲罷不能…</del></p>
+<h3 id="基本插入資料指令-INSERT-INTO"><a href="#基本插入資料指令-INSERT-INTO" class="headerlink" title="基本插入資料指令 INSERT INTO"></a>基本插入資料指令 INSERT INTO</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">INSERT INTO TABLE_NAME (COLUNM_1) VALUES (VALUE_1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>INSERT INTO</code> 插入…直接英文字義比較好記憶.<br><code>TABLE_NAME</code> 插入總有個目標吧，這個就是你的目標表格.<br><code>(COLUNM_1)</code> 這個就是裡面的欄位名稱，可以想成<code>excel</code>.<br><code>VALUES (VALUE_1)</code> 裡面就是對應的值</p>
+<p>這邊要注意的是…欄位名稱跟值的順序位置是有對應的…<br>如果插入的順序錯了，or 插入的指定型態不一樣<br>資料庫就會吐紅紅地<code>error</code>給你看？！？！？！</p>
+<hr>
+<h3 id="基本更新指令-UPDATE-…-SET-…"><a href="#基本更新指令-UPDATE-…-SET-…" class="headerlink" title="基本更新指令 UPDATE … SET …"></a>基本更新指令 UPDATE … SET …</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">UPDATE TABLE_NAME SET COLUMN_1=VALUE_2</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE_1</span><br><span class="line">AND</span><br><span class="line">....</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>UPDATE</code> 按照字面上的意思就是 更新啦…很好記吧.<br><code>SET</code> 就是設定的意思啦.</p>
+<p>換個簡單的方式來記憶。</p>
 <blockquote>
-<p><del>表面上看似越簡單的, 其實才是真正的難</del></p>
+<p>就是把資料表裡面的某個欄位資料設定成你想要多資料。</p>
 </blockquote>
-<br>
-<br>
-<br>
+<p>484 很好記</p>
+<hr>
+<h3 id="刪除指令-DELETE-FROM"><a href="#刪除指令-DELETE-FROM" class="headerlink" title="刪除指令 DELETE FROM"></a>刪除指令 DELETE FROM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>型態? 是什麼?<br>宣告? 是什麼?<br>判斷? 是什麼?<br>迴圈? 是什麼?</p>
-<br>  
-<br>
-
-<p>這些基礎中的基礎, 都不懂… 那更別談到什麼 <code>物件導向OOP</code></p>
-<br>  
-<br>  
-其實當初賭的就是一口氣? 我就不信我看不懂!!!  
-<br>
-<br>  
-<br>  
-<br>  
-~~但我看了一個月....我還是真的看不懂啊~~  
-<br>
-<br>
-<br>
-
-<blockquote>
-<p>自從我吃了<del>撒尿牛 X</del>後, 我開始考試考 100 分?<br>抱歉, 中毒太深…</p>
-</blockquote>
-<p>就這樣像個小迷糊一樣的, 一邊工作一邊開始這跳坑之路?</p>
-<br>  
-<br>  
-其實在我真正懂了這些...已經是隔 5 個月之後的事情了...
-<br>
-
-<p>真正讓我開竅的竟然是…….<code>Javascript</code> ??????????</p>
-<br>  
-<br>  
-這又是另外一段故事了, 簡單的帶一下...
-
-<p>算是幫新弄好的筆記紀錄做個處女秀?<br><br><br><br></p>
-<p><code>下次有機會再來認真地分享一下我的自學之路????</code> 認真樣(握拳)</p>
-]]></content>
-      <categories>
-        <category>Kylls MurMur</category>
-      </categories>
-      <tags>
-        <tag>MurMur</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL進階篇_MSSQL [双迴圈]</title>
-    <url>/2021/10/18/20211018/</url>
-    <content><![CDATA[<h2 id="SQL-双迴圈"><a href="#SQL-双迴圈" class="headerlink" title="SQL 双迴圈"></a>SQL 双迴圈</h2><span id="more"></span>
-
-<ul>
-<li>宣告變數<ul>
-<li>  DECLARE @_EX INT</li>
-</ul>
-</li>
-<li>設定變數值<ul>
-<li>  SET @_EX = 10</li>
-</ul>
-</li>
-<li>迴圈<ul>
-<li>  WHILE (condition)</li>
-</ul>
-</li>
-<li>起始&amp;結束<ul>
-<li>  BEGIN &lt;作用域&gt; END</li>
-</ul>
-</li>
-<li>設定指標<ul>
-<li>  宣告指標 DECLARE BBB CURSOR FOR SELECT * FROM TABLE</li>
-<li>  取得資料轉成變數 FETCH NEXT INTO @_VAR1</li>
-</ul>
-</li>
-<li>指標關閉<ul>
-<li>  關閉 CLOSE &lt;指標&gt;</li>
-<li>  釋放記憶體 DEALLOCATE &lt;指標&gt;</li>
-</ul>
-</li>
-<li>双迴圈 用巢狀方式撰寫<ul>
-<li>  BEGIN BEGIN &lt;作用域&gt; END END</li>
-</ul>
-</li>
-</ul>
-<h2 id="範例程式碼"><a href="#範例程式碼" class="headerlink" title="範例程式碼"></a>範例程式碼</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">--宣告變數型態</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BMIN <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BMAX <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_CMIN <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_CMAX <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BCNUM <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"><span class="keyword">DECLARE</span> @_BSNUM <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)宣告指標變數</span></span><br><span class="line"><span class="keyword">DECLARE</span> BCUS_BCNUM <span class="keyword">CURSOR</span> <span class="keyword">FOR</span> <span class="keyword">SELECT</span> BCNUM <span class="keyword">FROM</span> dbo.BCUS <span class="keyword">WHERE</span> BCTYP<span class="operator">=</span><span class="string">&#x27;C&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)設定變數值</span></span><br><span class="line"><span class="keyword">SET</span> @_CMIN <span class="operator">=</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">SET</span> @_CMAX <span class="operator">=</span> (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(BCNUM) <span class="keyword">FROM</span> BCUS <span class="keyword">WHERE</span> BCTYP<span class="operator">=</span><span class="string">&#x27;C&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">OPEN</span> BCUS_BCNUM <span class="comment">--(LEVEL 1)開啟指標, 請求資料</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)WHILE迴圈起始結束值</span></span><br><span class="line">WHILE (@_CMIN <span class="operator">&lt;</span> @_CMAX)</span><br><span class="line"><span class="comment">--(LEVEL 1)BEGIN &lt;作用域&gt; END</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">FETCH</span> NEXT <span class="keyword">FROM</span> BCUS_BCNUM <span class="keyword">INTO</span>	@_BCNUM <span class="comment">--(LEVEL 1) FETCH請求資料</span></span><br><span class="line">	<span class="comment">--(LEVEL 2)宣告指標變數</span></span><br><span class="line">	<span class="keyword">DECLARE</span> BSTO_BSNUM <span class="keyword">CURSOR</span> <span class="keyword">FOR</span> <span class="keyword">SELECT</span> BSNUM <span class="keyword">FROM</span> dbo.BSTO</span><br><span class="line">	<span class="comment">--(LEVEL 2)設定變數值</span></span><br><span class="line">	<span class="keyword">SET</span> @_BMIN <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">	<span class="keyword">SET</span> @_BMAX <span class="operator">=</span> (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(BSNUM) <span class="keyword">FROM</span> BSTO)</span><br><span class="line">	<span class="keyword">OPEN</span> BSTO_BSNUM <span class="comment">--(LEVEL 2)開啟指標, 請求資料</span></span><br><span class="line"></span><br><span class="line">	WHILE (@_BMIN <span class="operator">&lt;</span> @_BMAX) <span class="comment">--(LEVEL 2) WHILE迴圈起始結束值</span></span><br><span class="line">	<span class="keyword">BEGIN</span></span><br><span class="line">		<span class="keyword">FETCH</span> NEXT <span class="keyword">FROM</span> BSTO_BSNUM <span class="keyword">INTO</span>	@_BSNUM <span class="comment">--(LEVEL 2) FETCH 請求資料, 把資料變設定成變數</span></span><br><span class="line">		<span class="comment">--編寫指令, 裡面的VALUES數值用變數迭代</span></span><br><span class="line">		<span class="keyword">INSERT</span> <span class="keyword">INTO</span> dbo.BDZS (TRDAT,BSCLS,BSNUM,BSCTM,BSNUC,BSAVX)</span><br><span class="line">		<span class="keyword">VALUES</span> (<span class="string">&#x27;2021-10-18&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,@_BSNUM,@_BCNUM,@_BSNUM,<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">SET</span> @_BMIN <span class="operator">=</span> @_BMIN <span class="operator">+</span> <span class="number">1</span></span><br><span class="line">	<span class="keyword">END</span></span><br><span class="line">	<span class="keyword">CLOSE</span> BSTO_BSNUM　<span class="comment">--(LEVEL 2) 關閉指標</span></span><br><span class="line">	<span class="keyword">DEALLOCATE</span> BSTO_BSNUM <span class="comment">--(LEVEL 2) 釋放指標記憶體</span></span><br><span class="line">	<span class="keyword">SET</span> @_CMIN <span class="operator">=</span> @_CMIN <span class="operator">+</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">END</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CLOSE</span> BCUS_BCNUM <span class="comment">--(LEVEL 1) 關閉指標</span></span><br><span class="line"><span class="keyword">DEALLOCATE</span> BCUS_BCNUM <span class="comment">--(LEVEL 1) 釋放指標記憶體</span></span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
-
-<p>SQL_NOTE : 20211018_1.1</p>
+<p><code>DELETE</code> 字面上就是刪除的意思<br><code>FROM</code> 從….哪裡的意思<br><code>WHERE</code> 放條件的地方，如果沒有放條件…~~~那就是全部刪除啦~~~</p>
+<hr>
+<p>簡單的紀錄一下。</p>
 ]]></content>
       <categories>
         <category>SQL</category>
       </categories>
       <tags>
         <tag>SQL_MSSQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust Note(4)_Data Type III [String]</title>
-    <url>/2021/10/23/20211023_1/</url>
-    <content><![CDATA[<h2 id="Rust-字符串類型"><a href="#Rust-字符串類型" class="headerlink" title="Rust 字符串類型"></a>Rust 字符串類型</h2><hr>
-<p>在 Rust 裡面, 字符串類型分以下兩種:</p>
-<ul>
-<li>  <code>&amp;str</code> : 字符串字面量</li>
-<li>  <code>String</code> : 公開的 struct</li>
-</ul>
-<span id="more"></span>
-
-<p>在這之前, 先來理解一個概念 <code>指針</code></p>
-<blockquote>
-<p>指針 : 在 C++裡面有一樣的概念<br>想成把方向指到一個記憶體位址, 也就是 Rust 裡面常常會看到有人說 <code>borrow</code> 借用的概念</p>
-</blockquote>
-<h3 id="借用-borrow"><a href="#借用-borrow" class="headerlink" title="借用 borrow"></a>借用 <code>borrow</code></h3><hr>
-<blockquote>
-<p>當一個變量被賦值成立, 也就代表被分配一個內存位址<br>當變數成立, 代表在記憶體中這個值是唯一, 不能去改變(除非設定為可變 mut), 不然只能<code>唯讀</code>.<br>那我們就是利用 <code>&amp;</code> 符號來借用<br>可借用的有 :</p>
-<ul>
-<li>  Type : 型態</li>
-<li>  Value : 值 (可為字串/整數/福點數)</li>
-</ul>
-</blockquote>
-<h2 id="amp-str-字符串字面量"><a href="#amp-str-字符串字面量" class="headerlink" title="&amp;str 字符串字面量"></a><code>&amp;str</code> 字符串字面量</h2><hr>
-<blockquote>
-<p><code>str</code> : 大小未知, 只能在指針後使用</p>
-</blockquote>
-<pre><code>也就是一個位址, 要把指針指到str的地方, 套用str的型態
-</code></pre>
-<blockquote>
-<p>所以 str 都必須要與 <code>&amp;</code> 一起使用.</p>
-</blockquote>
-<p>範例 :</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : Hello world</span></span><br></pre></td></tr></table></figure>
-
-<p>如果沒有與 <code>&amp;</code> 連用</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">str</span> = <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>輸出報錯:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error[E0277]: the size <span class="keyword">for</span> values of <span class="built_in">type</span> `str` cannot be known at compilation time</span><br><span class="line">   --&gt; src\main.rs:3:5</span><br><span class="line">    |</span><br><span class="line">3   |     println!(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">    |     ^^^^^^^^^^^^^^^^^ doesn<span class="string">&#x27;t have a size known at compile-time</span></span><br><span class="line"><span class="string">    |</span></span><br><span class="line"><span class="string">   ::: C:\Users\kylls\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\core\src\fmt\mod.rs:294:20</span></span><br><span class="line"><span class="string">    |</span></span><br><span class="line"><span class="string">294 |     pub fn new&lt;&#x27;</span>b, T&gt;(x: &amp;<span class="string">&#x27;b T, f: fn(&amp;T, &amp;mut Formatter&lt;&#x27;</span>_&gt;) -&gt; Result) -&gt; ArgumentV1&lt;<span class="string">&#x27;b&gt; &#123;</span></span><br><span class="line"><span class="string">    |                    - required by this bound in `ArgumentV1::&lt;&#x27;</span>a&gt;::new`</span><br><span class="line">    |</span><br><span class="line">    = <span class="built_in">help</span>: the trait `Sized` is not implemented <span class="keyword">for</span> `str`</span><br><span class="line">    = note: this error originates <span class="keyword">in</span> the macro `<span class="variable">$crate</span>::format_args_nl` (<span class="keyword">in</span> Nightly builds, run with -Z macro-backtrace <span class="keyword">for</span> more info)</span><br></pre></td></tr></table></figure>
-
-<p>看看 compiler 跟我們說的</p>
-<blockquote>
-<p>size 未知, 導致無法編譯</p>
-</blockquote>
-<p>也就是說, <code>沒有指針指到一個明確的記憶體位址</code></p>
-</br>
-
-<h2 id="String-字符串對象"><a href="#String-字符串對象" class="headerlink" title="String 字符串對象"></a><code>String</code> 字符串對象</h2><hr>
-<p><code>OOP</code> 物件導向編程<br><code>String</code> 就是一個對象, 型態為<code>字符串</code></p>
-<p>透過以下方法建立</p>
-<ul>
-<li>  <code>new</code></li>
-<li>  <code>from</code></li>
-</ul>
-<p>先看 <code>new</code>的部分:</p>
-<ol>
-<li>直接 new 出一個記憶體空間(堆 heap) 來儲存</li>
-<li>用 push_str 的方式, 從後段把字符添加上去</li>
-</ol>
-<p>Example:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> a = <span class="built_in">String</span>::new();</span><br><span class="line">    a.push_str(<span class="string">&quot;Hello world, you!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello world, you!</span></span><br></pre></td></tr></table></figure>
-
-<p>再來看<code>from</code>的部分</p>
-<ol>
-<li>直接將字符串寫進去</li>
-<li>同時間 compiler 會同步把字符串 new 出一個新的堆來儲存.</li>
-</ol>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="built_in">String</span>::from(<span class="string">&quot;Hello you, world!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : Hello you, world!</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>new 單純是一個字符字面上的量, 而 from 出來的是一個字符串的對象</p>
-</blockquote>
-</br>
-
-<h2 id="字串操作"><a href="#字串操作" class="headerlink" title="字串操作"></a>字串操作</h2><hr>
-<blockquote>
-<p>如果要操作字串就必須要轉成<code>字符串對象</code></p>
-</blockquote>
-<ul>
-<li>  to_string() : 轉換為字符串對象</li>
-<li>  replace(a, b) : a 為要取代的字符, b 為取代的字符 a 替換成 b</li>
-<li>  as_str() : 把字符對象轉為字符量 (from to new)</li>
-<li>  push() : 原字符串後面追加</li>
-<li>  push_str() : 功能同 push</li>
-<li>  len() : 獲得字符串長度</li>
-<li>  trim() : 去除字首字尾空白符號</li>
-<li>  spilit_whitespace() : 以空白符作為分開依據</li>
-<li>  split(“.”) : 以 <code>.</code> 為節點分開</li>
-<li>  char() : 將字串打散為單一字符</li>
-</ul>
-<p>Rust_Note 20211023_1.1</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
       </tags>
   </entry>
   <entry>
@@ -542,6 +238,210 @@
       </tags>
   </entry>
   <entry>
+    <title>Rust Note(2)_Data Type II</title>
+    <url>/2021/10/17/20211017/</url>
+    <content><![CDATA[<h2 id="Rsut-Note-2-Data-Types-II-Integer-Float"><a href="#Rsut-Note-2-Data-Types-II-Integer-Float" class="headerlink" title="Rsut Note(2) Data Types II Integer / Float"></a>Rsut Note(2) Data Types II Integer / Float</h2><p>依照 Data Type 的型別不同, 兩種方法:</p>
+<ol>
+<li>默認型別 : 直接使用系統默認</li>
+<li>指定型別 : 透過 <code>:&lt;type&gt;</code> 指定型別</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="整數型-Integer"><a href="#整數型-Integer" class="headerlink" title="整數型 Integer"></a>整數型 Integer</h2></br>
+
+<blockquote>
+<p>Rust 默認為 i64</p>
+</blockquote>
+<p>Example_1: <strong>i8</strong> &gt;&gt; $2^7$-1 = 127, n=8, (n-1)=7, -1 就是扣掉 0<br>也就是如果型別指定為 i8, 可以接受的最大整數為 -128<del>0</del>127,<br>如超過 127 就會發生溢位</p>
+<p>Example_2: <strong>u8</strong> &gt;&gt; $2^8$-1 = 255, n=8, -1 就是扣掉 0<br>也就是如果型別指定為 u8, 可以接受的最大整數為 0~255,<br>如超過 255 就會發生溢位</p>
+<p>以下範例, 編譯器直接提醒:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">error: literal out of range <span class="keyword">for</span> `i8`</span><br><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: i8 = 256;</span><br><span class="line">  |                 ^^^</span><br><span class="line">  |</span><br><span class="line">  = note: `<span class="comment">#[deny(overflowing_literals)]` on by default</span></span><br><span class="line">  = note: the literal `256` does not fit into the <span class="built_in">type</span> `i8` whose range is `-128..=127`</span><br><span class="line">  = <span class="built_in">help</span>: consider using the <span class="built_in">type</span> `i16` instead</span><br><span class="line"></span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
+
+<h3 id="Rust-中的整型"><a href="#Rust-中的整型" class="headerlink" title="Rust 中的整型"></a>Rust 中的整型</h3><table>
+<thead>
+<tr>
+<th>長度</th>
+<th align="left">有符號</th>
+<th align="left">無符號</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>8 bits</td>
+<td align="left">i8</td>
+<td align="left">u8</td>
+</tr>
+<tr>
+<td>16bits</td>
+<td align="left">i16</td>
+<td align="left">u16</td>
+</tr>
+<tr>
+<td>32bits</td>
+<td align="left">i32</td>
+<td align="left">u32</td>
+</tr>
+<tr>
+<td>64bits</td>
+<td align="left">i64</td>
+<td align="left">u64</td>
+</tr>
+<tr>
+<td>128bits</td>
+<td align="left">i128</td>
+<td align="left">u128</td>
+</tr>
+<tr>
+<td>arch</td>
+<td align="left">isize</td>
+<td align="left">usize</td>
+</tr>
+</tbody></table>
+<p><code>i 代表有符號整數型: 可接受負數</code><br><code>u 代表無符號整數型: 不可接受負數</code> <strong>!</strong></p>
+<blockquote>
+<p>arch : 可以依照系統架構類型(x86 / x64), 直接判褖套用<code>默認型</code></p>
+</blockquote>
+</br>
+
+<p>以下範例, 編譯器報錯:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: u8 = -126;</span><br><span class="line">  |                 ^^^^ cannot apply unary operator `-`</span><br><span class="line">  |</span><br><span class="line">  = note: unsigned values cannot be negated</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0600`.</span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
+
+</br>
+
+<h2 id="浮點型-小數-Float"><a href="#浮點型-小數-Float" class="headerlink" title="浮點型 (小數) Float"></a>浮點型 (小數) Float</h2><blockquote>
+<p>Rust 浮點型默認值為 : <code>f64</code></p>
+</blockquote>
+</br>
+
+<p>浮點型只有兩種型態</p>
+<ul>
+<li>  <code>f32 : 單精度</code></li>
+<li>  <code>f64 : 雙精度</code></li>
+</ul>
+<p>可以參考這邊 : <a href="https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8">單精度雙精度</a></p>
+<p>Note : 20211017_v1.0</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL進階篇_MSSQL [双迴圈]</title>
+    <url>/2021/10/18/20211018/</url>
+    <content><![CDATA[<h2 id="SQL-双迴圈"><a href="#SQL-双迴圈" class="headerlink" title="SQL 双迴圈"></a>SQL 双迴圈</h2><span id="more"></span>
+
+<ul>
+<li>宣告變數<ul>
+<li>  DECLARE @_EX INT</li>
+</ul>
+</li>
+<li>設定變數值<ul>
+<li>  SET @_EX = 10</li>
+</ul>
+</li>
+<li>迴圈<ul>
+<li>  WHILE (condition)</li>
+</ul>
+</li>
+<li>起始&amp;結束<ul>
+<li>  BEGIN &lt;作用域&gt; END</li>
+</ul>
+</li>
+<li>設定指標<ul>
+<li>  宣告指標 DECLARE BBB CURSOR FOR SELECT * FROM TABLE</li>
+<li>  取得資料轉成變數 FETCH NEXT INTO @_VAR1</li>
+</ul>
+</li>
+<li>指標關閉<ul>
+<li>  關閉 CLOSE &lt;指標&gt;</li>
+<li>  釋放記憶體 DEALLOCATE &lt;指標&gt;</li>
+</ul>
+</li>
+<li>双迴圈 用巢狀方式撰寫<ul>
+<li>  BEGIN BEGIN &lt;作用域&gt; END END</li>
+</ul>
+</li>
+</ul>
+<h2 id="範例程式碼"><a href="#範例程式碼" class="headerlink" title="範例程式碼"></a>範例程式碼</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">--宣告變數型態</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BMIN <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BMAX <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_CMIN <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_CMAX <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BCNUM <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"><span class="keyword">DECLARE</span> @_BSNUM <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)宣告指標變數</span></span><br><span class="line"><span class="keyword">DECLARE</span> BCUS_BCNUM <span class="keyword">CURSOR</span> <span class="keyword">FOR</span> <span class="keyword">SELECT</span> BCNUM <span class="keyword">FROM</span> dbo.BCUS <span class="keyword">WHERE</span> BCTYP<span class="operator">=</span><span class="string">&#x27;C&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)設定變數值</span></span><br><span class="line"><span class="keyword">SET</span> @_CMIN <span class="operator">=</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">SET</span> @_CMAX <span class="operator">=</span> (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(BCNUM) <span class="keyword">FROM</span> BCUS <span class="keyword">WHERE</span> BCTYP<span class="operator">=</span><span class="string">&#x27;C&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">OPEN</span> BCUS_BCNUM <span class="comment">--(LEVEL 1)開啟指標, 請求資料</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)WHILE迴圈起始結束值</span></span><br><span class="line">WHILE (@_CMIN <span class="operator">&lt;</span> @_CMAX)</span><br><span class="line"><span class="comment">--(LEVEL 1)BEGIN &lt;作用域&gt; END</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">FETCH</span> NEXT <span class="keyword">FROM</span> BCUS_BCNUM <span class="keyword">INTO</span>	@_BCNUM <span class="comment">--(LEVEL 1) FETCH請求資料</span></span><br><span class="line">	<span class="comment">--(LEVEL 2)宣告指標變數</span></span><br><span class="line">	<span class="keyword">DECLARE</span> BSTO_BSNUM <span class="keyword">CURSOR</span> <span class="keyword">FOR</span> <span class="keyword">SELECT</span> BSNUM <span class="keyword">FROM</span> dbo.BSTO</span><br><span class="line">	<span class="comment">--(LEVEL 2)設定變數值</span></span><br><span class="line">	<span class="keyword">SET</span> @_BMIN <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">	<span class="keyword">SET</span> @_BMAX <span class="operator">=</span> (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(BSNUM) <span class="keyword">FROM</span> BSTO)</span><br><span class="line">	<span class="keyword">OPEN</span> BSTO_BSNUM <span class="comment">--(LEVEL 2)開啟指標, 請求資料</span></span><br><span class="line"></span><br><span class="line">	WHILE (@_BMIN <span class="operator">&lt;</span> @_BMAX) <span class="comment">--(LEVEL 2) WHILE迴圈起始結束值</span></span><br><span class="line">	<span class="keyword">BEGIN</span></span><br><span class="line">		<span class="keyword">FETCH</span> NEXT <span class="keyword">FROM</span> BSTO_BSNUM <span class="keyword">INTO</span>	@_BSNUM <span class="comment">--(LEVEL 2) FETCH 請求資料, 把資料變設定成變數</span></span><br><span class="line">		<span class="comment">--編寫指令, 裡面的VALUES數值用變數迭代</span></span><br><span class="line">		<span class="keyword">INSERT</span> <span class="keyword">INTO</span> dbo.BDZS (TRDAT,BSCLS,BSNUM,BSCTM,BSNUC,BSAVX)</span><br><span class="line">		<span class="keyword">VALUES</span> (<span class="string">&#x27;2021-10-18&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,@_BSNUM,@_BCNUM,@_BSNUM,<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">SET</span> @_BMIN <span class="operator">=</span> @_BMIN <span class="operator">+</span> <span class="number">1</span></span><br><span class="line">	<span class="keyword">END</span></span><br><span class="line">	<span class="keyword">CLOSE</span> BSTO_BSNUM　<span class="comment">--(LEVEL 2) 關閉指標</span></span><br><span class="line">	<span class="keyword">DEALLOCATE</span> BSTO_BSNUM <span class="comment">--(LEVEL 2) 釋放指標記憶體</span></span><br><span class="line">	<span class="keyword">SET</span> @_CMIN <span class="operator">=</span> @_CMIN <span class="operator">+</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">END</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CLOSE</span> BCUS_BCNUM <span class="comment">--(LEVEL 1) 關閉指標</span></span><br><span class="line"><span class="keyword">DEALLOCATE</span> BCUS_BCNUM <span class="comment">--(LEVEL 1) 釋放指標記憶體</span></span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+<p>SQL_NOTE : 20211018_1.1</p>
+]]></content>
+      <categories>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL_MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2019 Sep. 1st -2021 Sep. 12th 回顧</title>
+    <url>/2021/09/12/2019-2021/</url>
+    <content><![CDATA[<blockquote>
+<p>Find it, know it, then solved it.<br>發現問題, 了解問題, 解決問題</p>
+</blockquote>
+<hr>
+<p>那天夜黑風高的晚上~~~</p>
+<p>(喂~~</p>
+<span id="more"></span>
+
+<p>這不是什麼恐怖故事齁, 只是要來寫寫我是怎開始踏入這<code>自學</code>的不歸路?!</p>
+<p><code>2019 Sep 1st</code> 這輩子讓我難忘的日子?</p>
+<p>在網路上查著哪一款語言最適合初學者… <del>我敢發誓我真的完全 0 經驗</del></p>
+<blockquote>
+<p><code>Python是適合新手的最佳語言</code> ???????</p>
+</blockquote>
+<p>說真的 : 我差點沒有崩潰…..</p>
+<blockquote>
+<p><del>表面上看似越簡單的, 其實才是真正的難</del></p>
+</blockquote>
+<br>
+<br>
+<br>
+
+<p>型態? 是什麼?<br>宣告? 是什麼?<br>判斷? 是什麼?<br>迴圈? 是什麼?</p>
+<br>  
+<br>
+
+<p>這些基礎中的基礎, 都不懂… 那更別談到什麼 <code>物件導向OOP</code></p>
+<br>  
+<br>  
+其實當初賭的就是一口氣? 我就不信我看不懂!!!  
+<br>
+<br>  
+<br>  
+<br>  
+~~但我看了一個月....我還是真的看不懂啊~~  
+<br>
+<br>
+<br>
+
+<blockquote>
+<p>自從我吃了<del>撒尿牛 X</del>後, 我開始考試考 100 分?<br>抱歉, 中毒太深…</p>
+</blockquote>
+<p>就這樣像個小迷糊一樣的, 一邊工作一邊開始這跳坑之路?</p>
+<br>  
+<br>  
+其實在我真正懂了這些...已經是隔 5 個月之後的事情了...
+<br>
+
+<p>真正讓我開竅的竟然是…….<code>Javascript</code> ??????????</p>
+<br>  
+<br>  
+這又是另外一段故事了, 簡單的帶一下...
+
+<p>算是幫新弄好的筆記紀錄做個處女秀?<br><br><br><br></p>
+<p><code>下次有機會再來認真地分享一下我的自學之路????</code> 認真樣(握拳)</p>
+]]></content>
+      <categories>
+        <category>Kylls MurMur</category>
+      </categories>
+      <tags>
+        <tag>MurMur</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Rust Note(3)_Variables I</title>
     <url>/2021/10/20/20211020/</url>
     <content><![CDATA[<blockquote>
@@ -646,6 +546,106 @@
 </li>
 </ul>
 <p>Rust Note_20211020</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(4)_Data Type III [String]</title>
+    <url>/2021/10/23/20211023_1/</url>
+    <content><![CDATA[<h2 id="Rust-字符串類型"><a href="#Rust-字符串類型" class="headerlink" title="Rust 字符串類型"></a>Rust 字符串類型</h2><hr>
+<p>在 Rust 裡面, 字符串類型分以下兩種:</p>
+<ul>
+<li>  <code>&amp;str</code> : 字符串字面量</li>
+<li>  <code>String</code> : 公開的 struct</li>
+</ul>
+<span id="more"></span>
+
+<p>在這之前, 先來理解一個概念 <code>指針</code></p>
+<blockquote>
+<p>指針 : 在 C++裡面有一樣的概念<br>想成把方向指到一個記憶體位址, 也就是 Rust 裡面常常會看到有人說 <code>borrow</code> 借用的概念</p>
+</blockquote>
+<h3 id="借用-borrow"><a href="#借用-borrow" class="headerlink" title="借用 borrow"></a>借用 <code>borrow</code></h3><hr>
+<blockquote>
+<p>當一個變量被賦值成立, 也就代表被分配一個內存位址<br>當變數成立, 代表在記憶體中這個值是唯一, 不能去改變(除非設定為可變 mut), 不然只能<code>唯讀</code>.<br>那我們就是利用 <code>&amp;</code> 符號來借用<br>可借用的有 :</p>
+<ul>
+<li>  Type : 型態</li>
+<li>  Value : 值 (可為字串/整數/福點數)</li>
+</ul>
+</blockquote>
+<h2 id="amp-str-字符串字面量"><a href="#amp-str-字符串字面量" class="headerlink" title="&amp;str 字符串字面量"></a><code>&amp;str</code> 字符串字面量</h2><hr>
+<blockquote>
+<p><code>str</code> : 大小未知, 只能在指針後使用</p>
+</blockquote>
+<pre><code>也就是一個位址, 要把指針指到str的地方, 套用str的型態
+</code></pre>
+<blockquote>
+<p>所以 str 都必須要與 <code>&amp;</code> 一起使用.</p>
+</blockquote>
+<p>範例 :</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : Hello world</span></span><br></pre></td></tr></table></figure>
+
+<p>如果沒有與 <code>&amp;</code> 連用</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">str</span> = <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>輸出報錯:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error[E0277]: the size <span class="keyword">for</span> values of <span class="built_in">type</span> `str` cannot be known at compilation time</span><br><span class="line">   --&gt; src\main.rs:3:5</span><br><span class="line">    |</span><br><span class="line">3   |     println!(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">    |     ^^^^^^^^^^^^^^^^^ doesn<span class="string">&#x27;t have a size known at compile-time</span></span><br><span class="line"><span class="string">    |</span></span><br><span class="line"><span class="string">   ::: C:\Users\kylls\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\core\src\fmt\mod.rs:294:20</span></span><br><span class="line"><span class="string">    |</span></span><br><span class="line"><span class="string">294 |     pub fn new&lt;&#x27;</span>b, T&gt;(x: &amp;<span class="string">&#x27;b T, f: fn(&amp;T, &amp;mut Formatter&lt;&#x27;</span>_&gt;) -&gt; Result) -&gt; ArgumentV1&lt;<span class="string">&#x27;b&gt; &#123;</span></span><br><span class="line"><span class="string">    |                    - required by this bound in `ArgumentV1::&lt;&#x27;</span>a&gt;::new`</span><br><span class="line">    |</span><br><span class="line">    = <span class="built_in">help</span>: the trait `Sized` is not implemented <span class="keyword">for</span> `str`</span><br><span class="line">    = note: this error originates <span class="keyword">in</span> the macro `<span class="variable">$crate</span>::format_args_nl` (<span class="keyword">in</span> Nightly builds, run with -Z macro-backtrace <span class="keyword">for</span> more info)</span><br></pre></td></tr></table></figure>
+
+<p>看看 compiler 跟我們說的</p>
+<blockquote>
+<p>size 未知, 導致無法編譯</p>
+</blockquote>
+<p>也就是說, <code>沒有指針指到一個明確的記憶體位址</code></p>
+</br>
+
+<h2 id="String-字符串對象"><a href="#String-字符串對象" class="headerlink" title="String 字符串對象"></a><code>String</code> 字符串對象</h2><hr>
+<p><code>OOP</code> 物件導向編程<br><code>String</code> 就是一個對象, 型態為<code>字符串</code></p>
+<p>透過以下方法建立</p>
+<ul>
+<li>  <code>new</code></li>
+<li>  <code>from</code></li>
+</ul>
+<p>先看 <code>new</code>的部分:</p>
+<ol>
+<li>直接 new 出一個記憶體空間(堆 heap) 來儲存</li>
+<li>用 push_str 的方式, 從後段把字符添加上去</li>
+</ol>
+<p>Example:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> a = <span class="built_in">String</span>::new();</span><br><span class="line">    a.push_str(<span class="string">&quot;Hello world, you!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello world, you!</span></span><br></pre></td></tr></table></figure>
+
+<p>再來看<code>from</code>的部分</p>
+<ol>
+<li>直接將字符串寫進去</li>
+<li>同時間 compiler 會同步把字符串 new 出一個新的堆來儲存.</li>
+</ol>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="built_in">String</span>::from(<span class="string">&quot;Hello you, world!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : Hello you, world!</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>new 單純是一個字符字面上的量, 而 from 出來的是一個字符串的對象</p>
+</blockquote>
+</br>
+
+<h2 id="字串操作"><a href="#字串操作" class="headerlink" title="字串操作"></a>字串操作</h2><hr>
+<blockquote>
+<p>如果要操作字串就必須要轉成<code>字符串對象</code></p>
+</blockquote>
+<ul>
+<li>  to_string() : 轉換為字符串對象</li>
+<li>  replace(a, b) : a 為要取代的字符, b 為取代的字符 a 替換成 b</li>
+<li>  as_str() : 把字符對象轉為字符量 (from to new)</li>
+<li>  push() : 原字符串後面追加</li>
+<li>  push_str() : 功能同 push</li>
+<li>  len() : 獲得字符串長度</li>
+<li>  trim() : 去除字首字尾空白符號</li>
+<li>  spilit_whitespace() : 以空白符作為分開依據</li>
+<li>  split(“.”) : 以 <code>.</code> 為節點分開</li>
+<li>  char() : 將字串打散為單一字符</li>
+</ul>
+<p>Rust_Note 20211023_1.1</p>
 ]]></content>
       <categories>
         <category>Rust</category>
@@ -799,6 +799,101 @@
 </blockquote>
 <p>基於 RUST 的最大賣點就是 <code>安全級系統語言</code>, 這還會跟後面的 <code>Ownership 所有權</code> 跟 <code>borrow 借用</code> 有著相對應重要的關係.</p>
 <p>Rust Note 20211030_1.1</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(9)_Struct_implement</title>
+    <url>/2021/11/05/20211105-1/</url>
+    <content><![CDATA[<h2 id="struct-amp-struct-implement"><a href="#struct-amp-struct-implement" class="headerlink" title="struct &amp; struct implement"></a>struct &amp; struct implement</h2><p>用於組合並儲存不同類型的資料。</p>
+<p>有別於 Array, Vector 只能存放同類型的資料，struct 提供了更加彈性的組合。</p>
+<p>透過組合用法，可以達成類似其他語言，比如說 Python or Javascript 一樣，使用類似 class 的概念。</p>
+<span id="more"></span>
+
+<h2 id="struct-結構"><a href="#struct-結構" class="headerlink" title="[struct] 結構"></a>[struct] 結構</h2><hr>
+<blockquote>
+<p>使用關鍵字 ”struct” 來建立一個結構，並且指定型態。</p>
+</blockquote>
+<h3 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rectangle</span></span> &#123;</span><br><span class="line">        width: <span class="built_in">u64</span>,</span><br><span class="line">        height: <span class="built_in">u64</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Working-Flow"><a href="#Working-Flow" class="headerlink" title="Working Flow"></a>Working Flow</h3><ul>
+<li>  以 <code>struct</code> 關鍵字，開始建立結構</li>
+<li>  賦予結構名稱，<code>首字母需大寫</code></li>
+<li>建立的結構值在 <code>&#123;.........&#125;</code> 大括號這個作用域(scope)裡面。<ul>
+<li>  賦予結構值名稱</li>
+<li>  指定結構值型態 <code>: type</code>，<code>:</code> 賦予的意思</li>
+<li>  不同結構值，中間以 <code>,</code> 隔開</li>
+</ul>
+</li>
+</ul>
+<h2 id="struct-初始化"><a href="#struct-初始化" class="headerlink" title="struct 初始化"></a>struct 初始化</h2><hr>
+<blockquote>
+<p>透過初始化 struct ，來達成使用 struct 的變數。</p>
+</blockquote>
+<h3 id="程式碼-1"><a href="#程式碼-1" class="headerlink" title="程式碼"></a>程式碼</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rectangle</span></span> &#123;</span><br><span class="line">        width: <span class="built_in">u64</span>,</span><br><span class="line">        height: <span class="built_in">u64</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> rectangle_1 = Rectangle &#123;</span><br><span class="line">                width: <span class="number">80</span>,</span><br><span class="line">                height: <span class="number">30</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Rectangle 1 width is &#123;&#125;; height is &#123;&#125;.&quot;</span>,</span><br><span class="line">                       rectangle_1.width, rectangle_1.height)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//output: Rectangle 1 width is 80; height is 30.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Working-Flow-1"><a href="#Working-Flow-1" class="headerlink" title="Working Flow"></a>Working Flow</h3><ul>
+<li>使用<code>let</code> 來初始化 struct.<ul>
+<li>  等號右邊必須要先跟 rust 說，你是要使用哪個 struct</li>
+<li>  使用 <code>&#123;...&#125;</code> 包起來</li>
+<li>  在 struct 裡面是指定型態，這邊就是指定值。</li>
+<li>  各個值中間以<code>,</code> 隔開</li>
+<li>  最後要記得加上 <code>;</code> 分隔符。</li>
+<li>數值的型態如果沒有符合 struct 定義的，就會報錯。<ul>
+<li>  ex: struct 宣告 type 為 u64, 但初始給值給 “Hello”</li>
+<li>  “Hello” 為字串型態，與初始宣告 type 不符合</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>呼叫使用被初始化 struct 的值，使用<code>.</code>來進行呼叫<ul>
+<li>  rectangle_1.width</li>
+</ul>
+</li>
+</ul>
+<h2 id="fn-呼叫套用-struct"><a href="#fn-呼叫套用-struct" class="headerlink" title="fn 呼叫套用 struct"></a>fn 呼叫套用 struct</h2><hr>
+<blockquote>
+<p>透過初始化 struct 之後, 可以利用 <code>.</code>來進行呼叫連接.</p>
+</blockquote>
+<p>如果要把 struct 當成 參數[parameter]來帶入應用呢? 答案是可以的…</p>
+<h3 id="程式碼-2"><a href="#程式碼-2" class="headerlink" title="程式碼"></a>程式碼</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rectangle</span></span> &#123;</span><br><span class="line">    width: <span class="built_in">u64</span>,</span><br><span class="line">    height: <span class="built_in">u64</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">rectangle_area</span></span>(rectangle: Rectangle) &#123;</span><br><span class="line">    <span class="keyword">let</span> area: <span class="built_in">u64</span> = rectangle.width * rectangle.height;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;This rectangle area is &#123;&#125;.&quot;</span>,area)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="comment">// give a value by using initial struct.</span></span><br><span class="line">    <span class="keyword">let</span> rectangle_1 = Rectangle &#123;</span><br><span class="line">        width: <span class="number">99</span>,</span><br><span class="line">        height: <span class="number">88</span></span><br><span class="line">    &#125;;</span><br><span class="line">    rectangle_area(rectangle_1); <span class="comment">// Using function to caculate the area.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : This rectangle area is 8712.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Working-Flow-2"><a href="#Working-Flow-2" class="headerlink" title="Working Flow"></a>Working Flow</h3><ul>
+<li>  定義一個 function : fn rectangle_area(){}</li>
+<li>  設定 parameter - parameter 名為 rectangle - parameter 型別為 Rectangle - <code>fn rectangle_area(parameter_name: Struct_name)&#123;&#125;</code></li>
+<li>  function 內部可直接使用 parameter_name.struct_name 來進行呼叫使用.</li>
+<li>  連接一樣也是使用 <code>.</code></li>
+</ul>
+</br>
+
+<h2 id="impl-implement-實作-–-具現化-實體操作"><a href="#impl-implement-實作-–-具現化-實體操作" class="headerlink" title="[impl] implement 實作 – 具現化 實體操作"></a>[impl] implement 實作 – 具現化 實體操作</h2><hr>
+<blockquote>
+<p>這是針對於 stuct 這個建構子 constructor 所制定專屬的方法.<br>想成實際的使用 constructor 所建立的專屬方法.<br>關鍵字就是 <code>impl</code> 英文單字: <code>implement</code> 實現</p>
+</blockquote>
+<h3 id="程式碼-3"><a href="#程式碼-3" class="headerlink" title="程式碼"></a>程式碼</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Create a struct, define the elements&#x27; name and type.</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rectangle</span></span> &#123;</span><br><span class="line">    width: <span class="built_in">u64</span>,</span><br><span class="line">    height: <span class="built_in">u64</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a method to implement the struct, the method is belong struct.</span></span><br><span class="line"><span class="keyword">impl</span> Rectangle &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">area</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">u64</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.height * <span class="keyword">self</span>.width</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="comment">// give a value by using initial struct.</span></span><br><span class="line">    <span class="keyword">let</span> rectangle_1 = Rectangle &#123;</span><br><span class="line">        width: <span class="number">99</span>,</span><br><span class="line">        height: <span class="number">88</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;This rectangle width is &#123;&#125; cm, and the height is &#123;&#125; cm, and the are is &#123;&#125;&quot;</span>, rectangle_1.width, rectangle_1.height, rectangle_1.area());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : This rectangle width is 99 cm, and the height is 88 cm, and the are is 8712</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Working-Flow-3"><a href="#Working-Flow-3" class="headerlink" title="Working Flow"></a>Working Flow</h3><ul>
+<li>  定義一個 impl struct_name : 用來實現這個 struct 的方法.</li>
+<li>  impl Rectangle {定義方法}</li>
+<li>  在 impl 內部, 可以有 function.</li>
+<li>  fn 的 parameter 必須要是 <code>&amp;self</code></li>
+<li>  &amp;self 的意思 : 自己引用自己, 也就是可以使用 struct 裡面的結構子, 利用呼叫自己 (self) 連接(.) 結構子</li>
+<li>  後面應用就可以直接應用 .area() 來使用此被 實現化出來的專屬方法.</li>
+</ul>
+</br>
+
+<h2 id="完整程式碼"><a href="#完整程式碼" class="headerlink" title="完整程式碼"></a>完整程式碼</h2><hr>
+<blockquote>
+<p>完整程式碼, 應用了兩種方式, 個別實現.</p>
+</blockquote>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Create a struct, define the elements&#x27; name and type.</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rectangle</span></span> &#123;</span><br><span class="line">    width: <span class="built_in">u64</span>,</span><br><span class="line">    height: <span class="built_in">u64</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a method to implement the struct, the method is belong struct.</span></span><br><span class="line"><span class="keyword">impl</span> Rectangle &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">area</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">u64</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.height * <span class="keyword">self</span>.width</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a function to  caculate the rectangle area, and print area out.</span></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">rectangle_area</span></span>(rectangle: Rectangle) &#123;</span><br><span class="line">    <span class="keyword">let</span> area: <span class="built_in">u64</span> = rectangle.width * rectangle.height;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;This rectangle area is &#123;&#125;.&quot;</span>,area)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="comment">// give a value by using initial struct.</span></span><br><span class="line">    <span class="keyword">let</span> rectangle_1 = Rectangle &#123;</span><br><span class="line">        width: <span class="number">99</span>,</span><br><span class="line">        height: <span class="number">88</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// using &#x27;.&#x27; to call value.</span></span><br><span class="line">            <span class="comment">// rectangle_1.area() is from struct method &quot;impl Rectangle&quot;</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;This rectangle width is &#123;&#125; cm, and the height is &#123;&#125; cm, and the are is &#123;&#125;&quot;</span>, rectangle_1.width, rectangle_1.height, rectangle_1.area());</span><br><span class="line">    rectangle_area(rectangle_1); <span class="comment">// Using function to caculate the area.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Rust_note_20211110</p>
 ]]></content>
       <categories>
         <category>Rust</category>

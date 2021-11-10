@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<meta name="google-site-verification" content="df-PGWZFHMTbL8pxwFsvUjp3s06o3HKyNVQ1IEjc4CI" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XBRXD1X7E3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XBRXD1X7E3');
+</script>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"kyllsccs.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="struct &amp; struct implement用於組合並儲存不同類型的資料。 有別於 Array, Vector 只能存放同類型的資料，struct 提供了更加彈性的組合。 透過組合用法，可以達成類似其他語言，比如說 Python or Javascript 一樣，使用類似 class 的概念。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rust Note(9)_Struct_implement">
+<meta property="og:url" content="https://kyllsccs.github.io/2021/11/05/20211105-1/index.html">
+<meta property="og:site_name" content="Kylls KB NOTEs">
+<meta property="og:description" content="struct &amp; struct implement用於組合並儲存不同類型的資料。 有別於 Array, Vector 只能存放同類型的資料，struct 提供了更加彈性的組合。 透過組合用法，可以達成類似其他語言，比如說 Python or Javascript 一樣，使用類似 class 的概念。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-11-05T04:53:07.000Z">
+<meta property="article:modified_time" content="2021-11-10T11:11:16.209Z">
+<meta property="article:author" content="Kylls Bellies_KB">
+<meta property="article:tag" content="Rust">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://kyllsccs.github.io/2021/11/05/20211105-1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://kyllsccs.github.io/2021/11/05/20211105-1/","path":"2021/11/05/20211105-1/","title":"Rust Note(9)_Struct_implement"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Rust Note(9)_Struct_implement | Kylls KB NOTEs</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kylls KB NOTEs</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Go a_head</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#struct-amp-struct-implement"><span class="nav-number">1.</span> <span class="nav-text">struct &amp; struct implement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#struct-%E7%B5%90%E6%A7%8B"><span class="nav-number">2.</span> <span class="nav-text">[struct] 結構</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-number">2.1.</span> <span class="nav-text">程式碼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Working-Flow"><span class="nav-number">2.2.</span> <span class="nav-text">Working Flow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#struct-%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">struct 初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC-1"><span class="nav-number">3.1.</span> <span class="nav-text">程式碼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Working-Flow-1"><span class="nav-number">3.2.</span> <span class="nav-text">Working Flow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fn-%E5%91%BC%E5%8F%AB%E5%A5%97%E7%94%A8-struct"><span class="nav-number">4.</span> <span class="nav-text">fn 呼叫套用 struct</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC-2"><span class="nav-number">4.1.</span> <span class="nav-text">程式碼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Working-Flow-2"><span class="nav-number">4.2.</span> <span class="nav-text">Working Flow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#impl-implement-%E5%AF%A6%E4%BD%9C-%E2%80%93-%E5%85%B7%E7%8F%BE%E5%8C%96-%E5%AF%A6%E9%AB%94%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">[impl] implement 實作 – 具現化 實體操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC-3"><span class="nav-number">5.1.</span> <span class="nav-text">程式碼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Working-Flow-3"><span class="nav-number">5.2.</span> <span class="nav-text">Working Flow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-number">6.</span> <span class="nav-text">完整程式碼</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kylls Bellies_KB"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Kylls Bellies_KB</p>
+  <div class="site-description" itemprop="description">Miss understanding</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/kyllsccs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;kyllsccs" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kylls.ccs@gmail.com" title="E-Mail → mailto:kylls.ccs@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kyllsccs.github.io/2021/11/05/20211105-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Kylls Bellies_KB">
+      <meta itemprop="description" content="Miss understanding">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kylls KB NOTEs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Rust Note(9)_Struct_implement
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-11-05 12:53:07" itemprop="dateCreated datePublished" datetime="2021-11-05T12:53:07+08:00">2021-11-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-11-10 19:11:16" itemprop="dateModified" datetime="2021-11-10T19:11:16+08:00">2021-11-10</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Rust/" itemprop="url" rel="index"><span itemprop="name">Rust</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>3.6k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="struct-amp-struct-implement"><a href="#struct-amp-struct-implement" class="headerlink" title="struct &amp; struct implement"></a>struct &amp; struct implement</h2><p>用於組合並儲存不同類型的資料。</p>
+<p>有別於 Array, Vector 只能存放同類型的資料，struct 提供了更加彈性的組合。</p>
+<p>透過組合用法，可以達成類似其他語言，比如說 Python or Javascript 一樣，使用類似 class 的概念。</p>
+<span id="more"></span>
+
+<h2 id="struct-結構"><a href="#struct-結構" class="headerlink" title="[struct] 結構"></a>[struct] 結構</h2><hr>
+<blockquote>
+<p>使用關鍵字 ”struct” 來建立一個結構，並且指定型態。</p>
+</blockquote>
+<h3 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rectangle</span></span> &#123;</span><br><span class="line">        width: <span class="built_in">u64</span>,</span><br><span class="line">        height: <span class="built_in">u64</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Working-Flow"><a href="#Working-Flow" class="headerlink" title="Working Flow"></a>Working Flow</h3><ul>
+<li>  以 <code>struct</code> 關鍵字，開始建立結構</li>
+<li>  賦予結構名稱，<code>首字母需大寫</code></li>
+<li>建立的結構值在 <code>&#123;.........&#125;</code> 大括號這個作用域(scope)裡面。<ul>
+<li>  賦予結構值名稱</li>
+<li>  指定結構值型態 <code>: type</code>，<code>:</code> 賦予的意思</li>
+<li>  不同結構值，中間以 <code>,</code> 隔開</li>
+</ul>
+</li>
+</ul>
+<h2 id="struct-初始化"><a href="#struct-初始化" class="headerlink" title="struct 初始化"></a>struct 初始化</h2><hr>
+<blockquote>
+<p>透過初始化 struct ，來達成使用 struct 的變數。</p>
+</blockquote>
+<h3 id="程式碼-1"><a href="#程式碼-1" class="headerlink" title="程式碼"></a>程式碼</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rectangle</span></span> &#123;</span><br><span class="line">        width: <span class="built_in">u64</span>,</span><br><span class="line">        height: <span class="built_in">u64</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> rectangle_1 = Rectangle &#123;</span><br><span class="line">                width: <span class="number">80</span>,</span><br><span class="line">                height: <span class="number">30</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Rectangle 1 width is &#123;&#125;; height is &#123;&#125;.&quot;</span>,</span><br><span class="line">                       rectangle_1.width, rectangle_1.height)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//output: Rectangle 1 width is 80; height is 30.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Working-Flow-1"><a href="#Working-Flow-1" class="headerlink" title="Working Flow"></a>Working Flow</h3><ul>
+<li>使用<code>let</code> 來初始化 struct.<ul>
+<li>  等號右邊必須要先跟 rust 說，你是要使用哪個 struct</li>
+<li>  使用 <code>&#123;...&#125;</code> 包起來</li>
+<li>  在 struct 裡面是指定型態，這邊就是指定值。</li>
+<li>  各個值中間以<code>,</code> 隔開</li>
+<li>  最後要記得加上 <code>;</code> 分隔符。</li>
+<li>數值的型態如果沒有符合 struct 定義的，就會報錯。<ul>
+<li>  ex: struct 宣告 type 為 u64, 但初始給值給 “Hello”</li>
+<li>  “Hello” 為字串型態，與初始宣告 type 不符合</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>呼叫使用被初始化 struct 的值，使用<code>.</code>來進行呼叫<ul>
+<li>  rectangle_1.width</li>
+</ul>
+</li>
+</ul>
+<h2 id="fn-呼叫套用-struct"><a href="#fn-呼叫套用-struct" class="headerlink" title="fn 呼叫套用 struct"></a>fn 呼叫套用 struct</h2><hr>
+<blockquote>
+<p>透過初始化 struct 之後, 可以利用 <code>.</code>來進行呼叫連接.</p>
+</blockquote>
+<p>如果要把 struct 當成 參數[parameter]來帶入應用呢? 答案是可以的…</p>
+<h3 id="程式碼-2"><a href="#程式碼-2" class="headerlink" title="程式碼"></a>程式碼</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rectangle</span></span> &#123;</span><br><span class="line">    width: <span class="built_in">u64</span>,</span><br><span class="line">    height: <span class="built_in">u64</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">rectangle_area</span></span>(rectangle: Rectangle) &#123;</span><br><span class="line">    <span class="keyword">let</span> area: <span class="built_in">u64</span> = rectangle.width * rectangle.height;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;This rectangle area is &#123;&#125;.&quot;</span>,area)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="comment">// give a value by using initial struct.</span></span><br><span class="line">    <span class="keyword">let</span> rectangle_1 = Rectangle &#123;</span><br><span class="line">        width: <span class="number">99</span>,</span><br><span class="line">        height: <span class="number">88</span></span><br><span class="line">    &#125;;</span><br><span class="line">    rectangle_area(rectangle_1); <span class="comment">// Using function to caculate the area.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : This rectangle area is 8712.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Working-Flow-2"><a href="#Working-Flow-2" class="headerlink" title="Working Flow"></a>Working Flow</h3><ul>
+<li>  定義一個 function : fn rectangle_area(){}</li>
+<li>  設定 parameter - parameter 名為 rectangle - parameter 型別為 Rectangle - <code>fn rectangle_area(parameter_name: Struct_name)&#123;&#125;</code></li>
+<li>  function 內部可直接使用 parameter_name.struct_name 來進行呼叫使用.</li>
+<li>  連接一樣也是使用 <code>.</code></li>
+</ul>
+</br>
+
+<h2 id="impl-implement-實作-–-具現化-實體操作"><a href="#impl-implement-實作-–-具現化-實體操作" class="headerlink" title="[impl] implement 實作 – 具現化 實體操作"></a>[impl] implement 實作 – 具現化 實體操作</h2><hr>
+<blockquote>
+<p>這是針對於 stuct 這個建構子 constructor 所制定專屬的方法.<br>想成實際的使用 constructor 所建立的專屬方法.<br>關鍵字就是 <code>impl</code> 英文單字: <code>implement</code> 實現</p>
+</blockquote>
+<h3 id="程式碼-3"><a href="#程式碼-3" class="headerlink" title="程式碼"></a>程式碼</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create a struct, define the elements&#x27; name and type.</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rectangle</span></span> &#123;</span><br><span class="line">    width: <span class="built_in">u64</span>,</span><br><span class="line">    height: <span class="built_in">u64</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a method to implement the struct, the method is belong struct.</span></span><br><span class="line"><span class="keyword">impl</span> Rectangle &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">area</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">u64</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.height * <span class="keyword">self</span>.width</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="comment">// give a value by using initial struct.</span></span><br><span class="line">    <span class="keyword">let</span> rectangle_1 = Rectangle &#123;</span><br><span class="line">        width: <span class="number">99</span>,</span><br><span class="line">        height: <span class="number">88</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;This rectangle width is &#123;&#125; cm, and the height is &#123;&#125; cm, and the are is &#123;&#125;&quot;</span>, rectangle_1.width, rectangle_1.height, rectangle_1.area());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : This rectangle width is 99 cm, and the height is 88 cm, and the are is 8712</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Working-Flow-3"><a href="#Working-Flow-3" class="headerlink" title="Working Flow"></a>Working Flow</h3><ul>
+<li>  定義一個 impl struct_name : 用來實現這個 struct 的方法.</li>
+<li>  impl Rectangle {定義方法}</li>
+<li>  在 impl 內部, 可以有 function.</li>
+<li>  fn 的 parameter 必須要是 <code>&amp;self</code></li>
+<li>  &amp;self 的意思 : 自己引用自己, 也就是可以使用 struct 裡面的結構子, 利用呼叫自己 (self) 連接(.) 結構子</li>
+<li>  後面應用就可以直接應用 .area() 來使用此被 實現化出來的專屬方法.</li>
+</ul>
+</br>
+
+<h2 id="完整程式碼"><a href="#完整程式碼" class="headerlink" title="完整程式碼"></a>完整程式碼</h2><hr>
+<blockquote>
+<p>完整程式碼, 應用了兩種方式, 個別實現.</p>
+</blockquote>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create a struct, define the elements&#x27; name and type.</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rectangle</span></span> &#123;</span><br><span class="line">    width: <span class="built_in">u64</span>,</span><br><span class="line">    height: <span class="built_in">u64</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a method to implement the struct, the method is belong struct.</span></span><br><span class="line"><span class="keyword">impl</span> Rectangle &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">area</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">u64</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.height * <span class="keyword">self</span>.width</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a function to  caculate the rectangle area, and print area out.</span></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">rectangle_area</span></span>(rectangle: Rectangle) &#123;</span><br><span class="line">    <span class="keyword">let</span> area: <span class="built_in">u64</span> = rectangle.width * rectangle.height;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;This rectangle area is &#123;&#125;.&quot;</span>,area)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="comment">// give a value by using initial struct.</span></span><br><span class="line">    <span class="keyword">let</span> rectangle_1 = Rectangle &#123;</span><br><span class="line">        width: <span class="number">99</span>,</span><br><span class="line">        height: <span class="number">88</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// using &#x27;.&#x27; to call value.</span></span><br><span class="line">            <span class="comment">// rectangle_1.area() is from struct method &quot;impl Rectangle&quot;</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;This rectangle width is &#123;&#125; cm, and the height is &#123;&#125; cm, and the are is &#123;&#125;&quot;</span>, rectangle_1.width, rectangle_1.height, rectangle_1.area());</span><br><span class="line">    rectangle_area(rectangle_1); <span class="comment">// Using function to caculate the area.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Rust_note_20211110</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Rust/" rel="tag"># Rust</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/01/20211011-1/" rel="prev" title="Rust Note(8)_Tuple Array Vector">
+                  <i class="fa fa-chevron-left"></i> Rust Note(8)_Tuple Array Vector
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kyllsccs@github</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">20k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">18 mins.</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
