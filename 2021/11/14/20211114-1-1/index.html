@@ -30,28 +30,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"kyllsccs.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="Rust Note(1) Data Types I Rust is a statically type language.Rust 為一靜態型語言.">
+<meta name="description" content="Abstract 抽象化 理解抽象化概念剛好可以利用 struct 來做理解.  結構體詳細介紹請參閱前一篇 : Rust Note(9)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rust Note(1)_Data Type I">
-<meta property="og:url" content="https://kyllsccs.github.io/2021/10/20/20211016/index.html">
+<meta property="og:title" content="Rust Note(10)_Abtract Concept 抽象化概念">
+<meta property="og:url" content="https://kyllsccs.github.io/2021/11/14/20211114-1-1/index.html">
 <meta property="og:site_name" content="Kylls KB NOTEs">
-<meta property="og:description" content="Rust Note(1) Data Types I Rust is a statically type language.Rust 為一靜態型語言.">
+<meta property="og:description" content="Abstract 抽象化 理解抽象化概念剛好可以利用 struct 來做理解.  結構體詳細介紹請參閱前一篇 : Rust Note(9)">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-20T03:10:17.120Z">
-<meta property="article:modified_time" content="2021-10-20T03:10:29.105Z">
+<meta property="og:image" content="https://www.niusnews.com/upload/imgs/default/16AugP/805kid/3.gif">
+<meta property="article:published_time" content="2021-11-14T02:09:03.000Z">
+<meta property="article:modified_time" content="2021-11-14T03:35:20.741Z">
 <meta property="article:author" content="Kylls Bellies_KB">
 <meta property="article:tag" content="Rust">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.niusnews.com/upload/imgs/default/16AugP/805kid/3.gif">
 
 
-<link rel="canonical" href="https://kyllsccs.github.io/2021/10/20/20211016/">
+<link rel="canonical" href="https://kyllsccs.github.io/2021/11/14/20211114-1-1/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://kyllsccs.github.io/2021/10/20/20211016/","path":"2021/10/20/20211016/","title":"Rust Note(1)_Data Type I"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://kyllsccs.github.io/2021/11/14/20211114-1-1/","path":"2021/11/14/20211114-1-1/","title":"Rust Note(10)_Abtract Concept 抽象化概念"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Rust Note(1)_Data Type I | Kylls KB NOTEs</title>
+<title>Rust Note(10)_Abtract Concept 抽象化概念 | Kylls KB NOTEs</title>
   
 
 
@@ -158,7 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rust-Note-1-Data-Types-I"><span class="nav-number">1.</span> <span class="nav-text">Rust Note(1) Data Types I</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9C%E6%85%8B%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">靜態型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rust-Date-Types"><span class="nav-number">1.2.</span> <span class="nav-text">Rust Date Types</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rust-Variable-%E5%AE%9A%E7%BE%A9%E5%9E%8B%E5%88%A5"><span class="nav-number">1.3.</span> <span class="nav-text">Rust Variable 定義型別</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-%E6%8A%BD%E8%B1%A1%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">Abstract 抽象化</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -231,7 +233,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://kyllsccs.github.io/2021/10/20/20211016/">
+    <link itemprop="mainEntityOfPage" href="https://kyllsccs.github.io/2021/11/14/20211114-1-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -244,7 +246,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Rust Note(1)_Data Type I
+          Rust Note(10)_Abtract Concept 抽象化概念
         </h1>
 
         <div class="post-meta-container">
@@ -256,7 +258,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-10-20 11:10:17 / Modified: 11:10:29" itemprop="dateCreated datePublished" datetime="2021-10-20T11:10:17+08:00">2021-10-20</time>
+      <time title="Created: 2021-11-14 10:09:03 / Modified: 11:35:20" itemprop="dateCreated datePublished" datetime="2021-11-14T10:09:03+08:00">2021-11-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -282,7 +284,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>389</span>
+      <span>1.2k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -300,34 +302,75 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="Rust-Note-1-Data-Types-I"><a href="#Rust-Note-1-Data-Types-I" class="headerlink" title="Rust Note(1) Data Types I"></a>Rust Note(1) Data Types I</h2><blockquote>
-<p>Rust is a statically type language.<br>Rust 為一靜態型語言.</p>
+        <h3 id="Abstract-抽象化"><a href="#Abstract-抽象化" class="headerlink" title="Abstract 抽象化"></a>Abstract 抽象化</h3><blockquote>
+<p>理解<code>抽象化</code>概念剛好可以利用 struct 來做理解.</p>
 </blockquote>
+<p><strong>結構體詳細介紹請參閱前一篇</strong> : <a href="https://kyllsccs.github.io/2021/11/05/20211105-1/">Rust Note(9)</a></p>
 <span id="more"></span>
 
-<hr>
-<h3 id="靜態型"><a href="#靜態型" class="headerlink" title="靜態型"></a>靜態型</h3><blockquote>
-<p>靜態型語言 :<br>靜態類型是一種編程語言特性，其中顯式聲明變量類型並因此在編譯時確定。<br>這讓編譯器可以決定給定的變量是否可以執行它所請求的操作。</p>
+<blockquote>
+<p>利用結構體 (struct) 創造出不一樣 types 的儲存體.</p>
 </blockquote>
-</br>
-
-<p>在進入編譯之前, 預先指定好資料的型別 (Example : 整數)<br></br><br>如果有需換類型: 則必須要做另外的轉換<br></br></p>
-<h3 id="Rust-Date-Types"><a href="#Rust-Date-Types" class="headerlink" title="Rust Date Types"></a>Rust Date Types</h3><p><strong>Rust 基本 4 大型別</strong></p>
-<ul>
-<li>  int : 整數型</li>
-<li>  float : 浮點型</li>
-<li>  bool : 布林值 true / false</li>
-<li>  string : 字串型</li>
-</ul>
-<h3 id="Rust-Variable-定義型別"><a href="#Rust-Variable-定義型別" class="headerlink" title="Rust Variable 定義型別"></a>Rust Variable 定義型別</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> x: <span class="built_in">String</span> = <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Fruits</span></span> &#123;</span><br><span class="line">    <span class="comment">// Using struct to build a new struct in &#123;...&#125;, and consign constructor name and :type</span></span><br><span class="line">    fruit_name: <span class="built_in">String</span>,</span><br><span class="line">    fruit_color: <span class="built_in">String</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="comment">// init the struct</span></span><br><span class="line">    <span class="keyword">let</span> apple = Fruits &#123;</span><br><span class="line">        fruit_name: <span class="built_in">String</span>::from(<span class="string">&quot;Apple&quot;</span>),</span><br><span class="line">        fruit_color: <span class="built_in">String</span>::from(<span class="string">&quot;red&quot;</span>),</span><br><span class="line">    &#125;; <span class="comment">// 記得添加分號</span></span><br><span class="line">    <span class="keyword">let</span> banana = Fruits &#123;</span><br><span class="line">        fruit_name: <span class="built_in">String</span>::from(<span class="string">&quot;Banana&quot;</span>),</span><br><span class="line">        fruit_color: <span class="built_in">String</span>::from(<span class="string">&quot;yellow&quot;</span>),</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 使用 . 來進行呼叫</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125; is &#123;&#125;&quot;</span>, apple.fruit_name, apple.fruit_color);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125; is &#123;&#125;&quot;</span>, banana.fruit_name, banana.fruit_color);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output: Apple is red</span></span><br><span class="line"><span class="comment">// output: Banana is yellow</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p><code>&lt;Variable_name&gt;:&lt;DataType&gt;</code><br>冒號後面接的是資料型別</p>
+<p><font color=#FF00FF>代碼重複性利用程度越高, 重複撰寫同樣代碼就少, 這樣也可以降低出錯的機會.</font></p>
 </blockquote>
-</br>
+<font color=#800080>
+稍微想像一下, apple & banana 有什麼共同點?
 
+<ul>
+<li>  同樣都是水果</li>
+<li>同樣都是有顏色的水果 (廢話, 有透明的水果嗎?(#ﾟ Д ﾟ))  </font></li>
+</ul>
+<blockquote>
+<p>如果今天遇到 apple, 就寫一次 apple 的物件…</p>
+<blockquote>
+<p>下次遇到 banana, 就再寫一次 banana 的物件…</p>
+<blockquote>
+<p>再下次遇到 lemon, 那就再寫一次 lemon 的物件…</p>
+<blockquote>
+<p>如果今天遇到 7749 個水果…那不就寫到天荒地老…<br>阿是夠了沒…………(／‵Д′)／~ ╧╧</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><img src="https://www.niusnews.com/upload/imgs/default/16AugP/805kid/3.gif" alt="冰的啦"></p>
 <hr>
-<p>Rust Note 20211016</p>
+<blockquote>
+<p>把共通點列出來, 做成<code>抽象層</code>, 那我們就可以利用這個抽象層來呼叫.</p>
+</blockquote>
+<p>以上面 <code>struct Fruits </code> 的例子來說, 裡面包含了:</p>
+<ol>
+<li>水果名稱</li>
+<li>水果顏色</li>
+</ol>
+<p>今天遇到了蘋果:</p>
+<ul>
+<li>apple<ul>
+<li>  fruit_name: apple</li>
+<li>  fruit_color: red</li>
+</ul>
+</li>
+</ul>
+<p>今天遇到了香蕉:</p>
+<ul>
+<li>banana<ul>
+<li>  fruit_name: banana</li>
+<li>  fruit_color: yellow</li>
+</ul>
+</li>
+</ul>
+<p>如果遇到火龍果:</p>
+<ul>
+<li>火龍果<ul>
+<li>  fruit_name: 火龍果</li>
+<li>  fruit_color: 紅色</li>
+</ul>
+</li>
+</ul>
+<p>有沒有發現大大的縮短創造物件的時間? 利用共通特性…<br>同時也可以避免出錯.</p>
+<p>Rust_Note_20211114(1)</p>
 
     </div>
 
@@ -344,14 +387,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/10/20/20211020/" rel="prev" title="Rust Note(3)_Variables I">
-                  <i class="fa fa-chevron-left"></i> Rust Note(3)_Variables I
+                <a href="/2021/11/05/20211105-1/" rel="prev" title="Rust Note(9)_Struct_implement">
+                  <i class="fa fa-chevron-left"></i> Rust Note(9)_Struct_implement
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/10/23/20211023_1/" rel="next" title="Rust Note(4)_Data Type III [String]">
-                  Rust Note(4)_Data Type III [String] <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
