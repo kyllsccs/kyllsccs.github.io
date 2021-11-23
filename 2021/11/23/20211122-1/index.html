@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<meta name="google-site-verification" content="df-PGWZFHMTbL8pxwFsvUjp3s06o3HKyNVQ1IEjc4CI" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XBRXD1X7E3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XBRXD1X7E3');
+</script>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"kyllsccs.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="trait 特質介紹  特質&#x2F;特性 ： 這個是一個抽象的接口。來接續上篇所說的抽象層的概念。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rust Note(11)_trait">
+<meta property="og:url" content="https://kyllsccs.github.io/2021/11/23/20211122-1/index.html">
+<meta property="og:site_name" content="Kylls KB NOTEs">
+<meta property="og:description" content="trait 特質介紹  特質&#x2F;特性 ： 這個是一個抽象的接口。來接續上篇所說的抽象層的概念。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.niusnews.com/upload/imgs/default/16AugP/805kid/7.gif">
+<meta property="article:published_time" content="2021-11-23T12:42:15.000Z">
+<meta property="article:modified_time" content="2021-11-23T14:44:20.486Z">
+<meta property="article:author" content="Kylls Bellies_KB">
+<meta property="article:tag" content="Rust">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.niusnews.com/upload/imgs/default/16AugP/805kid/7.gif">
+
+
+<link rel="canonical" href="https://kyllsccs.github.io/2021/11/23/20211122-1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://kyllsccs.github.io/2021/11/23/20211122-1/","path":"2021/11/23/20211122-1/","title":"Rust Note(11)_trait"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Rust Note(11)_trait | Kylls KB NOTEs</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kylls KB NOTEs</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Go a_head</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#trait-%E7%89%B9%E8%B3%AA%E4%BB%8B%E7%B4%B9"><span class="nav-number">1.</span> <span class="nav-text">trait 特質介紹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#struct-%E4%BE%8B%E5%AD%90-1-vs-1"><span class="nav-number">2.</span> <span class="nav-text">struct 例子 (1 vs 1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trait-%E4%BE%8B%E5%AD%90-1-vs-2-3-%E2%80%A6or-more%E2%80%A6"><span class="nav-number">3.</span> <span class="nav-text">trait 例子 (1 vs 2?3?…or more…)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E7%82%BA%E6%8A%BD%E8%B1%A1%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">行為抽象化</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kylls Bellies_KB"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Kylls Bellies_KB</p>
+  <div class="site-description" itemprop="description">Miss understanding</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/kyllsccs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;kyllsccs" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kylls.ccs@gmail.com" title="E-Mail → mailto:kylls.ccs@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://kyllsccs.github.io/2021/11/23/20211122-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Kylls Bellies_KB">
+      <meta itemprop="description" content="Miss understanding">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kylls KB NOTEs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Rust Note(11)_trait
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-11-23 20:42:15 / Modified: 22:44:20" itemprop="dateCreated datePublished" datetime="2021-11-23T20:42:15+08:00">2021-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Rust/" itemprop="url" rel="index"><span itemprop="name">Rust</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>2 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="trait-特質介紹"><a href="#trait-特質介紹" class="headerlink" title="trait 特質介紹"></a>trait 特質介紹</h3><hr>
+<blockquote>
+<p>特質/特性 ： 這個是一個抽象的接口。<br>來接續上篇所說的抽象層的概念。</p>
+</blockquote>
+<span id="more"></span>
+
+<p>上一篇提到的抽象層 Abstract layer 的概念<br>可以參閱 <a href="https://kyllsccs.github.io/2021/11/14/20211114-1-1/">Rust Note(10)</a></p>
+<blockquote>
+<p>把<code>共同特性</code>的特性集合起來，放在一個共同的地方，<br>讓有共同特性的物件 objects 可以透過呼叫這個接口，<br>來直接套用特性，<code>避免重複撰寫</code></p>
+</blockquote>
+<h3 id="struct-例子-1-vs-1"><a href="#struct-例子-1-vs-1" class="headerlink" title="struct 例子 (1 vs 1)"></a>struct 例子 (1 vs 1)</h3><p>前篇我們使用的是 <code>struct</code> 結構體，利用結構體把擁有共通特性的結構整併起來。</p>
+<p>然後使用 <code>impl</code> <strong>implementation</strong> 來實作 struct，使其有專屬的 function！！！</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">User</span></span> &#123;</span><br><span class="line">    user_name: <span class="built_in">String</span>,</span><br><span class="line">    user_mail: <span class="built_in">String</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> User &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">user_info</span></span>(&amp;<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;User name: &#123;&#125;  User mail:&#123;&#125;&quot;</span>, <span class="keyword">self</span>.user_name, <span class="keyword">self</span>.user_mail)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> user_1 = User &#123;</span><br><span class="line">        user_name: <span class="built_in">String</span>::from(<span class="string">&quot;Kylls KB&quot;</span>),</span><br><span class="line">        user_mail: <span class="built_in">String</span>::from(<span class="string">&quot;kylls.ccs@gmail.com&quot;</span>)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    user_1.user_info();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : User name: Kylls KB  User mail: kylls.ccs@gmail.com</span></span><br></pre></td></tr></table></figure>
+
+<p>以上是使用<code>struct</code>的例子</p>
+<p>接著介紹另外一個方法<code>trait</code></p>
+<h3 id="trait-例子-1-vs-2-3-…or-more…"><a href="#trait-例子-1-vs-2-3-…or-more…" class="headerlink" title="trait 例子 (1 vs 2?3?…or more…)"></a>trait 例子 (1 vs 2?3?…or more…)</h3><hr>
+<blockquote>
+<p>struct 用的是建構出共通的結構子 constructor<br>imp 是使用於實作方法(使用＆self 呼叫建構子)<br>一個<code>struct</code> &gt;&gt; 一個<code>impl</code> ……..<br>那如果多個<code>struct</code> 呢？？？<br>那還不狂寫一波？<br><br></p>
+</blockquote>
+<p><img src="https://www.niusnews.com/upload/imgs/default/16AugP/805kid/7.gif" alt="真的假的"></p>
+<p>設計語言的利用抽象化的 trait<br><code>能夠越簡化代碼，就能夠減少重複撰寫，減少人為疏失</code></p>
+<p>On the other words, simple is good.<br>就是越簡單&amp;&amp;越清楚越好！！！</p>
+<h3 id="行為抽象化"><a href="#行為抽象化" class="headerlink" title="行為抽象化"></a>行為抽象化</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">People</span></span> &#123;</span><br><span class="line">    name: <span class="built_in">String</span>,</span><br><span class="line">    age: <span class="built_in">u64</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立方法抽象層</span></span><br><span class="line"><span class="class"><span class="keyword">trait</span> <span class="title">Action</span></span> &#123;</span><br><span class="line">    <span class="comment">// function do 返回不指定，可自定義</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">say_hello</span></span>(&amp;<span class="keyword">self</span>);</span><br><span class="line">    <span class="comment">// function can_do 返回 true or false</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">can_do</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">bool</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 實作方法 by using trait for struct</span></span><br><span class="line"><span class="comment">// 同樣性質的trait, 可以用來實作多個結構體,</span></span><br><span class="line"><span class="comment">// 使用 `for` -&gt; 專屬哪個struct</span></span><br><span class="line"><span class="keyword">impl</span> Action <span class="keyword">for</span> People &#123;</span><br><span class="line">    <span class="comment">// &amp;self 使用自己的意思</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">say_hello</span></span>(&amp;<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Hello, my name is &#123;&#125;.&quot;</span>, <span class="keyword">self</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意返回是boolean</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">can_do</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">bool</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">self</span>.age &lt; <span class="number">50</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> people_1 = People &#123;</span><br><span class="line">                <span class="comment">// new 一個新的String出來</span></span><br><span class="line">                name: <span class="built_in">String</span>::from(<span class="string">&quot;Kylls&quot;</span>),</span><br><span class="line">                age: <span class="number">18</span>,</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Can &#123;&#125; speak? &#123;&#125;&quot;</span>, people_1.name, people_1.can_do());</span><br><span class="line">        <span class="comment">// output: Can Kylls speak? true</span></span><br><span class="line">        people_1.say_hello();</span><br><span class="line">        <span class="comment">// output: Hello, my name is Kylls.</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>描述擁有的共同架構，集合成<code>struct</code><br>描述相同行為的動作，集合成<code>trait</code></p>
+</blockquote>
+<p>更進一步的敘述出 <code>物件會有的行為特質</code></p>
+<p>Rust Note_20211122</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Rust/" rel="tag"># Rust</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/14/20211114-1-1/" rel="prev" title="Rust Note(10)_Abtract Concept 抽象化概念">
+                  <i class="fa fa-chevron-left"></i> Rust Note(10)_Abtract Concept 抽象化概念
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kyllsccs@github</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Symbols count total: </span>
+    <span title="Symbols count total">23k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">21 mins.</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
