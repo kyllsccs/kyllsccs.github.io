@@ -67,93 +67,55 @@
       </tags>
   </entry>
   <entry>
-    <title>Rust Note(2)_Data Type II</title>
-    <url>/2021/10/17/20211017/</url>
-    <content><![CDATA[<h2 id="Rsut-Note-2-Data-Types-II-Integer-Float"><a href="#Rsut-Note-2-Data-Types-II-Integer-Float" class="headerlink" title="Rsut Note(2) Data Types II Integer / Float"></a>Rsut Note(2) Data Types II Integer / Float</h2><p>依照 Data Type 的型別不同, 兩種方法:</p>
-<ol>
-<li>默認型別 : 直接使用系統默認</li>
-<li>指定型別 : 透過 <code>:&lt;type&gt;</code> 指定型別</li>
-</ol>
+    <title>SQL基礎篇_MSSQL [一]</title>
+    <url>/2021/09/14/20210913/</url>
+    <content><![CDATA[<blockquote>
+<p>Do it, find it, know it, and solved it, finally record it.</p>
+</blockquote>
+<hr>
+<p>SQL 基礎篇</p>
 <span id="more"></span>
 
-<h2 id="整數型-Integer"><a href="#整數型-Integer" class="headerlink" title="整數型 Integer"></a>整數型 Integer</h2></br>
+<h3 id="基礎-SQL-查詢起手式"><a href="#基礎-SQL-查詢起手式" class="headerlink" title="基礎 SQL 查詢起手式"></a>基礎 SQL 查詢起手式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT * FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION_1 IS NULL</span><br><span class="line">AND</span><br><span class="line">CONDITION_2 &gt; 0</span><br><span class="line">AND</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
+<p><code>SELECT</code> 是 SQL 查詢的起手式，<br><code>*</code> 代表是把所有的欄位名稱資料都撈出來<br><code>FROM</code> 從哪個 Table<br><code>TABLE_NAME</code> 是從哪個資料表<br><code>WHERE</code> 後面接的是判斷式的條件 AND / OR 等…</p>
+<hr>
+<h3 id="下-SQL-指令我可以用小寫嗎？"><a href="#下-SQL-指令我可以用小寫嗎？" class="headerlink" title="下 SQL 指令我可以用小寫嗎？"></a>下 SQL 指令我可以用小寫嗎？</h3><p>答案是<code>可以</code>的</p>
+<p>我還特別的去查詢了一下一定要用大寫嗎？</p>
+<p>答案是 有些資料庫為了避免大小寫的轉換影響效率 還是統一使用大寫好</p>
+<hr>
+<p>剛到做 ERP 的系統公司，說真的也是慢慢的從基本的語法開始練習…</p>
+<p>剛開始哪知道什麼查詢不查詢的 <del>憑著熱愛打字的熱誠？</del></p>
+<p>就開始了我的<code>奇幻ERP系統之旅</code> ?</p>
 <blockquote>
-<p>Rust 默認為 i64</p>
+<p>以前看著能夠在黑黑的螢幕不斷的鍵入指令很<code>帥</code>？！</p>
 </blockquote>
-<p>Example_1: <strong>i8</strong> &gt;&gt; $2^7$-1 = 127, n=8, (n-1)=7, -1 就是扣掉 0<br>也就是如果型別指定為 i8, 可以接受的最大整數為 -128<del>0</del>127,<br>如超過 127 就會發生溢位</p>
-<p>Example_2: <strong>u8</strong> &gt;&gt; $2^8$-1 = 255, n=8, -1 就是扣掉 0<br>也就是如果型別指定為 u8, 可以接受的最大整數為 0~255,<br>如超過 255 就會發生溢位</p>
-<p>以下範例, 編譯器直接提醒:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">error: literal out of range <span class="keyword">for</span> `i8`</span><br><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: i8 = 256;</span><br><span class="line">  |                 ^^^</span><br><span class="line">  |</span><br><span class="line">  = note: `<span class="comment">#[deny(overflowing_literals)]` on by default</span></span><br><span class="line">  = note: the literal `256` does not fit into the <span class="built_in">type</span> `i8` whose range is `-128..=127`</span><br><span class="line">  = <span class="built_in">help</span>: consider using the <span class="built_in">type</span> `i16` instead</span><br><span class="line"></span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
+<p><del>就這麼簡單的原因讓我欲罷不能…</del></p>
+<h3 id="基本插入資料指令-INSERT-INTO"><a href="#基本插入資料指令-INSERT-INTO" class="headerlink" title="基本插入資料指令 INSERT INTO"></a>基本插入資料指令 INSERT INTO</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">INSERT INTO TABLE_NAME (COLUNM_1) VALUES (VALUE_1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="Rust-中的整型"><a href="#Rust-中的整型" class="headerlink" title="Rust 中的整型"></a>Rust 中的整型</h3><table>
-<thead>
-<tr>
-<th>長度</th>
-<th align="left">有符號</th>
-<th align="left">無符號</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>8 bits</td>
-<td align="left">i8</td>
-<td align="left">u8</td>
-</tr>
-<tr>
-<td>16bits</td>
-<td align="left">i16</td>
-<td align="left">u16</td>
-</tr>
-<tr>
-<td>32bits</td>
-<td align="left">i32</td>
-<td align="left">u32</td>
-</tr>
-<tr>
-<td>64bits</td>
-<td align="left">i64</td>
-<td align="left">u64</td>
-</tr>
-<tr>
-<td>128bits</td>
-<td align="left">i128</td>
-<td align="left">u128</td>
-</tr>
-<tr>
-<td>arch</td>
-<td align="left">isize</td>
-<td align="left">usize</td>
-</tr>
-</tbody></table>
-<p><code>i 代表有符號整數型: 可接受負數</code><br><code>u 代表無符號整數型: 不可接受負數</code> <strong>!</strong></p>
+<p><code>INSERT INTO</code> 插入…直接英文字義比較好記憶.<br><code>TABLE_NAME</code> 插入總有個目標吧，這個就是你的目標表格.<br><code>(COLUNM_1)</code> 這個就是裡面的欄位名稱，可以想成<code>excel</code>.<br><code>VALUES (VALUE_1)</code> 裡面就是對應的值</p>
+<p>這邊要注意的是…欄位名稱跟值的順序位置是有對應的…<br>如果插入的順序錯了，or 插入的指定型態不一樣<br>資料庫就會吐紅紅地<code>error</code>給你看？！？！？！</p>
+<hr>
+<h3 id="基本更新指令-UPDATE-…-SET-…"><a href="#基本更新指令-UPDATE-…-SET-…" class="headerlink" title="基本更新指令 UPDATE … SET …"></a>基本更新指令 UPDATE … SET …</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">UPDATE TABLE_NAME SET COLUMN_1=VALUE_2</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE_1</span><br><span class="line">AND</span><br><span class="line">....</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>UPDATE</code> 按照字面上的意思就是 更新啦…很好記吧.<br><code>SET</code> 就是設定的意思啦.</p>
+<p>換個簡單的方式來記憶。</p>
 <blockquote>
-<p>arch : 可以依照系統架構類型(x86 / x64), 直接判褖套用<code>默認型</code></p>
+<p>就是把資料表裡面的某個欄位資料設定成你想要多資料。</p>
 </blockquote>
-</br>
+<p>484 很好記</p>
+<hr>
+<h3 id="刪除指令-DELETE-FROM"><a href="#刪除指令-DELETE-FROM" class="headerlink" title="刪除指令 DELETE FROM"></a>刪除指令 DELETE FROM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>以下範例, 編譯器報錯:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: u8 = -126;</span><br><span class="line">  |                 ^^^^ cannot apply unary operator `-`</span><br><span class="line">  |</span><br><span class="line">  = note: unsigned values cannot be negated</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0600`.</span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
-
-</br>
-
-<h2 id="浮點型-小數-Float"><a href="#浮點型-小數-Float" class="headerlink" title="浮點型 (小數) Float"></a>浮點型 (小數) Float</h2><blockquote>
-<p>Rust 浮點型默認值為 : <code>f64</code></p>
-</blockquote>
-</br>
-
-<p>浮點型只有兩種型態</p>
-<ul>
-<li>  <code>f32 : 單精度</code></li>
-<li>  <code>f64 : 雙精度</code></li>
-</ul>
-<p>可以參考這邊 : <a href="https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8">單精度雙精度</a></p>
-<p>Note : 20211017_v1.0</p>
+<p><code>DELETE</code> 字面上就是刪除的意思<br><code>FROM</code> 從….哪裡的意思<br><code>WHERE</code> 放條件的地方，如果沒有放條件…~~~那就是全部刪除啦~~~</p>
+<hr>
+<p>簡單的紀錄一下。</p>
 ]]></content>
       <categories>
-        <category>Rust</category>
+        <category>SQL</category>
       </categories>
       <tags>
-        <tag>Rust</tag>
+        <tag>SQL_MSSQL</tag>
       </tags>
   </entry>
   <entry>
@@ -261,6 +223,96 @@
 <p>array 就類似 &amp;str<br>vector 就類似 String</p>
 </blockquote>
 <p>Rust Note_20211101_1.1</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(2)_Data Type II</title>
+    <url>/2021/10/17/20211017/</url>
+    <content><![CDATA[<h2 id="Rsut-Note-2-Data-Types-II-Integer-Float"><a href="#Rsut-Note-2-Data-Types-II-Integer-Float" class="headerlink" title="Rsut Note(2) Data Types II Integer / Float"></a>Rsut Note(2) Data Types II Integer / Float</h2><p>依照 Data Type 的型別不同, 兩種方法:</p>
+<ol>
+<li>默認型別 : 直接使用系統默認</li>
+<li>指定型別 : 透過 <code>:&lt;type&gt;</code> 指定型別</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="整數型-Integer"><a href="#整數型-Integer" class="headerlink" title="整數型 Integer"></a>整數型 Integer</h2></br>
+
+<blockquote>
+<p>Rust 默認為 i64</p>
+</blockquote>
+<p>Example_1: <strong>i8</strong> &gt;&gt; $2^7$-1 = 127, n=8, (n-1)=7, -1 就是扣掉 0<br>也就是如果型別指定為 i8, 可以接受的最大整數為 -128<del>0</del>127,<br>如超過 127 就會發生溢位</p>
+<p>Example_2: <strong>u8</strong> &gt;&gt; $2^8$-1 = 255, n=8, -1 就是扣掉 0<br>也就是如果型別指定為 u8, 可以接受的最大整數為 0~255,<br>如超過 255 就會發生溢位</p>
+<p>以下範例, 編譯器直接提醒:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">error: literal out of range <span class="keyword">for</span> `i8`</span><br><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: i8 = 256;</span><br><span class="line">  |                 ^^^</span><br><span class="line">  |</span><br><span class="line">  = note: `<span class="comment">#[deny(overflowing_literals)]` on by default</span></span><br><span class="line">  = note: the literal `256` does not fit into the <span class="built_in">type</span> `i8` whose range is `-128..=127`</span><br><span class="line">  = <span class="built_in">help</span>: consider using the <span class="built_in">type</span> `i16` instead</span><br><span class="line"></span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
+
+<h3 id="Rust-中的整型"><a href="#Rust-中的整型" class="headerlink" title="Rust 中的整型"></a>Rust 中的整型</h3><table>
+<thead>
+<tr>
+<th>長度</th>
+<th align="left">有符號</th>
+<th align="left">無符號</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>8 bits</td>
+<td align="left">i8</td>
+<td align="left">u8</td>
+</tr>
+<tr>
+<td>16bits</td>
+<td align="left">i16</td>
+<td align="left">u16</td>
+</tr>
+<tr>
+<td>32bits</td>
+<td align="left">i32</td>
+<td align="left">u32</td>
+</tr>
+<tr>
+<td>64bits</td>
+<td align="left">i64</td>
+<td align="left">u64</td>
+</tr>
+<tr>
+<td>128bits</td>
+<td align="left">i128</td>
+<td align="left">u128</td>
+</tr>
+<tr>
+<td>arch</td>
+<td align="left">isize</td>
+<td align="left">usize</td>
+</tr>
+</tbody></table>
+<p><code>i 代表有符號整數型: 可接受負數</code><br><code>u 代表無符號整數型: 不可接受負數</code> <strong>!</strong></p>
+<blockquote>
+<p>arch : 可以依照系統架構類型(x86 / x64), 直接判褖套用<code>默認型</code></p>
+</blockquote>
+</br>
+
+<p>以下範例, 編譯器報錯:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: u8 = -126;</span><br><span class="line">  |                 ^^^^ cannot apply unary operator `-`</span><br><span class="line">  |</span><br><span class="line">  = note: unsigned values cannot be negated</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0600`.</span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
+
+</br>
+
+<h2 id="浮點型-小數-Float"><a href="#浮點型-小數-Float" class="headerlink" title="浮點型 (小數) Float"></a>浮點型 (小數) Float</h2><blockquote>
+<p>Rust 浮點型默認值為 : <code>f64</code></p>
+</blockquote>
+</br>
+
+<p>浮點型只有兩種型態</p>
+<ul>
+<li>  <code>f32 : 單精度</code></li>
+<li>  <code>f64 : 雙精度</code></li>
+</ul>
+<p>可以參考這邊 : <a href="https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8">單精度雙精度</a></p>
+<p>Note : 20211017_v1.0</p>
 ]]></content>
       <categories>
         <category>Rust</category>
@@ -428,58 +480,6 @@
       </categories>
       <tags>
         <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL基礎篇_MSSQL [一]</title>
-    <url>/2021/09/14/20210913/</url>
-    <content><![CDATA[<blockquote>
-<p>Do it, find it, know it, and solved it, finally record it.</p>
-</blockquote>
-<hr>
-<p>SQL 基礎篇</p>
-<span id="more"></span>
-
-<h3 id="基礎-SQL-查詢起手式"><a href="#基礎-SQL-查詢起手式" class="headerlink" title="基礎 SQL 查詢起手式"></a>基礎 SQL 查詢起手式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT * FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION_1 IS NULL</span><br><span class="line">AND</span><br><span class="line">CONDITION_2 &gt; 0</span><br><span class="line">AND</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p><code>SELECT</code> 是 SQL 查詢的起手式，<br><code>*</code> 代表是把所有的欄位名稱資料都撈出來<br><code>FROM</code> 從哪個 Table<br><code>TABLE_NAME</code> 是從哪個資料表<br><code>WHERE</code> 後面接的是判斷式的條件 AND / OR 等…</p>
-<hr>
-<h3 id="下-SQL-指令我可以用小寫嗎？"><a href="#下-SQL-指令我可以用小寫嗎？" class="headerlink" title="下 SQL 指令我可以用小寫嗎？"></a>下 SQL 指令我可以用小寫嗎？</h3><p>答案是<code>可以</code>的</p>
-<p>我還特別的去查詢了一下一定要用大寫嗎？</p>
-<p>答案是 有些資料庫為了避免大小寫的轉換影響效率 還是統一使用大寫好</p>
-<hr>
-<p>剛到做 ERP 的系統公司，說真的也是慢慢的從基本的語法開始練習…</p>
-<p>剛開始哪知道什麼查詢不查詢的 <del>憑著熱愛打字的熱誠？</del></p>
-<p>就開始了我的<code>奇幻ERP系統之旅</code> ?</p>
-<blockquote>
-<p>以前看著能夠在黑黑的螢幕不斷的鍵入指令很<code>帥</code>？！</p>
-</blockquote>
-<p><del>就這麼簡單的原因讓我欲罷不能…</del></p>
-<h3 id="基本插入資料指令-INSERT-INTO"><a href="#基本插入資料指令-INSERT-INTO" class="headerlink" title="基本插入資料指令 INSERT INTO"></a>基本插入資料指令 INSERT INTO</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">INSERT INTO TABLE_NAME (COLUNM_1) VALUES (VALUE_1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>INSERT INTO</code> 插入…直接英文字義比較好記憶.<br><code>TABLE_NAME</code> 插入總有個目標吧，這個就是你的目標表格.<br><code>(COLUNM_1)</code> 這個就是裡面的欄位名稱，可以想成<code>excel</code>.<br><code>VALUES (VALUE_1)</code> 裡面就是對應的值</p>
-<p>這邊要注意的是…欄位名稱跟值的順序位置是有對應的…<br>如果插入的順序錯了，or 插入的指定型態不一樣<br>資料庫就會吐紅紅地<code>error</code>給你看？！？！？！</p>
-<hr>
-<h3 id="基本更新指令-UPDATE-…-SET-…"><a href="#基本更新指令-UPDATE-…-SET-…" class="headerlink" title="基本更新指令 UPDATE … SET …"></a>基本更新指令 UPDATE … SET …</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">UPDATE TABLE_NAME SET COLUMN_1=VALUE_2</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE_1</span><br><span class="line">AND</span><br><span class="line">....</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>UPDATE</code> 按照字面上的意思就是 更新啦…很好記吧.<br><code>SET</code> 就是設定的意思啦.</p>
-<p>換個簡單的方式來記憶。</p>
-<blockquote>
-<p>就是把資料表裡面的某個欄位資料設定成你想要多資料。</p>
-</blockquote>
-<p>484 很好記</p>
-<hr>
-<h3 id="刪除指令-DELETE-FROM"><a href="#刪除指令-DELETE-FROM" class="headerlink" title="刪除指令 DELETE FROM"></a>刪除指令 DELETE FROM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>DELETE</code> 字面上就是刪除的意思<br><code>FROM</code> 從….哪裡的意思<br><code>WHERE</code> 放條件的地方，如果沒有放條件…~~~那就是全部刪除啦~~~</p>
-<hr>
-<p>簡單的紀錄一下。</p>
-]]></content>
-      <categories>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL_MSSQL</tag>
       </tags>
   </entry>
   <entry>
@@ -655,72 +655,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Rust Note(7)_Stack &amp; Heap</title>
-    <url>/2021/10/30/20211030-1/</url>
-    <content><![CDATA[<h2 id="Stack-amp-Heap"><a href="#Stack-amp-Heap" class="headerlink" title="Stack &amp; Heap"></a>Stack &amp; Heap</h2><p>棧 和 堆 的區別。</p>
-<span id="more"></span>
-
-<h3 id="Stack-棧"><a href="#Stack-棧" class="headerlink" title="Stack 棧"></a>Stack 棧</h3><hr>
-<blockquote>
-<p>有序的： <code>已被佔用</code> 且 <code>固定大小</code>。</p>
-</blockquote>
-<p>棧是透過堆疊而成，採<code>Last in， first out</code> 概念(後進先出)。<br>意即在最剛開始就被賦予固定大小的值。<br>EX: <code>&amp;str</code>;</p>
-<blockquote>
-<p>應用在基本標量類型 ex <code>整數型</code>，<code>浮點數</code>…等</p>
-</blockquote>
-<h3 id="Heap-堆"><a href="#Heap-堆" class="headerlink" title="Heap 堆"></a>Heap 堆</h3><hr>
-<blockquote>
-<p>無序的：編譯時，<code>未知大小</code> 且 <code>可能大小變更</code>。</p>
-</blockquote>
-<p>亦即在程式碼撰寫過程中，因應需要而賦予的值。<br>只能透過<code>ptr (指針)</code> 來進行訪問。<br>EX: <code>String</code></p>
-<blockquote>
-<p>應用在複合類型 ex <code>String</code>, <code>tuple</code>…等</p>
-</blockquote>
-<h3 id="Pointer-指針"><a href="#Pointer-指針" class="headerlink" title="Pointer 指針"></a>Pointer 指針</h3><hr>
-<blockquote>
-<p>要訪問 <code>heap (無序的)</code> , 必須得透過 <code>Pointer (ptr: 指針)</code> 來進行訪問。</p>
-</blockquote>
-<h2 id="實際操作"><a href="#實際操作" class="headerlink" title="實際操作"></a>實際操作</h2><hr>
-<blockquote>
-<p>基本數據類型 : 參考前面的筆記.</p>
-</blockquote>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line">    a.to_string().push_str(<span class="string">&quot; KB Note!!!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello wolrd!</span></span><br></pre></td></tr></table></figure>
-
-<p>咦? 竟然沒有作用???</p>
-<p>仔細的來看一下:</p>
-<ol>
-<li>a 宣告為 <code>&amp;str</code> 類型, 在 rust 裡面, 這屬於基本數據類型, 一旦成立, 直接被壓入 stack</li>
-<li>那既然是基本數據類型, 在成立的時候, 直接存入 stack, 若要去更動, 就要換成 String 類型.</li>
-<li>使用方法 to_string() : <code>&amp;str</code> – &gt; <code>String</code></li>
-<li>接著使用 push_str() 在後面加上字串.</li>
-<li>行不通?</li>
-</ol>
-<p>What the hell??????</p>
-<p>正確的順序應該是這樣:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> b = a.to_string();</span><br><span class="line">    b.push_str(<span class="string">&quot; KB Note!!!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello world! KB Note!!!</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>  宣告 a 基本變量為 “Hello world!”</li>
-<li>  把 a 轉為 String, 並且賦予給 b , 模式設定為 <code>mut</code> 可變.</li>
-<li>  再利用 .push_str() 方式, 把 <code> KB Note!!!</code> 加在字符串後端</li>
-<li>  在打印出 b 得到我們想要的結果.</li>
-<li>  此時的 a 仍是 “Hello world!”</li>
-</ul>
-<p>在基本型態底下, 會比較令人迷惑的是 <code>&amp;str</code> 跟 <code>String</code> 這兩種的轉換.</p>
-<blockquote>
-<p>迷之聲 : <code>為什麼要搞得這麼麻煩?????</code></p>
-</blockquote>
-<p>基於 RUST 的最大賣點就是 <code>安全級系統語言</code>, 這還會跟後面的 <code>Ownership 所有權</code> 跟 <code>borrow 借用</code> 有著相對應重要的關係.</p>
-<p>Rust Note 20211030_1.1</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Rust Note(6)_loop for while</title>
     <url>/2021/10/25/20211025/</url>
     <content><![CDATA[<h2 id="Rust-迴圈"><a href="#Rust-迴圈" class="headerlink" title="Rust 迴圈"></a>Rust 迴圈</h2><blockquote>
@@ -799,6 +733,72 @@
 </br>
 
 <p>Rust_Note_20211025_1.1</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(7)_Stack &amp; Heap</title>
+    <url>/2021/10/30/20211030-1/</url>
+    <content><![CDATA[<h2 id="Stack-amp-Heap"><a href="#Stack-amp-Heap" class="headerlink" title="Stack &amp; Heap"></a>Stack &amp; Heap</h2><p>棧 和 堆 的區別。</p>
+<span id="more"></span>
+
+<h3 id="Stack-棧"><a href="#Stack-棧" class="headerlink" title="Stack 棧"></a>Stack 棧</h3><hr>
+<blockquote>
+<p>有序的： <code>已被佔用</code> 且 <code>固定大小</code>。</p>
+</blockquote>
+<p>棧是透過堆疊而成，採<code>Last in， first out</code> 概念(後進先出)。<br>意即在最剛開始就被賦予固定大小的值。<br>EX: <code>&amp;str</code>;</p>
+<blockquote>
+<p>應用在基本標量類型 ex <code>整數型</code>，<code>浮點數</code>…等</p>
+</blockquote>
+<h3 id="Heap-堆"><a href="#Heap-堆" class="headerlink" title="Heap 堆"></a>Heap 堆</h3><hr>
+<blockquote>
+<p>無序的：編譯時，<code>未知大小</code> 且 <code>可能大小變更</code>。</p>
+</blockquote>
+<p>亦即在程式碼撰寫過程中，因應需要而賦予的值。<br>只能透過<code>ptr (指針)</code> 來進行訪問。<br>EX: <code>String</code></p>
+<blockquote>
+<p>應用在複合類型 ex <code>String</code>, <code>tuple</code>…等</p>
+</blockquote>
+<h3 id="Pointer-指針"><a href="#Pointer-指針" class="headerlink" title="Pointer 指針"></a>Pointer 指針</h3><hr>
+<blockquote>
+<p>要訪問 <code>heap (無序的)</code> , 必須得透過 <code>Pointer (ptr: 指針)</code> 來進行訪問。</p>
+</blockquote>
+<h2 id="實際操作"><a href="#實際操作" class="headerlink" title="實際操作"></a>實際操作</h2><hr>
+<blockquote>
+<p>基本數據類型 : 參考前面的筆記.</p>
+</blockquote>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line">    a.to_string().push_str(<span class="string">&quot; KB Note!!!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello wolrd!</span></span><br></pre></td></tr></table></figure>
+
+<p>咦? 竟然沒有作用???</p>
+<p>仔細的來看一下:</p>
+<ol>
+<li>a 宣告為 <code>&amp;str</code> 類型, 在 rust 裡面, 這屬於基本數據類型, 一旦成立, 直接被壓入 stack</li>
+<li>那既然是基本數據類型, 在成立的時候, 直接存入 stack, 若要去更動, 就要換成 String 類型.</li>
+<li>使用方法 to_string() : <code>&amp;str</code> – &gt; <code>String</code></li>
+<li>接著使用 push_str() 在後面加上字串.</li>
+<li>行不通?</li>
+</ol>
+<p>What the hell??????</p>
+<p>正確的順序應該是這樣:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> b = a.to_string();</span><br><span class="line">    b.push_str(<span class="string">&quot; KB Note!!!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello world! KB Note!!!</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  宣告 a 基本變量為 “Hello world!”</li>
+<li>  把 a 轉為 String, 並且賦予給 b , 模式設定為 <code>mut</code> 可變.</li>
+<li>  再利用 .push_str() 方式, 把 <code> KB Note!!!</code> 加在字符串後端</li>
+<li>  在打印出 b 得到我們想要的結果.</li>
+<li>  此時的 a 仍是 “Hello world!”</li>
+</ul>
+<p>在基本型態底下, 會比較令人迷惑的是 <code>&amp;str</code> 跟 <code>String</code> 這兩種的轉換.</p>
+<blockquote>
+<p>迷之聲 : <code>為什麼要搞得這麼麻煩?????</code></p>
+</blockquote>
+<p>基於 RUST 的最大賣點就是 <code>安全級系統語言</code>, 這還會跟後面的 <code>Ownership 所有權</code> 跟 <code>borrow 借用</code> 有著相對應重要的關係.</p>
+<p>Rust Note 20211030_1.1</p>
 ]]></content>
       <categories>
         <category>Rust</category>
@@ -903,47 +903,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Rust Note(11)_trait</title>
-    <url>/2021/11/23/20211122-1/</url>
-    <content><![CDATA[<h3 id="trait-特質介紹"><a href="#trait-特質介紹" class="headerlink" title="trait 特質介紹"></a>trait 特質介紹</h3><hr>
-<blockquote>
-<p>特質/特性 ： 這個是一個抽象的接口。<br>來接續上篇所說的抽象層的概念。</p>
-</blockquote>
-<span id="more"></span>
-
-<p>上一篇提到的抽象層 Abstract layer 的概念<br>可以參閱 <a href="https://kyllsccs.github.io/2021/11/14/20211114-1-1/">Rust Note(10)</a></p>
-<blockquote>
-<p>把<code>共同特性</code>的特性集合起來，放在一個共同的地方，<br>讓有共同特性的物件 objects 可以透過呼叫這個接口，<br>來直接套用特性，<code>避免重複撰寫</code></p>
-</blockquote>
-<h3 id="struct-例子-1-vs-1"><a href="#struct-例子-1-vs-1" class="headerlink" title="struct 例子 (1 vs 1)"></a>struct 例子 (1 vs 1)</h3><p>前篇我們使用的是 <code>struct</code> 結構體，利用結構體把擁有共通特性的結構整併起來。</p>
-<p>然後使用 <code>impl</code> <strong>implementation</strong> 來實作 struct，使其有專屬的 function！！！</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">User</span></span> &#123;</span><br><span class="line">    user_name: <span class="built_in">String</span>,</span><br><span class="line">    user_mail: <span class="built_in">String</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> User &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">user_info</span></span>(&amp;<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;User name: &#123;&#125;  User mail:&#123;&#125;&quot;</span>, <span class="keyword">self</span>.user_name, <span class="keyword">self</span>.user_mail)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> user_1 = User &#123;</span><br><span class="line">        user_name: <span class="built_in">String</span>::from(<span class="string">&quot;Kylls KB&quot;</span>),</span><br><span class="line">        user_mail: <span class="built_in">String</span>::from(<span class="string">&quot;kylls.ccs@gmail.com&quot;</span>)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    user_1.user_info();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : User name: Kylls KB  User mail: kylls.ccs@gmail.com</span></span><br></pre></td></tr></table></figure>
-
-<p>以上是使用<code>struct</code>的例子</p>
-<p>接著介紹另外一個方法<code>trait</code></p>
-<h3 id="trait-例子-1-vs-2-3-…or-more…"><a href="#trait-例子-1-vs-2-3-…or-more…" class="headerlink" title="trait 例子 (1 vs 2?3?…or more…)"></a>trait 例子 (1 vs 2?3?…or more…)</h3><hr>
-<blockquote>
-<p>struct 用的是建構出共通的結構子 constructor<br>imp 是使用於實作方法(使用＆self 呼叫建構子)<br>一個<code>struct</code> &gt;&gt; 一個<code>impl</code> ……..<br>那如果多個<code>struct</code> 呢？？？<br>那還不狂寫一波？<br><br></p>
-</blockquote>
-<p><img src="https://www.niusnews.com/upload/imgs/default/16AugP/805kid/7.gif" alt="真的假的"></p>
-<p>設計語言的利用抽象化的 trait<br><code>能夠越簡化代碼，就能夠減少重複撰寫，減少人為疏失</code></p>
-<p>On the other words, simple is good.<br>就是越簡單&amp;&amp;越清楚越好！！！</p>
-<h3 id="行為抽象化"><a href="#行為抽象化" class="headerlink" title="行為抽象化"></a>行為抽象化</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">People</span></span> &#123;</span><br><span class="line">    name: <span class="built_in">String</span>,</span><br><span class="line">    age: <span class="built_in">u64</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立方法抽象層</span></span><br><span class="line"><span class="class"><span class="keyword">trait</span> <span class="title">Action</span></span> &#123;</span><br><span class="line">    <span class="comment">// function do 返回不指定，可自定義</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">say_hello</span></span>(&amp;<span class="keyword">self</span>);</span><br><span class="line">    <span class="comment">// function can_do 返回 true or false</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">can_do</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">bool</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 實作方法 by using trait for struct</span></span><br><span class="line"><span class="comment">// 同樣性質的trait, 可以用來實作多個結構體,</span></span><br><span class="line"><span class="comment">// 使用 `for` -&gt; 專屬哪個struct</span></span><br><span class="line"><span class="keyword">impl</span> Action <span class="keyword">for</span> People &#123;</span><br><span class="line">    <span class="comment">// &amp;self 使用自己的意思</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">say_hello</span></span>(&amp;<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Hello, my name is &#123;&#125;.&quot;</span>, <span class="keyword">self</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意返回是boolean</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">can_do</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">bool</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">self</span>.age &lt; <span class="number">50</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> people_1 = People &#123;</span><br><span class="line">                <span class="comment">// new 一個新的String出來</span></span><br><span class="line">                name: <span class="built_in">String</span>::from(<span class="string">&quot;Kylls&quot;</span>),</span><br><span class="line">                age: <span class="number">18</span>,</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Can &#123;&#125; speak? &#123;&#125;&quot;</span>, people_1.name, people_1.can_do());</span><br><span class="line">        <span class="comment">// output: Can Kylls speak? true</span></span><br><span class="line">        people_1.say_hello();</span><br><span class="line">        <span class="comment">// output: Hello, my name is Kylls.</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>描述擁有的共同架構，集合成<code>struct</code><br>描述相同行為的動作，集合成<code>trait</code></p>
-</blockquote>
-<p>更進一步的敘述出 <code>物件會有的行為特質</code></p>
-<p>Rust Note_20211122</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Rust Note(10)_Abtract Concept 抽象化概念</title>
     <url>/2021/11/14/20211114-1-1/</url>
     <content><![CDATA[<h3 id="Abstract-抽象化"><a href="#Abstract-抽象化" class="headerlink" title="Abstract 抽象化"></a>Abstract 抽象化</h3><blockquote>
@@ -1015,6 +974,81 @@
 </ul>
 <p>有沒有發現大大的縮短創造物件的時間? 利用共通特性…<br>同時也可以避免出錯.</p>
 <p>Rust_Note_20211114(1)</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(11)_trait</title>
+    <url>/2021/11/23/20211122-1/</url>
+    <content><![CDATA[<h3 id="trait-特質介紹"><a href="#trait-特質介紹" class="headerlink" title="trait 特質介紹"></a>trait 特質介紹</h3><hr>
+<blockquote>
+<p>特質/特性 ： 這個是一個抽象的接口。<br>來接續上篇所說的抽象層的概念。</p>
+</blockquote>
+<span id="more"></span>
+
+<p>上一篇提到的抽象層 Abstract layer 的概念<br>可以參閱 <a href="https://kyllsccs.github.io/2021/11/14/20211114-1-1/">Rust Note(10)</a></p>
+<blockquote>
+<p>把<code>共同特性</code>的特性集合起來，放在一個共同的地方，<br>讓有共同特性的物件 objects 可以透過呼叫這個接口，<br>來直接套用特性，<code>避免重複撰寫</code></p>
+</blockquote>
+<h3 id="struct-例子-1-vs-1"><a href="#struct-例子-1-vs-1" class="headerlink" title="struct 例子 (1 vs 1)"></a>struct 例子 (1 vs 1)</h3><p>前篇我們使用的是 <code>struct</code> 結構體，利用結構體把擁有共通特性的結構整併起來。</p>
+<p>然後使用 <code>impl</code> <strong>implementation</strong> 來實作 struct，使其有專屬的 function！！！</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">User</span></span> &#123;</span><br><span class="line">    user_name: <span class="built_in">String</span>,</span><br><span class="line">    user_mail: <span class="built_in">String</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> User &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">user_info</span></span>(&amp;<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;User name: &#123;&#125;  User mail:&#123;&#125;&quot;</span>, <span class="keyword">self</span>.user_name, <span class="keyword">self</span>.user_mail)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> user_1 = User &#123;</span><br><span class="line">        user_name: <span class="built_in">String</span>::from(<span class="string">&quot;Kylls KB&quot;</span>),</span><br><span class="line">        user_mail: <span class="built_in">String</span>::from(<span class="string">&quot;kylls.ccs@gmail.com&quot;</span>)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    user_1.user_info();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : User name: Kylls KB  User mail: kylls.ccs@gmail.com</span></span><br></pre></td></tr></table></figure>
+
+<p>以上是使用<code>struct</code>的例子</p>
+<p>接著介紹另外一個方法<code>trait</code></p>
+<h3 id="trait-例子-1-vs-2-3-…or-more…"><a href="#trait-例子-1-vs-2-3-…or-more…" class="headerlink" title="trait 例子 (1 vs 2?3?…or more…)"></a>trait 例子 (1 vs 2?3?…or more…)</h3><hr>
+<blockquote>
+<p>struct 用的是建構出共通的結構子 constructor<br>imp 是使用於實作方法(使用＆self 呼叫建構子)<br>一個<code>struct</code> &gt;&gt; 一個<code>impl</code> ……..<br>那如果多個<code>struct</code> 呢？？？<br>那還不狂寫一波？<br><br></p>
+</blockquote>
+<p><img src="https://www.niusnews.com/upload/imgs/default/16AugP/805kid/7.gif" alt="真的假的"></p>
+<p>設計語言的利用抽象化的 trait<br><code>能夠越簡化代碼，就能夠減少重複撰寫，減少人為疏失</code></p>
+<p>On the other words, simple is good.<br>就是越簡單&amp;&amp;越清楚越好！！！</p>
+<h3 id="行為抽象化"><a href="#行為抽象化" class="headerlink" title="行為抽象化"></a>行為抽象化</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">People</span></span> &#123;</span><br><span class="line">    name: <span class="built_in">String</span>,</span><br><span class="line">    age: <span class="built_in">u64</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立方法抽象層</span></span><br><span class="line"><span class="class"><span class="keyword">trait</span> <span class="title">Action</span></span> &#123;</span><br><span class="line">    <span class="comment">// function do 返回不指定，可自定義</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">say_hello</span></span>(&amp;<span class="keyword">self</span>);</span><br><span class="line">    <span class="comment">// function can_do 返回 true or false</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">can_do</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">bool</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 實作方法 by using trait for struct</span></span><br><span class="line"><span class="comment">// 同樣性質的trait, 可以用來實作多個結構體,</span></span><br><span class="line"><span class="comment">// 使用 `for` -&gt; 專屬哪個struct</span></span><br><span class="line"><span class="keyword">impl</span> Action <span class="keyword">for</span> People &#123;</span><br><span class="line">    <span class="comment">// &amp;self 使用自己的意思</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">say_hello</span></span>(&amp;<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Hello, my name is &#123;&#125;.&quot;</span>, <span class="keyword">self</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意返回是boolean</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">can_do</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">bool</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">self</span>.age &lt; <span class="number">50</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> people_1 = People &#123;</span><br><span class="line">                <span class="comment">// new 一個新的String出來</span></span><br><span class="line">                name: <span class="built_in">String</span>::from(<span class="string">&quot;Kylls&quot;</span>),</span><br><span class="line">                age: <span class="number">18</span>,</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Can &#123;&#125; speak? &#123;&#125;&quot;</span>, people_1.name, people_1.can_do());</span><br><span class="line">        <span class="comment">// output: Can Kylls speak? true</span></span><br><span class="line">        people_1.say_hello();</span><br><span class="line">        <span class="comment">// output: Hello, my name is Kylls.</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>描述擁有的共同架構，集合成<code>struct</code><br>描述相同行為的動作，集合成<code>trait</code></p>
+</blockquote>
+<p>更進一步的敘述出 <code>物件會有的行為特質</code></p>
+<p>Rust Note_20211122</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(12) enum(I)</title>
+    <url>/2021/11/24/20211124-1/</url>
+    <content><![CDATA[<h3 id="enum-enumeration-枚舉"><a href="#enum-enumeration-枚舉" class="headerlink" title="enum (enumeration) 枚舉"></a>enum (enumeration) 枚舉</h3><hr>
+<p>另外一種型態的<code>類似</code> struct 結構體概念。<br>不完全相同，也不完全不同。</p>
+<span id="more"></span>
+
+<h3 id="struct-結構體"><a href="#struct-結構體" class="headerlink" title="struct 結構體"></a>struct 結構體</h3><hr>
+<p>複習一下<code>struct</code> 的概念</p>
+<blockquote>
+<p>用於結構化一個物件，將其特性&amp;&amp;型態標示出來。<br>可用 <code>impl</code> 來對 struct 構建方法並使用結構體裡面的參數。</p>
+</blockquote>
+<p>…</p>
+<h3 id="enum-枚舉"><a href="#enum-枚舉" class="headerlink" title="enum 枚舉"></a>enum 枚舉</h3><hr>
+<blockquote>
+<p>把可能的對象一一的舉例，就是<code>枚舉</code><br>等同 struct, 可用<code>impl</code> 實作方法。</p>
+</blockquote>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 把一週天都枚舉出來</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Day</span></span> &#123;</span><br><span class="line">    Monday,</span><br><span class="line">    Tuesday,</span><br><span class="line">    Wednesday,</span><br><span class="line">    Thursday,</span><br><span class="line">    Friday,</span><br><span class="line">    Saturday,</span><br><span class="line">    Sunday,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 實作Day</span></span><br><span class="line"><span class="keyword">impl</span> Day &#123;</span><br><span class="line">     <span class="comment">// 返回true or false</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">is_weekday</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">bool</span> &#123;</span><br><span class="line">        <span class="comment">// 使用 match, 匹配自己</span></span><br><span class="line">        <span class="keyword">match</span> <span class="keyword">self</span> &#123;</span><br><span class="line">            <span class="comment">// 使用運算符  |  or 只要有一個條件成立，即為true</span></span><br><span class="line">            &amp;Day::Saturday | &amp;Day::Sunday =&gt; <span class="keyword">return</span> <span class="literal">false</span>,</span><br><span class="line">            _ =&gt; <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        <span class="comment">// `_` other的意思</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="comment">// 賦值 d</span></span><br><span class="line">    <span class="keyword">let</span> d = Day::Sunday;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Is d weekday? &#123;&#125;&quot;</span>, d.is_weekday());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output: Is d weekday? false</span></span><br></pre></td></tr></table></figure>
+
+<p>簡單的搭配 <code>match</code> , 簡化了 if else 判斷。</p>
+<h3 id="使用-trait-for-enum"><a href="#使用-trait-for-enum" class="headerlink" title="使用 trait for enum"></a>使用 trait for enum</h3><hr>
+<p>那可以搭配 trait ?<br>可以的</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  把實例枚舉出來</span></span><br><span class="line"><span class="meta">#[derive(Debug)]</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Day</span></span> &#123;</span><br><span class="line">    Monday,</span><br><span class="line">    Tuesday,</span><br><span class="line">    Wednesday,</span><br><span class="line">    Thursday,</span><br><span class="line">    Friday,</span><br><span class="line">    Saturday,</span><br><span class="line">    Sunday,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 抽象化一層特質(trait) 為動作</span></span><br><span class="line"><span class="class"><span class="keyword">trait</span> <span class="title">Action</span></span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">actl</span></span>(&amp;<span class="keyword">self</span>) -&gt; &amp;<span class="built_in">str</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 實作 impl</span></span><br><span class="line"><span class="keyword">impl</span> Action <span class="keyword">for</span> Day &#123;</span><br><span class="line">    <span class="comment">// return &amp;str type</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">actl</span></span>(&amp;<span class="keyword">self</span>) -&gt; &amp;<span class="built_in">str</span> &#123;</span><br><span class="line">        <span class="comment">// match self</span></span><br><span class="line">        <span class="keyword">match</span> <span class="keyword">self</span> &#123;</span><br><span class="line">            <span class="comment">// by using | or operator</span></span><br><span class="line">            &amp;Day::Saturday | &amp;Day::Sunday =&gt; <span class="string">&quot;I sleep all day!&quot;</span>,</span><br><span class="line">            <span class="comment">// &quot;_&quot; equal the other</span></span><br><span class="line">            _ =&gt; <span class="string">&quot;I must work hard.&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> today = Day::Monday;</span><br><span class="line">    <span class="keyword">let</span> other_day = Day::Sunday;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Today is &#123;:?&#125;, &#123;&#125;&quot;</span>, today, today.actl());</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Tomorrow is &#123;:?&#125;, &#123;&#125;.&quot;</span>, other_day, other_day.actl());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output: Today is Monday, I must work hard.</span></span><br><span class="line"><span class="comment">// output: Tomorrow is Sunday, I sleep all day.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>下一篇加入一點點不一樣的連結轉變.</p>
+<p>Rust Note_20211125 for <code>enum(I)</code></p>
 ]]></content>
       <categories>
         <category>Rust</category>
