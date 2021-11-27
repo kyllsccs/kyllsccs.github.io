@@ -1,163 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2019 Sep. 1st -2021 Sep. 12th 回顧</title>
-    <url>/2021/09/12/2019-2021/</url>
-    <content><![CDATA[<blockquote>
-<p>Find it, know it, then solved it.<br>發現問題, 了解問題, 解決問題</p>
-</blockquote>
-<hr>
-<p>那天夜黑風高的晚上~~~</p>
-<p>(喂~~</p>
-<span id="more"></span>
-
-<p>這不是什麼恐怖故事齁, 只是要來寫寫我是怎開始踏入這<code>自學</code>的不歸路?!</p>
-<p><code>2019 Sep 1st</code> 這輩子讓我難忘的日子?</p>
-<p>在網路上查著哪一款語言最適合初學者… <del>我敢發誓我真的完全 0 經驗</del></p>
-<blockquote>
-<p><code>Python是適合新手的最佳語言</code> ???????</p>
-</blockquote>
-<p>說真的 : 我差點沒有崩潰…..</p>
-<blockquote>
-<p><del>表面上看似越簡單的, 其實才是真正的難</del></p>
-</blockquote>
-<br>
-<br>
-<br>
-
-<p>型態? 是什麼?<br>宣告? 是什麼?<br>判斷? 是什麼?<br>迴圈? 是什麼?</p>
-<br>  
-<br>
-
-<p>這些基礎中的基礎, 都不懂… 那更別談到什麼 <code>物件導向OOP</code></p>
-<br>  
-<br>  
-其實當初賭的就是一口氣? 我就不信我看不懂!!!  
-<br>
-<br>  
-<br>  
-<br>  
-~~但我看了一個月....我還是真的看不懂啊~~  
-<br>
-<br>
-<br>
-
-<blockquote>
-<p>自從我吃了<del>撒尿牛 X</del>後, 我開始考試考 100 分?<br>抱歉, 中毒太深…</p>
-</blockquote>
-<p>就這樣像個小迷糊一樣的, 一邊工作一邊開始這跳坑之路?</p>
-<br>  
-<br>  
-其實在我真正懂了這些...已經是隔 5 個月之後的事情了...
-<br>
-
-<p>真正讓我開竅的竟然是…….<code>Javascript</code> ??????????</p>
-<br>  
-<br>  
-這又是另外一段故事了, 簡單的帶一下...
-
-<p>算是幫新弄好的筆記紀錄做個處女秀?<br><br><br><br></p>
-<p><code>下次有機會再來認真地分享一下我的自學之路????</code> 認真樣(握拳)</p>
-]]></content>
-      <categories>
-        <category>Kylls MurMur</category>
-      </categories>
-      <tags>
-        <tag>MurMur</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL基礎篇_MSSQL [一]</title>
-    <url>/2021/09/14/20210913/</url>
-    <content><![CDATA[<blockquote>
-<p>Do it, find it, know it, and solved it, finally record it.</p>
-</blockquote>
-<hr>
-<p>SQL 基礎篇</p>
-<span id="more"></span>
-
-<h3 id="基礎-SQL-查詢起手式"><a href="#基礎-SQL-查詢起手式" class="headerlink" title="基礎 SQL 查詢起手式"></a>基礎 SQL 查詢起手式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT * FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION_1 IS NULL</span><br><span class="line">AND</span><br><span class="line">CONDITION_2 &gt; 0</span><br><span class="line">AND</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p><code>SELECT</code> 是 SQL 查詢的起手式，<br><code>*</code> 代表是把所有的欄位名稱資料都撈出來<br><code>FROM</code> 從哪個 Table<br><code>TABLE_NAME</code> 是從哪個資料表<br><code>WHERE</code> 後面接的是判斷式的條件 AND / OR 等…</p>
-<hr>
-<h3 id="下-SQL-指令我可以用小寫嗎？"><a href="#下-SQL-指令我可以用小寫嗎？" class="headerlink" title="下 SQL 指令我可以用小寫嗎？"></a>下 SQL 指令我可以用小寫嗎？</h3><p>答案是<code>可以</code>的</p>
-<p>我還特別的去查詢了一下一定要用大寫嗎？</p>
-<p>答案是 有些資料庫為了避免大小寫的轉換影響效率 還是統一使用大寫好</p>
-<hr>
-<p>剛到做 ERP 的系統公司，說真的也是慢慢的從基本的語法開始練習…</p>
-<p>剛開始哪知道什麼查詢不查詢的 <del>憑著熱愛打字的熱誠？</del></p>
-<p>就開始了我的<code>奇幻ERP系統之旅</code> ?</p>
-<blockquote>
-<p>以前看著能夠在黑黑的螢幕不斷的鍵入指令很<code>帥</code>？！</p>
-</blockquote>
-<p><del>就這麼簡單的原因讓我欲罷不能…</del></p>
-<h3 id="基本插入資料指令-INSERT-INTO"><a href="#基本插入資料指令-INSERT-INTO" class="headerlink" title="基本插入資料指令 INSERT INTO"></a>基本插入資料指令 INSERT INTO</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">INSERT INTO TABLE_NAME (COLUNM_1) VALUES (VALUE_1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>INSERT INTO</code> 插入…直接英文字義比較好記憶.<br><code>TABLE_NAME</code> 插入總有個目標吧，這個就是你的目標表格.<br><code>(COLUNM_1)</code> 這個就是裡面的欄位名稱，可以想成<code>excel</code>.<br><code>VALUES (VALUE_1)</code> 裡面就是對應的值</p>
-<p>這邊要注意的是…欄位名稱跟值的順序位置是有對應的…<br>如果插入的順序錯了，or 插入的指定型態不一樣<br>資料庫就會吐紅紅地<code>error</code>給你看？！？！？！</p>
-<hr>
-<h3 id="基本更新指令-UPDATE-…-SET-…"><a href="#基本更新指令-UPDATE-…-SET-…" class="headerlink" title="基本更新指令 UPDATE … SET …"></a>基本更新指令 UPDATE … SET …</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">UPDATE TABLE_NAME SET COLUMN_1=VALUE_2</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE_1</span><br><span class="line">AND</span><br><span class="line">....</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>UPDATE</code> 按照字面上的意思就是 更新啦…很好記吧.<br><code>SET</code> 就是設定的意思啦.</p>
-<p>換個簡單的方式來記憶。</p>
-<blockquote>
-<p>就是把資料表裡面的某個欄位資料設定成你想要多資料。</p>
-</blockquote>
-<p>484 很好記</p>
-<hr>
-<h3 id="刪除指令-DELETE-FROM"><a href="#刪除指令-DELETE-FROM" class="headerlink" title="刪除指令 DELETE FROM"></a>刪除指令 DELETE FROM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>DELETE</code> 字面上就是刪除的意思<br><code>FROM</code> 從….哪裡的意思<br><code>WHERE</code> 放條件的地方，如果沒有放條件…~~~那就是全部刪除啦~~~</p>
-<hr>
-<p>簡單的紀錄一下。</p>
-]]></content>
-      <categories>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL_MSSQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust Note(1)_Data Type I</title>
-    <url>/2021/10/20/20211016/</url>
-    <content><![CDATA[<h2 id="Rust-Note-1-Data-Types-I"><a href="#Rust-Note-1-Data-Types-I" class="headerlink" title="Rust Note(1) Data Types I"></a>Rust Note(1) Data Types I</h2><blockquote>
-<p>Rust is a statically type language.<br>Rust 為一靜態型語言.</p>
-</blockquote>
-<span id="more"></span>
-
-<hr>
-<h3 id="靜態型"><a href="#靜態型" class="headerlink" title="靜態型"></a>靜態型</h3><blockquote>
-<p>靜態型語言 :<br>靜態類型是一種編程語言特性，其中顯式聲明變量類型並因此在編譯時確定。<br>這讓編譯器可以決定給定的變量是否可以執行它所請求的操作。</p>
-</blockquote>
-</br>
-
-<p>在進入編譯之前, 預先指定好資料的型別 (Example : 整數)<br></br><br>如果有需換類型: 則必須要做另外的轉換<br></br></p>
-<h3 id="Rust-Date-Types"><a href="#Rust-Date-Types" class="headerlink" title="Rust Date Types"></a>Rust Date Types</h3><p><strong>Rust 基本 4 大型別</strong></p>
-<ul>
-<li>  int : 整數型</li>
-<li>  float : 浮點型</li>
-<li>  bool : 布林值 true / false</li>
-<li>  string : 字串型</li>
-</ul>
-<h3 id="Rust-Variable-定義型別"><a href="#Rust-Variable-定義型別" class="headerlink" title="Rust Variable 定義型別"></a>Rust Variable 定義型別</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> x: <span class="built_in">String</span> = <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>&lt;Variable_name&gt;:&lt;DataType&gt;</code><br>冒號後面接的是資料型別</p>
-</blockquote>
-</br>
-
-<hr>
-<p>Rust Note 20211016</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Rust Note(8)_Tuple Array Vector</title>
     <url>/2021/11/01/20211011-1/</url>
     <content><![CDATA[<h2 id="數據集合類型"><a href="#數據集合類型" class="headerlink" title="數據集合類型"></a>數據集合類型</h2><hr>
@@ -232,87 +75,36 @@
       </tags>
   </entry>
   <entry>
-    <title>Rust Note(2)_Data Type II</title>
-    <url>/2021/10/17/20211017/</url>
-    <content><![CDATA[<h2 id="Rsut-Note-2-Data-Types-II-Integer-Float"><a href="#Rsut-Note-2-Data-Types-II-Integer-Float" class="headerlink" title="Rsut Note(2) Data Types II Integer / Float"></a>Rsut Note(2) Data Types II Integer / Float</h2><p>依照 Data Type 的型別不同, 兩種方法:</p>
-<ol>
-<li>默認型別 : 直接使用系統默認</li>
-<li>指定型別 : 透過 <code>:&lt;type&gt;</code> 指定型別</li>
-</ol>
+    <title>Rust Note(1)_Data Type I</title>
+    <url>/2021/10/20/20211016/</url>
+    <content><![CDATA[<h2 id="Rust-Note-1-Data-Types-I"><a href="#Rust-Note-1-Data-Types-I" class="headerlink" title="Rust Note(1) Data Types I"></a>Rust Note(1) Data Types I</h2><blockquote>
+<p>Rust is a statically type language.<br>Rust 為一靜態型語言.</p>
+</blockquote>
 <span id="more"></span>
 
-<h2 id="整數型-Integer"><a href="#整數型-Integer" class="headerlink" title="整數型 Integer"></a>整數型 Integer</h2></br>
-
-<blockquote>
-<p>Rust 默認為 i64</p>
-</blockquote>
-<p>Example_1: <strong>i8</strong> &gt;&gt; $2^7$-1 = 127, n=8, (n-1)=7, -1 就是扣掉 0<br>也就是如果型別指定為 i8, 可以接受的最大整數為 -128<del>0</del>127,<br>如超過 127 就會發生溢位</p>
-<p>Example_2: <strong>u8</strong> &gt;&gt; $2^8$-1 = 255, n=8, -1 就是扣掉 0<br>也就是如果型別指定為 u8, 可以接受的最大整數為 0~255,<br>如超過 255 就會發生溢位</p>
-<p>以下範例, 編譯器直接提醒:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">error: literal out of range <span class="keyword">for</span> `i8`</span><br><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: i8 = 256;</span><br><span class="line">  |                 ^^^</span><br><span class="line">  |</span><br><span class="line">  = note: `<span class="comment">#[deny(overflowing_literals)]` on by default</span></span><br><span class="line">  = note: the literal `256` does not fit into the <span class="built_in">type</span> `i8` whose range is `-128..=127`</span><br><span class="line">  = <span class="built_in">help</span>: consider using the <span class="built_in">type</span> `i16` instead</span><br><span class="line"></span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
-
-<h3 id="Rust-中的整型"><a href="#Rust-中的整型" class="headerlink" title="Rust 中的整型"></a>Rust 中的整型</h3><table>
-<thead>
-<tr>
-<th>長度</th>
-<th align="left">有符號</th>
-<th align="left">無符號</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>8 bits</td>
-<td align="left">i8</td>
-<td align="left">u8</td>
-</tr>
-<tr>
-<td>16bits</td>
-<td align="left">i16</td>
-<td align="left">u16</td>
-</tr>
-<tr>
-<td>32bits</td>
-<td align="left">i32</td>
-<td align="left">u32</td>
-</tr>
-<tr>
-<td>64bits</td>
-<td align="left">i64</td>
-<td align="left">u64</td>
-</tr>
-<tr>
-<td>128bits</td>
-<td align="left">i128</td>
-<td align="left">u128</td>
-</tr>
-<tr>
-<td>arch</td>
-<td align="left">isize</td>
-<td align="left">usize</td>
-</tr>
-</tbody></table>
-<p><code>i 代表有符號整數型: 可接受負數</code><br><code>u 代表無符號整數型: 不可接受負數</code> <strong>!</strong></p>
-<blockquote>
-<p>arch : 可以依照系統架構類型(x86 / x64), 直接判褖套用<code>默認型</code></p>
+<hr>
+<h3 id="靜態型"><a href="#靜態型" class="headerlink" title="靜態型"></a>靜態型</h3><blockquote>
+<p>靜態型語言 :<br>靜態類型是一種編程語言特性，其中顯式聲明變量類型並因此在編譯時確定。<br>這讓編譯器可以決定給定的變量是否可以執行它所請求的操作。</p>
 </blockquote>
 </br>
 
-<p>以下範例, 編譯器報錯:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: u8 = -126;</span><br><span class="line">  |                 ^^^^ cannot apply unary operator `-`</span><br><span class="line">  |</span><br><span class="line">  = note: unsigned values cannot be negated</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0600`.</span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
-
-</br>
-
-<h2 id="浮點型-小數-Float"><a href="#浮點型-小數-Float" class="headerlink" title="浮點型 (小數) Float"></a>浮點型 (小數) Float</h2><blockquote>
-<p>Rust 浮點型默認值為 : <code>f64</code></p>
-</blockquote>
-</br>
-
-<p>浮點型只有兩種型態</p>
+<p>在進入編譯之前, 預先指定好資料的型別 (Example : 整數)<br></br><br>如果有需換類型: 則必須要做另外的轉換<br></br></p>
+<h3 id="Rust-Date-Types"><a href="#Rust-Date-Types" class="headerlink" title="Rust Date Types"></a>Rust Date Types</h3><p><strong>Rust 基本 4 大型別</strong></p>
 <ul>
-<li>  <code>f32 : 單精度</code></li>
-<li>  <code>f64 : 雙精度</code></li>
+<li>  int : 整數型</li>
+<li>  float : 浮點型</li>
+<li>  bool : 布林值 true / false</li>
+<li>  string : 字串型</li>
 </ul>
-<p>可以參考這邊 : <a href="https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8">單精度雙精度</a></p>
-<p>Note : 20211017_v1.0</p>
+<h3 id="Rust-Variable-定義型別"><a href="#Rust-Variable-定義型別" class="headerlink" title="Rust Variable 定義型別"></a>Rust Variable 定義型別</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> x: <span class="built_in">String</span> = <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>&lt;Variable_name&gt;:&lt;DataType&gt;</code><br>冒號後面接的是資料型別</p>
+</blockquote>
+</br>
+
+<hr>
+<p>Rust Note 20211016</p>
 ]]></content>
       <categories>
         <category>Rust</category>
@@ -367,6 +159,124 @@
       </categories>
       <tags>
         <tag>SQL_MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL基礎篇_MSSQL [一]</title>
+    <url>/2021/09/14/20210913/</url>
+    <content><![CDATA[<blockquote>
+<p>Do it, find it, know it, and solved it, finally record it.</p>
+</blockquote>
+<hr>
+<p>SQL 基礎篇</p>
+<span id="more"></span>
+
+<h3 id="基礎-SQL-查詢起手式"><a href="#基礎-SQL-查詢起手式" class="headerlink" title="基礎 SQL 查詢起手式"></a>基礎 SQL 查詢起手式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT * FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION_1 IS NULL</span><br><span class="line">AND</span><br><span class="line">CONDITION_2 &gt; 0</span><br><span class="line">AND</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p><code>SELECT</code> 是 SQL 查詢的起手式，<br><code>*</code> 代表是把所有的欄位名稱資料都撈出來<br><code>FROM</code> 從哪個 Table<br><code>TABLE_NAME</code> 是從哪個資料表<br><code>WHERE</code> 後面接的是判斷式的條件 AND / OR 等…</p>
+<hr>
+<h3 id="下-SQL-指令我可以用小寫嗎？"><a href="#下-SQL-指令我可以用小寫嗎？" class="headerlink" title="下 SQL 指令我可以用小寫嗎？"></a>下 SQL 指令我可以用小寫嗎？</h3><p>答案是<code>可以</code>的</p>
+<p>我還特別的去查詢了一下一定要用大寫嗎？</p>
+<p>答案是 有些資料庫為了避免大小寫的轉換影響效率 還是統一使用大寫好</p>
+<hr>
+<p>剛到做 ERP 的系統公司，說真的也是慢慢的從基本的語法開始練習…</p>
+<p>剛開始哪知道什麼查詢不查詢的 <del>憑著熱愛打字的熱誠？</del></p>
+<p>就開始了我的<code>奇幻ERP系統之旅</code> ?</p>
+<blockquote>
+<p>以前看著能夠在黑黑的螢幕不斷的鍵入指令很<code>帥</code>？！</p>
+</blockquote>
+<p><del>就這麼簡單的原因讓我欲罷不能…</del></p>
+<h3 id="基本插入資料指令-INSERT-INTO"><a href="#基本插入資料指令-INSERT-INTO" class="headerlink" title="基本插入資料指令 INSERT INTO"></a>基本插入資料指令 INSERT INTO</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">INSERT INTO TABLE_NAME (COLUNM_1) VALUES (VALUE_1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>INSERT INTO</code> 插入…直接英文字義比較好記憶.<br><code>TABLE_NAME</code> 插入總有個目標吧，這個就是你的目標表格.<br><code>(COLUNM_1)</code> 這個就是裡面的欄位名稱，可以想成<code>excel</code>.<br><code>VALUES (VALUE_1)</code> 裡面就是對應的值</p>
+<p>這邊要注意的是…欄位名稱跟值的順序位置是有對應的…<br>如果插入的順序錯了，or 插入的指定型態不一樣<br>資料庫就會吐紅紅地<code>error</code>給你看？！？！？！</p>
+<hr>
+<h3 id="基本更新指令-UPDATE-…-SET-…"><a href="#基本更新指令-UPDATE-…-SET-…" class="headerlink" title="基本更新指令 UPDATE … SET …"></a>基本更新指令 UPDATE … SET …</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">UPDATE TABLE_NAME SET COLUMN_1=VALUE_2</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE_1</span><br><span class="line">AND</span><br><span class="line">....</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>UPDATE</code> 按照字面上的意思就是 更新啦…很好記吧.<br><code>SET</code> 就是設定的意思啦.</p>
+<p>換個簡單的方式來記憶。</p>
+<blockquote>
+<p>就是把資料表裡面的某個欄位資料設定成你想要多資料。</p>
+</blockquote>
+<p>484 很好記</p>
+<hr>
+<h3 id="刪除指令-DELETE-FROM"><a href="#刪除指令-DELETE-FROM" class="headerlink" title="刪除指令 DELETE FROM"></a>刪除指令 DELETE FROM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE FROM TABLE_NAME</span><br><span class="line">WHERE</span><br><span class="line">CONDITION=VALUE</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>DELETE</code> 字面上就是刪除的意思<br><code>FROM</code> 從….哪裡的意思<br><code>WHERE</code> 放條件的地方，如果沒有放條件…~~~那就是全部刪除啦~~~</p>
+<hr>
+<p>簡單的紀錄一下。</p>
+]]></content>
+      <categories>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL_MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2019 Sep. 1st -2021 Sep. 12th 回顧</title>
+    <url>/2021/09/12/2019-2021/</url>
+    <content><![CDATA[<blockquote>
+<p>Find it, know it, then solved it.<br>發現問題, 了解問題, 解決問題</p>
+</blockquote>
+<hr>
+<p>那天夜黑風高的晚上~~~</p>
+<p>(喂~~</p>
+<span id="more"></span>
+
+<p>這不是什麼恐怖故事齁, 只是要來寫寫我是怎開始踏入這<code>自學</code>的不歸路?!</p>
+<p><code>2019 Sep 1st</code> 這輩子讓我難忘的日子?</p>
+<p>在網路上查著哪一款語言最適合初學者… <del>我敢發誓我真的完全 0 經驗</del></p>
+<blockquote>
+<p><code>Python是適合新手的最佳語言</code> ???????</p>
+</blockquote>
+<p>說真的 : 我差點沒有崩潰…..</p>
+<blockquote>
+<p><del>表面上看似越簡單的, 其實才是真正的難</del></p>
+</blockquote>
+<br>
+<br>
+<br>
+
+<p>型態? 是什麼?<br>宣告? 是什麼?<br>判斷? 是什麼?<br>迴圈? 是什麼?</p>
+<br>  
+<br>
+
+<p>這些基礎中的基礎, 都不懂… 那更別談到什麼 <code>物件導向OOP</code></p>
+<br>  
+<br>  
+其實當初賭的就是一口氣? 我就不信我看不懂!!!  
+<br>
+<br>  
+<br>  
+<br>  
+~~但我看了一個月....我還是真的看不懂啊~~  
+<br>
+<br>
+<br>
+
+<blockquote>
+<p>自從我吃了<del>撒尿牛 X</del>後, 我開始考試考 100 分?<br>抱歉, 中毒太深…</p>
+</blockquote>
+<p>就這樣像個小迷糊一樣的, 一邊工作一邊開始這跳坑之路?</p>
+<br>  
+<br>  
+其實在我真正懂了這些...已經是隔 5 個月之後的事情了...
+<br>
+
+<p>真正讓我開竅的竟然是…….<code>Javascript</code> ??????????</p>
+<br>  
+<br>  
+這又是另外一段故事了, 簡單的帶一下...
+
+<p>算是幫新弄好的筆記紀錄做個處女秀?<br><br><br><br></p>
+<p><code>下次有機會再來認真地分享一下我的自學之路????</code> 認真樣(握拳)</p>
+]]></content>
+      <categories>
+        <category>Kylls MurMur</category>
+      </categories>
+      <tags>
+        <tag>MurMur</tag>
       </tags>
   </entry>
   <entry>
@@ -483,78 +393,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Rust Note(5)_if_else_match</title>
-    <url>/2021/10/23/20211023-2/</url>
-    <content><![CDATA[<h2 id="if-else-if-else-if-條件判斷"><a href="#if-else-if-else-if-條件判斷" class="headerlink" title="if else, if else if 條件判斷"></a>if else, if else if 條件判斷</h2><blockquote>
-<p>如同其他語言一樣, Rust 也是有流程控制 <code>Control Condition Flow</code><br>使用的原則是, 只要有一個符合使用者所設定的條件, 那下方的判斷就不再執行.</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="if-else-若…則…"><a href="#if-else-若…則…" class="headerlink" title="if, else 若…則…"></a>if, else 若…則…</h2><blockquote>
-<p>這是最簡單的, 若非 A 則 B.</p>
-</blockquote>
-<p>範例如下 :</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a != b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is not equal to b!&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is equal with b!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : a is not equal to b!</span></span><br></pre></td></tr></table></figure>
-
-<p>Flow 如下:</p>
-<ol>
-<li>先宣告兩個變數 a and b, 且指定其形態</li>
-<li>做兩個對比比較</li>
-<li><code>!=</code> 運算符 : 不等於</li>
-<li><code>if &lt;condition 1&gt;</code> condition 1 條件滿足成立 <true> , 執行後面的運算</li>
-<li>後面的 else 就不會再被執行</li>
-</ol>
-<p>修改一下上面的範例 :</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a == b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is not equal to b!&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is equal with b!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : a is equal with b!</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>把 <code>!=</code> 換成 <code>==</code><br>那結果就變成 if &lt;condition 1&gt; 不成立 <false>, 就繼續往下執行 else 語句</p>
-</blockquote>
-<p>當然, 世界如果有這麼美好就好了, 絕對不可能只有單純兩個判斷………..</p>
-<p>那如果狀況很多呢? <code>How can I do?????????</code></p>
-</br>
-
-<h2 id="if-else-if-…-else-else-if-派上用場了"><a href="#if-else-if-…-else-else-if-派上用場了" class="headerlink" title="if, else if, …, else; else if 派上用場了!!!"></a>if, else if, …, else; <code>else if</code> 派上用場了!!!</h2><p>不囉嗦, 直接上範例</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a == b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 1&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 2&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> a &gt;= b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 3&quot;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 4&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : result 4</span></span><br></pre></td></tr></table></figure>
-
-<p>啾竟發生何事?</p>
-<ol>
-<li>宣告變數</li>
-<li>開始條件判斷<br>2-1. &lt;condition 1&gt; : a 不等於 b <false><br>2-2. &lt;condition 2&gt; : a 大於 b <false><br>2-3. &lt;conditoin 3&gt; : a 大於等於 b <false></li>
-<li>condition 1, 2, 3 都為 <code>false</code> 都不成立……..</li>
-<li>所以最後輸出結果為 else 裡面的運算語句.</li>
-</ol>
-<blockquote>
-<p>如果多了這麼多的條件判斷, 是不是可變化性變更多了?</p>
-</blockquote>
-<h2 id="Match-語句-Like-C-switch-語句"><a href="#Match-語句-Like-C-switch-語句" class="headerlink" title="Match 語句 (Like C switch 語句)"></a>Match 語句 (Like C switch 語句)</h2><blockquote>
-<p>如果條件很多, 寫一大堆 if else…….是不是會更亂?????????</p>
-</blockquote>
-<p>那我們用 match 看看~</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> s_name: &amp;<span class="built_in">str</span> = <span class="string">&quot;KB&quot;</span>; <span class="comment">// Using &amp;str</span></span><br><span class="line">    <span class="keyword">let</span> f_name = <span class="keyword">match</span> s_name &#123;</span><br><span class="line">        <span class="string">&quot;KJ&quot;</span> =&gt; <span class="string">&quot;Kylls Jellies&quot;</span>,</span><br><span class="line">        <span class="string">&quot;KD&quot;</span> =&gt; <span class="string">&quot;Kylls Dellies&quot;</span>,</span><br><span class="line">        <span class="string">&quot;KB&quot;</span> =&gt; <span class="string">&quot;Kylls Bellies&quot;</span>,</span><br><span class="line">        _ =&gt; <span class="string">&quot;Unknown&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Hi &#123;&#125;, Your name is &#123;&#125;.&quot;</span>, s_name, f_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hi KB, Your name is Kylls Bellies.</span></span><br></pre></td></tr></table></figure>
-
-<p>來看一下作用的 flow:</p>
-<ol>
-<li>f_name 有多個條件, “KJ”, “KD”, “KB”</li>
-<li>使用 <code>match</code> 這關鍵字, 啟動媒合功能?????</li>
-<li>只要裡面有對應到的, 就會<code>=&gt; 值</code>返回給 f_name</li>
-<li><code>_ =&gt; value</code> 代表都比對不到, 那就返回 Unknown.</li>
-</ol>
-</br>
-
-<p>有沒有發現 match 跟 C, Java 其他語言的 switch 很像呢?</p>
-</br>
-
-<p>Rust Note_20211023_1.2</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Rust Note(4)_Data Type III [String]</title>
     <url>/2021/10/23/20211023_1/</url>
     <content><![CDATA[<h2 id="Rust-字符串類型"><a href="#Rust-字符串類型" class="headerlink" title="Rust 字符串類型"></a>Rust 字符串類型</h2><hr>
@@ -655,6 +493,234 @@
       </tags>
   </entry>
   <entry>
+    <title>Rust Note(2)_Data Type II</title>
+    <url>/2021/10/17/20211017/</url>
+    <content><![CDATA[<h2 id="Rsut-Note-2-Data-Types-II-Integer-Float"><a href="#Rsut-Note-2-Data-Types-II-Integer-Float" class="headerlink" title="Rsut Note(2) Data Types II Integer / Float"></a>Rsut Note(2) Data Types II Integer / Float</h2><p>依照 Data Type 的型別不同, 兩種方法:</p>
+<ol>
+<li>默認型別 : 直接使用系統默認</li>
+<li>指定型別 : 透過 <code>:&lt;type&gt;</code> 指定型別</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="整數型-Integer"><a href="#整數型-Integer" class="headerlink" title="整數型 Integer"></a>整數型 Integer</h2></br>
+
+<blockquote>
+<p>Rust 默認為 i64</p>
+</blockquote>
+<p>Example_1: <strong>i8</strong> &gt;&gt; $2^7$-1 = 127, n=8, (n-1)=7, -1 就是扣掉 0<br>也就是如果型別指定為 i8, 可以接受的最大整數為 -128<del>0</del>127,<br>如超過 127 就會發生溢位</p>
+<p>Example_2: <strong>u8</strong> &gt;&gt; $2^8$-1 = 255, n=8, -1 就是扣掉 0<br>也就是如果型別指定為 u8, 可以接受的最大整數為 0~255,<br>如超過 255 就會發生溢位</p>
+<p>以下範例, 編譯器直接提醒:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cargo run</span><br><span class="line">error: literal out of range <span class="keyword">for</span> `i8`</span><br><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: i8 = 256;</span><br><span class="line">  |                 ^^^</span><br><span class="line">  |</span><br><span class="line">  = note: `<span class="comment">#[deny(overflowing_literals)]` on by default</span></span><br><span class="line">  = note: the literal `256` does not fit into the <span class="built_in">type</span> `i8` whose range is `-128..=127`</span><br><span class="line">  = <span class="built_in">help</span>: consider using the <span class="built_in">type</span> `i16` instead</span><br><span class="line"></span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
+
+<h3 id="Rust-中的整型"><a href="#Rust-中的整型" class="headerlink" title="Rust 中的整型"></a>Rust 中的整型</h3><table>
+<thead>
+<tr>
+<th>長度</th>
+<th align="left">有符號</th>
+<th align="left">無符號</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>8 bits</td>
+<td align="left">i8</td>
+<td align="left">u8</td>
+</tr>
+<tr>
+<td>16bits</td>
+<td align="left">i16</td>
+<td align="left">u16</td>
+</tr>
+<tr>
+<td>32bits</td>
+<td align="left">i32</td>
+<td align="left">u32</td>
+</tr>
+<tr>
+<td>64bits</td>
+<td align="left">i64</td>
+<td align="left">u64</td>
+</tr>
+<tr>
+<td>128bits</td>
+<td align="left">i128</td>
+<td align="left">u128</td>
+</tr>
+<tr>
+<td>arch</td>
+<td align="left">isize</td>
+<td align="left">usize</td>
+</tr>
+</tbody></table>
+<p><code>i 代表有符號整數型: 可接受負數</code><br><code>u 代表無符號整數型: 不可接受負數</code> <strong>!</strong></p>
+<blockquote>
+<p>arch : 可以依照系統架構類型(x86 / x64), 直接判褖套用<code>默認型</code></p>
+</blockquote>
+</br>
+
+<p>以下範例, 編譯器報錯:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> --&gt; src\main.rs:4:17</span><br><span class="line">  |</span><br><span class="line">4 |     <span class="built_in">let</span> x: u8 = -126;</span><br><span class="line">  |                 ^^^^ cannot apply unary operator `-`</span><br><span class="line">  |</span><br><span class="line">  = note: unsigned values cannot be negated</span><br><span class="line"></span><br><span class="line">For more information about this error, try `rustc --explain E0600`.</span><br><span class="line">error: could not compile `rust_project` due to previous error</span><br></pre></td></tr></table></figure>
+
+</br>
+
+<h2 id="浮點型-小數-Float"><a href="#浮點型-小數-Float" class="headerlink" title="浮點型 (小數) Float"></a>浮點型 (小數) Float</h2><blockquote>
+<p>Rust 浮點型默認值為 : <code>f64</code></p>
+</blockquote>
+</br>
+
+<p>浮點型只有兩種型態</p>
+<ul>
+<li>  <code>f32 : 單精度</code></li>
+<li>  <code>f64 : 雙精度</code></li>
+</ul>
+<p>可以參考這邊 : <a href="https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8">單精度雙精度</a></p>
+<p>Note : 20211017_v1.0</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(5)_if_else_match</title>
+    <url>/2021/10/23/20211023-2/</url>
+    <content><![CDATA[<h2 id="if-else-if-else-if-條件判斷"><a href="#if-else-if-else-if-條件判斷" class="headerlink" title="if else, if else if 條件判斷"></a>if else, if else if 條件判斷</h2><blockquote>
+<p>如同其他語言一樣, Rust 也是有流程控制 <code>Control Condition Flow</code><br>使用的原則是, 只要有一個符合使用者所設定的條件, 那下方的判斷就不再執行.</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="if-else-若…則…"><a href="#if-else-若…則…" class="headerlink" title="if, else 若…則…"></a>if, else 若…則…</h2><blockquote>
+<p>這是最簡單的, 若非 A 則 B.</p>
+</blockquote>
+<p>範例如下 :</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a != b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is not equal to b!&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is equal with b!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : a is not equal to b!</span></span><br></pre></td></tr></table></figure>
+
+<p>Flow 如下:</p>
+<ol>
+<li>先宣告兩個變數 a and b, 且指定其形態</li>
+<li>做兩個對比比較</li>
+<li><code>!=</code> 運算符 : 不等於</li>
+<li><code>if &lt;condition 1&gt;</code> condition 1 條件滿足成立 <true> , 執行後面的運算</li>
+<li>後面的 else 就不會再被執行</li>
+</ol>
+<p>修改一下上面的範例 :</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a == b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is not equal to b!&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;a is equal with b!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : a is equal with b!</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>把 <code>!=</code> 換成 <code>==</code><br>那結果就變成 if &lt;condition 1&gt; 不成立 <false>, 就繼續往下執行 else 語句</p>
+</blockquote>
+<p>當然, 世界如果有這麼美好就好了, 絕對不可能只有單純兩個判斷………..</p>
+<p>那如果狀況很多呢? <code>How can I do?????????</code></p>
+</br>
+
+<h2 id="if-else-if-…-else-else-if-派上用場了"><a href="#if-else-if-…-else-else-if-派上用場了" class="headerlink" title="if, else if, …, else; else if 派上用場了!!!"></a>if, else if, …, else; <code>else if</code> 派上用場了!!!</h2><p>不囉嗦, 直接上範例</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: <span class="built_in">i64</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">let</span> b: <span class="built_in">i64</span> = <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">if</span> a == b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 1&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 2&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> a &gt;= b &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 3&quot;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;result 4&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : result 4</span></span><br></pre></td></tr></table></figure>
+
+<p>啾竟發生何事?</p>
+<ol>
+<li>宣告變數</li>
+<li>開始條件判斷<br>2-1. &lt;condition 1&gt; : a 不等於 b <false><br>2-2. &lt;condition 2&gt; : a 大於 b <false><br>2-3. &lt;conditoin 3&gt; : a 大於等於 b <false></li>
+<li>condition 1, 2, 3 都為 <code>false</code> 都不成立……..</li>
+<li>所以最後輸出結果為 else 裡面的運算語句.</li>
+</ol>
+<blockquote>
+<p>如果多了這麼多的條件判斷, 是不是可變化性變更多了?</p>
+</blockquote>
+<h2 id="Match-語句-Like-C-switch-語句"><a href="#Match-語句-Like-C-switch-語句" class="headerlink" title="Match 語句 (Like C switch 語句)"></a>Match 語句 (Like C switch 語句)</h2><blockquote>
+<p>如果條件很多, 寫一大堆 if else…….是不是會更亂?????????</p>
+</blockquote>
+<p>那我們用 match 看看~</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> s_name: &amp;<span class="built_in">str</span> = <span class="string">&quot;KB&quot;</span>; <span class="comment">// Using &amp;str</span></span><br><span class="line">    <span class="keyword">let</span> f_name = <span class="keyword">match</span> s_name &#123;</span><br><span class="line">        <span class="string">&quot;KJ&quot;</span> =&gt; <span class="string">&quot;Kylls Jellies&quot;</span>,</span><br><span class="line">        <span class="string">&quot;KD&quot;</span> =&gt; <span class="string">&quot;Kylls Dellies&quot;</span>,</span><br><span class="line">        <span class="string">&quot;KB&quot;</span> =&gt; <span class="string">&quot;Kylls Bellies&quot;</span>,</span><br><span class="line">        _ =&gt; <span class="string">&quot;Unknown&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Hi &#123;&#125;, Your name is &#123;&#125;.&quot;</span>, s_name, f_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hi KB, Your name is Kylls Bellies.</span></span><br></pre></td></tr></table></figure>
+
+<p>來看一下作用的 flow:</p>
+<ol>
+<li>f_name 有多個條件, “KJ”, “KD”, “KB”</li>
+<li>使用 <code>match</code> 這關鍵字, 啟動媒合功能?????</li>
+<li>只要裡面有對應到的, 就會<code>=&gt; 值</code>返回給 f_name</li>
+<li><code>_ =&gt; value</code> 代表都比對不到, 那就返回 Unknown.</li>
+</ol>
+</br>
+
+<p>有沒有發現 match 跟 C, Java 其他語言的 switch 很像呢?</p>
+</br>
+
+<p>Rust Note_20211023_1.2</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(7)_Stack &amp; Heap</title>
+    <url>/2021/10/30/20211030-1/</url>
+    <content><![CDATA[<h2 id="Stack-amp-Heap"><a href="#Stack-amp-Heap" class="headerlink" title="Stack &amp; Heap"></a>Stack &amp; Heap</h2><p>棧 和 堆 的區別。</p>
+<span id="more"></span>
+
+<h3 id="Stack-棧"><a href="#Stack-棧" class="headerlink" title="Stack 棧"></a>Stack 棧</h3><hr>
+<blockquote>
+<p>有序的： <code>已被佔用</code> 且 <code>固定大小</code>。</p>
+</blockquote>
+<p>棧是透過堆疊而成，採<code>Last in， first out</code> 概念(後進先出)。<br>意即在最剛開始就被賦予固定大小的值。<br>EX: <code>&amp;str</code>;</p>
+<blockquote>
+<p>應用在基本標量類型 ex <code>整數型</code>，<code>浮點數</code>…等</p>
+</blockquote>
+<h3 id="Heap-堆"><a href="#Heap-堆" class="headerlink" title="Heap 堆"></a>Heap 堆</h3><hr>
+<blockquote>
+<p>無序的：編譯時，<code>未知大小</code> 且 <code>可能大小變更</code>。</p>
+</blockquote>
+<p>亦即在程式碼撰寫過程中，因應需要而賦予的值。<br>只能透過<code>ptr (指針)</code> 來進行訪問。<br>EX: <code>String</code></p>
+<blockquote>
+<p>應用在複合類型 ex <code>String</code>, <code>tuple</code>…等</p>
+</blockquote>
+<h3 id="Pointer-指針"><a href="#Pointer-指針" class="headerlink" title="Pointer 指針"></a>Pointer 指針</h3><hr>
+<blockquote>
+<p>要訪問 <code>heap (無序的)</code> , 必須得透過 <code>Pointer (ptr: 指針)</code> 來進行訪問。</p>
+</blockquote>
+<h2 id="實際操作"><a href="#實際操作" class="headerlink" title="實際操作"></a>實際操作</h2><hr>
+<blockquote>
+<p>基本數據類型 : 參考前面的筆記.</p>
+</blockquote>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line">    a.to_string().push_str(<span class="string">&quot; KB Note!!!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello wolrd!</span></span><br></pre></td></tr></table></figure>
+
+<p>咦? 竟然沒有作用???</p>
+<p>仔細的來看一下:</p>
+<ol>
+<li>a 宣告為 <code>&amp;str</code> 類型, 在 rust 裡面, 這屬於基本數據類型, 一旦成立, 直接被壓入 stack</li>
+<li>那既然是基本數據類型, 在成立的時候, 直接存入 stack, 若要去更動, 就要換成 String 類型.</li>
+<li>使用方法 to_string() : <code>&amp;str</code> – &gt; <code>String</code></li>
+<li>接著使用 push_str() 在後面加上字串.</li>
+<li>行不通?</li>
+</ol>
+<p>What the hell??????</p>
+<p>正確的順序應該是這樣:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> b = a.to_string();</span><br><span class="line">    b.push_str(<span class="string">&quot; KB Note!!!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello world! KB Note!!!</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  宣告 a 基本變量為 “Hello world!”</li>
+<li>  把 a 轉為 String, 並且賦予給 b , 模式設定為 <code>mut</code> 可變.</li>
+<li>  再利用 .push_str() 方式, 把 <code> KB Note!!!</code> 加在字符串後端</li>
+<li>  在打印出 b 得到我們想要的結果.</li>
+<li>  此時的 a 仍是 “Hello world!”</li>
+</ul>
+<p>在基本型態底下, 會比較令人迷惑的是 <code>&amp;str</code> 跟 <code>String</code> 這兩種的轉換.</p>
+<blockquote>
+<p>迷之聲 : <code>為什麼要搞得這麼麻煩?????</code></p>
+</blockquote>
+<p>基於 RUST 的最大賣點就是 <code>安全級系統語言</code>, 這還會跟後面的 <code>Ownership 所有權</code> 跟 <code>borrow 借用</code> 有著相對應重要的關係.</p>
+<p>Rust Note 20211030_1.1</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Rust Note(6)_loop for while</title>
     <url>/2021/10/25/20211025/</url>
     <content><![CDATA[<h2 id="Rust-迴圈"><a href="#Rust-迴圈" class="headerlink" title="Rust 迴圈"></a>Rust 迴圈</h2><blockquote>
@@ -733,72 +799,6 @@
 </br>
 
 <p>Rust_Note_20211025_1.1</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust Note(7)_Stack &amp; Heap</title>
-    <url>/2021/10/30/20211030-1/</url>
-    <content><![CDATA[<h2 id="Stack-amp-Heap"><a href="#Stack-amp-Heap" class="headerlink" title="Stack &amp; Heap"></a>Stack &amp; Heap</h2><p>棧 和 堆 的區別。</p>
-<span id="more"></span>
-
-<h3 id="Stack-棧"><a href="#Stack-棧" class="headerlink" title="Stack 棧"></a>Stack 棧</h3><hr>
-<blockquote>
-<p>有序的： <code>已被佔用</code> 且 <code>固定大小</code>。</p>
-</blockquote>
-<p>棧是透過堆疊而成，採<code>Last in， first out</code> 概念(後進先出)。<br>意即在最剛開始就被賦予固定大小的值。<br>EX: <code>&amp;str</code>;</p>
-<blockquote>
-<p>應用在基本標量類型 ex <code>整數型</code>，<code>浮點數</code>…等</p>
-</blockquote>
-<h3 id="Heap-堆"><a href="#Heap-堆" class="headerlink" title="Heap 堆"></a>Heap 堆</h3><hr>
-<blockquote>
-<p>無序的：編譯時，<code>未知大小</code> 且 <code>可能大小變更</code>。</p>
-</blockquote>
-<p>亦即在程式碼撰寫過程中，因應需要而賦予的值。<br>只能透過<code>ptr (指針)</code> 來進行訪問。<br>EX: <code>String</code></p>
-<blockquote>
-<p>應用在複合類型 ex <code>String</code>, <code>tuple</code>…等</p>
-</blockquote>
-<h3 id="Pointer-指針"><a href="#Pointer-指針" class="headerlink" title="Pointer 指針"></a>Pointer 指針</h3><hr>
-<blockquote>
-<p>要訪問 <code>heap (無序的)</code> , 必須得透過 <code>Pointer (ptr: 指針)</code> 來進行訪問。</p>
-</blockquote>
-<h2 id="實際操作"><a href="#實際操作" class="headerlink" title="實際操作"></a>實際操作</h2><hr>
-<blockquote>
-<p>基本數據類型 : 參考前面的筆記.</p>
-</blockquote>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line">    a.to_string().push_str(<span class="string">&quot; KB Note!!!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello wolrd!</span></span><br></pre></td></tr></table></figure>
-
-<p>咦? 竟然沒有作用???</p>
-<p>仔細的來看一下:</p>
-<ol>
-<li>a 宣告為 <code>&amp;str</code> 類型, 在 rust 裡面, 這屬於基本數據類型, 一旦成立, 直接被壓入 stack</li>
-<li>那既然是基本數據類型, 在成立的時候, 直接存入 stack, 若要去更動, 就要換成 String 類型.</li>
-<li>使用方法 to_string() : <code>&amp;str</code> – &gt; <code>String</code></li>
-<li>接著使用 push_str() 在後面加上字串.</li>
-<li>行不通?</li>
-</ol>
-<p>What the hell??????</p>
-<p>正確的順序應該是這樣:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a: &amp;<span class="built_in">str</span> = <span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> b = a.to_string();</span><br><span class="line">    b.push_str(<span class="string">&quot; KB Note!!!&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : Hello world! KB Note!!!</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>  宣告 a 基本變量為 “Hello world!”</li>
-<li>  把 a 轉為 String, 並且賦予給 b , 模式設定為 <code>mut</code> 可變.</li>
-<li>  再利用 .push_str() 方式, 把 <code> KB Note!!!</code> 加在字符串後端</li>
-<li>  在打印出 b 得到我們想要的結果.</li>
-<li>  此時的 a 仍是 “Hello world!”</li>
-</ul>
-<p>在基本型態底下, 會比較令人迷惑的是 <code>&amp;str</code> 跟 <code>String</code> 這兩種的轉換.</p>
-<blockquote>
-<p>迷之聲 : <code>為什麼要搞得這麼麻煩?????</code></p>
-</blockquote>
-<p>基於 RUST 的最大賣點就是 <code>安全級系統語言</code>, 這還會跟後面的 <code>Ownership 所有權</code> 跟 <code>borrow 借用</code> 有著相對應重要的關係.</p>
-<p>Rust Note 20211030_1.1</p>
 ]]></content>
       <categories>
         <category>Rust</category>
@@ -983,6 +983,88 @@
       </tags>
   </entry>
   <entry>
+    <title>Rust Note(12) enum(I)</title>
+    <url>/2021/11/24/20211124-1/</url>
+    <content><![CDATA[<h3 id="enum-enumeration-枚舉"><a href="#enum-enumeration-枚舉" class="headerlink" title="enum (enumeration) 枚舉"></a>enum (enumeration) 枚舉</h3><hr>
+<p>另外一種型態的<code>類似</code> struct 結構體概念。<br>不完全相同，也不完全不同。</p>
+<span id="more"></span>
+
+<h3 id="struct-結構體"><a href="#struct-結構體" class="headerlink" title="struct 結構體"></a>struct 結構體</h3><hr>
+<p>複習一下<code>struct</code> 的概念</p>
+<blockquote>
+<p>用於結構化一個物件，將其特性&amp;&amp;型態標示出來。<br>可用 <code>impl</code> 來對 struct 構建方法並使用結構體裡面的參數。</p>
+</blockquote>
+<p>…</p>
+<h3 id="enum-枚舉"><a href="#enum-枚舉" class="headerlink" title="enum 枚舉"></a>enum 枚舉</h3><hr>
+<blockquote>
+<p>把可能的對象一一的舉例，就是<code>枚舉</code><br>等同 struct, 可用<code>impl</code> 實作方法。</p>
+</blockquote>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 把一週天都枚舉出來</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Day</span></span> &#123;</span><br><span class="line">    Monday,</span><br><span class="line">    Tuesday,</span><br><span class="line">    Wednesday,</span><br><span class="line">    Thursday,</span><br><span class="line">    Friday,</span><br><span class="line">    Saturday,</span><br><span class="line">    Sunday,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 實作Day</span></span><br><span class="line"><span class="keyword">impl</span> Day &#123;</span><br><span class="line">     <span class="comment">// 返回true or false</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">is_weekday</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">bool</span> &#123;</span><br><span class="line">        <span class="comment">// 使用 match, 匹配自己</span></span><br><span class="line">        <span class="keyword">match</span> <span class="keyword">self</span> &#123;</span><br><span class="line">            <span class="comment">// 使用運算符  |  or 只要有一個條件成立，即為true</span></span><br><span class="line">            &amp;Day::Saturday | &amp;Day::Sunday =&gt; <span class="keyword">return</span> <span class="literal">false</span>,</span><br><span class="line">            _ =&gt; <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        <span class="comment">// `_` other的意思</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="comment">// 賦值 d</span></span><br><span class="line">    <span class="keyword">let</span> d = Day::Sunday;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Is d weekday? &#123;&#125;&quot;</span>, d.is_weekday());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output: Is d weekday? false</span></span><br></pre></td></tr></table></figure>
+
+<p>簡單的搭配 <code>match</code> , 簡化了 if else 判斷。</p>
+<h3 id="使用-trait-for-enum"><a href="#使用-trait-for-enum" class="headerlink" title="使用 trait for enum"></a>使用 trait for enum</h3><hr>
+<p>那可以搭配 trait ?<br>可以的</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  把實例枚舉出來</span></span><br><span class="line"><span class="meta">#[derive(Debug)]</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Day</span></span> &#123;</span><br><span class="line">    Monday,</span><br><span class="line">    Tuesday,</span><br><span class="line">    Wednesday,</span><br><span class="line">    Thursday,</span><br><span class="line">    Friday,</span><br><span class="line">    Saturday,</span><br><span class="line">    Sunday,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 抽象化一層特質(trait) 為動作</span></span><br><span class="line"><span class="class"><span class="keyword">trait</span> <span class="title">Action</span></span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">actl</span></span>(&amp;<span class="keyword">self</span>) -&gt; &amp;<span class="built_in">str</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 實作 impl</span></span><br><span class="line"><span class="keyword">impl</span> Action <span class="keyword">for</span> Day &#123;</span><br><span class="line">    <span class="comment">// return &amp;str type</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">actl</span></span>(&amp;<span class="keyword">self</span>) -&gt; &amp;<span class="built_in">str</span> &#123;</span><br><span class="line">        <span class="comment">// match self</span></span><br><span class="line">        <span class="keyword">match</span> <span class="keyword">self</span> &#123;</span><br><span class="line">            <span class="comment">// by using | or operator</span></span><br><span class="line">            &amp;Day::Saturday | &amp;Day::Sunday =&gt; <span class="string">&quot;I sleep all day!&quot;</span>,</span><br><span class="line">            <span class="comment">// &quot;_&quot; equal the other</span></span><br><span class="line">            _ =&gt; <span class="string">&quot;I must work hard.&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> today = Day::Monday;</span><br><span class="line">    <span class="keyword">let</span> other_day = Day::Sunday;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Today is &#123;:?&#125;, &#123;&#125;&quot;</span>, today, today.actl());</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Tomorrow is &#123;:?&#125;, &#123;&#125;.&quot;</span>, other_day, other_day.actl());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output: Today is Monday, I must work hard.</span></span><br><span class="line"><span class="comment">// output: Tomorrow is Sunday, I sleep all day.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>下一篇加入一點點不一樣的連結轉變.</p>
+<p>Rust Note_20211125 for <code>enum(I)</code></p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(13)_enum(II) with struct</title>
+    <url>/2021/11/25/20211125-1/</url>
+    <content><![CDATA[<h3 id="enum-基本型"><a href="#enum-基本型" class="headerlink" title="enum 基本型"></a>enum 基本型</h3><hr>
+<blockquote>
+<p>enum 基本型請參閱 <a href="https://kyllsccs.github.io/2021/11/24/20211124-1/">Rust Note(12)_enum(I)</a></p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="enum-變化型-w-struct"><a href="#enum-變化型-w-struct" class="headerlink" title="enum 變化型 w/ struct"></a>enum 變化型 w/ struct</h3><hr>
+<blockquote>
+<p>struct 裡面的 constructor 結構子型態直接指定為 enum 裡面的變數. <br></p>
+</blockquote>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 枚舉出星期幾</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Day</span></span> &#123;</span><br><span class="line">    Monday,</span><br><span class="line">    Tuesday,</span><br><span class="line">    Wednesday,</span><br><span class="line">    Thursday,</span><br><span class="line">    Friday,</span><br><span class="line">    Saturday,</span><br><span class="line">    Sunday,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// new 一個 struct, constructor 結構子型態為 enum</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Weekday</span></span> &#123;</span><br><span class="line">    <span class="comment">// struct Weekday 的 constructor weekd 的type 為 enum Day</span></span><br><span class="line">    weekd: Day</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// impl Weekday</span></span><br><span class="line"><span class="keyword">impl</span> Weekday &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">def_day</span></span>(&amp;<span class="keyword">self</span>) -&gt; &amp;<span class="built_in">str</span> &#123;</span><br><span class="line">        <span class="comment">// 做 match self.weekd self要明確地指出要match哪一個constructor</span></span><br><span class="line">        <span class="keyword">match</span> <span class="keyword">self</span>.weekd &#123;</span><br><span class="line">            Day::Saturday | Day::Sunday =&gt; <span class="keyword">return</span> <span class="string">&quot;The day is holiday.&quot;</span>,</span><br><span class="line">            _ =&gt; <span class="keyword">return</span> <span class="string">&quot;The day is working day.&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a = Weekday &#123;</span><br><span class="line">        <span class="comment">// 可直接取 enum Day裡面的值</span></span><br><span class="line">        weekd: Day::Sunday</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a.def_day());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : The day is holiday.</span></span><br></pre></td></tr></table></figure>
+
+<p>Working flow:</p>
+<ul>
+<li>  先把可能的型態枚舉出來 (enum)</li>
+<li>  把 enum 型態做成對應的 struct 裡面的 constructors</li>
+<li>針對 struct 實作 impl<ul>
+<li>  實作 a function daf_day</li>
+<li>  <code>&amp;self</code> 呼叫可套用自己 struct 的參數</li>
+<li>  使用 match XXX {}</li>
+<li>  要 match 哪個值 –&gt; self.weekd 自己內部的 constructor, 使用<code>.</code>做呼叫</li>
+<li>  <code>|</code> operator 運算子</li>
+<li><code>=&gt;</code> 後面接 return XXXXX<ul>
+<li>  return XXXXX 的 type 要跟 function 起頭的 -&gt; type 呼應</li>
+</ul>
+</li>
+<li>  <code>_ =&gt; return</code> 除了指定的比對, 其餘的使用下底線代替</li>
+</ul>
+</li>
+<li>回到執行 function main<ul>
+<li>  宣告 a 來自於 struct Weekday</li>
+<li>  賦予 weekd 的型態值為 Day::Sunday</li>
+<li>  println!() 輸出看結果</li>
+</ul>
+</li>
+</ul>
+<p>Rust Note(13)_20211125</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Rust Note(11)_trait</title>
     <url>/2021/11/23/20211122-1/</url>
     <content><![CDATA[<h3 id="trait-特質介紹"><a href="#trait-特質介紹" class="headerlink" title="trait 特質介紹"></a>trait 特質介紹</h3><hr>
@@ -1015,40 +1097,6 @@
 </blockquote>
 <p>更進一步的敘述出 <code>物件會有的行為特質</code></p>
 <p>Rust Note_20211122</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust Note(12) enum(I)</title>
-    <url>/2021/11/24/20211124-1/</url>
-    <content><![CDATA[<h3 id="enum-enumeration-枚舉"><a href="#enum-enumeration-枚舉" class="headerlink" title="enum (enumeration) 枚舉"></a>enum (enumeration) 枚舉</h3><hr>
-<p>另外一種型態的<code>類似</code> struct 結構體概念。<br>不完全相同，也不完全不同。</p>
-<span id="more"></span>
-
-<h3 id="struct-結構體"><a href="#struct-結構體" class="headerlink" title="struct 結構體"></a>struct 結構體</h3><hr>
-<p>複習一下<code>struct</code> 的概念</p>
-<blockquote>
-<p>用於結構化一個物件，將其特性&amp;&amp;型態標示出來。<br>可用 <code>impl</code> 來對 struct 構建方法並使用結構體裡面的參數。</p>
-</blockquote>
-<p>…</p>
-<h3 id="enum-枚舉"><a href="#enum-枚舉" class="headerlink" title="enum 枚舉"></a>enum 枚舉</h3><hr>
-<blockquote>
-<p>把可能的對象一一的舉例，就是<code>枚舉</code><br>等同 struct, 可用<code>impl</code> 實作方法。</p>
-</blockquote>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 把一週天都枚舉出來</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Day</span></span> &#123;</span><br><span class="line">    Monday,</span><br><span class="line">    Tuesday,</span><br><span class="line">    Wednesday,</span><br><span class="line">    Thursday,</span><br><span class="line">    Friday,</span><br><span class="line">    Saturday,</span><br><span class="line">    Sunday,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 實作Day</span></span><br><span class="line"><span class="keyword">impl</span> Day &#123;</span><br><span class="line">     <span class="comment">// 返回true or false</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">is_weekday</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">bool</span> &#123;</span><br><span class="line">        <span class="comment">// 使用 match, 匹配自己</span></span><br><span class="line">        <span class="keyword">match</span> <span class="keyword">self</span> &#123;</span><br><span class="line">            <span class="comment">// 使用運算符  |  or 只要有一個條件成立，即為true</span></span><br><span class="line">            &amp;Day::Saturday | &amp;Day::Sunday =&gt; <span class="keyword">return</span> <span class="literal">false</span>,</span><br><span class="line">            _ =&gt; <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        <span class="comment">// `_` other的意思</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="comment">// 賦值 d</span></span><br><span class="line">    <span class="keyword">let</span> d = Day::Sunday;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Is d weekday? &#123;&#125;&quot;</span>, d.is_weekday());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output: Is d weekday? false</span></span><br></pre></td></tr></table></figure>
-
-<p>簡單的搭配 <code>match</code> , 簡化了 if else 判斷。</p>
-<h3 id="使用-trait-for-enum"><a href="#使用-trait-for-enum" class="headerlink" title="使用 trait for enum"></a>使用 trait for enum</h3><hr>
-<p>那可以搭配 trait ?<br>可以的</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  把實例枚舉出來</span></span><br><span class="line"><span class="meta">#[derive(Debug)]</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Day</span></span> &#123;</span><br><span class="line">    Monday,</span><br><span class="line">    Tuesday,</span><br><span class="line">    Wednesday,</span><br><span class="line">    Thursday,</span><br><span class="line">    Friday,</span><br><span class="line">    Saturday,</span><br><span class="line">    Sunday,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 抽象化一層特質(trait) 為動作</span></span><br><span class="line"><span class="class"><span class="keyword">trait</span> <span class="title">Action</span></span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">actl</span></span>(&amp;<span class="keyword">self</span>) -&gt; &amp;<span class="built_in">str</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 實作 impl</span></span><br><span class="line"><span class="keyword">impl</span> Action <span class="keyword">for</span> Day &#123;</span><br><span class="line">    <span class="comment">// return &amp;str type</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">actl</span></span>(&amp;<span class="keyword">self</span>) -&gt; &amp;<span class="built_in">str</span> &#123;</span><br><span class="line">        <span class="comment">// match self</span></span><br><span class="line">        <span class="keyword">match</span> <span class="keyword">self</span> &#123;</span><br><span class="line">            <span class="comment">// by using | or operator</span></span><br><span class="line">            &amp;Day::Saturday | &amp;Day::Sunday =&gt; <span class="string">&quot;I sleep all day!&quot;</span>,</span><br><span class="line">            <span class="comment">// &quot;_&quot; equal the other</span></span><br><span class="line">            _ =&gt; <span class="string">&quot;I must work hard.&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> today = Day::Monday;</span><br><span class="line">    <span class="keyword">let</span> other_day = Day::Sunday;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Today is &#123;:?&#125;, &#123;&#125;&quot;</span>, today, today.actl());</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Tomorrow is &#123;:?&#125;, &#123;&#125;.&quot;</span>, other_day, other_day.actl());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output: Today is Monday, I must work hard.</span></span><br><span class="line"><span class="comment">// output: Tomorrow is Sunday, I sleep all day.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>下一篇加入一點點不一樣的連結轉變.</p>
-<p>Rust Note_20211125 for <code>enum(I)</code></p>
 ]]></content>
       <categories>
         <category>Rust</category>
