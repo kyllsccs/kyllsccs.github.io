@@ -119,6 +119,167 @@
       </tags>
   </entry>
   <entry>
+    <title>Rust Note(8)_Tuple Array Vector</title>
+    <url>/2021/11/01/20211011-1/</url>
+    <content><![CDATA[<h2 id="數據集合類型"><a href="#數據集合類型" class="headerlink" title="數據集合類型"></a>數據集合類型</h2><hr>
+<p>除了單一基本數據類型，接著就是數據集合類型。</p>
+<span id="more"></span>
+
+<h2 id="Tuple-元組"><a href="#Tuple-元組" class="headerlink" title="Tuple 元組"></a>Tuple 元組</h2><hr>
+<blockquote>
+<p>用來儲存不一樣數據的類型，但其為不可改變。</p>
+</blockquote>
+<p>ex : (i64, &amp;str, f32, u64) : 需對應位置放入對應資料類型。</p>
+<p>如需要在終端機輸出，則需要使用<code>&#123;:?&#125;</code></p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> a: (<span class="built_in">i64</span>, &amp;<span class="built_in">str</span>, <span class="built_in">f32</span>) = (<span class="number">18</span>, <span class="string">&quot;Kylls&quot;</span>, <span class="number">0.76</span>);</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;:?&#125;&quot;</span>, a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : (18, &quot;Kylls&quot;, 0.76)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  內容連續</li>
+<li>  <code>不同數據類型</code></li>
+<li>  不可變更</li>
+<li>  輸出需用 <code>&#123;:?&#125;</code></li>
+<li>  訪問元素位置直接使用 index , ex: a.0</li>
+<li>  可當作 parameter 傳入 function</li>
+<li>  可當 function 返回值</li>
+</ul>
+<h2 id="Array-陣列"><a href="#Array-陣列" class="headerlink" title="Array 陣列"></a>Array 陣列</h2><hr>
+<blockquote>
+<p>用來儲存相同數據類型資料，為內存連續區塊。</p>
+</blockquote>
+<p>ex: [i64; 3] : 此 Array 的長度為 3, 且內部元素數據類型為<code>i64</code></p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> a: [<span class="built_in">i64</span>; <span class="number">3</span>] = [<span class="number">18</span>, <span class="number">20</span>, <span class="number">12</span>];</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;:?&#125;&quot;</span>, a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : [18, 20, 12]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  內容連續</li>
+<li>  <code>同數據類型</code></li>
+<li><code>不可動態改變長度。</code><ul>
+<li>  (如需改變則須做轉換，建議使用<code>Vector</code>可動態改變)</li>
+</ul>
+</li>
+<li>  可變更, 但數據類型須符合。</li>
+<li>  輸出需用 <code>&#123;:?&#125;</code></li>
+<li>  訪問元素位置直接使用 index , ex: a.[1]</li>
+<li>  可當作 parameter 傳入 function</li>
+<li>  可當 function 返回值</li>
+</ul>
+<h2 id="Vector-向量陣列"><a href="#Vector-向量陣列" class="headerlink" title="Vector 向量陣列"></a>Vector 向量陣列</h2><hr>
+<blockquote>
+<p>用於儲存相同數據類型資料，為內存連續區塊。</p>
+</blockquote>
+<ul>
+<li>  內容連續</li>
+<li>  <code>同數據類型</code></li>
+<li>  <code>可動態改變長度。</code></li>
+<li>  可變更, 但數據類型須符合。</li>
+<li>  輸出需用 <code>&#123;:?&#125;</code></li>
+<li>  訪問元素位置直接使用 index , ex: a.[1]</li>
+<li>  可當作 parameter 傳入 function</li>
+<li>  可當 function 返回值</li>
+</ul>
+<h3 id="使用-vec-巨集方式建立向量"><a href="#使用-vec-巨集方式建立向量" class="headerlink" title="使用 vec! 巨集方式建立向量"></a>使用 vec! 巨集方式建立向量</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> a = <span class="built_in">vec!</span>[<span class="number">18</span>, <span class="number">20</span>, <span class="number">12</span>];</span><br><span class="line">        a.push(<span class="number">33</span>);</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;:?&#125;&quot;</span>, a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : [18, 20, 12, 33]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-new-方式建立"><a href="#使用-new-方式建立" class="headerlink" title="使用 new 方式建立"></a>使用 new 方式建立</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> a = <span class="built_in">Vec</span>::new();</span><br><span class="line">    a.push(<span class="number">1</span>);</span><br><span class="line">    a.push(<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;:?&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//output : [1, 2]</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>array 就類似 &amp;str<br>vector 就類似 String</p>
+</blockquote>
+<p>Rust Note_20211101_1.1</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(1)_Data Type I</title>
+    <url>/2021/10/20/20211016/</url>
+    <content><![CDATA[<h2 id="Rust-Note-1-Data-Types-I"><a href="#Rust-Note-1-Data-Types-I" class="headerlink" title="Rust Note(1) Data Types I"></a>Rust Note(1) Data Types I</h2><blockquote>
+<p>Rust is a statically type language.<br>Rust 為一靜態型語言.</p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h3 id="靜態型"><a href="#靜態型" class="headerlink" title="靜態型"></a>靜態型</h3><blockquote>
+<p>靜態型語言 :<br>靜態類型是一種編程語言特性，其中顯式聲明變量類型並因此在編譯時確定。<br>這讓編譯器可以決定給定的變量是否可以執行它所請求的操作。</p>
+</blockquote>
+</br>
+
+<p>在進入編譯之前, 預先指定好資料的型別 (Example : 整數)<br></br><br>如果有需換類型: 則必須要做另外的轉換<br></br></p>
+<h3 id="Rust-Date-Types"><a href="#Rust-Date-Types" class="headerlink" title="Rust Date Types"></a>Rust Date Types</h3><p><strong>Rust 基本 4 大型別</strong></p>
+<ul>
+<li>  int : 整數型</li>
+<li>  float : 浮點型</li>
+<li>  bool : 布林值 true / false</li>
+<li>  string : 字串型</li>
+</ul>
+<h3 id="Rust-Variable-定義型別"><a href="#Rust-Variable-定義型別" class="headerlink" title="Rust Variable 定義型別"></a>Rust Variable 定義型別</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> x: <span class="built_in">String</span> = <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>&lt;Variable_name&gt;:&lt;DataType&gt;</code><br>冒號後面接的是資料型別</p>
+</blockquote>
+</br>
+
+<hr>
+<p>Rust Note 20211016</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL進階篇_MSSQL [双迴圈]</title>
+    <url>/2021/10/18/20211018/</url>
+    <content><![CDATA[<h2 id="SQL-双迴圈"><a href="#SQL-双迴圈" class="headerlink" title="SQL 双迴圈"></a>SQL 双迴圈</h2><span id="more"></span>
+
+<ul>
+<li>宣告變數<ul>
+<li>  DECLARE @_EX INT</li>
+</ul>
+</li>
+<li>設定變數值<ul>
+<li>  SET @_EX = 10</li>
+</ul>
+</li>
+<li>迴圈<ul>
+<li>  WHILE (condition)</li>
+</ul>
+</li>
+<li>起始&amp;結束<ul>
+<li>  BEGIN &lt;作用域&gt; END</li>
+</ul>
+</li>
+<li>設定指標<ul>
+<li>  宣告指標 DECLARE BBB CURSOR FOR SELECT * FROM TABLE</li>
+<li>  取得資料轉成變數 FETCH NEXT INTO @_VAR1</li>
+</ul>
+</li>
+<li>指標關閉<ul>
+<li>  關閉 CLOSE &lt;指標&gt;</li>
+<li>  釋放記憶體 DEALLOCATE &lt;指標&gt;</li>
+</ul>
+</li>
+<li>双迴圈 用巢狀方式撰寫<ul>
+<li>  BEGIN BEGIN &lt;作用域&gt; END END</li>
+</ul>
+</li>
+</ul>
+<h2 id="範例程式碼"><a href="#範例程式碼" class="headerlink" title="範例程式碼"></a>範例程式碼</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">--宣告變數型態</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BMIN <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BMAX <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_CMIN <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_CMAX <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BCNUM <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"><span class="keyword">DECLARE</span> @_BSNUM <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)宣告指標變數</span></span><br><span class="line"><span class="keyword">DECLARE</span> BCUS_BCNUM <span class="keyword">CURSOR</span> <span class="keyword">FOR</span> <span class="keyword">SELECT</span> BCNUM <span class="keyword">FROM</span> dbo.BCUS <span class="keyword">WHERE</span> BCTYP<span class="operator">=</span><span class="string">&#x27;C&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)設定變數值</span></span><br><span class="line"><span class="keyword">SET</span> @_CMIN <span class="operator">=</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">SET</span> @_CMAX <span class="operator">=</span> (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(BCNUM) <span class="keyword">FROM</span> BCUS <span class="keyword">WHERE</span> BCTYP<span class="operator">=</span><span class="string">&#x27;C&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">OPEN</span> BCUS_BCNUM <span class="comment">--(LEVEL 1)開啟指標, 請求資料</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)WHILE迴圈起始結束值</span></span><br><span class="line">WHILE (@_CMIN <span class="operator">&lt;</span> @_CMAX)</span><br><span class="line"><span class="comment">--(LEVEL 1)BEGIN &lt;作用域&gt; END</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">FETCH</span> NEXT <span class="keyword">FROM</span> BCUS_BCNUM <span class="keyword">INTO</span>	@_BCNUM <span class="comment">--(LEVEL 1) FETCH請求資料</span></span><br><span class="line">	<span class="comment">--(LEVEL 2)宣告指標變數</span></span><br><span class="line">	<span class="keyword">DECLARE</span> BSTO_BSNUM <span class="keyword">CURSOR</span> <span class="keyword">FOR</span> <span class="keyword">SELECT</span> BSNUM <span class="keyword">FROM</span> dbo.BSTO</span><br><span class="line">	<span class="comment">--(LEVEL 2)設定變數值</span></span><br><span class="line">	<span class="keyword">SET</span> @_BMIN <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">	<span class="keyword">SET</span> @_BMAX <span class="operator">=</span> (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(BSNUM) <span class="keyword">FROM</span> BSTO)</span><br><span class="line">	<span class="keyword">OPEN</span> BSTO_BSNUM <span class="comment">--(LEVEL 2)開啟指標, 請求資料</span></span><br><span class="line"></span><br><span class="line">	WHILE (@_BMIN <span class="operator">&lt;</span> @_BMAX) <span class="comment">--(LEVEL 2) WHILE迴圈起始結束值</span></span><br><span class="line">	<span class="keyword">BEGIN</span></span><br><span class="line">		<span class="keyword">FETCH</span> NEXT <span class="keyword">FROM</span> BSTO_BSNUM <span class="keyword">INTO</span>	@_BSNUM <span class="comment">--(LEVEL 2) FETCH 請求資料, 把資料變設定成變數</span></span><br><span class="line">		<span class="comment">--編寫指令, 裡面的VALUES數值用變數迭代</span></span><br><span class="line">		<span class="keyword">INSERT</span> <span class="keyword">INTO</span> dbo.BDZS (TRDAT,BSCLS,BSNUM,BSCTM,BSNUC,BSAVX)</span><br><span class="line">		<span class="keyword">VALUES</span> (<span class="string">&#x27;2021-10-18&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,@_BSNUM,@_BCNUM,@_BSNUM,<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">SET</span> @_BMIN <span class="operator">=</span> @_BMIN <span class="operator">+</span> <span class="number">1</span></span><br><span class="line">	<span class="keyword">END</span></span><br><span class="line">	<span class="keyword">CLOSE</span> BSTO_BSNUM　<span class="comment">--(LEVEL 2) 關閉指標</span></span><br><span class="line">	<span class="keyword">DEALLOCATE</span> BSTO_BSNUM <span class="comment">--(LEVEL 2) 釋放指標記憶體</span></span><br><span class="line">	<span class="keyword">SET</span> @_CMIN <span class="operator">=</span> @_CMIN <span class="operator">+</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">END</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CLOSE</span> BCUS_BCNUM <span class="comment">--(LEVEL 1) 關閉指標</span></span><br><span class="line"><span class="keyword">DEALLOCATE</span> BCUS_BCNUM <span class="comment">--(LEVEL 1) 釋放指標記憶體</span></span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+<p>SQL_NOTE : 20211018_1.1</p>
+]]></content>
+      <categories>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL_MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Rust Note(2)_Data Type II</title>
     <url>/2021/10/17/20211017/</url>
     <content><![CDATA[<h2 id="Rsut-Note-2-Data-Types-II-Integer-Float"><a href="#Rsut-Note-2-Data-Types-II-Integer-Float" class="headerlink" title="Rsut Note(2) Data Types II Integer / Float"></a>Rsut Note(2) Data Types II Integer / Float</h2><p>依照 Data Type 的型別不同, 兩種方法:</p>
@@ -200,119 +361,6 @@
 </ul>
 <p>可以參考這邊 : <a href="https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8">單精度雙精度</a></p>
 <p>Note : 20211017_v1.0</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust Note(1)_Data Type I</title>
-    <url>/2021/10/20/20211016/</url>
-    <content><![CDATA[<h2 id="Rust-Note-1-Data-Types-I"><a href="#Rust-Note-1-Data-Types-I" class="headerlink" title="Rust Note(1) Data Types I"></a>Rust Note(1) Data Types I</h2><blockquote>
-<p>Rust is a statically type language.<br>Rust 為一靜態型語言.</p>
-</blockquote>
-<span id="more"></span>
-
-<hr>
-<h3 id="靜態型"><a href="#靜態型" class="headerlink" title="靜態型"></a>靜態型</h3><blockquote>
-<p>靜態型語言 :<br>靜態類型是一種編程語言特性，其中顯式聲明變量類型並因此在編譯時確定。<br>這讓編譯器可以決定給定的變量是否可以執行它所請求的操作。</p>
-</blockquote>
-</br>
-
-<p>在進入編譯之前, 預先指定好資料的型別 (Example : 整數)<br></br><br>如果有需換類型: 則必須要做另外的轉換<br></br></p>
-<h3 id="Rust-Date-Types"><a href="#Rust-Date-Types" class="headerlink" title="Rust Date Types"></a>Rust Date Types</h3><p><strong>Rust 基本 4 大型別</strong></p>
-<ul>
-<li>  int : 整數型</li>
-<li>  float : 浮點型</li>
-<li>  bool : 布林值 true / false</li>
-<li>  string : 字串型</li>
-</ul>
-<h3 id="Rust-Variable-定義型別"><a href="#Rust-Variable-定義型別" class="headerlink" title="Rust Variable 定義型別"></a>Rust Variable 定義型別</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> x: <span class="built_in">String</span> = <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>&lt;Variable_name&gt;:&lt;DataType&gt;</code><br>冒號後面接的是資料型別</p>
-</blockquote>
-</br>
-
-<hr>
-<p>Rust Note 20211016</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust Note(8)_Tuple Array Vector</title>
-    <url>/2021/11/01/20211011-1/</url>
-    <content><![CDATA[<h2 id="數據集合類型"><a href="#數據集合類型" class="headerlink" title="數據集合類型"></a>數據集合類型</h2><hr>
-<p>除了單一基本數據類型，接著就是數據集合類型。</p>
-<span id="more"></span>
-
-<h2 id="Tuple-元組"><a href="#Tuple-元組" class="headerlink" title="Tuple 元組"></a>Tuple 元組</h2><hr>
-<blockquote>
-<p>用來儲存不一樣數據的類型，但其為不可改變。</p>
-</blockquote>
-<p>ex : (i64, &amp;str, f32, u64) : 需對應位置放入對應資料類型。</p>
-<p>如需要在終端機輸出，則需要使用<code>&#123;:?&#125;</code></p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> a: (<span class="built_in">i64</span>, &amp;<span class="built_in">str</span>, <span class="built_in">f32</span>) = (<span class="number">18</span>, <span class="string">&quot;Kylls&quot;</span>, <span class="number">0.76</span>);</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;:?&#125;&quot;</span>, a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : (18, &quot;Kylls&quot;, 0.76)</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>  內容連續</li>
-<li>  <code>不同數據類型</code></li>
-<li>  不可變更</li>
-<li>  輸出需用 <code>&#123;:?&#125;</code></li>
-<li>  訪問元素位置直接使用 index , ex: a.0</li>
-<li>  可當作 parameter 傳入 function</li>
-<li>  可當 function 返回值</li>
-</ul>
-<h2 id="Array-陣列"><a href="#Array-陣列" class="headerlink" title="Array 陣列"></a>Array 陣列</h2><hr>
-<blockquote>
-<p>用來儲存相同數據類型資料，為內存連續區塊。</p>
-</blockquote>
-<p>ex: [i64; 3] : 此 Array 的長度為 3, 且內部元素數據類型為<code>i64</code></p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> a: [<span class="built_in">i64</span>; <span class="number">3</span>] = [<span class="number">18</span>, <span class="number">20</span>, <span class="number">12</span>];</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;:?&#125;&quot;</span>, a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : [18, 20, 12]</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>  內容連續</li>
-<li>  <code>同數據類型</code></li>
-<li><code>不可動態改變長度。</code><ul>
-<li>  (如需改變則須做轉換，建議使用<code>Vector</code>可動態改變)</li>
-</ul>
-</li>
-<li>  可變更, 但數據類型須符合。</li>
-<li>  輸出需用 <code>&#123;:?&#125;</code></li>
-<li>  訪問元素位置直接使用 index , ex: a.[1]</li>
-<li>  可當作 parameter 傳入 function</li>
-<li>  可當 function 返回值</li>
-</ul>
-<h2 id="Vector-向量陣列"><a href="#Vector-向量陣列" class="headerlink" title="Vector 向量陣列"></a>Vector 向量陣列</h2><hr>
-<blockquote>
-<p>用於儲存相同數據類型資料，為內存連續區塊。</p>
-</blockquote>
-<ul>
-<li>  內容連續</li>
-<li>  <code>同數據類型</code></li>
-<li>  <code>可動態改變長度。</code></li>
-<li>  可變更, 但數據類型須符合。</li>
-<li>  輸出需用 <code>&#123;:?&#125;</code></li>
-<li>  訪問元素位置直接使用 index , ex: a.[1]</li>
-<li>  可當作 parameter 傳入 function</li>
-<li>  可當 function 返回值</li>
-</ul>
-<h3 id="使用-vec-巨集方式建立向量"><a href="#使用-vec-巨集方式建立向量" class="headerlink" title="使用 vec! 巨集方式建立向量"></a>使用 vec! 巨集方式建立向量</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> a = <span class="built_in">vec!</span>[<span class="number">18</span>, <span class="number">20</span>, <span class="number">12</span>];</span><br><span class="line">        a.push(<span class="number">33</span>);</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;:?&#125;&quot;</span>, a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : [18, 20, 12, 33]</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="使用-new-方式建立"><a href="#使用-new-方式建立" class="headerlink" title="使用 new 方式建立"></a>使用 new 方式建立</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> a = <span class="built_in">Vec</span>::new();</span><br><span class="line">    a.push(<span class="number">1</span>);</span><br><span class="line">    a.push(<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;:?&#125;&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//output : [1, 2]</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>array 就類似 &amp;str<br>vector 就類似 String</p>
-</blockquote>
-<p>Rust Note_20211101_1.1</p>
 ]]></content>
       <categories>
         <category>Rust</category>
@@ -507,141 +555,6 @@
       </tags>
   </entry>
   <entry>
-    <title>SQL進階篇_MSSQL [双迴圈]</title>
-    <url>/2021/10/18/20211018/</url>
-    <content><![CDATA[<h2 id="SQL-双迴圈"><a href="#SQL-双迴圈" class="headerlink" title="SQL 双迴圈"></a>SQL 双迴圈</h2><span id="more"></span>
-
-<ul>
-<li>宣告變數<ul>
-<li>  DECLARE @_EX INT</li>
-</ul>
-</li>
-<li>設定變數值<ul>
-<li>  SET @_EX = 10</li>
-</ul>
-</li>
-<li>迴圈<ul>
-<li>  WHILE (condition)</li>
-</ul>
-</li>
-<li>起始&amp;結束<ul>
-<li>  BEGIN &lt;作用域&gt; END</li>
-</ul>
-</li>
-<li>設定指標<ul>
-<li>  宣告指標 DECLARE BBB CURSOR FOR SELECT * FROM TABLE</li>
-<li>  取得資料轉成變數 FETCH NEXT INTO @_VAR1</li>
-</ul>
-</li>
-<li>指標關閉<ul>
-<li>  關閉 CLOSE &lt;指標&gt;</li>
-<li>  釋放記憶體 DEALLOCATE &lt;指標&gt;</li>
-</ul>
-</li>
-<li>双迴圈 用巢狀方式撰寫<ul>
-<li>  BEGIN BEGIN &lt;作用域&gt; END END</li>
-</ul>
-</li>
-</ul>
-<h2 id="範例程式碼"><a href="#範例程式碼" class="headerlink" title="範例程式碼"></a>範例程式碼</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">--宣告變數型態</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BMIN <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BMAX <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_CMIN <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_CMAX <span class="type">INT</span></span><br><span class="line"><span class="keyword">DECLARE</span> @_BCNUM <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"><span class="keyword">DECLARE</span> @_BSNUM <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)宣告指標變數</span></span><br><span class="line"><span class="keyword">DECLARE</span> BCUS_BCNUM <span class="keyword">CURSOR</span> <span class="keyword">FOR</span> <span class="keyword">SELECT</span> BCNUM <span class="keyword">FROM</span> dbo.BCUS <span class="keyword">WHERE</span> BCTYP<span class="operator">=</span><span class="string">&#x27;C&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)設定變數值</span></span><br><span class="line"><span class="keyword">SET</span> @_CMIN <span class="operator">=</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">SET</span> @_CMAX <span class="operator">=</span> (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(BCNUM) <span class="keyword">FROM</span> BCUS <span class="keyword">WHERE</span> BCTYP<span class="operator">=</span><span class="string">&#x27;C&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">OPEN</span> BCUS_BCNUM <span class="comment">--(LEVEL 1)開啟指標, 請求資料</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--(LEVEL 1)WHILE迴圈起始結束值</span></span><br><span class="line">WHILE (@_CMIN <span class="operator">&lt;</span> @_CMAX)</span><br><span class="line"><span class="comment">--(LEVEL 1)BEGIN &lt;作用域&gt; END</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">FETCH</span> NEXT <span class="keyword">FROM</span> BCUS_BCNUM <span class="keyword">INTO</span>	@_BCNUM <span class="comment">--(LEVEL 1) FETCH請求資料</span></span><br><span class="line">	<span class="comment">--(LEVEL 2)宣告指標變數</span></span><br><span class="line">	<span class="keyword">DECLARE</span> BSTO_BSNUM <span class="keyword">CURSOR</span> <span class="keyword">FOR</span> <span class="keyword">SELECT</span> BSNUM <span class="keyword">FROM</span> dbo.BSTO</span><br><span class="line">	<span class="comment">--(LEVEL 2)設定變數值</span></span><br><span class="line">	<span class="keyword">SET</span> @_BMIN <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">	<span class="keyword">SET</span> @_BMAX <span class="operator">=</span> (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(BSNUM) <span class="keyword">FROM</span> BSTO)</span><br><span class="line">	<span class="keyword">OPEN</span> BSTO_BSNUM <span class="comment">--(LEVEL 2)開啟指標, 請求資料</span></span><br><span class="line"></span><br><span class="line">	WHILE (@_BMIN <span class="operator">&lt;</span> @_BMAX) <span class="comment">--(LEVEL 2) WHILE迴圈起始結束值</span></span><br><span class="line">	<span class="keyword">BEGIN</span></span><br><span class="line">		<span class="keyword">FETCH</span> NEXT <span class="keyword">FROM</span> BSTO_BSNUM <span class="keyword">INTO</span>	@_BSNUM <span class="comment">--(LEVEL 2) FETCH 請求資料, 把資料變設定成變數</span></span><br><span class="line">		<span class="comment">--編寫指令, 裡面的VALUES數值用變數迭代</span></span><br><span class="line">		<span class="keyword">INSERT</span> <span class="keyword">INTO</span> dbo.BDZS (TRDAT,BSCLS,BSNUM,BSCTM,BSNUC,BSAVX)</span><br><span class="line">		<span class="keyword">VALUES</span> (<span class="string">&#x27;2021-10-18&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,@_BSNUM,@_BCNUM,@_BSNUM,<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">SET</span> @_BMIN <span class="operator">=</span> @_BMIN <span class="operator">+</span> <span class="number">1</span></span><br><span class="line">	<span class="keyword">END</span></span><br><span class="line">	<span class="keyword">CLOSE</span> BSTO_BSNUM　<span class="comment">--(LEVEL 2) 關閉指標</span></span><br><span class="line">	<span class="keyword">DEALLOCATE</span> BSTO_BSNUM <span class="comment">--(LEVEL 2) 釋放指標記憶體</span></span><br><span class="line">	<span class="keyword">SET</span> @_CMIN <span class="operator">=</span> @_CMIN <span class="operator">+</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">END</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CLOSE</span> BCUS_BCNUM <span class="comment">--(LEVEL 1) 關閉指標</span></span><br><span class="line"><span class="keyword">DEALLOCATE</span> BCUS_BCNUM <span class="comment">--(LEVEL 1) 釋放指標記憶體</span></span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
-
-<p>SQL_NOTE : 20211018_1.1</p>
-]]></content>
-      <categories>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL_MSSQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust Note(6)_loop for while</title>
-    <url>/2021/10/25/20211025/</url>
-    <content><![CDATA[<h2 id="Rust-迴圈"><a href="#Rust-迴圈" class="headerlink" title="Rust 迴圈"></a>Rust 迴圈</h2><blockquote>
-<p>迴圈有以下 3 種類型 :</p>
-<ul>
-<li>  loop : 無限迴圈, 可藉由 break &amp; continue 來設定中斷點</li>
-<li>  while : 在有效的條件裡, 迴圈!</li>
-<li>  for…in range : 在設定的條件範圍內, 迴圈!</li>
-</ul>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="loop-無限迴圈"><a href="#loop-無限迴圈" class="headerlink" title="loop [無限迴圈]"></a>loop [無限迴圈]</h2><hr>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> i: <span class="built_in">i64</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">loop</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,i);</span><br><span class="line">        i = i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : 1,2,3........until Ctrl+C inerrupt</span></span><br></pre></td></tr></table></figure>
-
-<p>Working Flow:</p>
-<ol>
-<li>指定一個可變變數 i, <code>mut</code> 可變的</li>
-<li>使用 loop</li>
-<li>印出 i, 從 0 開始</li>
-<li>結束一個循環後, i + 1</li>
-<li>無限循環</li>
-</ol>
-<blockquote>
-<p>在還沒有按下 Ctrl + C 前, 你會看到電腦努力的幫你執行一個無限迴圈!!</p>
-</blockquote>
-<h3 id="使用-break-來中斷-loop-迴圈"><a href="#使用-break-來中斷-loop-迴圈" class="headerlink" title="使用 [break] 來中斷 loop 迴圈"></a>使用 [break] 來中斷 loop 迴圈</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> i: <span class="built_in">i64</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">loop</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,i);</span><br><span class="line">        i = i + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> i &gt; <span class="number">10</span> &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : 0~10</span></span><br></pre></td></tr></table></figure>
-
-<p>Working Flow:</p>
-<ol>
-<li>指定一個可變變數 i, <code>mut</code> 可變的</li>
-<li>使用 loop</li>
-<li>印出 i, 從 0 開始</li>
-<li>結束一個循環後, i + 1</li>
-<li>當 i 累進到 &gt; 10, 就停止迴圈</li>
-</ol>
-<h3 id="使用-continue-讓-loop-繼續無腦迴圈"><a href="#使用-continue-讓-loop-繼續無腦迴圈" class="headerlink" title="使用 [continue] 讓 loop 繼續無腦迴圈"></a>使用 [continue] 讓 loop 繼續無腦迴圈</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> i: <span class="built_in">i64</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">loop</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,i);</span><br><span class="line">        i = i + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">10</span> &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : 0~9</span></span><br></pre></td></tr></table></figure>
-
-<p>Working Flow:</p>
-<ol>
-<li>指定一個可變變數 i, <code>mut</code> 可變的</li>
-<li>使用 loop</li>
-<li>印出 i, 從 0 開始</li>
-<li>結束一個循環後, i + 1</li>
-<li>當 i 累進到 == 10, 就停止迴圈</li>
-<li>否則 continue<br>P.S : 搭配 if else</li>
-</ol>
-</br>
-
-<h2 id="while-條件式迴圈"><a href="#while-條件式迴圈" class="headerlink" title="while [條件式迴圈]"></a>while [條件式迴圈]</h2><hr>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> i:<span class="built_in">i64</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> i &lt; <span class="number">10</span> &#123;</span><br><span class="line">        i = i + <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : 0~10</span></span><br></pre></td></tr></table></figure>
-
-<p>Working Flow:</p>
-<ol>
-<li>指定一個可變變數 i, <code>mut</code> 可變的</li>
-<li>使用 while loop</li>
-<li>印出 i, 從 0 開始</li>
-<li>結束一個循環後, i + 1</li>
-<li>當 i 累進到 &lt; 10, 就停止迴圈</li>
-<li>while 後面接 condition 條件.</li>
-</ol>
-<blockquote>
-<p>當滿足條件, 就停止迴圈.</p>
-</blockquote>
-<h2 id="for-in-範圍式迴圈"><a href="#for-in-範圍式迴圈" class="headerlink" title="for in [範圍式迴圈]"></a>for in [範圍式迴圈]</h2><hr>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..<span class="number">10</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : 0~9</span></span><br></pre></td></tr></table></figure>
-
-<p>Working Flow:</p>
-<ol>
-<li>使用 while loop</li>
-<li>印出 i, 從 0 開始, 結束是 9 (包含左邊, 不包含右邊邊界)</li>
-</ol>
-<blockquote>
-<p>當完成 range 裡面的次數, 就停止退出迴圈.</p>
-</blockquote>
-</br>
-
-<p>Rust_Note_20211025_1.1</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Rust Note(4)_Data Type III [String]</title>
     <url>/2021/10/23/20211023_1/</url>
     <content><![CDATA[<h2 id="Rust-字符串類型"><a href="#Rust-字符串類型" class="headerlink" title="Rust 字符串類型"></a>Rust 字符串類型</h2><hr>
@@ -733,6 +646,93 @@
 <li>  char() : 將字串打散為單一字符</li>
 </ul>
 <p>Rust_Note 20211023_1.1</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(6)_loop for while</title>
+    <url>/2021/10/25/20211025/</url>
+    <content><![CDATA[<h2 id="Rust-迴圈"><a href="#Rust-迴圈" class="headerlink" title="Rust 迴圈"></a>Rust 迴圈</h2><blockquote>
+<p>迴圈有以下 3 種類型 :</p>
+<ul>
+<li>  loop : 無限迴圈, 可藉由 break &amp; continue 來設定中斷點</li>
+<li>  while : 在有效的條件裡, 迴圈!</li>
+<li>  for…in range : 在設定的條件範圍內, 迴圈!</li>
+</ul>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="loop-無限迴圈"><a href="#loop-無限迴圈" class="headerlink" title="loop [無限迴圈]"></a>loop [無限迴圈]</h2><hr>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> i: <span class="built_in">i64</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">loop</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,i);</span><br><span class="line">        i = i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : 1,2,3........until Ctrl+C inerrupt</span></span><br></pre></td></tr></table></figure>
+
+<p>Working Flow:</p>
+<ol>
+<li>指定一個可變變數 i, <code>mut</code> 可變的</li>
+<li>使用 loop</li>
+<li>印出 i, 從 0 開始</li>
+<li>結束一個循環後, i + 1</li>
+<li>無限循環</li>
+</ol>
+<blockquote>
+<p>在還沒有按下 Ctrl + C 前, 你會看到電腦努力的幫你執行一個無限迴圈!!</p>
+</blockquote>
+<h3 id="使用-break-來中斷-loop-迴圈"><a href="#使用-break-來中斷-loop-迴圈" class="headerlink" title="使用 [break] 來中斷 loop 迴圈"></a>使用 [break] 來中斷 loop 迴圈</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> i: <span class="built_in">i64</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">loop</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,i);</span><br><span class="line">        i = i + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> i &gt; <span class="number">10</span> &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : 0~10</span></span><br></pre></td></tr></table></figure>
+
+<p>Working Flow:</p>
+<ol>
+<li>指定一個可變變數 i, <code>mut</code> 可變的</li>
+<li>使用 loop</li>
+<li>印出 i, 從 0 開始</li>
+<li>結束一個循環後, i + 1</li>
+<li>當 i 累進到 &gt; 10, 就停止迴圈</li>
+</ol>
+<h3 id="使用-continue-讓-loop-繼續無腦迴圈"><a href="#使用-continue-讓-loop-繼續無腦迴圈" class="headerlink" title="使用 [continue] 讓 loop 繼續無腦迴圈"></a>使用 [continue] 讓 loop 繼續無腦迴圈</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> i: <span class="built_in">i64</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">loop</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,i);</span><br><span class="line">        i = i + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">10</span> &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : 0~9</span></span><br></pre></td></tr></table></figure>
+
+<p>Working Flow:</p>
+<ol>
+<li>指定一個可變變數 i, <code>mut</code> 可變的</li>
+<li>使用 loop</li>
+<li>印出 i, 從 0 開始</li>
+<li>結束一個循環後, i + 1</li>
+<li>當 i 累進到 == 10, 就停止迴圈</li>
+<li>否則 continue<br>P.S : 搭配 if else</li>
+</ol>
+</br>
+
+<h2 id="while-條件式迴圈"><a href="#while-條件式迴圈" class="headerlink" title="while [條件式迴圈]"></a>while [條件式迴圈]</h2><hr>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> i:<span class="built_in">i64</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> i &lt; <span class="number">10</span> &#123;</span><br><span class="line">        i = i + <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : 0~10</span></span><br></pre></td></tr></table></figure>
+
+<p>Working Flow:</p>
+<ol>
+<li>指定一個可變變數 i, <code>mut</code> 可變的</li>
+<li>使用 while loop</li>
+<li>印出 i, 從 0 開始</li>
+<li>結束一個循環後, i + 1</li>
+<li>當 i 累進到 &lt; 10, 就停止迴圈</li>
+<li>while 後面接 condition 條件.</li>
+</ol>
+<blockquote>
+<p>當滿足條件, 就停止迴圈.</p>
+</blockquote>
+<h2 id="for-in-範圍式迴圈"><a href="#for-in-範圍式迴圈" class="headerlink" title="for in [範圍式迴圈]"></a>for in [範圍式迴圈]</h2><hr>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..<span class="number">10</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : 0~9</span></span><br></pre></td></tr></table></figure>
+
+<p>Working Flow:</p>
+<ol>
+<li>使用 while loop</li>
+<li>印出 i, 從 0 開始, 結束是 9 (包含左邊, 不包含右邊邊界)</li>
+</ol>
+<blockquote>
+<p>當完成 range 裡面的次數, 就停止退出迴圈.</p>
+</blockquote>
+</br>
+
+<p>Rust_Note_20211025_1.1</p>
 ]]></content>
       <categories>
         <category>Rust</category>
@@ -903,95 +903,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Rust Note(11)_trait</title>
-    <url>/2021/11/23/20211122-1/</url>
-    <content><![CDATA[<h3 id="trait-特質介紹"><a href="#trait-特質介紹" class="headerlink" title="trait 特質介紹"></a>trait 特質介紹</h3><hr>
-<blockquote>
-<p>特質/特性 ： 這個是一個抽象的接口。<br>來接續上篇所說的抽象層的概念。</p>
-</blockquote>
-<span id="more"></span>
-
-<p>上一篇提到的抽象層 Abstract layer 的概念<br>可以參閱 <a href="https://kyllsccs.github.io/2021/11/14/20211114-1-1/">Rust Note(10)</a></p>
-<blockquote>
-<p>把<code>共同特性</code>的特性集合起來，放在一個共同的地方，<br>讓有共同特性的物件 objects 可以透過呼叫這個接口，<br>來直接套用特性，<code>避免重複撰寫</code></p>
-</blockquote>
-<h3 id="struct-例子-1-vs-1"><a href="#struct-例子-1-vs-1" class="headerlink" title="struct 例子 (1 vs 1)"></a>struct 例子 (1 vs 1)</h3><p>前篇我們使用的是 <code>struct</code> 結構體，利用結構體把擁有共通特性的結構整併起來。</p>
-<p>然後使用 <code>impl</code> <strong>implementation</strong> 來實作 struct，使其有專屬的 function！！！</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">User</span></span> &#123;</span><br><span class="line">    user_name: <span class="built_in">String</span>,</span><br><span class="line">    user_mail: <span class="built_in">String</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> User &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">user_info</span></span>(&amp;<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;User name: &#123;&#125;  User mail:&#123;&#125;&quot;</span>, <span class="keyword">self</span>.user_name, <span class="keyword">self</span>.user_mail)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> user_1 = User &#123;</span><br><span class="line">        user_name: <span class="built_in">String</span>::from(<span class="string">&quot;Kylls KB&quot;</span>),</span><br><span class="line">        user_mail: <span class="built_in">String</span>::from(<span class="string">&quot;kylls.ccs@gmail.com&quot;</span>)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    user_1.user_info();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : User name: Kylls KB  User mail: kylls.ccs@gmail.com</span></span><br></pre></td></tr></table></figure>
-
-<p>以上是使用<code>struct</code>的例子</p>
-<p>接著介紹另外一個方法<code>trait</code></p>
-<h3 id="trait-例子-1-vs-2-3-…or-more…"><a href="#trait-例子-1-vs-2-3-…or-more…" class="headerlink" title="trait 例子 (1 vs 2?3?…or more…)"></a>trait 例子 (1 vs 2?3?…or more…)</h3><hr>
-<blockquote>
-<p>struct 用的是建構出共通的結構子 constructor<br>imp 是使用於實作方法(使用＆self 呼叫建構子)<br>一個<code>struct</code> &gt;&gt; 一個<code>impl</code> ……..<br>那如果多個<code>struct</code> 呢？？？<br>那還不狂寫一波？<br><br></p>
-</blockquote>
-<p><img src="https://www.niusnews.com/upload/imgs/default/16AugP/805kid/7.gif" alt="真的假的"></p>
-<p>設計語言的利用抽象化的 trait<br><code>能夠越簡化代碼，就能夠減少重複撰寫，減少人為疏失</code></p>
-<p>On the other words, simple is good.<br>就是越簡單&amp;&amp;越清楚越好！！！</p>
-<h3 id="行為抽象化"><a href="#行為抽象化" class="headerlink" title="行為抽象化"></a>行為抽象化</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">People</span></span> &#123;</span><br><span class="line">    name: <span class="built_in">String</span>,</span><br><span class="line">    age: <span class="built_in">u64</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立方法抽象層</span></span><br><span class="line"><span class="class"><span class="keyword">trait</span> <span class="title">Action</span></span> &#123;</span><br><span class="line">    <span class="comment">// function do 返回不指定，可自定義</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">say_hello</span></span>(&amp;<span class="keyword">self</span>);</span><br><span class="line">    <span class="comment">// function can_do 返回 true or false</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">can_do</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">bool</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 實作方法 by using trait for struct</span></span><br><span class="line"><span class="comment">// 同樣性質的trait, 可以用來實作多個結構體,</span></span><br><span class="line"><span class="comment">// 使用 `for` -&gt; 專屬哪個struct</span></span><br><span class="line"><span class="keyword">impl</span> Action <span class="keyword">for</span> People &#123;</span><br><span class="line">    <span class="comment">// &amp;self 使用自己的意思</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">say_hello</span></span>(&amp;<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Hello, my name is &#123;&#125;.&quot;</span>, <span class="keyword">self</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意返回是boolean</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">can_do</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">bool</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">self</span>.age &lt; <span class="number">50</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> people_1 = People &#123;</span><br><span class="line">                <span class="comment">// new 一個新的String出來</span></span><br><span class="line">                name: <span class="built_in">String</span>::from(<span class="string">&quot;Kylls&quot;</span>),</span><br><span class="line">                age: <span class="number">18</span>,</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Can &#123;&#125; speak? &#123;&#125;&quot;</span>, people_1.name, people_1.can_do());</span><br><span class="line">        <span class="comment">// output: Can Kylls speak? true</span></span><br><span class="line">        people_1.say_hello();</span><br><span class="line">        <span class="comment">// output: Hello, my name is Kylls.</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>描述擁有的共同架構，集合成<code>struct</code><br>描述相同行為的動作，集合成<code>trait</code></p>
-</blockquote>
-<p>更進一步的敘述出 <code>物件會有的行為特質</code></p>
-<p>Rust Note_20211122</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust Note(13)_enum(II) with struct</title>
-    <url>/2021/11/25/20211125-1/</url>
-    <content><![CDATA[<h3 id="enum-基本型"><a href="#enum-基本型" class="headerlink" title="enum 基本型"></a>enum 基本型</h3><hr>
-<blockquote>
-<p>enum 基本型請參閱 <a href="https://kyllsccs.github.io/2021/11/24/20211124-1/">Rust Note(12)_enum(I)</a></p>
-</blockquote>
-<span id="more"></span>
-
-<h3 id="enum-變化型-w-struct"><a href="#enum-變化型-w-struct" class="headerlink" title="enum 變化型 w/ struct"></a>enum 變化型 w/ struct</h3><hr>
-<blockquote>
-<p>struct 裡面的 constructor 結構子型態直接指定為 enum 裡面的變數. <br></p>
-</blockquote>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 枚舉出星期幾</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Day</span></span> &#123;</span><br><span class="line">    Monday,</span><br><span class="line">    Tuesday,</span><br><span class="line">    Wednesday,</span><br><span class="line">    Thursday,</span><br><span class="line">    Friday,</span><br><span class="line">    Saturday,</span><br><span class="line">    Sunday,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// new 一個 struct, constructor 結構子型態為 enum</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Weekday</span></span> &#123;</span><br><span class="line">    <span class="comment">// struct Weekday 的 constructor weekd 的type 為 enum Day</span></span><br><span class="line">    weekd: Day</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// impl Weekday</span></span><br><span class="line"><span class="keyword">impl</span> Weekday &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">def_day</span></span>(&amp;<span class="keyword">self</span>) -&gt; &amp;<span class="built_in">str</span> &#123;</span><br><span class="line">        <span class="comment">// 做 match self.weekd self要明確地指出要match哪一個constructor</span></span><br><span class="line">        <span class="keyword">match</span> <span class="keyword">self</span>.weekd &#123;</span><br><span class="line">            Day::Saturday | Day::Sunday =&gt; <span class="keyword">return</span> <span class="string">&quot;The day is holiday.&quot;</span>,</span><br><span class="line">            _ =&gt; <span class="keyword">return</span> <span class="string">&quot;The day is working day.&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a = Weekday &#123;</span><br><span class="line">        <span class="comment">// 可直接取 enum Day裡面的值</span></span><br><span class="line">        weekd: Day::Sunday</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a.def_day());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : The day is holiday.</span></span><br></pre></td></tr></table></figure>
-
-<p>Working flow:</p>
-<ul>
-<li>  先把可能的型態枚舉出來 (enum)</li>
-<li>  把 enum 型態做成對應的 struct 裡面的 constructors</li>
-<li>針對 struct 實作 impl<ul>
-<li>  實作 a function daf_day</li>
-<li>  <code>&amp;self</code> 呼叫可套用自己 struct 的參數</li>
-<li>  使用 match XXX {}</li>
-<li>  要 match 哪個值 –&gt; self.weekd 自己內部的 constructor, 使用<code>.</code>做呼叫</li>
-<li>  <code>|</code> operator 運算子</li>
-<li><code>=&gt;</code> 後面接 return XXXXX<ul>
-<li>  return XXXXX 的 type 要跟 function 起頭的 -&gt; type 呼應</li>
-</ul>
-</li>
-<li>  <code>_ =&gt; return</code> 除了指定的比對, 其餘的使用下底線代替</li>
-</ul>
-</li>
-<li>回到執行 function main<ul>
-<li>  宣告 a 來自於 struct Weekday</li>
-<li>  賦予 weekd 的型態值為 Day::Sunday</li>
-<li>  println!() 輸出看結果</li>
-</ul>
-</li>
-</ul>
-<p>Rust Note(13)_20211125</p>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Rust Note(10)_Abtract Concept 抽象化概念</title>
     <url>/2021/11/14/20211114-1-1/</url>
     <content><![CDATA[<h3 id="Abstract-抽象化"><a href="#Abstract-抽象化" class="headerlink" title="Abstract 抽象化"></a>Abstract 抽象化</h3><blockquote>
@@ -1106,6 +1017,95 @@
       </tags>
   </entry>
   <entry>
+    <title>Rust Note(13)_enum(II) with struct</title>
+    <url>/2021/11/25/20211125-1/</url>
+    <content><![CDATA[<h3 id="enum-基本型"><a href="#enum-基本型" class="headerlink" title="enum 基本型"></a>enum 基本型</h3><hr>
+<blockquote>
+<p>enum 基本型請參閱 <a href="https://kyllsccs.github.io/2021/11/24/20211124-1/">Rust Note(12)_enum(I)</a></p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="enum-變化型-w-struct"><a href="#enum-變化型-w-struct" class="headerlink" title="enum 變化型 w/ struct"></a>enum 變化型 w/ struct</h3><hr>
+<blockquote>
+<p>struct 裡面的 constructor 結構子型態直接指定為 enum 裡面的變數. <br></p>
+</blockquote>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 枚舉出星期幾</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Day</span></span> &#123;</span><br><span class="line">    Monday,</span><br><span class="line">    Tuesday,</span><br><span class="line">    Wednesday,</span><br><span class="line">    Thursday,</span><br><span class="line">    Friday,</span><br><span class="line">    Saturday,</span><br><span class="line">    Sunday,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// new 一個 struct, constructor 結構子型態為 enum</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Weekday</span></span> &#123;</span><br><span class="line">    <span class="comment">// struct Weekday 的 constructor weekd 的type 為 enum Day</span></span><br><span class="line">    weekd: Day</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// impl Weekday</span></span><br><span class="line"><span class="keyword">impl</span> Weekday &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">def_day</span></span>(&amp;<span class="keyword">self</span>) -&gt; &amp;<span class="built_in">str</span> &#123;</span><br><span class="line">        <span class="comment">// 做 match self.weekd self要明確地指出要match哪一個constructor</span></span><br><span class="line">        <span class="keyword">match</span> <span class="keyword">self</span>.weekd &#123;</span><br><span class="line">            Day::Saturday | Day::Sunday =&gt; <span class="keyword">return</span> <span class="string">&quot;The day is holiday.&quot;</span>,</span><br><span class="line">            _ =&gt; <span class="keyword">return</span> <span class="string">&quot;The day is working day.&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a = Weekday &#123;</span><br><span class="line">        <span class="comment">// 可直接取 enum Day裡面的值</span></span><br><span class="line">        weekd: Day::Sunday</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, a.def_day());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : The day is holiday.</span></span><br></pre></td></tr></table></figure>
+
+<p>Working flow:</p>
+<ul>
+<li>  先把可能的型態枚舉出來 (enum)</li>
+<li>  把 enum 型態做成對應的 struct 裡面的 constructors</li>
+<li>針對 struct 實作 impl<ul>
+<li>  實作 a function daf_day</li>
+<li>  <code>&amp;self</code> 呼叫可套用自己 struct 的參數</li>
+<li>  使用 match XXX {}</li>
+<li>  要 match 哪個值 –&gt; self.weekd 自己內部的 constructor, 使用<code>.</code>做呼叫</li>
+<li>  <code>|</code> operator 運算子</li>
+<li><code>=&gt;</code> 後面接 return XXXXX<ul>
+<li>  return XXXXX 的 type 要跟 function 起頭的 -&gt; type 呼應</li>
+</ul>
+</li>
+<li>  <code>_ =&gt; return</code> 除了指定的比對, 其餘的使用下底線代替</li>
+</ul>
+</li>
+<li>回到執行 function main<ul>
+<li>  宣告 a 來自於 struct Weekday</li>
+<li>  賦予 weekd 的型態值為 Day::Sunday</li>
+<li>  println!() 輸出看結果</li>
+</ul>
+</li>
+</ul>
+<p>Rust Note(13)_20211125</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust Note(11)_trait</title>
+    <url>/2021/11/23/20211122-1/</url>
+    <content><![CDATA[<h3 id="trait-特質介紹"><a href="#trait-特質介紹" class="headerlink" title="trait 特質介紹"></a>trait 特質介紹</h3><hr>
+<blockquote>
+<p>特質/特性 ： 這個是一個抽象的接口。<br>來接續上篇所說的抽象層的概念。</p>
+</blockquote>
+<span id="more"></span>
+
+<p>上一篇提到的抽象層 Abstract layer 的概念<br>可以參閱 <a href="https://kyllsccs.github.io/2021/11/14/20211114-1-1/">Rust Note(10)</a></p>
+<blockquote>
+<p>把<code>共同特性</code>的特性集合起來，放在一個共同的地方，<br>讓有共同特性的物件 objects 可以透過呼叫這個接口，<br>來直接套用特性，<code>避免重複撰寫</code></p>
+</blockquote>
+<h3 id="struct-例子-1-vs-1"><a href="#struct-例子-1-vs-1" class="headerlink" title="struct 例子 (1 vs 1)"></a>struct 例子 (1 vs 1)</h3><p>前篇我們使用的是 <code>struct</code> 結構體，利用結構體把擁有共通特性的結構整併起來。</p>
+<p>然後使用 <code>impl</code> <strong>implementation</strong> 來實作 struct，使其有專屬的 function！！！</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">User</span></span> &#123;</span><br><span class="line">    user_name: <span class="built_in">String</span>,</span><br><span class="line">    user_mail: <span class="built_in">String</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> User &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">user_info</span></span>(&amp;<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;User name: &#123;&#125;  User mail:&#123;&#125;&quot;</span>, <span class="keyword">self</span>.user_name, <span class="keyword">self</span>.user_mail)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> user_1 = User &#123;</span><br><span class="line">        user_name: <span class="built_in">String</span>::from(<span class="string">&quot;Kylls KB&quot;</span>),</span><br><span class="line">        user_mail: <span class="built_in">String</span>::from(<span class="string">&quot;kylls.ccs@gmail.com&quot;</span>)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    user_1.user_info();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : User name: Kylls KB  User mail: kylls.ccs@gmail.com</span></span><br></pre></td></tr></table></figure>
+
+<p>以上是使用<code>struct</code>的例子</p>
+<p>接著介紹另外一個方法<code>trait</code></p>
+<h3 id="trait-例子-1-vs-2-3-…or-more…"><a href="#trait-例子-1-vs-2-3-…or-more…" class="headerlink" title="trait 例子 (1 vs 2?3?…or more…)"></a>trait 例子 (1 vs 2?3?…or more…)</h3><hr>
+<blockquote>
+<p>struct 用的是建構出共通的結構子 constructor<br>imp 是使用於實作方法(使用＆self 呼叫建構子)<br>一個<code>struct</code> &gt;&gt; 一個<code>impl</code> ……..<br>那如果多個<code>struct</code> 呢？？？<br>那還不狂寫一波？<br><br></p>
+</blockquote>
+<p><img src="https://www.niusnews.com/upload/imgs/default/16AugP/805kid/7.gif" alt="真的假的"></p>
+<p>設計語言的利用抽象化的 trait<br><code>能夠越簡化代碼，就能夠減少重複撰寫，減少人為疏失</code></p>
+<p>On the other words, simple is good.<br>就是越簡單&amp;&amp;越清楚越好！！！</p>
+<h3 id="行為抽象化"><a href="#行為抽象化" class="headerlink" title="行為抽象化"></a>行為抽象化</h3><figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">People</span></span> &#123;</span><br><span class="line">    name: <span class="built_in">String</span>,</span><br><span class="line">    age: <span class="built_in">u64</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立方法抽象層</span></span><br><span class="line"><span class="class"><span class="keyword">trait</span> <span class="title">Action</span></span> &#123;</span><br><span class="line">    <span class="comment">// function do 返回不指定，可自定義</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">say_hello</span></span>(&amp;<span class="keyword">self</span>);</span><br><span class="line">    <span class="comment">// function can_do 返回 true or false</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">can_do</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">bool</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 實作方法 by using trait for struct</span></span><br><span class="line"><span class="comment">// 同樣性質的trait, 可以用來實作多個結構體,</span></span><br><span class="line"><span class="comment">// 使用 `for` -&gt; 專屬哪個struct</span></span><br><span class="line"><span class="keyword">impl</span> Action <span class="keyword">for</span> People &#123;</span><br><span class="line">    <span class="comment">// &amp;self 使用自己的意思</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">say_hello</span></span>(&amp;<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Hello, my name is &#123;&#125;.&quot;</span>, <span class="keyword">self</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意返回是boolean</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">can_do</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">bool</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">self</span>.age &lt; <span class="number">50</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> people_1 = People &#123;</span><br><span class="line">                <span class="comment">// new 一個新的String出來</span></span><br><span class="line">                name: <span class="built_in">String</span>::from(<span class="string">&quot;Kylls&quot;</span>),</span><br><span class="line">                age: <span class="number">18</span>,</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Can &#123;&#125; speak? &#123;&#125;&quot;</span>, people_1.name, people_1.can_do());</span><br><span class="line">        <span class="comment">// output: Can Kylls speak? true</span></span><br><span class="line">        people_1.say_hello();</span><br><span class="line">        <span class="comment">// output: Hello, my name is Kylls.</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>描述擁有的共同架構，集合成<code>struct</code><br>描述相同行為的動作，集合成<code>trait</code></p>
+</blockquote>
+<p>更進一步的敘述出 <code>物件會有的行為特質</code></p>
+<p>Rust Note_20211122</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Rust Note_Season(I)_List</title>
     <url>/2021/11/28/20211128-1/</url>
     <content><![CDATA[<h3 id="Rust-Basic-基礎總結"><a href="#Rust-Basic-基礎總結" class="headerlink" title="Rust Basic 基礎總結"></a>Rust Basic 基礎總結</h3><hr>
@@ -1179,7 +1179,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>Rsut</category>
+        <category>Rust</category>
         <category>Rust Season (I)</category>
       </categories>
       <tags>
